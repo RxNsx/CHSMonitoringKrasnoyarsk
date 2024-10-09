@@ -13,5 +13,5 @@ public interface IHttpClientService
     /// <param name="url"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public Task<HtmlDocument> GetHtmlDocumentByUrl(string url, CancellationToken cancellationToken);
+    public Task<HtmlDocument> GetHtmlDocumentByUrlAsync(string url, CancellationToken cancellationToken);
 }

@@ -1,5 +1,6 @@
 using CHSMonitoringKrasnoyarsk.HttpClients;
 using CHSMonitoringKrasnoyarsk.Interfaces;
+using CHSMonitoringKrasnoyarsk.Services;
 using CHSMonitoringKrasnoyarsk.Workers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,8 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Services
+//Scoped Services
+
+//Singleton Services
 builder.Services.AddSingleton<IHttpClientService, HttpClientService>();
+builder.Services.AddSingleton<ITdContentParserService, TdContentParserService>();
 
 //HttpClient
 builder.Services.AddHttpClient<HttpClientService>(client =>

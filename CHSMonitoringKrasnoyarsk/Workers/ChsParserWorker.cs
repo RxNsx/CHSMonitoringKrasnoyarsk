@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Text;
 using CHSMonitoringKrasnoyarsk.Interfaces;
+using CHSMonitoringKrasnoyarsk.Models;
 using HtmlAgilityPack;
 
 namespace CHSMonitoringKrasnoyarsk.Workers;
@@ -12,6 +13,7 @@ public class ChsParserWorker : BackgroundService
 {
     private readonly ILogger<ChsParserWorker> _logger;
     private readonly IHttpClientService _httpClientService;
+    private readonly ITdContentParserService _tdContentParserService;
 
     private readonly string? _url;
 
@@ -21,10 +23,13 @@ public class ChsParserWorker : BackgroundService
     /// <param name="loggerFactory"></param>
     /// <param name="httpClientService"></param>
     /// <param name="configuration"></param>
-    public ChsParserWorker(ILoggerFactory loggerFactory, IHttpClientService httpClientService, IConfiguration configuration)
+    /// <param name="tdContentParserService"></param>
+    public ChsParserWorker(ILoggerFactory loggerFactory, IHttpClientService httpClientService, IConfiguration configuration, ITdContentParserService tdContentParserService)
     {
-        _httpClientService = httpClientService;
         _logger = loggerFactory.CreateLogger<ChsParserWorker>();
+        
+        _httpClientService = httpClientService;
+        _tdContentParserService = tdContentParserService;
         
         if(string.IsNullOrEmpty(configuration.GetSection("CHSMonitoringKrasnoyarsk:Url").Value))
         {
@@ -37,23 +42,11 @@ public class ChsParserWorker : BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            var htmlDocument = await _httpClientService.GetHtmlDocumentByUrl(_url, stoppingToken)
+            var htmlDocument = await _httpClientService.GetHtmlDocumentByUrlAsync(_url, stoppingToken)
                 .ConfigureAwait(false);
+
+            var districtsInfo = _tdContentParserService.GetDistrictTableDescriptionsFromHtmlDocument(htmlDocument);
             
-            var tdContents = htmlDocument.DocumentNode.SelectNodes("//td")
-                .Where(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty)
-                .Select((td, index) => new
-                {
-                    Value = td.InnerText,
-                    Index = index
-                })
-                .ToList();
-            
-            var districts = tdContents
-                .Where((x, index) => x.Value.Contains("район", StringComparison.OrdinalIgnoreCase))
-                .ToList();
-            
-            tdContents.RemoveAll(x => x.Value.Contains("район", StringComparison.OrdinalIgnoreCase));
             await Task.Delay(5000, stoppingToken);
         }
     }

@@ -17,7 +17,7 @@ public class HttpClientService : IHttpClientService
         _httpClient = httpClientFactory.CreateClient("client");
     }
 
-    public async Task<HtmlDocument> GetHtmlDocumentByUrl(string url, CancellationToken stoppingToken)
+    public async Task<HtmlDocument> GetHtmlDocumentByUrlAsync(string url, CancellationToken stoppingToken)
     {
         var reply = await _httpClient.GetByteArrayAsync("http://93.92.65.26/aspx/GorodM.htm", stoppingToken)
             .ConfigureAwait(false);
