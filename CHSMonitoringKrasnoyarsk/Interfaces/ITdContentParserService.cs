@@ -13,5 +13,6 @@ public interface ITdContentParserService
     /// </summary>
     /// <param name="htmlDocument"></param>
     /// <returns></returns>
-    public List<List<TableDescription>> GetDistrictTableDescriptionsFromHtmlDocument(HtmlDocument htmlDocument);
+    public Dictionary<string, List<TableDescription>> GetDistrictTableDescriptionsFromHtmlDocument(
+        HtmlDocument htmlDocument);
 }

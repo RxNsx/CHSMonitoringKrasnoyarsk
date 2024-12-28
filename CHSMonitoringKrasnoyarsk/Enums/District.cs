@@ -4,18 +4,18 @@ namespace CHSMonitoringKrasnoyarsk.Enums;
 
 public enum District
 {
-    [Description("Октябрьский")]
+    [Description("Октябрьский район")]
     Okt = 1,
-    [Description("Железнодорожный")]
+    [Description("Железнодорожный район")]
     Jlz = 2,
-    [Description("Центральный")]
+    [Description("Центральный район")]
     Cen = 3,
-    [Description("Советский")]
+    [Description("Советский район")]
     Sov = 4,
-    [Description("Ленинский")]
+    [Description("Ленинский район")]
     Len = 5,
-    [Description("Кировский")]
+    [Description("Кировский район")]
     Kir = 6,
-    [Description("Свердловский")]
+    [Description("Свердловский район")]
     Sve = 7
 }

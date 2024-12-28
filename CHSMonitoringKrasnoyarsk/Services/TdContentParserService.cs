@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using CHSMonitoringKrasnoyarsk.Enums;
 using CHSMonitoringKrasnoyarsk.Extensions;
 using CHSMonitoringKrasnoyarsk.Interfaces;
 using CHSMonitoringKrasnoyarsk.Models;
@@ -11,7 +12,7 @@ namespace CHSMonitoringKrasnoyarsk.Services;
 /// </summary>
 public class TdContentParserService : ITdContentParserService
 {
-    public List<List<TableDescription>> GetDistrictTableDescriptionsFromHtmlDocument(HtmlDocument htmlDocument)
+    public Dictionary<string, List<TableDescription>> GetDistrictTableDescriptionsFromHtmlDocument(HtmlDocument htmlDocument)
     {
         var tdContents = htmlDocument.DocumentNode.SelectNodes("//td")
             .Where(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty)
@@ -24,8 +25,9 @@ public class TdContentParserService : ITdContentParserService
             
         var districtValues = GetDistrictsDataFromTableDescriptions(tdContents);
         var clearedDistrictValues = ClearEscapeSymbolsFromTdContent(districtValues);
+        var eventsDictionary = RestrictionTableDescriptionToDict(clearedDistrictValues);
         
-        return clearedDistrictValues;
+        return eventsDictionary;
     }
 
     /// <summary>
@@ -109,6 +111,44 @@ public class TdContentParserService : ITdContentParserService
             throw;
         }
 
+        //TODO: Разделить по /r/n
         return tableDescriptionLists;
+    }
+
+    private Dictionary<string, List<TableDescription>> RestrictionTableDescriptionToDict(
+        List<List<TableDescription>> tableDescriptions)
+    {
+        var dict = new Dictionary<string, List<TableDescription>>();
+        
+        var districtNames = Enum.GetValues(typeof(District))
+            .Cast<District>()
+            .Select(x => x.GetDescriptionValue())
+            .ToList();
+        
+        foreach (var tableDescriptionList in tableDescriptions)
+        {
+            foreach (var tableDescription in tableDescriptionList.ToList())
+            {
+                if (districtNames.Any(x => districtNames.Contains(tableDescription.InnerText)))
+                {
+                    var districtNameKey = tableDescription.InnerText;
+                    tableDescriptionList.Remove(tableDescription);
+                    if (!dict.TryAdd(districtNameKey, tableDescriptionList))
+                    {
+                        throw new ArgumentException("dict.TryAdd(districtNameKey, tableDescriptionList)");
+                    }
+                }
+            }
+        }
+
+        // foreach (var dictionaryList in dict)
+        // {
+        //     if (dictionaryList.Value.Contains("Запланировано"))
+        //     {
+        //         
+        //     }
+        // }
+
+        return dict;
     }
 }
