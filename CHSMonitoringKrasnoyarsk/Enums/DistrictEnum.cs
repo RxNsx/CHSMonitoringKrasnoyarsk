@@ -2,7 +2,10 @@
 
 namespace CHSMonitoringKrasnoyarsk.Enums;
 
-public enum District
+/// <summary>
+/// Название районов
+/// </summary>
+public enum DistrictEnum
 {
     [Description("Октябрьский район")]
     Okt = 1,
