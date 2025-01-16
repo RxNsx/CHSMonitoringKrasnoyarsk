@@ -2061,4 +2061,29 @@ public enum StreetNameEnum
     Yastinskaya,
 
     #endregion
+
+    #region Улицы на цифру
+
+    [Description("3 Августа")]
+    ThirdOfAugust,
+    [Description("8 Марта")]
+    EighthOfMarch,
+    [Description("9 Мая")]
+    NinthOfMay,
+    [Description("9 Января")]
+    NinthOfJanuary,
+    [Description("26 Бакинских Комиссаров")]
+    TwentySixBakinskihKomissarov,
+    [Description("30 Июля")]
+    ThirtiethOfJuly,
+    [Description("40 лет Победы")]
+    FortyYearsOfVictory,
+    [Description("60 лет Образования СССР")]
+    SixtyYearsOfUssrFormation,
+    [Description("60 лет Октября")]
+    SixtyYearsOfOctober,
+    [Description("78-й Добровольческой Бригады")]
+    SeventyEighthDobrovolcheskoyBrigady,
+
+    #endregion
 }
