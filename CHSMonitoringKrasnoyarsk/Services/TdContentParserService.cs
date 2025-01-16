@@ -13,6 +13,11 @@ namespace CHSMonitoringKrasnoyarsk.Services;
 /// </summary>
 public class TdContentParserService : ITdContentParserService
 {
+    public TdContentParserService()
+    {
+        
+    }
+    
     /// <summary>
     /// Получение списка с индексами для каждого района
     /// </summary>
@@ -69,32 +74,38 @@ public class TdContentParserService : ITdContentParserService
                     {
                         if(!supplyAlarmDescriptions.TryGetValue(item.Key, out _))
                         {
-                            var splittedOrganizationDescriptionList = tableDescriptionItemList[0].InnerText.Split("\r\n", StringSplitOptions.TrimEntries)
+                            var splittedOrganizationData = tableDescriptionItemList[0].InnerText
+                                .NormalizeTextWithNewLine()
+                                .Split("\r\n", StringSplitOptions.TrimEntries)
+                                .Where(x => !string.IsNullOrWhiteSpace(x))
                                 .ToList();
-                            var organization = splittedOrganizationDescriptionList.CreateOrganizationFromList();
-
+                            var organization = splittedOrganizationData.CreateOrganizationFromList();
+                            
                             var splittedAddressesDescriptionList = tableDescriptionItemList[1].InnerText
                                 .NormalizeText()
                                 .Split(';', StringSplitOptions.TrimEntries)
                                 .ToList();
-
                             var additionalDescriptionItem = splittedAddressesDescriptionList
                                 .FirstOrDefault(x => plannedDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)));
                             splittedAddressesDescriptionList.Remove(additionalDescriptionItem);
-                            
                             
                             //TODO: Распарсить адреса
                             var addresses = splittedAddressesDescriptionList
                                 .Where(x => streetDescriptionEnums.Any(t => x.Contains(t)))
                                 .ToList();
-                            //TODO: Распарсить номера домов
-                            var addressNumbers = splittedAddressesDescriptionList.Select(x => x.Split(" "));
-                            
-                            
-                            //TODO: Вынести в отдельное дополнительное описание
-                            var splittedDateDescriptionList = tableDescriptionItemList[2].InnerText.Split("\r\n", StringSplitOptions.TrimEntries);
-                            //TODO: Распарсить даты
-                            //TODO: В дате есть вариант "Отмена"
+                            // //TODO: Распарсить номера домов
+                            // var addressNumbers = splittedAddressesDescriptionList.Select(x => x.Split(" "));
+                            //
+                            //
+                            // //TODO: Вынести в отдельное дополнительное описание
+                            var splittedDateDescriptionList = tableDescriptionItemList[2].InnerText
+                                .NormalizeTextWithNewLine()
+                                .Split("\r\n", StringSplitOptions.TrimEntries)
+                                .Where(x => !string.IsNullOrWhiteSpace(x))
+                                .ToList();
+                            // //TODO: Распарсить даты
+                            // //TODO: В дате есть вариант "Отмена"
+                            // //TODO: В дате есть вариант "До устранения"
                         }
                     }
                 }
