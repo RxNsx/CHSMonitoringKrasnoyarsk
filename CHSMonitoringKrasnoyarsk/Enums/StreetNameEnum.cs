@@ -529,8 +529,52 @@ public enum StreetNameEnum
     [Description("Живописная")]
     Zhivopisnaya,
     [Description("Жуковского")]
-    Zhukovskogo
+    Zhukovskogo,
     
     #endregion
-
+    
+    #region Улцы на букву З
+    
+    [Description("Забобонова")]
+    Zabobonova,
+    [Description("Заводская")]
+    Zavodskaya,
+    [Description("Заводскойпр-д")]
+    ZavodskoyProyezd,
+    [Description("Заводской")]
+    Zavodskoy,
+    [Description("Загородная")]
+    Zagorodnaya,
+    [Description("Загорская")]
+    Zagorskaya,
+    [Description("Заливной")]
+    Zalivnoy,
+    [Description("Западная")]
+    Zapadnaya,
+    [Description("Заповедный")]
+    Zapovednyy,
+    [Description("Запорожская")]
+    Zaporozhskaya,
+    [Description("Заречная")]
+    Zarechnaya,
+    [Description("Зарничная")]
+    Zarnichnaya,
+    [Description("Затонская")]
+    Zatonskaya,
+    [Description("Затонский 1-й")]
+    Zatonskiy1,
+    [Description("Затонский 2-й")]
+    Zatonskiy2,
+    [Description("Затонский 3-й")]
+    Zatonskiy3,
+    [Description("Защитников Ленинграда")]
+    ZashchitnikovLeningrada,
+    [Description("Зелёный")]
+    Zelyoniy,
+    [Description("Знаменская")]
+    Znamenskaya,
+    [Description("Зои Космодемьянской")]
+    ZoiKosmodemyanskoy,
+    
+    #endregion
 }
