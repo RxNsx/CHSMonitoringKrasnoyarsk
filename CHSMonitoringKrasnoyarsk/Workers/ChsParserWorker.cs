@@ -53,36 +53,6 @@ public class ChsParserWorker : BackgroundService
                 {
                     throw new ArgumentNullException("Пустой словарь");
                 }
-                //
-                //
-                // var text1 = districtsInfo.FirstOrDefault().Value[1].InnerText;
-                // var text2 = districtsInfo.FirstOrDefault().Value[4].InnerText;
-                //
-                // List<string> strings = new();
-                // // strings.Add(text1);
-                // // strings.Add(text2);
-                // // strings.Add("Ладо Кецховели 29, 31, 33 (д/сад), 35, 39; Красной Армии 121; Волочаевская 44; Корнеева 24а, 26; Советская 41в (диспансер), 41е; Ленина 221а;пониженные параметры - переврезка обратного тубопровода на временный трубопровод");
-                // strings.Add("Дозорная; Национальная; Ореховская; Шушенская; Пировская; Лесосибирский; Бийхемская; Назаровская; Тюхтетский; Артемовская; Каратузский; Курейская; Красногорская; 2-я Красногорская; Бугачевская; Геологическая; 2-я Геологическая; Калинина 159-181, 98-106; Куренная; Острожная;\nплановое - регулировка стрелы провеса фидер 121-18");
-                // strings.Add("Прогулочная; Горная; Вольный проезд; 1-й Волный проезд; Садовая; Зеленая;\nплановое - установка автомата комплектная трансформаторная подстанция 3274");
-                // strings.Add("");
-                //
-                // foreach (string str in strings)
-                // {
-                //     string output = Regex.Replace(str, @"\([^)]*\)\s*", "");
-                //     output  = Regex.Replace(output, @"\s+", " ");
-                //     output = Regex.Replace(output, @"(\d+[а-яА-Я]*)\s*", m => m.Groups[1].Value);
-                //     
-                //     string[] addresses = Regex.Split(output, ";")
-                //         .Select(m => Regex.Replace(m, @"\s+", " "))
-                //         .Select(m => Regex.Replace(m, @"(\d+[а-яА-Я]*)\s*", m => m.Groups[1].Value))
-                //         .Where(m => !string.IsNullOrEmpty(m))
-                //         .ToArray();
-                //
-                //     foreach (string address in addresses)
-                //     {
-                //         Console.WriteLine(address);
-                //     }
-                // }
             }
             catch (Exception ex)
             {

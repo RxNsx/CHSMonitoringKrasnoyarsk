@@ -64,6 +64,16 @@ public class TdContentParserService : ITdContentParserService
         {
             if (item.Value.Any())
             {
+                var streetDescriptionEnums = Enum.GetValues(typeof(StreetNameEnum))
+                    .Cast<StreetNameEnum>()
+                    .Select(x => x.GetDescriptionValue())
+                    .ToList();
+
+                var plannedDescriptionEnums = Enum.GetValues(typeof(PlannedSupplyTypeEnum))
+                    .Cast<PlannedSupplyTypeEnum>()
+                    .Select(x => x.GetDescriptionValue())
+                    .ToList();
+                
                 for (var i = 1; i < item.Value.Count; i++)
                 {
                     var pointer1 = item.Value[i - 1];
@@ -77,7 +87,6 @@ public class TdContentParserService : ITdContentParserService
                     {
                         if(!supplyAlarmDescriptions.TryGetValue(item.Key, out _))
                         {
-
                             var splittedOrganizationDescriptionList = tableDescriptionItemList[0].InnerText.Split("\r\n", StringSplitOptions.TrimEntries)
                                 .ToList();
                             var organization = splittedOrganizationDescriptionList.CreateOrganizationFromList();
@@ -86,6 +95,15 @@ public class TdContentParserService : ITdContentParserService
                                 .NormalizeText()
                                 .Split(';', StringSplitOptions.TrimEntries)
                                 .ToList();
+
+                            var filteringItem = splittedAddressesDescriptionList
+                                    .Where(x => plannedDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
+                                    .ToList();
+                            splittedAddressesDescriptionList.Remove(filteringItem?.FirstOrDefault());
+                            //TODO: Вынести в отдельное дополнительное описание
+                            //TODO: Распарсить адреса
+                            //TODO: Распарсить номера домов
+                            
                             var splittedDateDescriptionList = tableDescriptionItemList[2].InnerText.Split("\r\n", StringSplitOptions.TrimEntries);
                         }
                     }
@@ -94,6 +112,11 @@ public class TdContentParserService : ITdContentParserService
         }
     }
 
+    /// <summary>
+    /// Выбор индексов для считывания информации между индексом а и б
+    /// </summary>
+    /// <param name="supplyTypeIndexes"></param>
+    /// <returns></returns>
     private Dictionary<string, List<int>> AddTheEndOfSupplyInfo(Dictionary<string, List<int>> supplyTypeIndexes)
     {
         //Количество записей в таблице на одно событие
@@ -146,6 +169,12 @@ public class TdContentParserService : ITdContentParserService
         return districtValues;
     }
 
+    /// <summary>
+    /// Распределяет полученный список по словарю (Район, Сообщения об отключениях)
+    /// </summary>
+    /// <param name="tableDescriptions"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     private Dictionary<string, List<TableDescription>> RestrictionTableDescriptionToDict(List<List<TableDescription>> tableDescriptions)
     {
         var dict = new Dictionary<string, List<TableDescription>>();
