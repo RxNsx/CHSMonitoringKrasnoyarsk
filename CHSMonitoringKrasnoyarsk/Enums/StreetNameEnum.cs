@@ -1982,4 +1982,23 @@ public enum StreetNameEnum
     Shchorssa,
 
     #endregion
+
+    #region Улицы на букву Э
+
+    [Description("Эвенкийская")]
+    Evenkiyskaya,
+    [Description("Экологов")]
+    Ekologov,
+    [Description("Экскурсантов")]
+    Ekskursantov,
+    [Description("Электриков")]
+    Elektrokov,
+    [Description("Энгельса")]
+    Engelsa,
+    [Description("Энергетиков")]
+    Energetikov,
+    [Description("Энтузиастов")]
+    Entuziastov,
+
+    #endregion
 }
