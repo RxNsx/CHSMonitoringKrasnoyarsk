@@ -533,7 +533,7 @@ public enum StreetNameEnum
     
     #endregion
     
-    #region Улцы на букву З
+    #region Улицы на букву З
     
     [Description("Забобонова")]
     Zabobonova,
@@ -1199,6 +1199,221 @@ public enum StreetNameEnum
     Ofitserskaya,
     [Description("Охраны Труда")]
     OkhranyTruda,
+    
+    #endregion
+    
+    #region Улицы на букву П
+    
+    [Description("Павлика Морозова")]
+    PavlikaMorozova,
+    [Description("Памяти Героев")]
+    PamyatiGeroev,
+    [Description("Паниковская")]
+    Panikovskaya,
+    [Description("Панорамная")]
+    Panoramnaya,
+    [Description("Панфиловцев")]
+    Panfilovtsev,
+    [Description("Папанинцев")]
+    Papanintsev,
+    [Description("Парадовского")]
+    Paradovskogo,
+    [Description("Парашютная")]
+    Parashyutnaya,
+    [Description("Парижской Коммуны")]
+    ParizhskoyKommuny,
+    [Description("Парковая")]
+    Parkovaya,
+    [Description("Паровозная")]
+    Parovoznaya,
+    [Description("Партизана Железняка")]
+    PartizanaZheleznaka,
+    [Description("Партизанская")]
+    Partizanskaya,
+    [Description("Парусная")]
+    Parusnaya,
+    [Description("Пархоменко")]
+    Parkhomenko,
+    [Description("Пасечная")]
+    Pasechnaya,
+    [Description("Пастеровская")]
+    Pasterevskaya,
+    [Description("Пасхальная")]
+    Paskhalnaya,
+    [Description("Первых Пионеров")]
+    PervykhPionerov,
+    [Description("Перенсона")]
+    Perensona,
+    [Description("Перепелиная")]
+    Perepelina,
+    [Description("Перспективная")]
+    Perspektivnaya,
+    [Description("Песочная")]
+    Pesochaya,
+    [Description("Петлина")]
+    Petlina,
+    [Description("Петра Ломако")]
+    PetraLomako,
+    [Description("Петра Подзолкова")]
+    PetraPodzolkova,
+    [Description("Петра Словцова")]
+    PetraSlovtsa,
+    [Description("Словцова")]
+    Slovtsova,
+    [Description("Петрушина")]
+    Petrushina,
+    [Description("Пионеров 2-я")]
+    Pionerov2,
+    [Description("Пионеров 3-я")]
+    Pionerov3,
+    [Description("Пировская")]
+    Pirovskaya,
+    [Description("Пирогова")]
+    Pirogova,
+    [Description("Писарева")]
+    Pisareva,
+    [Description("Пихтовая")]
+    Pikhtovaya,
+    [Description("Плановая")]
+    Planovaya,
+    [Description("Плодовая")]
+    Plodovaya,
+    [Description("Победы")]
+    Pobedy,
+    [Description("Побежимова")]
+    Pobezhimova,
+    [Description("Пограничников")]
+    Pogranichnikov,
+    [Description("Подгорная")]
+    Podgornaya,
+    [Description("Подсобная")]
+    Podsobnaya,
+    [Description("Подъемная")]
+    Podyomnaya,
+    [Description("Пожарского")]
+    Pozharskogo,
+    [Description("Позднякова")]
+    Pozdnyakova,
+    [Description("Пойменный")]
+    Poymenny,
+    [Description("Покровская")]
+    Pokrovskaya,
+    [Description("Полевая")]
+    Polevaya,
+    [Description("Полевой")]
+    Polevoy,
+    [Description("Ползунова")]
+    Polzunova,
+    [Description("Полигонная")]
+    Poligonaya,
+    [Description("Полтавская")]
+    Poltavskaya,
+    [Description("Полярная")]
+    Polyarnaya,
+    [Description("Полярная 3-я")]
+    Polyarnaya3,
+    [Description("Полярная 4-я")]
+    Polyarnaya4,
+    [Description("Полярная 5-я")]
+    Polyarnaya5,
+    [Description("Полярная 6-я")]
+    Polyarnaya6,
+    [Description("Полярная 7-я")]
+    Polyarnaya7,
+    [Description("Поперечный")]
+    Poperechny,
+    [Description("Попова")]
+    Popova,
+    [Description("Пороховой")]
+    Porokhovoy,
+    [Description("Посадный")]
+    Posadniy,
+    [Description("Посадская")]
+    Posadskaya,
+    [Description("Послушников")]
+    Poslushnikov,
+    [Description("Послушников")]
+    Poslushnikov2,
+    [Description("Походная")]
+    Pokhodnaya,
+    [Description("Преображенская")]
+    Preobrazhenskaya,
+    [Description("Пржевальского")]
+    Przhevalskogo,
+    [Description("Прибойная")]
+    Priboynaya,
+    [Description("Привокзальная")]
+    Privokzalnaya,
+    [Description("Пригорная")]
+    Prigornaya,
+    [Description("Придорожная")]
+    Pridorozhnaya,
+    [Description("Приручейная")]
+    Prirucheynaya,
+    [Description("Приручейная 2-я")]
+    Prirucheynaya2,
+    [Description("Приручейный")]
+    Prirucheyny,
+    [Description("Приусадебный")]
+    Priusadebny,
+    [Description("Причальная 5-я")]
+    Prichalnaya5,
+    [Description("Прогулочная")]
+    Progulochnaya,
+    [Description("Продольная")]
+    Prodolnaya,
+    [Description("Продольная 10-я")]
+    Prodolnaya10,
+    [Description("Продольная 11-я")]
+    Prodolnaya11,
+    [Description("Продольная 2-я")]
+    Prodolnaya2,
+    [Description("Продольная 3-я")]
+    Prodolnaya3,
+    [Description("Продольная 4-я")]
+    Prodolnaya4,
+    [Description("Продольная 5-я")]
+    Prodolnaya5,
+    [Description("Продольная 6-я")]
+    Prodolnaya6,
+    [Description("Продольная 7-я")]
+    Prodolnaya7,
+    [Description("Продольная 8-я")]
+    Prodolnaya8,
+    [Description("Продольная 9-я")]
+    Prodolnaya9,
+    [Description("Проектная")]
+    Proyektnaya,
+    [Description("Пролетарская")]
+    Proletarskaya,
+    [Description("Промбаза")]
+    Prombaza,
+    [Description("Промысловая")]
+    Promyslovaya,
+    [Description("Промышленный")]
+    Promyshlenniy,
+    [Description("Просвещения")]
+    ProsvesheniyaBerezovka,
+    [Description("Просторная")]
+    Prostoraya,
+    [Description("Профсоюзов")]
+    Profsoyuzov,
+    [Description("Прохладный")]
+    Prokhladniy,
+    [Description("Прямая")]
+    Pryamaya,
+    [Description("Пугачева")]
+    Pugacheva,
+    [Description("Путевая")]
+    Putevaya,
+    [Description("Путиловская")]
+    Putilovskaya,
+    [Description("Путоранская")]
+    Putoranskaya,
+    [Description("Пушкина")]
+    Pushkina,
+    [Description("Пясинская")]
+    Pyasinskaya,
     
     #endregion
 }
