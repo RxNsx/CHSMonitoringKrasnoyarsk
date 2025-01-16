@@ -1855,4 +1855,27 @@ public enum StreetNameEnum
     Furmanova,
 
     #endregion
+
+    #region Улицы на букву Х
+
+    [Description("Хабаровская 1-я")]
+    Khabarovskaya1,
+    [Description("Хабаровская 2-я")]
+    Khabarovskaya2,
+    [Description("Хантайская")]
+    Khantayskaya,
+    [Description("Харламова")]
+    Kharlamova,
+    [Description("Хетская")]
+    Khetskaya,
+    [Description("Холмистая")]
+    Kholmistaya,
+    [Description("Храпова")]
+    Khrapova,
+    [Description("Хрустальная")]
+    Khristalnaya,
+    [Description("Хуторская")]
+    Khutorskaya,
+
+    #endregion
 }
