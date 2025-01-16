@@ -329,7 +329,7 @@ public enum StreetNameEnum
     [Description("Высотная")]
     Vysostnaya,
     [Description("Высоцкого")]
-    Vysotskogo
+    Vysotskogo,
     
     #endregion
 
@@ -508,9 +508,29 @@ public enum StreetNameEnum
     [Description("Ерофеевская")]
     Yerofeyevskaya,
     [Description("Есаульская")]
-    Yesaulskaya
+    Yesaulskaya,
 
     #endregion
     
+    #region Улицы на букву Ж
+    
+    [Description("Жарковая")]
+    Zarkovaya,
+    [Description("Жданова")]
+    Zhdanova,
+    [Description("Железнодорожников")]
+    ZheleznoyDorožkov,
+    [Description("Желябова")]
+    Zhelebova,
+    [Description("Жемчужная")]
+    Zhemchuzhnaja,
+    [Description("Живица")]
+    Zhivitsa,
+    [Description("Живописная")]
+    Zhivopisnaya,
+    [Description("Жуковского")]
+    Zhukovskogo
+    
+    #endregion
 
 }
