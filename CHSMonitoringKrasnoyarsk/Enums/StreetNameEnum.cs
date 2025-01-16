@@ -2001,4 +2001,21 @@ public enum StreetNameEnum
     Entuziastov,
 
     #endregion
+
+    #region Улицы на букву Ю
+
+    [Description("Юбилейная")]
+    Yubileynaya,
+    [Description("Южная")]
+    Yuzhnaya,
+    [Description("Юности")]
+    Yunosti,
+    [Description("Юрия Гагарина")]
+    YuriyaGagarina,
+    [Description("Юрия Смирнова")]
+    YuriyaSmirnova,
+    [Description("Юшкова")]
+    Yushkova,
+
+    #endregion
 }
