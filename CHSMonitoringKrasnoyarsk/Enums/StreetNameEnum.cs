@@ -628,4 +628,249 @@ public enum StreetNameEnum
     Ishimskaya,
     
     #endregion
+
+    #region Улицы на букву К
+
+    [Description("Крайняя")]
+    Kraynyaya,
+    [Description("Кабульская")]
+    Kabulskaya,
+    [Description("Казанская")]
+    Kazanskaya,
+    [Description("Казарменный")]
+    Kazarmenniy,
+    [Description("Калинина")]
+    Kalinina,
+    [Description("Калиновая")]
+    Kalinovaya,
+    [Description("Камасинская")]
+    Kamasinskaya,
+    [Description("Каменная")]
+    Kamennaya,
+    [Description("Камская")]
+    Kamskaya,
+    [Description("Камчатская")]
+    Kamchatskaya,
+    [Description("Камчатская 2-я")]
+    Kamchatskaya2,
+    [Description("Камчатская 3-я")]
+    Kamchatskaya3,
+    [Description("Камчатская 4-я")]
+    Kamchatskaya4,
+    [Description("Камчатская 5-я")]
+    Kamchatskaya5,
+    [Description("Кандагарская")]
+    Kandagarskaya,
+    [Description("Канская")]
+    Kanskaya,
+    [Description("Капитанская")]
+    Kapitanskaya,
+    [Description("Карамзина")]
+    Karamzina,
+    [Description("Каратанова")]
+    Karatanova,
+    [Description("Каратузский")]
+    Karatuzskiy,
+    [Description("Караульная")]
+    Karaulnaya,
+    [Description("Карбышева")]
+    Karbyshova,
+    [Description("Кардагчинская")]
+    Kardagchinskaya,
+    [Description("Карла Либкнехта")]
+    KarlaLibknekhta,
+    [Description("Карла Маркса")]
+    KarlaMarksa,
+    [Description("Карнавальная")]
+    Karnavalnaya,
+    [Description("Карьерная")]
+    Karernaya,
+    [Description("Карьерный")]
+    Karerniy,
+    [Description("Каурова")]
+    Kaurova,
+    [Description("Каучуковый")]
+    Kauchukoviy,
+    [Description("Каховская")]
+    Kakhovskaya,
+    [Description("Качи")]
+    Kachi,
+    [Description("Качинская")]
+    Kachinskaya,
+    [Description("Каштачная")]
+    Kashtachnaya,
+    [Description("Квадратный")]
+    Kvadratniy,
+    [Description("Квартал 52-й")]
+    Kvartal52,
+    [Description("Квартальная")]
+    Kvartalnaya,
+    [Description("Кедровая")]
+    Kedrovaya,
+    [Description("Кедровый")]
+    Kedrovoy,
+    [Description("Кипрейная")]
+    Kipreynaya,
+    [Description("Кирова")]
+    Kirova,
+    [Description("Кирпичников")]
+    Kirpichnikova,
+    [Description("Кишинёвская")]
+    Kishinevskaya,
+    [Description("Клеверный")]
+    Klevernaya,
+    [Description("Клинкерная 1-я")]
+    Klinkernaya1,
+    [Description("Клинкерная 2-я")]
+    Klinkernaya2,
+    [Description("Ключевская")]
+    Klyuchevskaya,
+    [Description("Ковыльная")]
+    Kovylnaya,
+    [Description("Кодинская")]
+    Kodinskaya,
+    [Description("Коломенская")]
+    Kolomenskaya,
+    [Description("Колхозная")]
+    Kolkhoznaya,
+    [Description("Кольцевая")]
+    Koltevaya,
+    [Description("Кольцевой")]
+    Koltevoy,
+    [Description("Колягинская")]
+    Kolyaginskaya,
+    [Description("Комарова")]
+    Komarova,
+    [Description("Комбайнеров")]
+    Kombaynerova,
+    [Description("Комбайностроителей")]
+    KombaynoStroiteley,
+    [Description("Коммунальная")]
+    Kommunalnaya,
+    [Description("Коммунистическая")]
+    Kommunisticheskaya,
+    [Description("Комсомольский")]
+    Komsomolskiy,
+    [Description("Конечная")]
+    Konechnaya,
+    [Description("Конституции СССР")]
+    KonstitutsiiSssr,
+    [Description("Конструкторов")]
+    Konstruktorov,
+    [Description("Контейнерная")]
+    Konteinernaya,
+    [Description("Кооперативная")]
+    Kooperativnaya,
+    [Description("Копылова")]
+    Kopylova,
+    [Description("Копьевская")]
+    Kopyevskaya,
+    [Description("Корабельная")]
+    Korabelnaya,
+    [Description("Корнеева")]
+    Korneeva,
+    [Description("Корнетова")]
+    Kornetova,
+    [Description("Королева")]
+    Koroleva,
+    [Description("Короленко")]
+    Korolenko,
+    [Description("Короткий")]
+    Korotkiy,
+    [Description("Космическая")]
+    Kosmicheskaya,
+    [Description("Космонавтов микрорайон Северный")]
+    KosmonavtovSeverniy,
+    [Description("Космонавтов")]
+    Kosmonavtov,
+    [Description("Косой")]
+    Kosoy,
+    [Description("Котельникова")]
+    Kotelnikova,
+    [Description("Котовского")]
+    Kotoskogo,
+    [Description("Кочубея")]
+    Kochubeya,
+    [Description("Кравченко")]
+    Kravchenko,
+    [Description("Кразовская")]
+    Krazovskaya,
+    [Description("Красикова")]
+    Krasikova,
+    [Description("Красная")]
+    Krasnaya,
+    [Description("Красногорская")]
+    Krasnogorskaya,
+    [Description("Красногорская 2-я")]
+    Krasnogorskaya2,
+    [Description("Красноградская")]
+    Krasnogradskaya,
+    [Description("Краснодарская")]
+    Krasnodarskaya,
+    [Description("Краснодарская 1-я")]
+    Krasnodarskaya1,
+    [Description("Краснодарская 2-я")]
+    Krasnodarskaya2,
+    [Description("Краснодарская 3-я")]
+    Krasnodarskaya3,
+    [Description("Краснодонцев")]
+    Krasnodontsev,
+    [Description("Красной Армии")]
+    KrasnoyArmii,
+    [Description("Красной Гвардии")]
+    KrasnoyGvardii,
+    [Description("Красной Звезды")]
+    KrasnoyZvezdy,
+    [Description("Красномосковская")]
+    Krasnomoskovskaya,
+    [Description("Краснопресненская")]
+    Krasnopresnenskaya,
+    [Description("Краснофлотская 2-я")]
+    Krasnoflotskaya2,
+    [Description("Красных Зорь")]
+    KrasnyhZor,
+    [Description("Кривоколенный")]
+    Krivokolenniy,
+    [Description("Круговая")]
+    Krugovaya,
+    [Description("Крупской")]
+    Krupskoy,
+    [Description("Крутая 1-я")]
+    Krutaya1,
+    [Description("Крутая 2-я")]
+    Krutaya2,
+    [Description("Крутовского")]
+    Krutovskogo,
+    [Description("Крутогорская 1-я")]
+    Krutogorskaya1,
+    [Description("Крутогорская 2-я")]
+    Krutogorskaya2,
+    [Description("Крылова")]
+    Krylova,
+    [Description("Кубанская")]
+    Kubanskaya,
+    [Description("Кузнецкий")]
+    Kuznetskiy,
+    [Description("Куйбышева")]
+    Kuybysheva,
+    [Description("Куйсумская")]
+    Kuysumskaya,
+    [Description("Куксинский")]
+    Kuksinskiy,
+    [Description("Курагинская")]
+    Kuraginskaya,
+    [Description("Курганская")]
+    Kurganskaya,
+    [Description("Курейская")]
+    Kureyskaya,
+    [Description("Куренная")]
+    Kurenaya,
+    [Description("Курчатова")]
+    Kurchatova,
+    [Description("Кутузова")]
+    Kutuzova,
+    [Description("Кутузова 2-я")]
+    Kutuzova2,
+
+    #endregion
 }
