@@ -1130,4 +1130,75 @@ public enum StreetNameEnum
     Norilskaya,
     
     #endregion
+    
+    #region Улицы на букву О
+    
+    [Description("Обзорная")]
+    Obzornaya,
+    [Description("Облачная")]
+    Oblachnaya,
+    [Description("Облепиховая")]
+    Oblepikhovaya,
+    [Description("Обороны")]
+    Oborony,
+    [Description("Овражная")]
+    Ovrashnaya,
+    [Description("Огородная 2-я")]
+    Ogorodnaya2,
+    [Description("Одесская")]
+    Odesskaya,
+    [Description("Одесский")]
+    Odesskiy,
+    [Description("Односторонний")]
+    Odnostoronniy,
+    [Description("Озерная")]
+    Ozerennaya,
+    [Description("Озёрная 2-я")]
+    Ozernaya2,
+    [Description("Озёрная 4-я")]
+    Ozernaya4,
+    [Description("Окаемная")]
+    Okaymnaya,
+    [Description("Окружная")]
+    Okruzhnaya,
+    [Description("Октябрьская")]
+    Oktyabrskaya,
+    [Description("Олега Кошевого")]
+    OlegaKoshevoy,
+    [Description("Олейникова")]
+    Oleynikova,
+    [Description("Олониченко")]
+    Olonichenko,
+    [Description("Ольховая")]
+    Olkhovaya,
+    [Description("Омская")]
+    Omskaya,
+    [Description("Ореховская")]
+    Orekhovskaya,
+    [Description("Орловская")]
+    Orlovskaya,
+    [Description("Осенняя")]
+    Osennaya,
+    [Description("Осипенко")]
+    Osipenko,
+    [Description("Остров Отдыха")]
+    OstrovOtdyha,
+    [Description("Островная")]
+    Ostrovskaya,
+    [Description("Островского")]
+    Ostrovskogo,
+    [Description("Острожная")]
+    Ostrozhnaya,
+    [Description("Отважный")]
+    Otvazhniy,
+    [Description("Отдыха")]
+    Otdyha,
+    [Description("Отрадная")]
+    Otrada,
+    [Description("Офицерская")]
+    Ofitserskaya,
+    [Description("Охраны Труда")]
+    OkhranyTruda,
+    
+    #endregion
 }
