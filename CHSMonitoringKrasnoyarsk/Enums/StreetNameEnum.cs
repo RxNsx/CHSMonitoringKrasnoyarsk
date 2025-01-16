@@ -1670,4 +1670,113 @@ public enum StreetNameEnum
     Schastlivaya,
 
     #endregion
+
+    #region Улицы на букву Т
+
+    [Description("Таежная")]
+    Tayezhnaya,
+    [Description("Бугачево")]
+    Bugachevo,
+    [Description("Таймырская")]
+    Taymyrskaya,
+    [Description("Таймырская 1-я")]
+    Taymyrskaya1,
+    [Description("Таймырская 2-я")]
+    Taymyrskaya2,
+    [Description("Таймырская 3-я")]
+    Taymyrskaya3,
+    [Description("Таймырская 4-я")]
+    Taymyrskaya4,
+    [Description("Таймырская 5-я")]
+    Taymyrskaya5,
+    [Description("Талнахская")]
+    Talnakhskaya,
+    [Description("Тамбовская")]
+    Tambovskaya,
+    [Description("Танкистов")]
+    Tankistov,
+    [Description("Таскинская")]
+    Taskinskaya,
+    [Description("Татышев")]
+    Tatyshev,
+    [Description("Таштыпский")]
+    Tashtypskiy,
+    [Description("Театральная")]
+    Teatralnaya,
+    [Description("Текстильщиков")]
+    Tekstilshchikov,
+    [Description("Телевизорная")]
+    Televidzornaya,
+    [Description("Телевизорный")]
+    Televidzorniy,
+    [Description("Тельмана")]
+    Telmana,
+    [Description("Тенистая")]
+    Tenistaya,
+    [Description("Теплый")]
+    Teplyy,
+    [Description("Терешковой")]
+    Tereshkovoy,
+    [Description("Техническая")]
+    Tekhnicheskaya,
+    [Description("Технический Поселок")]
+    TekhnicheskiyPoselok,
+    [Description("Технологическая")]
+    Tekhnologicheskaya,
+    [Description("Тимирязева")]
+    Timiryazeva,
+    [Description("Тихий")]
+    Tikhiy,
+    [Description("Тихоновская")]
+    Tikhonovskaya,
+    [Description("Тобольская")]
+    Tobolskaya,
+    [Description("Толстого")]
+    Tolstogo,
+    [Description("Томская")]
+    Tomskaya,
+    [Description("Торгашинская")]
+    Torgashinskaya,
+    [Description("Торговая")]
+    Torgovaya,
+    [Description("Тотмина")]
+    Totmina,
+    [Description("Трактовая")]
+    Traktovaya,
+    [Description("Трактористов")]
+    Traktoristov,
+    [Description("Транзитная")]
+    Tranzitnaya,
+    [Description("Транспортный")]
+    Transportniy,
+    [Description("Транспортный")]
+    Transportniy2,
+    [Description("Троицкая")]
+    Troitskaya,
+    [Description("Труда")]
+    Truda,
+    [Description("Тубинская")]
+    Tubinskaya,
+    [Description("Туимский")]
+    Tuimskiy,
+    [Description("Туманный")]
+    Tumanniy,
+    [Description("Тупиковый")]
+    Tupikoviy,
+    [Description("Турбаза")]
+    Turbaza,
+    [Description("Турбинная")]
+    Turbinaya,
+    [Description("Тургенева")]
+    Turgeneva,
+    [Description("Туристская")]
+    Turistskaya,
+    [Description("Туруханская")]
+    Turukhanskaya,
+    [Description("Турчанинова")]
+    Turchaninova,
+    [Description("Тюхтетский")]
+    Tyukhtetskaya,
+
+    #endregion
 }
