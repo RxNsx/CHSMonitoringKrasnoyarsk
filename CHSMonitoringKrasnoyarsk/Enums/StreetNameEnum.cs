@@ -1479,4 +1479,195 @@ public enum StreetNameEnum
     Ryauzovskii,
     
     #endregion
+
+    #region Улицы на букву С
+
+    [Description("Сад Крутовского")]
+    SadKrutovskogo,
+    [Description("Садовая")]
+    Sadovaya,
+    [Description("Садовая")]
+    Sadovaya2,
+    [Description("Садовая")]
+    Sadovaya3,
+    [Description("Сады")]
+    Sady,
+    [Description("Самарский")]
+    Samarskiy,
+    [Description("Самодеятельности")]
+    Samodeyatelnosti,
+    [Description("Санаторная")]
+    Sanatornaya,
+    [Description("Саянская")]
+    Sayanskaya,
+    [Description("Свердловская")]
+    Sverdlovskaya,
+    [Description("Светлая Элита")]
+    SvetlayaElita,
+    [Description("Светлова")]
+    Svetlova,
+    [Description("Светлогорская")]
+    Svetlogorskaya,
+    [Description("Светлогорский")]
+    Svetlogorskiy,
+    [Description("Светлогорский")]
+    Svetlogorskiy2,
+    [Description("Светлый")]
+    Svetliy,
+    [Description("Свободная")]
+    Svobodnaya,
+    [Description("Свободный")]
+    Svobodniy,
+    [Description("Связи")]
+    Svazi,
+    [Description("Связистов")]
+    Svyazistov,
+    [Description("Севастопольский")]
+    Sevastopolskiy,
+    [Description("Северная")]
+    Severnaya,
+    [Description("Северное")]
+    Severnoe,
+    [Description("Северный")]
+    Severniy,
+    [Description("Северо-Енисейская")]
+    SeveroYeniseyskaya,
+    [Description("Седова")]
+    Sedova,
+    [Description("Сезонников")]
+    Sezonnikov,
+    [Description("Сельская")]
+    Selskaya,
+    [Description("Семафорная")]
+    Semafornaya,
+    [Description("Семена Давыдова")]
+    SemenaDavydova,
+    [Description("Сенная")]
+    Sennaya,
+    [Description("Серафимовича")]
+    Serafimovicha,
+    [Description("Сергея Куликова")]
+    SergeyaKulikova,
+    [Description("Сергея Лазо")]
+    SergeyaLazo,
+    [Description("Сергея Тюленина")]
+    SergeyaTyulenina,
+    [Description("Серебряный")]
+    Serebryaniy,
+    [Description("Серебряный Бор")]
+    SerebryaniyBor,
+    [Description("Серова")]
+    Serova,
+    [Description("Сеченова")]
+    Sechenova,
+    [Description("Сибирская")]
+    Sibirskaya,
+    [Description("Сибирский")]
+    Sibirskiy,
+    [Description("Сиреневая")]
+    Sirennevaya,
+    [Description("Сисимский")]
+    Sisimskiy,
+    [Description("Скальная")]
+    Skalnaya,
+    [Description("Сквозной")]
+    Skvoznoy,
+    [Description("Складская")]
+    Skladskaya,
+    [Description("Славы")]
+    Slavy,
+    [Description("Славянская")]
+    Slavyanskaya,
+    [Description("Слободская")]
+    Slobodskaya,
+    [Description("Смоленская 1-я")]
+    Smolenskaya1,
+    [Description("Смоленская 2-я")]
+    Smolenskaya2,
+    [Description("Смоленская 3-я")]
+    Smolenskaya3,
+    [Description("Снежная")]
+    Snezhnaya,
+    [Description("Советская")]
+    Sovetskaya,
+    [Description("Содружества")]
+    Sodruzhestva,
+    [Description("Соколовская")]
+    Sokolovskaya,
+    [Description("Сокольский")]
+    Sokolskiy,
+    [Description("Солнечная")]
+    Solnechnaya,
+    [Description("Солнечный")]
+    Solnechniy,
+    [Description("Солонцовая")]
+    Solontsovaya,
+    [Description("Сопочная")]
+    Sopochaya,
+    [Description("Соревнования")]
+    Sorevnovaniya,
+    [Description("Сосновая")]
+    Sosnovaya,
+    [Description("Сосновая")]
+    Sosnovaya2,
+    [Description("Сосновского")]
+    Sosnovskogo,
+    [Description("Сосновый Бор")]
+    SosnoviyBor,
+    [Description("Софьи Ковалевской")]
+    SofyiKovalevskoy,
+    [Description("Социалистическая")]
+    Sotsialisticheskaya,
+    [Description("Спандаряна")]
+    Spandaryana,
+    [Description("Спартаковцев")]
+    Spartakovtsev,
+    [Description("Спасского")]
+    Spasskogo,
+    [Description("Сплавучасток")]
+    Splavuchastok,
+    [Description("Спокойная")]
+    Spokoinaya,
+    [Description("Спорта")]
+    Sporta,
+    [Description("Спортивная")]
+    Sportivnaya,
+    [Description("Спортивный")]
+    Sportivniy,
+    [Description("Средний")]
+    Sredniy,
+    [Description("Сретенская")]
+    Sretenkaya,
+    [Description("Стадионная")]
+    Stadionnaya,
+    [Description("Станиславского")]
+    Stanislavskogo,
+    [Description("Станичная")]
+    Stanichnaya,
+    [Description("Становая")]
+    Stanovaya,
+    [Description("Станочная")]
+    Stanochaya,
+    [Description("Станционная")]
+    Stantsionnaya,
+    [Description("Степана Разина")]
+    StepanaRazina,
+    [Description("Столбовая")]
+    Stolbovaya,
+    [Description("Стрелецкая")]
+    Streltskaya,
+    [Description("Стрелочная")]
+    Strelochnaya,
+    [Description("Строительная")]
+    Stroitelnaya,
+    [Description("Суворова")]
+    Suvorova,
+    [Description("Судостроительная")]
+    Sudostroitelnaya,
+    [Description("Сурикова")]
+    Surikova,
+    [Description("Счастливая")]
+    Schastlivaya,
+
+    #endregion
 }
