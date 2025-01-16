@@ -1878,4 +1878,23 @@ public enum StreetNameEnum
     Khutorskaya,
 
     #endregion
+
+    #region Улицы на букву Ц
+
+    [Description("Цветной")]
+    Tsvetnoy,
+    [Description("Цветочная")]
+    Tsvetochnaya,
+    [Description("Цветущая")]
+    Tsvetusshaya,
+    [Description("Цементников")]
+    Tsementnikov,
+    [Description("Центральный")]
+    Tsentralniy,
+    [Description("Цимлянская")]
+    Tsimalanskaya,
+    [Description("Циолковского")]
+    Tsolkovskogo,
+
+    #endregion
 }
