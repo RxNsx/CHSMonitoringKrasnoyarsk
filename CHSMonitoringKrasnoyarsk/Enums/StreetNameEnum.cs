@@ -332,4 +332,166 @@ public enum StreetNameEnum
     Vysotskogo
     
     #endregion
+
+    #region Улицы на букву Г
+
+    [Description("Гадалова")]
+    Gadalova,
+    [Description("Гайдара")]
+    Gaydara,
+    [Description("Гайдашовка")]
+    Gaydashovka,
+    [Description("Гаражный")]
+    Garazhnyy,
+    [Description("Гастелло")]
+    Gastello,
+    [Description("Геодезическая")]
+    Geodezicheskaya,
+    [Description("Геологическая")]
+    Geologicheskaya,
+    [Description("Геологическая 2-я")]
+    Geologicheskaya2,
+    [Description("Георгиевская")]
+    Georgievskaya,
+    [Description("Героев Страны")]
+    GeroevStrany,
+    [Description("Героев Чернобыля")]
+    GeroevChernobylya,
+    [Description("Герцена")]
+    Gertsena,
+    [Description("Гипсовая")]
+    Gipssovaya,
+    [Description("Гипсовая 1-я")]
+    Gipssovaya1,
+    [Description("Гипсовая 2-я")]
+    Gipssovaya2,
+    [Description("Гипсовая 3-я")]
+    Gipssovaya3,
+    [Description("Глинки")]
+    Glinskiy,
+    [Description("Глиняная")]
+    Glinyanaya,
+    [Description("Говорова")]
+    Govorova,
+    [Description("Гоголя")]
+    Gogolya,
+    [Description("Горийский")]
+    Goriyskiy,
+    [Description("Гористая")]
+    Goristaya,
+    [Description("Горная")]
+    Gornaya,
+    [Description("Горького")]
+    Gorkogo,
+    [Description("Гражданский")]
+    Grazhdanskiy,
+    [Description("Гранитная")]
+    Granitnaya,
+    [Description("Графитная")]
+    Grafichnaya,
+    [Description("Гремячий 1-й")]
+    Gremyachiy1,
+    [Description("Гремячий 2-й")]
+    Gremyachiy2,
+    [Description("Гремячий 3-й")]
+    Gremyachiy3,
+    [Description("Гремячий 4-й")]
+    Gremyachiy4,
+    [Description("Грибная")]
+    Gribyanaya,
+    [Description("Гросовцев")]
+    Grossovtsa,
+    [Description("Грунтовая")]
+    Gruntovaya,
+    [Description("Грушевая")]
+    Grushevaya,
+    [Description("Гуляева")]
+    Gulyaeva,
+    [Description("Гусарова")]
+    Gusarova,
+
+    #endregion
+
+    #region Улицы на букву Д
+
+    [Description("Дальневосточная")]
+    Dalnevostochnaya,
+    [Description("Дальневосточная 3-я")]
+    Dalnevostochnaya3,
+    [Description("Дальневосточная 4-я")]
+    Dalnevostochnaya4,
+    [Description("Дальняя")]
+    DalNaya,
+    [Description("ДАурская")]
+    DaurSKaya,
+    [Description("Дачная")]
+    Dachnaya,
+    [Description("Декабристов")]
+    Dekabristov,
+    [Description("Делегатская")]
+    Delegatskaya,
+    [Description("Деловая")]
+    Delovaya,
+    [Description("Видьяна Бедного")]
+    VidanyaBednogo,
+    [Description("Деповская")]
+    Depovskaya,
+    [Description("Деповский")]
+    Depovskiy,
+    [Description("Депутатская 2-я")]
+    Deputatskaya2,
+    [Description("Детская")]
+    Detskaya,
+    [Description("Джамбульская")]
+    Dzhambulskaya,
+    [Description("Дзержинского")]
+    Dzerzhinskogo,
+    [Description("Дивная")]
+    Divnaya,
+    [Description("Дивногорская")]
+    Divnogorskaya,
+    [Description("Диксона")]
+    Dixona,
+    [Description("Диктатуры Пролетариата")]
+    DiktaturyProletariata,
+    [Description("Димитрова")]
+    Dimitrova,
+    [Description("Дмитрия Мартынова")]
+    DmytriyaMartynova,
+    [Description("Днепропетровская 1-я")]
+    Dnepropetrovskaya1,
+    [Description("Днепропетровская 2-я")]
+    Dnepropetrovskaya2,
+    [Description("Добролюбова")]
+    Dobrolubova,
+    [Description("Дозорная")]
+    Dozornaya,
+    [Description("Докучаева")]
+    Dokuchaeva,
+    [Description("Донецкая")]
+    Donetskaya,
+    [Description("Дорожная")]
+    Dorognaya,
+    [Description("Достоевского")]
+    Dostoevskogo,
+    [Description("Дрокинская")]
+    Drokinskaya,
+    [Description("Дружбы")]
+    Druzhby,
+    [Description("Дружный")]
+    Druzhnyy,
+    [Description("Дубенского")]
+    Dubenskogo,
+    [Description("Дубровинского")]
+    Dubrovinskogo,
+    [Description("Дудинская")]
+    Dudinskaya,
+    [Description("Дюнная")]
+    Dunnyaya
+
+    #endregion
+    
+    
+    
+
 }
