@@ -233,4 +233,103 @@ public enum StreetNameEnum
     Bykovskogo,
     
     #endregion
+    
+    #region Улицы на букву В
+    
+    [Description("Васильковый")]
+    Vasilikovoy,
+    [Description("Васнецова")]
+    Vasnetsova,
+    [Description("Ватутина")]
+    Vatutina,
+    [Description("Вейнбаума")]
+    VeinBauma,
+    [Description("Вербная")]
+    Verbnaya,
+    [Description("Верещагина")]
+    Vereshchagina,
+    [Description("Верхняя")]
+    VerkhNeya,
+    [Description("Верховая")]
+    Verkhovaya,
+    [Description("Верхотельский")]
+    VerkhotelSkiy,
+    [Description("Весёлая")]
+    Veselyaya,
+    [Description("Веселовская")]
+    Veselovskaya,
+    [Description("Весенняя")]
+    VesenNaya,
+    [Description("Весны")]
+    Vesny,
+    [Description("Вечерняя")]
+    VecherNeya,
+    [Description("Вешняя")]
+    VeshNeya,
+    [Description("Взлётная")]
+    Vzletnaya,
+    [Description("Вильского")]
+    VilSkogo,
+    [Description("Виражная")]
+    Viazhnaya,
+    [Description("Вишневый")]
+    Vishnevyy,
+    [Description("Внутриквартальная 1-я")]
+    Vnutrikvartalnaya1,
+    [Description("Внутриквартальная 3-я")]
+    Vnutrikvartalnaya3,
+    [Description("Водометный")]
+    Vodometnyy,
+    [Description("Водопьянова")]
+    Vodopyanova,
+    [Description("Водянникова")]
+    VodyanNikova,
+    [Description("Возвышенная")]
+    VozvyshchenNaya,
+    [Description("Вознесенская")]
+    Voznesenskaya,
+    [Description("Возрождения")]
+    Rozhdeniya,
+    [Description("Вокзальная")]
+    Vokzalnaya,
+    [Description("Волгоградская")]
+    Volgogradskaya,
+    [Description("Волжская")]
+    Volzhskaya,
+    [Description("Володнева")]
+    Volodinova,
+    [Description("Волочаевская")]
+    Volochayevskaya,
+    [Description("Волочанская")]
+    Volochanskaya,
+    [Description("Вольный")]
+    Volnyy,
+    [Description("Воровского")]
+    Vorovskogo,
+    [Description("Воронова")]
+    Voronova,
+    [Description("Воскресенская")]
+    Voskresenskaya,
+    [Description("Воскресная")]
+    Voskresnaya,
+    [Description("Восточная")]
+    Vostochnaya,
+    [Description("Восточный")]
+    Vostochnyy,
+    [Description("Восходная")]
+    Voskhodnaya,
+    [Description("Встречная")]
+    Vstrechnaya,
+    [Description("Вузовский")]
+    Vuzovskiy,
+    [Description("Выборгский")]
+    Vyborgskiy,
+    [Description("Высокая")]
+    Vysokaya,
+    [Description("Высотная")]
+    Vysostnaya,
+    [Description("Высоцкого")]
+    Vysotskogo
+    
+    #endregion
 }
