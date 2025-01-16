@@ -577,4 +577,55 @@ public enum StreetNameEnum
     ZoiKosmodemyanskoy,
     
     #endregion
+    
+    #region Улицы на букву И
+    
+    [Description("Ивченко")]
+    Ivchenko,
+    [Description("Игарская")]
+    Igarskaya,
+    [Description("Извилистая")]
+    Izvilistaya,
+    [Description("Измайлова")]
+    Izmaylova,
+    [Description("Изумрудная")]
+    Izumrudnaya,
+    [Description("Изыскательский")]
+    IzyvatelSkiy,
+    [Description("Иланская")]
+    Ilanskaya,
+    [Description("Имбежский")]
+    Imbezhskiy,
+    [Description("Красноярский Рабочий")]
+    KrasnoyarskiyRabochiy,
+    [Description("Пионерская Правда")]
+    PionerskayaPravda,
+    [Description("Я.М. Свердлова")]
+    YaMSverdlova,
+    [Description("Индустриальный 1-й")]
+    Industrialniy1,
+    [Description("Индустриальный 2-й")]
+    Industrialniy2,
+    [Description("Инженерный")]
+    Inzhenerniy,
+    [Description("Инициаторов")]
+    Initsiativov,
+    [Description("Инструментальная")]
+    Instrumentalnaya,
+    [Description("Интернациональная")]
+    Internatsionalnaya,
+    [Description("Ипподром")]
+    Ippodrom,
+    [Description("Ирбейская")]
+    Irbeyskaya,
+    [Description("Иркутская")]
+    Irkutskaya,
+    [Description("Иртышская")]
+    Irtishskaya,
+    [Description("Историческая")]
+    Istoricheskaya,
+    [Description("Ишимская")]
+    Ishimskaya,
+    
+    #endregion
 }
