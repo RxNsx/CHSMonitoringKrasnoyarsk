@@ -1897,4 +1897,41 @@ public enum StreetNameEnum
     Tsolkovskogo,
 
     #endregion
+
+    #region Улицы на букву Ч
+
+    [Description("Чайковского")]
+    Chaykovskogo,
+    [Description("Частоостровская")]
+    Chastoostrovskaya,
+    [Description("Челюскинцев")]
+    Chelyuskintsev,
+    [Description("Черёмуховая")]
+    Cheryomukhovaya,
+    [Description("Черемховская 2-я")]
+    Cheremkhovskaya2,
+    [Description("Черепнина")]
+    Cherepnina,
+    [Description("Черничная")]
+    Chernichnaya,
+    [Description("Чернышева")]
+    Chernysheva,
+    [Description("Чернышевского")]
+    Chernyshevskogo,
+    [Description("Черняховского")]
+    Chernyakhovskogo,
+    [Description("Чехова")]
+    Chekhova,
+    [Description("Чечеульский")]
+    Checheulskiy,
+    [Description("Чистопрудная")]
+    Chistoprudnaya,
+    [Description("Чистый Лог")]
+    ChistiyLog,
+    [Description("Читинская")]
+    Chitinskaya,
+    [Description("Чкалова")]
+    Chkalova,
+
+    #endregion
 }
