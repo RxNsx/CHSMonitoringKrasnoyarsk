@@ -57,7 +57,6 @@ public class ChsParserWorker : BackgroundService
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                throw;
             }
 
             await Task.Delay(5000, stoppingToken);
