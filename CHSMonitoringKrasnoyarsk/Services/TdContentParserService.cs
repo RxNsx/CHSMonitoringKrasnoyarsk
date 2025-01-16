@@ -13,30 +13,12 @@ namespace CHSMonitoringKrasnoyarsk.Services;
 /// </summary>
 public class TdContentParserService : ITdContentParserService
 {
-    public Dictionary<string, List<TableDescription>> GetDistrictTableDescriptionsFromHtmlDocument(HtmlDocument htmlDocument)
-    {
-        var tdContents = htmlDocument.DocumentNode.SelectNodes("//td")
-            .Where(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty)
-            .Select((td, index) => new TableDescription
-            {
-                InnerText = td.InnerText,
-                Index = index
-            })
-            .ToList();
-            
-        var districtValues = GetDistrictsDataFromTableDescriptions(tdContents);
-        var eventsDictionary = RestrictionTableDescriptionToDict(districtValues);
-        GetSupplyAlarmDescriptions(eventsDictionary);
-        
-        return eventsDictionary;
-    }
-
     /// <summary>
     /// Получение списка с индексами для каждого района
     /// </summary>
     /// <param name="districtValues"></param>
     /// <exception cref="ArgumentException"></exception>
-    private void GetSupplyAlarmDescriptions(Dictionary<string, List<TableDescription>> districtValues)
+    public void GetSupplyAlarmDescriptions(Dictionary<string, List<TableDescription>> districtValues)
     {
         var supplyTypesEnums = Enum.GetValues(typeof(SupplyTypeEnum))
             .Cast<SupplyTypeEnum>()
@@ -96,15 +78,23 @@ public class TdContentParserService : ITdContentParserService
                                 .Split(';', StringSplitOptions.TrimEntries)
                                 .ToList();
 
-                            var filteringItem = splittedAddressesDescriptionList
-                                    .Where(x => plannedDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
-                                    .ToList();
-                            splittedAddressesDescriptionList.Remove(filteringItem?.FirstOrDefault());
-                            //TODO: Вынести в отдельное дополнительное описание
-                            //TODO: Распарсить адреса
-                            //TODO: Распарсить номера домов
+                            var additionalDescriptionItem = splittedAddressesDescriptionList
+                                .FirstOrDefault(x => plannedDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)));
+                            splittedAddressesDescriptionList.Remove(additionalDescriptionItem);
                             
+                            
+                            //TODO: Распарсить адреса
+                            var addresses = splittedAddressesDescriptionList
+                                .Where(x => streetDescriptionEnums.Any(t => x.Contains(t)))
+                                .ToList();
+                            //TODO: Распарсить номера домов
+                            var addressNumbers = splittedAddressesDescriptionList.Select(x => x.Split(" "));
+                            
+                            
+                            //TODO: Вынести в отдельное дополнительное описание
                             var splittedDateDescriptionList = tableDescriptionItemList[2].InnerText.Split("\r\n", StringSplitOptions.TrimEntries);
+                            //TODO: Распарсить даты
+                            //TODO: В дате есть вариант "Отмена"
                         }
                     }
                 }
@@ -117,7 +107,7 @@ public class TdContentParserService : ITdContentParserService
     /// </summary>
     /// <param name="supplyTypeIndexes"></param>
     /// <returns></returns>
-    private Dictionary<string, List<int>> AddTheEndOfSupplyInfo(Dictionary<string, List<int>> supplyTypeIndexes)
+    public Dictionary<string, List<int>> AddTheEndOfSupplyInfo(Dictionary<string, List<int>> supplyTypeIndexes)
     {
         //Количество записей в таблице на одно событие
         const int supplyItems = 3;
@@ -140,7 +130,7 @@ public class TdContentParserService : ITdContentParserService
     /// </summary>
     /// <param name="tableDescriptions"></param>
     /// <returns></returns>
-    private List<List<TableDescription>> GetDistrictsDataFromTableDescriptions(List<TableDescription> tableDescriptions)
+    public List<List<TableDescription>> GetDistrictsDataFromTableDescriptions(List<TableDescription> tableDescriptions)
     {
         var districtValues = new List<List<TableDescription>>();
         var districts = tableDescriptions
@@ -175,7 +165,7 @@ public class TdContentParserService : ITdContentParserService
     /// <param name="tableDescriptions"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
-    private Dictionary<string, List<TableDescription>> RestrictionTableDescriptionToDict(List<List<TableDescription>> tableDescriptions)
+    public Dictionary<string, List<TableDescription>> RestrictionTableDescriptionToDict(List<List<TableDescription>> tableDescriptions)
     {
         var dict = new Dictionary<string, List<TableDescription>>();
         var districtNames = Enum.GetValues(typeof(DistrictEnum))
@@ -205,11 +195,11 @@ public class TdContentParserService : ITdContentParserService
     }
 
     /// <summary>
-    /// Убирает записи
+    /// Убирает запись Запланированное на завтра
     /// </summary>
     /// <param name="tableDescriptions"></param>
     /// <returns></returns>
-    private List<List<TableDescription>> RemovePlannedTableDescription(List<List<TableDescription>> tableDescriptions)
+    public List<List<TableDescription>> RemovePlannedTableDescription(List<List<TableDescription>> tableDescriptions)
     {
         foreach (var item in tableDescriptions)
         {

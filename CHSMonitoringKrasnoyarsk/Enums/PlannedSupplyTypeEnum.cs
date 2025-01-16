@@ -10,7 +10,9 @@ public enum PlannedSupplyTypeEnum
     [Description("Запланированные")]
     Planned,
     [Description("Плановое")]
-    Planned2
+    Planned2,
+    [Description("Информация о плановых отключениях")]
+    Planned3
     // [Description("Городских отключений не зарегистрировано")]
     // NotRegistered
 }

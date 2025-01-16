@@ -14,7 +14,9 @@ builder.Services.AddSwaggerGen();
 
 //Singleton Services
 builder.Services.AddSingleton<IHttpClientService, HttpClientService>();
+builder.Services.AddSingleton<IHtmlParserService, HtmlParserService>();
 builder.Services.AddSingleton<ITdContentParserService, TdContentParserService>();
+builder.Services.AddSingleton<IAddressParserService, AddressParserService>();
 
 //HttpClient
 builder.Services.AddHttpClient<HttpClientService>(client =>

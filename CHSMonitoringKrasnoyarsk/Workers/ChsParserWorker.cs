@@ -14,7 +14,7 @@ public class ChsParserWorker : BackgroundService
 {
     private readonly ILogger<ChsParserWorker> _logger;
     private readonly IHttpClientService _httpClientService;
-    private readonly ITdContentParserService _tdContentParserService;
+    private readonly IHtmlParserService _htmlParserService;
 
     private readonly string? _url;
 
@@ -24,13 +24,13 @@ public class ChsParserWorker : BackgroundService
     /// <param name="loggerFactory"></param>
     /// <param name="httpClientService"></param>
     /// <param name="configuration"></param>
-    /// <param name="tdContentParserService"></param>
-    public ChsParserWorker(ILoggerFactory loggerFactory, IHttpClientService httpClientService, IConfiguration configuration, ITdContentParserService tdContentParserService)
+    /// <param name="htmlParserService"></param>
+    public ChsParserWorker(ILoggerFactory loggerFactory, IHttpClientService httpClientService, IConfiguration configuration, IHtmlParserService htmlParserService)
     {
         _logger = loggerFactory.CreateLogger<ChsParserWorker>();
         
         _httpClientService = httpClientService;
-        _tdContentParserService = tdContentParserService;
+        _htmlParserService = htmlParserService;
         
         if(string.IsNullOrEmpty(configuration.GetSection("CHSMonitoringKrasnoyarsk:Url").Value))
         {
@@ -48,7 +48,7 @@ public class ChsParserWorker : BackgroundService
                 var htmlDocument = await _httpClientService.GetHtmlDocumentByUrlAsync(_url, stoppingToken)
                     .ConfigureAwait(false);
 
-                var districtsInfo = _tdContentParserService.GetDistrictTableDescriptionsFromHtmlDocument(htmlDocument);
+                var districtsInfo = _htmlParserService.GetDistrictTableDescriptionsFromHtmlDocument(htmlDocument);
                 if (!districtsInfo.Any())
                 {
                     throw new ArgumentNullException("Пустой словарь");
@@ -75,12 +75,4 @@ public class ChsParserWorker : BackgroundService
         _logger.LogInformation("Сервис парсинга удален из памяти: {time}", DateTimeOffset.Now);
         base.Dispose();
     }
-    
-    public class Address
-    {
-        public string StreetName { get; set; }
-        public List<string> HouseNumbers { get; set; }
-        public string AdditionalInfo { get; set; }
-    }
-    
 }
