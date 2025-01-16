@@ -1934,4 +1934,41 @@ public enum StreetNameEnum
     Chkalova,
 
     #endregion
+
+    #region Улицы на букву Ш
+
+    [Description("Шахтёров")]
+    Shakhtyorov,
+    [Description("Шевченко")]
+    Shevchenko,
+    [Description("Шелковая")]
+    Shelkovaya,
+    [Description("Шиверская")]
+    Shiverskaya,
+    [Description("Шиндандская улица")]
+    Shindandskaya,
+    [Description("Шинная 1-я")]
+    Shinnaya1,
+    [Description("Шинная 2-я")]
+    Shinnaya2,
+    [Description("Шинная 3-я")]
+    Shinnaya3,
+    [Description("Шинная 4-я")]
+    Shinnaya4,
+    [Description("Ширинская")]
+    Shirinskaya,
+    [Description("Широкая")]
+    Shirokaya,
+    [Description("Шиферников")]
+    Shiferinikov,
+    [Description("Школьный")]
+    Shkolniy,
+    [Description("Шмидта")]
+    Shmidta,
+    [Description("Шумяцкого")]
+    Shumyatskogo,
+    [Description("Шушенская")]
+    Shushenskaya,
+
+    #endregion
 }
