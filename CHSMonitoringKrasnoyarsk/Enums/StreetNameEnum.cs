@@ -487,11 +487,30 @@ public enum StreetNameEnum
     [Description("Дудинская")]
     Dudinskaya,
     [Description("Дюнная")]
-    Dunnyaya
+    Dunnyaya,
 
     #endregion
-    
-    
+
+    #region Улицы на букву Е
+
+    [Description("Елены Стасовой")]
+    ElenyStasovoy,
+    [Description("Еловая")]
+    Yelovaya,
+    [Description("Емельяновская")]
+    Yemelyanovskaya,
+    [Description("Енисейская")]
+    Yeniseyskaya,
+    [Description("Енисейский")]
+    Yeniseyskiy,
+    [Description("Ермаковская")]
+    Yermakovskaya,
+    [Description("Ерофеевская")]
+    Yerofeyevskaya,
+    [Description("Есаульская")]
+    Yesaulskaya
+
+    #endregion
     
 
 }
