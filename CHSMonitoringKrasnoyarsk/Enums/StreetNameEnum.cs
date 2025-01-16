@@ -1971,4 +1971,15 @@ public enum StreetNameEnum
     Shushenskaya,
 
     #endregion
+
+    #region Улицы на букву Щ
+
+    [Description("Щербакова")]
+    Shcherbakova,
+    [Description("Щетинкина")]
+    Shchetinkina,
+    [Description("Щорса")]
+    Shchorssa,
+
+    #endregion
 }
