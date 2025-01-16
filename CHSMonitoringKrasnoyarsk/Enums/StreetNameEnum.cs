@@ -1836,4 +1836,23 @@ public enum StreetNameEnum
     Uyarskaya,
 
     #endregion
+
+    #region Улицы на букву Ф
+
+    [Description("Фабричная")]
+    Fabrichnaya,
+    [Description("Ферганская")]
+    Ferganskaya,
+    [Description("Фестивальная")]
+    Festivalnaya,
+    [Description("Фигурная")]
+    Figurnaya,
+    [Description("Фруктовая")]
+    Fructovaya,
+    [Description("Фрунзе")]
+    Frunze,
+    [Description("Фурманова")]
+    Furmanova,
+
+    #endregion
 }
