@@ -1073,4 +1073,61 @@ public enum StreetNameEnum
     Myasokombinat,
     
     #endregion
+    
+    #region Улицы на букву Н
+    
+    [Description("Навигационная")]
+    Navigatsionnaya,
+    [Description("Нагорная")]
+    Nagornaya,
+    [Description("Назаровская")]
+    Nazarovskaya,
+    [Description("Наклонная")]
+    Naklonnaya,
+    [Description("Нанжульская")]
+    Nanzhulskaya,
+    [Description("Национальная")]
+    Natsionalnaya,
+    [Description("Невская")]
+    Nevskaya,
+    [Description("Независимости")]
+    Nezavisimosti,
+    [Description("Некрасова")]
+    Nekrasova,
+    [Description("Нерчинская")]
+    Nerchinskaya,
+    [Description("Нестерова")]
+    Nesterova,
+    [Description("Нефтяной")]
+    Neftyanoy,
+    [Description("Никитина")]
+    Nikitina,
+    [Description("Николаева")]
+    Nikolaeva,
+    [Description("Николаевский")]
+    Nikolaevskiy,
+    [Description("Николая Донского")]
+    NikolayaDonskogo,
+    [Description("Новаторская")]
+    Novatorskaya,
+    [Description("Новая")]
+    Novaya,
+    [Description("Новая Заря")]
+    NovayaZarya,
+    [Description("Новгородская")]
+    Novgorodskaya,
+    [Description("Новогорская")]
+    Novogorskaya,
+    [Description("Новой Жизни")]
+    NovoyZhizni,
+    [Description("Новомлинская")]
+    Novomlinskaya,
+    [Description("Новосибирская")]
+    Novosibirskaya,
+    [Description("Новостроек")]
+    Novostroyek,
+    [Description("Норильская")]
+    Norilskaya,
+    
+    #endregion
 }
