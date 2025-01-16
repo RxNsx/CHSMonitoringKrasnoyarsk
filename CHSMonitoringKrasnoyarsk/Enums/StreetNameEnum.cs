@@ -1416,4 +1416,67 @@ public enum StreetNameEnum
     Pyasinskaya,
     
     #endregion
+    
+    #region Улицы на букву Р
+    
+    [Description("Рабочая")]
+    Rabochaya,
+    [Description("Радищева")]
+    Raditsheva,
+    [Description("Радужная")]
+    Radzhumnaya,
+    [Description("Раздольная")]
+    Razdolnaya,
+    [Description("Раскатная")]
+    Raskatnaya,
+    [Description("Рассветная")]
+    Rossvetnaya,
+    [Description("Революции")]
+    Revolyutsionnaya,
+    [Description("Регатная")]
+    Regatnaya,
+    [Description("Рейдовая")]
+    Reydovaya,
+    [Description("Ремесловская")]
+    Remeslovskaya,
+    [Description("Ремесленная")]
+    Remeslennaya,
+    [Description("Республика")]
+    Respublika,
+    [Description("Речников")]
+    Rechkov,
+    [Description("Речной")]
+    Rechnyy,
+    [Description("Робеспьера")]
+    Robespierre,
+    [Description("Ровная")]
+    Rovnaya,
+    [Description("Рогова")]
+    Rogova,
+    [Description("Родниковая")]
+    Rodnikovaya,
+    [Description("Рождественская")]
+    Rozhdestvenskaya,
+    [Description("Рождественская")]
+    Rozhdestvenskaya2,
+    [Description("Розы Люксембург")]
+    RozyLuksemburg,
+    [Description("Рокоссовского")]
+    Rozhdonskogo,
+    [Description("Российская")]
+    Rossiyskaya,
+    [Description("Рощевая")]
+    Rozchevaya,
+    [Description("Русаковская")]
+    Rusakovskaya,
+    [Description("Ручейная")]
+    Rechnyaya,
+    [Description("Рябиновая")]
+    Rabanovaya,
+    [Description("Рязанская")]
+    Ryazanskaya,
+    [Description("Ряузовский")]
+    Ryauzovskii,
+    
+    #endregion
 }
