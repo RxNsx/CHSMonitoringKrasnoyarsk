@@ -422,7 +422,7 @@ public enum StreetNameEnum
     Dalnevostochnaya4,
     [Description("Дальняя")]
     DalNaya,
-    [Description("ДАурская")]
+    [Description("Даурская")]
     DaurSKaya,
     [Description("Дачная")]
     Dachnaya,
@@ -501,8 +501,8 @@ public enum StreetNameEnum
     Yemelyanovskaya,
     [Description("Енисейская")]
     Yeniseyskaya,
-    [Description("Енисейский")]
-    Yeniseyskiy,
+    [Description("Енисейский тракт")]
+    YeniseyskiyTrakt,
     [Description("Ермаковская")]
     Yermakovskaya,
     [Description("Ерофеевская")]
