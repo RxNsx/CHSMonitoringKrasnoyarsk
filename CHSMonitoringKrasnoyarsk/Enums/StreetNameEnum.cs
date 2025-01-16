@@ -873,4 +873,95 @@ public enum StreetNameEnum
     Kutuzova2,
 
     #endregion
+    
+    #region Улицы на букву Л
+    
+    [Description("Лабазный")]
+    Labazniy,
+    [Description("Ладо Кецховели")]
+    LadoKechkhoveli,
+    [Description("Лазурная")]
+    Lazurnaya,
+    [Description("Лалетино")]
+    Laletino,
+    [Description("Ламская")]
+    Lamskaya,
+    [Description("Ленина")]
+    Lenina,
+    [Description("Ленинградская")]
+    Leningradskaya,
+    [Description("Ленинградская 1-я")]
+    Leningradskaya1,
+    [Description("Лермонтова")]
+    Lermontova,
+    [Description("Лесная")]
+    Lesnaya,
+    [Description("Лесников")]
+    Lesnikov,
+    [Description("Лесной")]
+    Lesnoy,
+    [Description("Лесопарковая")]
+    Lesoparkovaya,
+    [Description("Лесоперевалочная")]
+    Lesoperevalochnaya,
+    [Description("Лесопильщиков")]
+    Lesopilschikov,
+    [Description("Лесопитомник")]
+    Lesopitomnik,
+    [Description("Лесосибирский")]
+    Lesosibirskiy,
+    [Description("Лесосплавная")]
+    Lesosplavnaya,
+    [Description("Летчиков")]
+    Letchikov,
+    [Description("Лиды Прушинской")]
+    LidyPrushinskoy,
+    [Description("Лизы Чайкиной")]
+    LiziChaykinoy,
+    [Description("Линейная")]
+    Lineynaya,
+    [Description("Линейная 2-я")]
+    Lineynaya2,
+    [Description("Линейная 3-я")]
+    Lineynaya3,
+    [Description("Линейная 4-я")]
+    Lineynaya4,
+    [Description("Линейная 5-я")]
+    Lineynaya5,
+    [Description("Линейная 6-я")]
+    Lineynaya6,
+    [Description("Линейная 7-я")]
+    Lineynaya7,
+    [Description("Лириков")]
+    Lirikov,
+    [Description("Лиственная")]
+    Listvennaya,
+    [Description("Листвяжный Лог")]
+    ListvyazhniyLog,
+    [Description("Литейная")]
+    Liteynaya,
+    [Description("Лихачева")]
+    Likhacheva,
+    [Description("Лодочная")]
+    Lodochaya,
+    [Description("Локомотивная")]
+    Lokomotivnaya,
+    [Description("Ломоносова")]
+    Lomonosova,
+    [Description("Луговая")]
+    Lugovaya,
+    [Description("Луначарского")]
+    Lunacharskogo,
+    [Description("Лучистая")]
+    Luchistaya,
+    [Description("Львовская")]
+    Lvovskaya,
+    [Description("Любимый")]
+    Lyubimiy,
+    [Description("Любы Шевцовой")]
+    LyubyShevtsovoy,
+    
+    #endregion
+    
+    
 }
