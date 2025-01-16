@@ -2018,4 +2018,47 @@ public enum StreetNameEnum
     Yushkova,
 
     #endregion
+
+    #region Улицы на букву Я 
+
+    [Description("Яблоневая")]
+    Yablonovaya,
+    [Description("Яблочкова")]
+    Yablochkova,
+    [Description("Ягельный")]
+    Yagelniy,
+    [Description("Ягодная")]
+    Yagodnaya,
+    [Description("Ягодный")]
+    Yagodniy,
+    [Description("Яковлева")]
+    Yakovleva,
+    [Description("Якорный")]
+    Yakorniy,
+    [Description("Якутская")]
+    Yakutskaya,
+    [Description("Якутская 1-я")]
+    Yakutskaya1,
+    [Description("Ялтинский")]
+    Yaltinskiy,
+    [Description("Янковского")]
+    Yankovskogo,
+    [Description("Янтарная")]
+    Yantarnaya,
+    [Description("Ярлыковская")]
+    Yarlykovskaya,
+    [Description("Ярославская")]
+    Yaroslavskaya,
+    [Description("Ярцевский")]
+    Yarcevskiy,
+    [Description("Ярыгинская")]
+    Yaryginskaya,
+    [Description("Ярыгинский")]
+    Yaryginskiy,
+    [Description("Ясная")]
+    Yasnaya,
+    [Description("Ястынская")]
+    Yastinskaya,
+
+    #endregion
 }
