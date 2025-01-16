@@ -17,6 +17,8 @@ public static class TextExtensions
         text = text.Trim();
             
         var newLineSymbolsCount = Regex.Matches(text, "\n").Count;
+        var carriageSymbolsCount = Regex.Matches(text, "\r").Count;
+
         while (newLineSymbolsCount > 1)
         {
             if (string.IsNullOrEmpty(text) &&
@@ -29,7 +31,6 @@ public static class TextExtensions
             newLineSymbolsCount--;
         }
                     
-        var carriageSymbolsCount = Regex.Matches(text, "\r").Count;
         while (carriageSymbolsCount > 0)
         {
             if (string.IsNullOrEmpty(text) &&
@@ -43,5 +44,25 @@ public static class TextExtensions
         }
         
         return Regex.Replace(text, @"\s+", " ");
+    }
+
+    /// <summary>
+    /// Форматирование строки без наличия символом каретки \r
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    public static string NormalizeTextWithNewLine(this string text)
+    {
+        text = text.Trim();
+            
+        var newLineSymbolsCount = Regex.Matches(text, "\n").Count;
+        var carriageSymbolsCount = Regex.Matches(text, "\r").Count;
+
+        if (newLineSymbolsCount > 0 && carriageSymbolsCount == 0)
+        {
+            return Regex.Replace(text, "\n", "\r\n");
+        }
+        
+        return text;
     }
 }
