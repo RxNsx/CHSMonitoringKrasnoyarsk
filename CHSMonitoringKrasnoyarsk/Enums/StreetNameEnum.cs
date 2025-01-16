@@ -963,5 +963,114 @@ public enum StreetNameEnum
     
     #endregion
     
+    #region Улицы на букву М
     
+    [Description("Магистральная")]
+    Magistralnaya,
+    [Description("Магнитогорская")]
+    Magnitogorskaya,
+    [Description("Маерчака")]
+    Mayerchaka,
+    [Description("Майская")]
+    Mayskaya,
+    [Description("Макаренко")]
+    Makarenko,
+    [Description("Малаховская")]
+    Malahovskaya,
+    [Description("Малая")]
+    Malaya,
+    [Description("Малиновая")]
+    Malinovaya,
+    [Description("Малиновского")]
+    Malinovskogo,
+    [Description("Малтатский")]
+    Maltatskiy,
+    [Description("Мангазейская")]
+    Mangazeyskaya,
+    [Description("Марата")]
+    Marata,
+    [Description("Марии Ульяновой")]
+    MariiUlyanovoy,
+    [Description("Марии Цукановой")]
+    MariiTsukanovoy,
+    [Description("Марковского")]
+    Markovskogo,
+    [Description("Матвеева")]
+    Matveeva,
+    [Description("Мате Залки")]
+    MateZalki,
+    [Description("Машиностроителей")]
+    Mashinostroiteley,
+    [Description("Маяковского")]
+    Mayakovskogo,
+    [Description("Мебельная")]
+    Mebelnaya,
+    [Description("Медицинский")]
+    Meditsinskiy,
+    [Description("Медовая")]
+    Medovaya,
+    [Description("Мелькомбинатская")]
+    Melkombinatskaya,
+    [Description("Мелькомбинатская 2-я")]
+    Melkombinatskaya2,
+    [Description("Менделеева")]
+    Mendeleeva,
+    [Description("Менжинского")]
+    Menzhinskogo,
+    [Description("Металлургов")]
+    Metallurgov,
+    [Description("Мечникова")]
+    Mechnikova,
+    [Description("Микуцкого")]
+    Mikutskogo,
+    [Description("Минина")]
+    Minina,
+    [Description("Минская")]
+    Minskaya,
+    [Description("Минусинская")]
+    Minusinskaya,
+    [Description("Мира")]
+    Mira,
+    [Description("Мирошниченко")]
+    Miroshnichenko,
+    [Description("Михаила Годенко")]
+    MikhailaGodenko,
+	[Description("Годенко")]
+    Godenko,
+    [Description("Мичурина")]
+    Michurina,
+    [Description("Можайского")]
+    Mozhayskogo,
+    [Description("Молодежный")]
+    Molodezhniy,
+    [Description("Молодогвардейцев")]
+    Molodogvardeytsev,
+    [Description("Молодости")]
+    Molodosti,
+    [Description("Молокова")]
+    Molokova,
+    [Description("Монастырская")]
+    Monastyrskaya,
+    [Description("Монтажников")]
+    Montazhnikov,
+    [Description("Московская")]
+    Moskovskaya,
+    [Description("Мостовиков")]
+    Mostovikov,
+    [Description("Моторная")]
+    Motornaya,
+    [Description("Моховая")]
+    Mokhovaya,
+    [Description("МПС")]
+    Mps,
+    [Description("Мужества")]
+    Muzhestva,
+    [Description("Мурманская")]
+    Murmanskaya,
+    [Description("Мусоргского")]
+    Musorgskogo,
+    [Description("Мясокомбинат")]
+    Myasokombinat,
+    
+    #endregion
 }
