@@ -1779,4 +1779,61 @@ public enum StreetNameEnum
     Tyukhtetskaya,
 
     #endregion
+
+    #region Улицы на букву У
+
+    [Description("Угловой")]
+    Uglovoy,
+    [Description("Угольный")]
+    Ugolniy,
+    [Description("Угольщиков")]
+    Ugolshchikov,
+    [Description("Ударный")]
+    Udarniy,
+    [Description("Удачная")]
+    Udachnaya,
+    [Description("Удобный")]
+    Udobniy,
+    [Description("Узкий")]
+    Uzkij,
+    [Description("Украинская")]
+    Ukrainskaya,
+    [Description("Уланова")]
+    Ulanova,
+    [Description("Ульяновский")]
+    Ulyanovskiy,
+    [Description("Ульяны Громовой")]
+    UlyaniGromovoy,
+    [Description("Уральский")]
+    Uraliskiy,
+    [Description("Урванцева")]
+    Urvantseva,
+    [Description("Урицкого")]
+    Uritskogo,
+    [Description("Урожайная")]
+    Urozhaynaya,
+    [Description("Усадебная")]
+    Usadebnaya,
+    [Description("Успенская")]
+    Uspenskaya,
+    [Description("Уссурийская")]
+    Ussuriyskaya,
+    [Description("Устиновича")]
+    Ustinovicha,
+    [Description("Утренняя")]
+    Utrennyaya,
+    [Description("Ухоженный")]
+    Ukhozhenniy,
+    [Description("Участок 5-й")]
+    Uchastok5,
+    [Description("Учумская")]
+    Uchumskaya,
+    [Description("Уютная")]
+    Uyutnaya,
+    [Description("Уютный")]
+    Uyutniy,
+    [Description("Уярская")]
+    Uyarskaya,
+
+    #endregion
 }
