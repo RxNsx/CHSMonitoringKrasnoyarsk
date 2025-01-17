@@ -42,14 +42,20 @@ public enum StreetNameEnum
     AkademikaVavilova,
     [Description("Академика Киренского")]
     AkademikaKirenskogo,
+    [Description("Киренского")]
+    Kirenskogo,
     [Description("Академика Павлова")]
     AkademikaPavlova,
+    [Description("Павлова")]
+    Pavlova,
     [Description("Аксеновского")]
     Aksenovskogo,
     [Description("Акционерная")]
     Aktsionernaya,
     [Description("Александра Матросова")]
     AleksandraMatrosova,
+    [Description("Матросова")]
+    Matrosova,
     [Description("Александровский")]
     Aleksandrovskiy,
     [Description("Алексеева")]

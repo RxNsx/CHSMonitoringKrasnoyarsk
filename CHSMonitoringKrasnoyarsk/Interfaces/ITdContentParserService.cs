@@ -1,4 +1,5 @@
 ﻿using CHSMonitoringKrasnoyarsk.Models;
+using CHSMonitoringKrasnoyarsk.Models.SupplyMessageDescription;
 using HtmlAgilityPack;
 
 namespace CHSMonitoringKrasnoyarsk.Interfaces;
@@ -14,12 +15,12 @@ public interface ITdContentParserService
     /// <param name="supplyTypeIndexes"></param>
     /// <returns></returns>
     Dictionary<string, List<int>> AddTheEndOfSupplyInfo(Dictionary<string, List<int>> supplyTypeIndexes);
-    
+
     /// <summary>
     /// Получение конечных вариантов парсинга в удобном виде для сохранения в БД
     /// </summary>
     /// <param name="districtValues">Словарь полученных данных по каждому району через td</param>
-    void GetSupplyAlarmDescriptions(Dictionary<string, List<TableDescription>> districtValues);
+    Dictionary<string, List<SupplyMessageDescription>> GetSupplyAlarmDescriptions(Dictionary<string, List<TableDescription>> districtValues);
 
     /// <summary>
     /// Получение данных по активным районам из td

@@ -1,6 +1,6 @@
 ﻿using CHSMonitoringKrasnoyarsk.Enums;
 using CHSMonitoringKrasnoyarsk.Extensions;
-using CHSMonitoringKrasnoyarsk.Models.SupplyDescription;
+using CHSMonitoringKrasnoyarsk.Models.SupplyMessageDescription;
 
 namespace CHSMonitoringKrasnoyarsk.Models.Parsers;
 
@@ -27,10 +27,10 @@ public static class OrganizationParser
             throw new ArgumentNullException(nameof(supplyTextDescription), "supplyTypeDescription");
         }
 
-        string supplyTypeName;
-        string telephoneText;
-        string organizationName;
-        SupplyTypeEnum supplyTypeEnum;
+        var supplyTypeName = string.Empty;
+        var telephoneText = string.Empty;
+        var organizationName = string.Empty;
+        var supplyTypeEnum = SupplyTypeEnum.None;
 
         try
         {
@@ -41,8 +41,12 @@ public static class OrganizationParser
 
             //Номер телефона
             var telephoneTextIndex = lastTextWithoutSupplyName.IndexOf("т.", StringComparison.InvariantCultureIgnoreCase);
-            telephoneText = lastTextWithoutSupplyName.Substring(telephoneTextIndex, lastTextWithoutSupplyName.Length - telephoneTextIndex);
-            organizationName = lastTextWithoutSupplyName.Remove(telephoneTextIndex, lastTextWithoutSupplyName.Length - telephoneTextIndex).Trim();
+
+            if (telephoneTextIndex != -1)
+            {
+                telephoneText = lastTextWithoutSupplyName.Substring(telephoneTextIndex, lastTextWithoutSupplyName.Length - telephoneTextIndex);
+                organizationName = lastTextWithoutSupplyName.Remove(telephoneTextIndex, lastTextWithoutSupplyName.Length - telephoneTextIndex).Trim();
+            }
             
             //Получение названия типа обслуживания
             supplyTypeName = supplyTypeEnums.FirstOrDefault(x => supplyNameText.Contains(x, StringComparison.InvariantCultureIgnoreCase));

@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using CHSMonitoringKrasnoyarsk.Models.SupplyDescription;
+using CHSMonitoringKrasnoyarsk.Models.SupplyMessageDescription;
 
 namespace CHSMonitoringKrasnoyarsk.Models.Parsers;
 

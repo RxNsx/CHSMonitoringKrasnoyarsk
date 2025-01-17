@@ -1,6 +1,6 @@
 ﻿using CHSMonitoringKrasnoyarsk.Enums;
 
-namespace CHSMonitoringKrasnoyarsk.Models.SupplyDescription;
+namespace CHSMonitoringKrasnoyarsk.Models.SupplyMessageDescription;
 
 /// <summary>
 /// Организация обслуживающая отключение

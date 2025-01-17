@@ -1,12 +1,8 @@
-﻿using System.Globalization;
-using System.Text.RegularExpressions;
-using CHSMonitoringKrasnoyarsk.Enums;
+﻿using CHSMonitoringKrasnoyarsk.Enums;
 using CHSMonitoringKrasnoyarsk.Extensions;
 using CHSMonitoringKrasnoyarsk.Interfaces;
 using CHSMonitoringKrasnoyarsk.Models;
-using CHSMonitoringKrasnoyarsk.Models.Parsers;
-using CHSMonitoringKrasnoyarsk.Models.SupplyDescription;
-using HtmlAgilityPack;
+using CHSMonitoringKrasnoyarsk.Models.SupplyMessageDescription;
 
 namespace CHSMonitoringKrasnoyarsk.Services;
 
@@ -23,13 +19,13 @@ public class TdContentParserService : ITdContentParserService
     {
         
     }
-    
+
     /// <summary>
     /// Получение списка с индексами для каждого района
     /// </summary>
     /// <param name="districtValues"></param>
     /// <exception cref="ArgumentException"></exception>
-    public void GetSupplyAlarmDescriptions(Dictionary<string, List<TableDescription>> districtValues)
+    public Dictionary<string, List<SupplyMessageDescription>> GetSupplyAlarmDescriptions(Dictionary<string, List<TableDescription>> districtValues)
     {
         var supplyTypesEnums = Enum.GetValues(typeof(SupplyTypeEnum))
             .Cast<SupplyTypeEnum>()
@@ -52,91 +48,43 @@ public class TdContentParserService : ITdContentParserService
         
         supplyTypeIndexes = AddTheEndOfSupplyInfo(supplyTypeIndexes);
         
-        var supplyDescriptionList = new Dictionary<string, List<SupplyDescription>>();
+        var supplyDescriptionList = new Dictionary<string, List<SupplyMessageDescription>>();
         foreach (var item in supplyTypeIndexes)
         {
-            if (item.Value.Any())
+            for (var i = 1; i < item.Value.Count; i++)
             {
-                var streetDescriptionEnums = Enum.GetValues(typeof(StreetNameEnum))
-                    .Cast<StreetNameEnum>()
-                    .Select(x => x.GetDescriptionValue())
+                var pointer1 = item.Value[i - 1];
+                var pointer2 = item.Value[i];
+
+                var tableDescriptionItemList = districtValues[item.Key]
+                    .Where(x => x.Index >= pointer1 && x.Index < pointer2)
                     .ToList();
 
-                var plannedDescriptionEnums = Enum.GetValues(typeof(PlannedSupplyTypeEnum))
-                    .Cast<PlannedSupplyTypeEnum>()
-                    .Select(x => x.GetDescriptionValue())
-                    .ToList();
-                
-                for (var i = 1; i < item.Value.Count; i++)
+                if (tableDescriptionItemList.Any())
                 {
-                    var pointer1 = item.Value[i - 1];
-                    var pointer2 = item.Value[i];
+                    var supplyDescriptionBuilder = new SupplyDescriptionBuilder();
+                    var organizationText = tableDescriptionItemList[0].InnerText.NormalizeText();
+                    var addressesText = tableDescriptionItemList[1].InnerText.NormalizeText();
+                    var dateInfoText = tableDescriptionItemList[2].InnerText.NormalizeTextWithNewLine();
 
-                    var tableDescriptionItemList = districtValues[item.Key]
-                        .Where(x => x.Index >= pointer1 && x.Index < pointer2)
-                        .ToList();
-                    
-                    if (tableDescriptionItemList.Any())
+                    supplyDescriptionBuilder.BuildOrganization(organizationText);
+                    supplyDescriptionBuilder.BuildAddressesList(addressesText);
+                    supplyDescriptionBuilder.BuildDateInfo(dateInfoText);
+                    var supplyMessageDescription = supplyDescriptionBuilder.BuildSupplyMessageDescription();
+
+                    if (!supplyDescriptionList.TryGetValue(item.Key, out _))
                     {
-                        if(!supplyDescriptionList.TryGetValue(item.Key, out _))
-                        {
-                            #region Получение Организации
-
-                            var organization = OrganizationParser.ParseOrganization(tableDescriptionItemList[0].InnerText.NormalizeText());
-                            
-                            #endregion
-                            
-                            #region Получение адресов
-                            
-                            var splittedAddressesDescriptionList = tableDescriptionItemList[1].InnerText
-                                .NormalizeText()
-                                .Split(';', StringSplitOptions.TrimEntries)
-                                .ToList();
-                            
-                            ///Получение дополнительных описаний адресов
-                            var testDescriptionList = splittedAddressesDescriptionList
-                                .Where(x => plannedDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
-                                .ToList();
-                            foreach (var additionalDescription in testDescriptionList)
-                            {
-                                splittedAddressesDescriptionList.Remove(additionalDescription);
-                            }
-                            
-                            var addresses = splittedAddressesDescriptionList
-                                .Where(x => streetDescriptionEnums.Any(t => x.Contains(t)))
-                                .ToList();
-                            var addressList = new List<Address>();
-                            if (!addresses.Any())
-                            {
-                                foreach (var address in splittedAddressesDescriptionList)
-                                {
-                                    addressList.Add(Address.Create(address, string.Empty));
-                                }
-                            }
-                            else
-                            {
-                                addressList = AddressParser.ParseAddresses(addresses);
-                            }
-                            
-                            #endregion
-
-                            #region  Получение временных рамок
-
-                            var splittedDateDescriptionList = tableDescriptionItemList[2].InnerText
-                                .NormalizeTextWithNewLine()
-                                .Split("\r\n", StringSplitOptions.TrimEntries)
-                                .Where(x => !string.IsNullOrWhiteSpace(x))
-                                .ToList();
-                            var dateInfo = DateParser.ParseDatesFromTo(splittedDateDescriptionList);
-
-                            #endregion
-                            
-                            var supplyDescriptionItem = SupplyDescription.Create(organization, addressList, string.Join(',', testDescriptionList), dateInfo);
-                        }
+                        supplyDescriptionList.Add(item.Key, new List<SupplyMessageDescription> { supplyMessageDescription });
+                    }
+                    else
+                    {
+                        supplyDescriptionList[item.Key].Add(supplyMessageDescription);
                     }
                 }
             }
         }
+
+        return supplyDescriptionList;
     }
 
     /// <summary>

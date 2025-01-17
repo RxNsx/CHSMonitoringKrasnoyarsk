@@ -1,5 +1,6 @@
 ﻿using CHSMonitoringKrasnoyarsk.Interfaces;
 using CHSMonitoringKrasnoyarsk.Models;
+using CHSMonitoringKrasnoyarsk.Models.SupplyMessageDescription;
 using HtmlAgilityPack;
 
 namespace CHSMonitoringKrasnoyarsk.Services;
@@ -19,13 +20,13 @@ public class HtmlParserService : IHtmlParserService
     {
         _tdContentParserService = tdContentParserService;
     }
-    
+
     /// <summary>
     /// Получение данных из Html документа
     /// </summary>
     /// <param name="htmlDocument"></param>
     /// <returns></returns>
-    public Dictionary<string, List<TableDescription>> GetDistrictTableDescriptionsFromHtmlDocument(HtmlDocument htmlDocument)
+    public Dictionary<string, List<SupplyMessageDescription>> GetDistrictTableDescriptionsFromHtmlDocument(HtmlDocument htmlDocument)
     {
         var tdContents = htmlDocument.DocumentNode.SelectNodes("//td")
             .Where(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty)
@@ -38,8 +39,8 @@ public class HtmlParserService : IHtmlParserService
             
         var districtValues = _tdContentParserService.GetDistrictsDataFromTableDescriptions(tdContents);
         var eventsDictionary = _tdContentParserService.RestrictionTableDescriptionToDict(districtValues);
-        _tdContentParserService.GetSupplyAlarmDescriptions(eventsDictionary);
+        var supplyMessageDescriptionDict  = _tdContentParserService.GetSupplyAlarmDescriptions(eventsDictionary);
         
-        return eventsDictionary;
+        return supplyMessageDescriptionDict;
     }
 }

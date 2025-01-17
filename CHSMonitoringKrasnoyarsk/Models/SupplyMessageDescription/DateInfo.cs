@@ -1,4 +1,4 @@
-﻿namespace CHSMonitoringKrasnoyarsk.Models.SupplyDescription;
+﻿namespace CHSMonitoringKrasnoyarsk.Models.SupplyMessageDescription;
 
 /// <summary>
 /// Информация по времени

@@ -1,4 +1,5 @@
 ﻿using CHSMonitoringKrasnoyarsk.Models;
+using CHSMonitoringKrasnoyarsk.Models.SupplyMessageDescription;
 using HtmlAgilityPack;
 
 namespace CHSMonitoringKrasnoyarsk.Interfaces;
@@ -8,5 +9,5 @@ namespace CHSMonitoringKrasnoyarsk.Interfaces;
 /// </summary>
 public interface IHtmlParserService
 {
-    public Dictionary<string, List<TableDescription>> GetDistrictTableDescriptionsFromHtmlDocument(HtmlDocument htmlDocument);
+    public Dictionary<string, List<SupplyMessageDescription>> GetDistrictTableDescriptionsFromHtmlDocument(HtmlDocument htmlDocument);
 }
