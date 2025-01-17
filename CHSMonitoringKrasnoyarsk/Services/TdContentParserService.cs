@@ -13,9 +13,15 @@ namespace CHSMonitoringKrasnoyarsk.Services;
 /// </summary>
 public class TdContentParserService : ITdContentParserService
 {
-    public TdContentParserService()
+    private readonly IAddressParserService _addressParserService;
+    
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="addressParserService"></param>
+    public TdContentParserService(IAddressParserService addressParserService)
     {
-        
+        _addressParserService = addressParserService;
     }
     
     /// <summary>
@@ -93,10 +99,21 @@ public class TdContentParserService : ITdContentParserService
                             var addresses = splittedAddressesDescriptionList
                                 .Where(x => streetDescriptionEnums.Any(t => x.Contains(t)))
                                 .ToList();
-                            // //TODO: Распарсить номера домов
-                            // var addressNumbers = splittedAddressesDescriptionList.Select(x => x.Split(" "));
-                            //
-                            //
+                                
+                            
+                            var addressList = new List<Address>();
+                            if (!addresses.Any())
+                            {
+                                foreach (var address in splittedAddressesDescriptionList)
+                                {
+                                    addressList.Add(Address.Create(address, string.Empty));
+                                }
+                            }
+                            else
+                            {
+                                addressList = _addressParserService.ParseAddresses(addresses);
+                            }
+
                             // //TODO: Вынести в отдельное дополнительное описание
                             var splittedDateDescriptionList = tableDescriptionItemList[2].InnerText
                                 .NormalizeTextWithNewLine()
@@ -152,7 +169,7 @@ public class TdContentParserService : ITdContentParserService
         {
             if (i + 1 == districts.Count)
             {
-                var endList = tableDescriptions.GetRange(districts[i].Index, tableDescriptions.Last().Index - districts[i].Index);
+                var endList = tableDescriptions.GetRange(districts[i].Index, tableDescriptions.Last().Index + 1 - districts[i].Index);
                 districtValues.Add(endList);
             }
             else

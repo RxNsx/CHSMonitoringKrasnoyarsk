@@ -59,7 +59,7 @@ public class ChsParserWorker : BackgroundService
                 Console.WriteLine(ex.Message);
             }
 
-            await Task.Delay(5000, stoppingToken);
+            await Task.Delay(TimeSpan.FromSeconds(20), stoppingToken);
         }
     }
 
