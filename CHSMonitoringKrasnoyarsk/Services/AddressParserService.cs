@@ -48,24 +48,32 @@ public class AddressParserService : IAddressParserService
             .ToList();
 
         List<Address> addressList = new();
-        foreach (var number in numbers)
-        {
-            if (!number.Contains("-"))
-            {
-                addressList.Add(Address.Create(streetName, number));
-            }
-            
-            var splitNumber = number.Split("-", StringSplitOptions.TrimEntries);
-            if (splitNumber.Length == 2)
-            {
-                var number1 = int.Parse(splitNumber[0]);
-                var number2 = int.Parse(splitNumber[1]);
 
-                for (var streetNumber = number1; streetNumber <= number2; streetNumber++)
+        if (numbers.Any())
+        {
+            foreach (var number in numbers)
+            {
+                if (!number.Contains("-"))
                 {
-                    addressList.Add(Address.Create(streetName, streetNumber.ToString()));
+                    addressList.Add(Address.Create(streetName, number));
+                }
+            
+                var splitNumber = number.Split("-", StringSplitOptions.TrimEntries);
+                if (splitNumber.Length == 2)
+                {
+                    var number1 = int.Parse(splitNumber[0]);
+                    var number2 = int.Parse(splitNumber[1]);
+
+                    for (var streetNumber = number1; streetNumber <= number2; streetNumber++)
+                    {
+                        addressList.Add(Address.Create(streetName, streetNumber.ToString()));
+                    }
                 }
             }
+        }
+        else
+        {
+            addressList.Add(Address.Create(streetName, string.Empty));
         }
 
         _logger.LogInformation($"Addresses received: {addressList.Count}");

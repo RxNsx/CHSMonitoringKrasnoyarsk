@@ -80,6 +80,8 @@ public class TdContentParserService : ITdContentParserService
                     {
                         if(!supplyAlarmDescriptions.TryGetValue(item.Key, out _))
                         {
+                            #region Получение Организации
+                            
                             var splittedOrganizationData = tableDescriptionItemList[0].InnerText
                                 .NormalizeTextWithNewLine()
                                 .Split("\r\n", StringSplitOptions.TrimEntries)
@@ -87,20 +89,27 @@ public class TdContentParserService : ITdContentParserService
                                 .ToList();
                             var organization = splittedOrganizationData.CreateOrganizationFromList();
                             
+                            #endregion
+                            
+                            #region Получение адресов
+                            
                             var splittedAddressesDescriptionList = tableDescriptionItemList[1].InnerText
                                 .NormalizeText()
                                 .Split(';', StringSplitOptions.TrimEntries)
                                 .ToList();
-                            var additionalDescriptionItem = splittedAddressesDescriptionList
-                                .FirstOrDefault(x => plannedDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)));
-                            splittedAddressesDescriptionList.Remove(additionalDescriptionItem);
+
+                            ///Получение дополнительных описаний адресов
+                            var testDescriptionList = splittedAddressesDescriptionList
+                                .Where(x => !streetDescriptionEnums.Any(t => x.Contains(t)))
+                                .ToList();
+                            foreach (var additionalDescription in testDescriptionList)
+                            {
+                                splittedAddressesDescriptionList.Remove(additionalDescription);
+                            }
                             
-                            //TODO: Распарсить адреса
                             var addresses = splittedAddressesDescriptionList
                                 .Where(x => streetDescriptionEnums.Any(t => x.Contains(t)))
                                 .ToList();
-                                
-                            
                             var addressList = new List<Address>();
                             if (!addresses.Any())
                             {
@@ -113,8 +122,11 @@ public class TdContentParserService : ITdContentParserService
                             {
                                 addressList = _addressParserService.ParseAddresses(addresses);
                             }
+                            
+                            #endregion
 
-                            // //TODO: Вынести в отдельное дополнительное описание
+                            #region  Получение временных рамок
+                            
                             var splittedDateDescriptionList = tableDescriptionItemList[2].InnerText
                                 .NormalizeTextWithNewLine()
                                 .Split("\r\n", StringSplitOptions.TrimEntries)
@@ -123,6 +135,10 @@ public class TdContentParserService : ITdContentParserService
                             // //TODO: Распарсить даты
                             // //TODO: В дате есть вариант "Отмена"
                             // //TODO: В дате есть вариант "До устранения"
+
+                            #endregion
+
+                            var supplyDescriptionItem = SupplyDescriptionItem.Create(organization, addressList, string.Join(',', testDescriptionList), DateTime.MinValue, DateTime.MaxValue);
                         }
                     }
                 }
