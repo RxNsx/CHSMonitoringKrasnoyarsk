@@ -97,10 +97,10 @@ public class TdContentParserService : ITdContentParserService
                                 .NormalizeText()
                                 .Split(';', StringSplitOptions.TrimEntries)
                                 .ToList();
-
+                            
                             ///Получение дополнительных описаний адресов
                             var testDescriptionList = splittedAddressesDescriptionList
-                                .Where(x => !streetDescriptionEnums.Any(t => x.Contains(t)))
+                                .Where(x => plannedDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
                                 .ToList();
                             foreach (var additionalDescription in testDescriptionList)
                             {
