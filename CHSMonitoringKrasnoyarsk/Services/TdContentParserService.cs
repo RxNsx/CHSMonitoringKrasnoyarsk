@@ -127,32 +127,11 @@ public class TdContentParserService : ITdContentParserService
                                 .Split("\r\n", StringSplitOptions.TrimEntries)
                                 .Where(x => !string.IsNullOrWhiteSpace(x))
                                 .ToList();
-
-                            if (splittedDateDescriptionList.Any() && splittedDateDescriptionList.Count == 2)
-                            {
-                                var format = "dd MMMM HH-mm";
-                                var cultureInfo = new CultureInfo("ru-RU");
-
-                                if (!DateTime.TryParseExact(splittedDateDescriptionList[0], format, cultureInfo, DateTimeStyles.None, out var fromDate))
-                                {
-                                    Console.WriteLine(splittedDateDescriptionList[0]);
-                                }
-
-                                if (!DateTime.TryParseExact(splittedDateDescriptionList[1], format, cultureInfo, DateTimeStyles.None, out var toDate))
-                                {
-                                    Console.WriteLine(splittedDateDescriptionList[1]);
-                                }
-                            }
-                            
-
-                            
-                            // //TODO: Распарсить даты
-                            // //TODO: В дате есть вариант "Отмена"
-                            // //TODO: В дате есть вариант "До устранения"
+                            var dateInfo = DateParser.ParseDatesFromTo(splittedDateDescriptionList);
 
                             #endregion
-
-                            var supplyDescriptionItem = SupplyDescription.Create(organization, addressList, string.Join(',', testDescriptionList), DateTime.MinValue, DateTime.MaxValue);
+                            
+                            var supplyDescriptionItem = SupplyDescription.Create(organization, addressList, string.Join(',', testDescriptionList), dateInfo);
                         }
                     }
                 }
