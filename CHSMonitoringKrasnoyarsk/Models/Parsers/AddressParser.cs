@@ -1,26 +1,22 @@
 ﻿using CHSMonitoringKrasnoyarsk.Enums;
 using CHSMonitoringKrasnoyarsk.Extensions;
-using CHSMonitoringKrasnoyarsk.Interfaces;
 using CHSMonitoringKrasnoyarsk.Models.SupplyDescription;
 
-namespace CHSMonitoringKrasnoyarsk.Services;
+namespace CHSMonitoringKrasnoyarsk.Models.Parsers;
 
-public class AddressParserService : IAddressParserService
+/// <summary>
+/// Парсер адресов
+/// </summary>
+public static class AddressParser
 {
-    private readonly ILogger<AddressParserService> _logger;
-    
     /// <summary>
-    /// Конструктор
+    /// Получить адреса из строки
     /// </summary>
-    /// <param name="loggerFactory"></param>
-    public AddressParserService(ILoggerFactory loggerFactory)
+    /// <param name="addresses"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException"></exception>
+    public static List<Address> ParseAddresses(List<string> addresses)
     {
-        _logger = loggerFactory.CreateLogger<AddressParserService>();
-    }
-    
-    public List<Address> ParseAddresses(List<string> addresses)
-    {
-        _logger.LogInformation("Starting get addresses");
         var streetNames = Enum.GetValues(typeof(StreetNameEnum))
             .Cast<StreetNameEnum>()
             .Select(x => x.GetDescriptionValue())
@@ -29,13 +25,11 @@ public class AddressParserService : IAddressParserService
         var itemToRemove = addresses.FirstOrDefault(x => streetNames.Any(t => x.Contains(t)));
         if (itemToRemove is null)
         {
-            _logger.LogError("ItemToRemove is null");
             throw new ArgumentNullException(nameof(itemToRemove), "ItemToRemove must be not null");
         }
         var streetName = streetNames.FirstOrDefault(x => itemToRemove.Contains(x));
         if (string.IsNullOrEmpty(streetName))
         {
-            _logger.LogError("StreetName is null");
             throw new ArgumentNullException(nameof(itemToRemove), "StreetName must be not null");
         }
         
@@ -76,7 +70,6 @@ public class AddressParserService : IAddressParserService
             addressList.Add(Address.Create(streetName, string.Empty));
         }
 
-        _logger.LogInformation($"Addresses received: {addressList.Count}");
         return addressList;
     }
 }

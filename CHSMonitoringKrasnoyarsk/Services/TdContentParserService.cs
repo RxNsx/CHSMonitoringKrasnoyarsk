@@ -15,15 +15,13 @@ namespace CHSMonitoringKrasnoyarsk.Services;
 /// </summary>
 public class TdContentParserService : ITdContentParserService
 {
-    private readonly IAddressParserService _addressParserService;
-    
     /// <summary>
     /// Конструктор
     /// </summary>
     /// <param name="addressParserService"></param>
-    public TdContentParserService(IAddressParserService addressParserService)
+    public TdContentParserService()
     {
-        _addressParserService = addressParserService;
+        
     }
     
     /// <summary>
@@ -117,7 +115,7 @@ public class TdContentParserService : ITdContentParserService
                             }
                             else
                             {
-                                addressList = _addressParserService.ParseAddresses(addresses);
+                                addressList = AddressParser.ParseAddresses(addresses);
                             }
                             
                             #endregion
