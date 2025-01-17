@@ -52,7 +52,7 @@ public class TdContentParserService : ITdContentParserService
         
         supplyTypeIndexes = AddTheEndOfSupplyInfo(supplyTypeIndexes);
         
-        var supplyAlarmDescriptions = new Dictionary<string, List<TableDescription>>();
+        var supplyDescriptionList = new Dictionary<string, List<SupplyDescription>>();
         foreach (var item in supplyTypeIndexes)
         {
             if (item.Value.Any())
@@ -78,7 +78,7 @@ public class TdContentParserService : ITdContentParserService
                     
                     if (tableDescriptionItemList.Any())
                     {
-                        if(!supplyAlarmDescriptions.TryGetValue(item.Key, out _))
+                        if(!supplyDescriptionList.TryGetValue(item.Key, out _))
                         {
                             #region Получение Организации
 
