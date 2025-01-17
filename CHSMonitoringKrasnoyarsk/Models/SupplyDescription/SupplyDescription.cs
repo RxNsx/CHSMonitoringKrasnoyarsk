@@ -3,7 +3,7 @@
 /// <summary>
 /// Описание адресов с отключением
 /// </summary>
-public class SupplyDescriptionItem
+public class SupplyDescription
 {
     public Organization Organization { get; set; }
     public List<Address> AddressList { get; set; }
@@ -11,7 +11,7 @@ public class SupplyDescriptionItem
     public DateTime From { get; set; }
     public DateTime To { get; set; }
     
-    private SupplyDescriptionItem(Organization organization, List<Address> addressList, string description, DateTime from, DateTime to)
+    private SupplyDescription(Organization organization, List<Address> addressList, string description, DateTime from, DateTime to)
     {
         Organization = organization;
         AddressList = addressList;
@@ -20,8 +20,8 @@ public class SupplyDescriptionItem
         To = to;
     }
     
-    public static SupplyDescriptionItem Create(Organization organization, List<Address> addressList, string description, DateTime from, DateTime to)
+    public static SupplyDescription Create(Organization organization, List<Address> addressList, string description, DateTime from, DateTime to)
     {
-        return new SupplyDescriptionItem(organization, addressList, description, from, to);
+        return new SupplyDescription(organization, addressList, description, from, to);
     }
 }

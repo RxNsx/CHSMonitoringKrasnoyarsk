@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Globalization;
+using System.Text.RegularExpressions;
 using CHSMonitoringKrasnoyarsk.Enums;
 using CHSMonitoringKrasnoyarsk.Extensions;
 using CHSMonitoringKrasnoyarsk.Interfaces;
@@ -81,13 +82,8 @@ public class TdContentParserService : ITdContentParserService
                         if(!supplyAlarmDescriptions.TryGetValue(item.Key, out _))
                         {
                             #region Получение Организации
-                            
-                            var splittedOrganizationData = tableDescriptionItemList[0].InnerText
-                                .NormalizeTextWithNewLine()
-                                .Split("\r\n", StringSplitOptions.TrimEntries)
-                                .Where(x => !string.IsNullOrWhiteSpace(x))
-                                .ToList();
-                            var organization = splittedOrganizationData.CreateOrganizationFromList();
+
+                            var organization = OrganizationParser.ParseOrganization(tableDescriptionItemList[0].InnerText.NormalizeText());
                             
                             #endregion
                             
@@ -126,19 +122,38 @@ public class TdContentParserService : ITdContentParserService
                             #endregion
 
                             #region  Получение временных рамок
-                            
+
                             var splittedDateDescriptionList = tableDescriptionItemList[2].InnerText
                                 .NormalizeTextWithNewLine()
                                 .Split("\r\n", StringSplitOptions.TrimEntries)
                                 .Where(x => !string.IsNullOrWhiteSpace(x))
                                 .ToList();
+
+                            if (splittedDateDescriptionList.Any() && splittedDateDescriptionList.Count == 2)
+                            {
+                                var format = "dd MMMM HH-mm";
+                                var cultureInfo = new CultureInfo("ru-RU");
+
+                                if (!DateTime.TryParseExact(splittedDateDescriptionList[0], format, cultureInfo, DateTimeStyles.None, out var fromDate))
+                                {
+                                    Console.WriteLine(splittedDateDescriptionList[0]);
+                                }
+
+                                if (!DateTime.TryParseExact(splittedDateDescriptionList[1], format, cultureInfo, DateTimeStyles.None, out var toDate))
+                                {
+                                    Console.WriteLine(splittedDateDescriptionList[1]);
+                                }
+                            }
+                            
+
+                            
                             // //TODO: Распарсить даты
                             // //TODO: В дате есть вариант "Отмена"
                             // //TODO: В дате есть вариант "До устранения"
 
                             #endregion
 
-                            var supplyDescriptionItem = SupplyDescriptionItem.Create(organization, addressList, string.Join(',', testDescriptionList), DateTime.MinValue, DateTime.MaxValue);
+                            var supplyDescriptionItem = SupplyDescription.Create(organization, addressList, string.Join(',', testDescriptionList), DateTime.MinValue, DateTime.MaxValue);
                         }
                     }
                 }

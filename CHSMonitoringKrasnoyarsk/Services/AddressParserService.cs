@@ -39,7 +39,7 @@ public class AddressParserService : IAddressParserService
             throw new ArgumentNullException(nameof(itemToRemove), "StreetName must be not null");
         }
         
-        var indexOfOccurs = itemToRemove.IndexOf(streetName, StringComparison.Ordinal);
+        var indexOfOccurs = itemToRemove.IndexOf(streetName, StringComparison.InvariantCultureIgnoreCase);
         itemToRemove = itemToRemove.Remove(indexOfOccurs, streetName.Length).Trim();
 
         var numbers = itemToRemove
