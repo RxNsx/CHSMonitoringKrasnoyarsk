@@ -1,7 +1,8 @@
 ﻿using CHSMonitoringKrasnoyarsk.Enums;
 using CHSMonitoringKrasnoyarsk.Extensions;
+using CHSMonitoringKrasnoyarsk.Models.SupplyDescription;
 
-namespace CHSMonitoringKrasnoyarsk.Models.SupplyDescription;
+namespace CHSMonitoringKrasnoyarsk.Models.Parsers;
 
 /// <summary>
 /// Парсер организации

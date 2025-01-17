@@ -4,6 +4,7 @@ using CHSMonitoringKrasnoyarsk.Enums;
 using CHSMonitoringKrasnoyarsk.Extensions;
 using CHSMonitoringKrasnoyarsk.Interfaces;
 using CHSMonitoringKrasnoyarsk.Models;
+using CHSMonitoringKrasnoyarsk.Models.Parsers;
 using CHSMonitoringKrasnoyarsk.Models.SupplyDescription;
 using HtmlAgilityPack;
 
