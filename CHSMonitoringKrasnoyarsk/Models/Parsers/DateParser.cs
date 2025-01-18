@@ -21,14 +21,19 @@ public static class DateParser
             {
                 dateFromString = datesList[0];
             }
+            else
+            {
+                dateFromString = dateFrom.ToString(cultureInfo);
+            }
             
             if (!DateTime.TryParseExact(datesList[1], format, cultureInfo, DateTimeStyles.None, out dateTo))
             {
                 dateToString = datesList[1];
             }
-
-            dateFromString = dateFrom.ToString(cultureInfo);
-            dateToString = dateTo.ToString(cultureInfo);
+            else
+            {
+                dateToString = dateTo.ToString(cultureInfo);
+            }
         }
 
         // //TODO: В дате есть вариант "Отмена"

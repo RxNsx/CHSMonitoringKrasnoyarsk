@@ -22,52 +22,55 @@ public static class AddressParser
             .Select(x => x.GetDescriptionValue())
             .ToList();
 
-        var itemToRemove = addresses.FirstOrDefault(x => streetNames.Any(t => x.Contains(t)));
-        if (itemToRemove is null)
-        {
-            throw new ArgumentNullException(nameof(itemToRemove), "ItemToRemove must be not null");
-        }
-        var streetName = streetNames.FirstOrDefault(x => itemToRemove.Contains(x));
-        if (string.IsNullOrEmpty(streetName))
-        {
-            throw new ArgumentNullException(nameof(itemToRemove), "StreetName must be not null");
-        }
-        
-        var indexOfOccurs = itemToRemove.IndexOf(streetName, StringComparison.InvariantCultureIgnoreCase);
-        itemToRemove = itemToRemove.Remove(indexOfOccurs, streetName.Length).Trim();
-
-        var numbers = itemToRemove
-            .Split(",", StringSplitOptions.TrimEntries)
-            .Where(x => !string.IsNullOrWhiteSpace(x))
+        var concreteAddresses = addresses
+            .Where(x => streetNames.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
             .ToList();
+        
+        if (!concreteAddresses.Any())
+        {
+            throw new ArgumentNullException(nameof(concreteAddresses), "concreteAddresses must be not null");
+        }
 
         List<Address> addressList = new();
-
-        if (numbers.Any())
+        foreach (var addressItem in concreteAddresses)
         {
-            foreach (var number in numbers)
-            {
-                if (!number.Contains("-"))
-                {
-                    addressList.Add(Address.Create(streetName, number));
-                }
+            var streetName = streetNames
+                .FirstOrDefault(x => streetNames.Any(t => addressItem.Contains(x, StringComparison.InvariantCultureIgnoreCase)));
+            var indexOfOccurs = addressItem.IndexOf(streetName, StringComparison.InvariantCultureIgnoreCase);
+            var resultedAddressWithoutNumbers = addressItem.Remove(indexOfOccurs, streetName.Length).Trim();
             
-                var splitNumber = number.Split("-", StringSplitOptions.TrimEntries);
-                if (splitNumber.Length == 2)
+            var numbers = resultedAddressWithoutNumbers
+                .Split(",", StringSplitOptions.TrimEntries)
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .ToList();
+            
+            
+            if (numbers.Any())
+            {
+                foreach (var number in numbers)
                 {
-                    var number1 = int.Parse(splitNumber[0]);
-                    var number2 = int.Parse(splitNumber[1]);
-
-                    for (var streetNumber = number1; streetNumber <= number2; streetNumber++)
+                    if (!number.Contains("-"))
                     {
-                        addressList.Add(Address.Create(streetName, streetNumber.ToString()));
+                        addressList.Add(Address.Create(streetName, number));
+                    }
+                
+                    var splitNumber = number.Split("-", StringSplitOptions.TrimEntries);
+                    if (splitNumber.Length == 2)
+                    {
+                        var number1 = int.Parse(splitNumber[0]);
+                        var number2 = int.Parse(splitNumber[1]);
+            
+                        for (var streetNumber = number1; streetNumber <= number2; streetNumber++)
+                        {
+                            addressList.Add(Address.Create(streetName, streetNumber.ToString()));
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            addressList.Add(Address.Create(streetName, string.Empty));
+            else
+            {
+                addressList.Add(Address.Create(streetName, string.Empty));
+            }
         }
 
         return addressList;

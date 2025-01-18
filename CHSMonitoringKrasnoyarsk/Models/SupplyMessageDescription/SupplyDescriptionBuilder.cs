@@ -56,7 +56,8 @@ public sealed class SupplyDescriptionBuilder : SupplyBuilder
         {
             addressList = AddressParser.ParseAddresses(addresses);
         }
-        
+
+        _supplyMessageDescription.SetDescription(string.Join(",", additionalDescriptionList));
         _supplyMessageDescription.SetAddressList(addressList);
     }
 
@@ -69,7 +70,7 @@ public sealed class SupplyDescriptionBuilder : SupplyBuilder
         var dateInfo = DateParser.ParseDatesFromTo(splittedDateDescriptionList);
         _supplyMessageDescription.SetDateInfo(dateInfo);
     }
-
+    
     internal override SupplyMessageDescription BuildSupplyMessageDescription()
     {
         return _supplyMessageDescription;
