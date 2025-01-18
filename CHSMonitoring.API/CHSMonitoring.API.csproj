@@ -22,4 +22,9 @@
       <Folder Include="Repositories\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CHSMonitoring.Application\CHSMonitoring.Application.csproj" />
+      <ProjectReference Include="..\CHSMonitoring.Infrastructure\CHSMonitoring.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>
