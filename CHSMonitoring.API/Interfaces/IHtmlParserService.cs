@@ -9,5 +9,5 @@ namespace CHSMonitoring.API.Interfaces;
 /// </summary>
 public interface IHtmlParserService
 {
-    public Dictionary<string, List<SupplyMessageDescription>> GetDistrictTableDescriptionsFromHtmlDocument(HtmlDocument htmlDocument);
+    public Dictionary<string, List<SupplyMessageDescription>> GetSupplyMessageDescriptions(HtmlDocument htmlDocument);
 }

@@ -36,7 +36,7 @@ public class ChsParserWorker : BackgroundService
         {
             _url = "http://93.92.65.26/aspx/GorodM.htm";
         }
-        // _url = configuration.GetSection("CHSMonitoring.API:Url").Value;
+        _url = configuration.GetSection("CHSMonitoring.API:Url").Value;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -48,8 +48,8 @@ public class ChsParserWorker : BackgroundService
                 var htmlDocument = await _httpClientService.GetHtmlDocumentByUrlAsync(_url, stoppingToken)
                     .ConfigureAwait(false);
 
-                var districtsInfo = _htmlParserService.GetDistrictTableDescriptionsFromHtmlDocument(htmlDocument);
-                if (!districtsInfo.Any())
+                var supplyMessageDescriptions = _htmlParserService.GetSupplyMessageDescriptions(htmlDocument);
+                if (!supplyMessageDescriptions.Any())
                 {
                     throw new ArgumentNullException("Пустой словарь");
                 }

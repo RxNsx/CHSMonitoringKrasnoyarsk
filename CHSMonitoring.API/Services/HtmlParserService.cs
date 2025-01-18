@@ -22,11 +22,11 @@ public class HtmlParserService : IHtmlParserService
     }
 
     /// <summary>
-    /// Получение данных из Html документа
+    /// Получение данных из Html документа в виде моделей 
     /// </summary>
     /// <param name="htmlDocument"></param>
     /// <returns></returns>
-    public Dictionary<string, List<SupplyMessageDescription>> GetDistrictTableDescriptionsFromHtmlDocument(HtmlDocument htmlDocument)
+    public Dictionary<string, List<SupplyMessageDescription>> GetSupplyMessageDescriptions(HtmlDocument htmlDocument)
     {
         var tdContents = htmlDocument.DocumentNode.SelectNodes("//td")
             .Where(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty)
