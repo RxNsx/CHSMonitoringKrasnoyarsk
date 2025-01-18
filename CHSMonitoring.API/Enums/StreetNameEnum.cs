@@ -2090,6 +2090,8 @@ public enum StreetNameEnum
     SixtyYearsOfOctober,
     [Description("78-й Добровольческой Бригады")]
     SeventyEighthDobrovolcheskoyBrigady,
+    [Description("78 Добровольческой Бригады")]
+    SeventyEDobrovolcheskoyBrigady,
 
     #endregion
 }

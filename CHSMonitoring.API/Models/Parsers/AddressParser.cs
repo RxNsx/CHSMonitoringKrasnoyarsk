@@ -31,6 +31,29 @@ public static class AddressParser
             throw new ArgumentNullException(nameof(concreteAddresses), "concreteAddresses must be not null");
         }
 
+        #region Определение двойных адресов
+        
+        var doubleStreets = new List<string>();
+        foreach (var streetName in streetNames)
+        {
+            var doubleStreet = concreteAddresses
+                .Where(x => x.Contains($"/{streetName}", StringComparison.InvariantCultureIgnoreCase))
+                .ToList();
+            doubleStreets.AddRange(doubleStreet);
+        }
+        
+        foreach (var doubleStreet in doubleStreets)
+        {
+            concreteAddresses.Remove(doubleStreet);
+        }
+        
+        foreach (var doubleStreet in doubleStreets)
+        {
+            concreteAddresses.AddRange(doubleStreet.Split("/", StringSplitOptions.TrimEntries));
+        }
+        
+        #endregion
+        
         List<Address> addressList = new();
         foreach (var addressItem in concreteAddresses)
         {
