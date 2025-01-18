@@ -10,9 +10,9 @@ namespace CHSMonitoring.API.Workers;
 /// <summary>
 /// Воркер парсинга веб страницы 005 красноярск рф
 /// </summary>
-public class ChsParserWorker : BackgroundService
+public class ServiceMessageWorker : BackgroundService
 {
-    private readonly ILogger<ChsParserWorker> _logger;
+    private readonly ILogger<ServiceMessageWorker> _logger;
     private readonly IHttpClientService _httpClientService;
     private readonly IHtmlParserService _htmlParserService;
 
@@ -25,9 +25,9 @@ public class ChsParserWorker : BackgroundService
     /// <param name="httpClientService"></param>
     /// <param name="configuration"></param>
     /// <param name="htmlParserService"></param>
-    public ChsParserWorker(ILoggerFactory loggerFactory, IHttpClientService httpClientService, IConfiguration configuration, IHtmlParserService htmlParserService)
+    public ServiceMessageWorker(ILoggerFactory loggerFactory, IHttpClientService httpClientService, IConfiguration configuration, IHtmlParserService htmlParserService)
     {
-        _logger = loggerFactory.CreateLogger<ChsParserWorker>();
+        _logger = loggerFactory.CreateLogger<ServiceMessageWorker>();
         
         _httpClientService = httpClientService;
         _htmlParserService = htmlParserService;
@@ -48,7 +48,7 @@ public class ChsParserWorker : BackgroundService
                 var htmlDocument = await _httpClientService.GetHtmlDocumentByUrlAsync(_url, stoppingToken)
                     .ConfigureAwait(false);
 
-                var supplyMessageDescriptions = _htmlParserService.GetSupplyMessageDescriptions(htmlDocument);
+                var supplyMessageDescriptions = _htmlParserService.GetServiceMessages(htmlDocument);
                 if (!supplyMessageDescriptions.Any())
                 {
                     throw new ArgumentNullException("Пустой словарь");

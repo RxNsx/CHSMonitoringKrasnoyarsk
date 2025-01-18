@@ -24,7 +24,7 @@ builder.Services.AddHttpClient<HttpClientService>(client =>
 });
 
 //Workers
-builder.Services.AddHostedService<ChsParserWorker>();
+builder.Services.AddHostedService<ServiceMessageWorker>();
 
 var app = builder.Build();
 

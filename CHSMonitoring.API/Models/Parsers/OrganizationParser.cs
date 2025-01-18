@@ -1,6 +1,6 @@
 ﻿using CHSMonitoring.API.Enums;
-using CHSMonitoring.API.Models.SupplyMessageDescription;
 using CHSMonitoring.API.Extensions;
+using CHSMonitoring.API.Models.ServiceMessageAddress;
 
 namespace CHSMonitoring.API.Models.Parsers;
 
@@ -16,21 +16,21 @@ public static class OrganizationParser
     /// <returns></returns>
     public static Organization ParseOrganization(string organizationText)
     {
-        var supplyTypeEnums = Enum.GetValues(typeof(SupplyTypeEnum))
-            .Cast<SupplyTypeEnum>()
+        var serviceTypeEnums = Enum.GetValues(typeof(ServiceTypeEnum))
+            .Cast<ServiceTypeEnum>()
             .Select(x => x.GetDescriptionValue())
             .ToList();
         
-        var supplyTextDescription = supplyTypeEnums.FirstOrDefault(x => organizationText.Contains(x));
+        var supplyTextDescription = serviceTypeEnums.FirstOrDefault(x => organizationText.Contains(x));
         if (supplyTextDescription is null)
         {
             throw new ArgumentNullException(nameof(supplyTextDescription), "supplyTypeDescription");
         }
 
-        var supplyTypeName = string.Empty;
+        var serviceTypeName = string.Empty;
         var telephoneText = string.Empty;
         var organizationName = string.Empty;
-        var supplyTypeEnum = SupplyTypeEnum.None;
+        var serviceTypeEnum = ServiceTypeEnum.None;
 
         try
         {
@@ -49,17 +49,17 @@ public static class OrganizationParser
             }
             
             //Получение названия типа обслуживания
-            supplyTypeName = supplyTypeEnums.FirstOrDefault(x => supplyNameText.Contains(x, StringComparison.InvariantCultureIgnoreCase));
+            serviceTypeName = serviceTypeEnums.FirstOrDefault(x => supplyNameText.Contains(x, StringComparison.InvariantCultureIgnoreCase));
             //Получение названия типа обслуживания как Enum
-            supplyTypeEnum = Enum.GetValues(typeof(SupplyTypeEnum))
-                .Cast<SupplyTypeEnum>()
-                .FirstOrDefault(x => x.GetDescriptionValue().Contains(supplyTypeName, StringComparison.InvariantCultureIgnoreCase));
+            serviceTypeEnum = Enum.GetValues(typeof(ServiceTypeEnum))
+                .Cast<ServiceTypeEnum>()
+                .FirstOrDefault(x => x.GetDescriptionValue().Contains(serviceTypeName, StringComparison.InvariantCultureIgnoreCase));
         }
         catch (Exception ex)
         {
             throw new Exception($"ParseOrganization Exception: {ex.Message}");
         }
         
-        return Organization.Create(supplyTypeEnum, supplyTypeName, organizationName, telephoneText);
+        return Organization.Create(serviceTypeEnum, serviceTypeName, organizationName, telephoneText);
     }
 }

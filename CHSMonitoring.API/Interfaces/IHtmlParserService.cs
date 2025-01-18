@@ -1,5 +1,5 @@
-﻿using CHSMonitoring.API.Models.SupplyMessageDescription;
-using CHSMonitoring.API.Models;
+﻿using CHSMonitoring.API.Models;
+using CHSMonitoring.API.Models.ServiceMessageAddress;
 using HtmlAgilityPack;
 
 namespace CHSMonitoring.API.Interfaces;
@@ -9,5 +9,5 @@ namespace CHSMonitoring.API.Interfaces;
 /// </summary>
 public interface IHtmlParserService
 {
-    public Dictionary<string, List<SupplyMessageDescription>> GetSupplyMessageDescriptions(HtmlDocument htmlDocument);
+    public Dictionary<string, List<ServiceMessage>> GetServiceMessages(HtmlDocument htmlDocument);
 }

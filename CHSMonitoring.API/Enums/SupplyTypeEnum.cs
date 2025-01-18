@@ -5,7 +5,7 @@ namespace CHSMonitoring.API.Enums;
 /// <summary>
 /// Тип снабжения
 /// </summary>
-public enum SupplyTypeEnum
+public enum ServiceTypeEnum
 {
     [Description("Пустой тип снабжения")]
     None,

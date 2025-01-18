@@ -1,6 +1,6 @@
 ﻿using CHSMonitoring.API.Interfaces;
 using CHSMonitoring.API.Models;
-using CHSMonitoring.API.Models.SupplyMessageDescription;
+using CHSMonitoring.API.Models.ServiceMessageAddress;
 using HtmlAgilityPack;
 
 namespace CHSMonitoring.API.Services;
@@ -26,7 +26,7 @@ public class HtmlParserService : IHtmlParserService
     /// </summary>
     /// <param name="htmlDocument"></param>
     /// <returns></returns>
-    public Dictionary<string, List<SupplyMessageDescription>> GetSupplyMessageDescriptions(HtmlDocument htmlDocument)
+    public Dictionary<string, List<ServiceMessage>> GetServiceMessages(HtmlDocument htmlDocument)
     {
         var tdContents = htmlDocument.DocumentNode.SelectNodes("//td")
             .Where(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty)
@@ -39,7 +39,7 @@ public class HtmlParserService : IHtmlParserService
             
         var districtValues = _tdContentParserService.GetDistrictsDataFromTableDescriptions(tdContents);
         var eventsDictionary = _tdContentParserService.RestrictionTableDescriptionToDict(districtValues);
-        var supplyMessageDescriptionDict  = _tdContentParserService.GetSupplyAlarmDescriptions(eventsDictionary);
+        var supplyMessageDescriptionDict  = _tdContentParserService.GetServiceMessages(eventsDictionary);
         
         return supplyMessageDescriptionDict;
     }

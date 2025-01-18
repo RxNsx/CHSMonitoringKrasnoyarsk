@@ -1,5 +1,5 @@
 ﻿using CHSMonitoring.API.Models;
-using CHSMonitoring.API.Models.SupplyMessageDescription;
+using CHSMonitoring.API.Models.ServiceMessageAddress;
 using HtmlAgilityPack;
 
 namespace CHSMonitoring.API.Interfaces;
@@ -20,7 +20,7 @@ public interface ITdContentParserService
     /// Получение конечных вариантов парсинга в удобном виде для сохранения в БД
     /// </summary>
     /// <param name="districtValues">Словарь полученных данных по каждому району через td</param>
-    Dictionary<string, List<SupplyMessageDescription>> GetSupplyAlarmDescriptions(Dictionary<string, List<TableDescription>> districtValues);
+    Dictionary<string, List<ServiceMessage>> GetServiceMessages(Dictionary<string, List<TableDescription>> districtValues);
 
     /// <summary>
     /// Получение данных по активным районам из td

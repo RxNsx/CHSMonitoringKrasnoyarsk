@@ -1,9 +1,9 @@
-﻿namespace CHSMonitoring.API.Models.SupplyMessageDescription;
+﻿namespace CHSMonitoring.API.Models.ServiceMessageAddress;
 
 /// <summary>
 /// Описание адресов с отключением
 /// </summary>
-public sealed class SupplyMessageDescription
+public sealed class ServiceMessage
 {
     public Organization Organization { get; private set; }
     public List<Address> AddressList { get; private set; }
@@ -13,7 +13,7 @@ public sealed class SupplyMessageDescription
     /// <summary>
     /// Конструктор
     /// </summary>
-    public SupplyMessageDescription()
+    public ServiceMessage()
     {
         
     }

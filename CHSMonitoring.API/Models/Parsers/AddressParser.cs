@@ -1,6 +1,6 @@
 ﻿using CHSMonitoring.API.Enums;
-using CHSMonitoring.API.Models.SupplyMessageDescription;
 using CHSMonitoring.API.Extensions;
+using CHSMonitoring.API.Models.ServiceMessageAddress;
 
 namespace CHSMonitoring.API.Models.Parsers;
 

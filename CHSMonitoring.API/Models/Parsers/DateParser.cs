@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using CHSMonitoring.API.Models.SupplyMessageDescription;
+using CHSMonitoring.API.Models.ServiceMessageAddress;
 
 namespace CHSMonitoring.API.Models.Parsers;
 

@@ -1,4 +1,4 @@
-﻿namespace CHSMonitoring.API.Models.SupplyMessageDescription;
+﻿namespace CHSMonitoring.API.Models.ServiceMessageAddress;
 
 /// <summary>
 /// Информация по времени

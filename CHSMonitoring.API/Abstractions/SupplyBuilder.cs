@@ -1,11 +1,11 @@
-﻿using CHSMonitoring.API.Models.SupplyMessageDescription;
+﻿using CHSMonitoring.API.Models.ServiceMessageAddress;
 
 namespace CHSMonitoring.API.Abstractions;
 
 /// <summary>
 /// Строитель объекта SupplyDescription
 /// </summary>
-public abstract class SupplyBuilder
+public abstract class ServiceBuilder
 {
     /// <summary>
     /// Получение организации
@@ -29,5 +29,5 @@ public abstract class SupplyBuilder
     /// Сборка объекта полностью
     /// </summary>
     /// <returns></returns>
-    internal abstract SupplyMessageDescription BuildSupplyMessageDescription();
+    internal abstract ServiceMessage BuildSupplyMessageDescription();
 }

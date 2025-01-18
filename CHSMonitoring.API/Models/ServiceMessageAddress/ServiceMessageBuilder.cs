@@ -1,18 +1,18 @@
 ﻿using CHSMonitoring.API.Abstractions;
 using CHSMonitoring.API.Enums;
-using CHSMonitoring.API.Models.Parsers;
 using CHSMonitoring.API.Extensions;
+using CHSMonitoring.API.Models.Parsers;
 
-namespace CHSMonitoring.API.Models.SupplyMessageDescription;
+namespace CHSMonitoring.API.Models.ServiceMessageAddress;
 
-public sealed class SupplyDescriptionBuilder : SupplyBuilder
+public sealed class ServiceMessageBuilder : ServiceBuilder
 {
-    private SupplyMessageDescription _supplyMessageDescription = new();
+    private ServiceMessage _serviceMessage = new();
 
     internal override void BuildOrganization(string organizationText)
     {
         var organization = OrganizationParser.ParseOrganization(organizationText);
-        _supplyMessageDescription.SetOrganization(organization);
+        _serviceMessage.SetOrganization(organization);
     }
 
     internal override void BuildAddressesList(string addressesText)
@@ -57,8 +57,8 @@ public sealed class SupplyDescriptionBuilder : SupplyBuilder
             addressList = AddressParser.ParseAddresses(addresses);
         }
 
-        _supplyMessageDescription.SetDescription(string.Join(",", additionalDescriptionList));
-        _supplyMessageDescription.SetAddressList(addressList);
+        _serviceMessage.SetDescription(string.Join(",", additionalDescriptionList));
+        _serviceMessage.SetAddressList(addressList);
     }
 
     internal override void BuildDateInfo(string dateInfoText)
@@ -68,11 +68,11 @@ public sealed class SupplyDescriptionBuilder : SupplyBuilder
             .Where(x => !string.IsNullOrWhiteSpace(x))
             .ToList();
         var dateInfo = DateParser.ParseDatesFromTo(splittedDateDescriptionList);
-        _supplyMessageDescription.SetDateInfo(dateInfo);
+        _serviceMessage.SetDateInfo(dateInfo);
     }
     
-    internal override SupplyMessageDescription BuildSupplyMessageDescription()
+    internal override ServiceMessage BuildSupplyMessageDescription()
     {
-        return _supplyMessageDescription;
+        return _serviceMessage;
     }
 }
