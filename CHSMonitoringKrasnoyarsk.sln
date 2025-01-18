@@ -1,6 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSMonitoringKrasnoyarsk", "CHSMonitoringKrasnoyarsk\CHSMonitoringKrasnoyarsk.csproj", "{68C6989A-A263-4DA6-B37D-F39411CABE02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSMonitoring.API", "CHSMonitoring.API\CHSMonitoring.API.csproj", "{68C6989A-A263-4DA6-B37D-F39411CABE02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C533AD3E-8D22-4B19-860D-2AD9C5ED8587}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{C1350886-58FA-4FB5-BFF4-E86F8B88E52A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{83FFC41F-B232-4083-81E9-ACF3B6734E1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{BC4422D3-1313-4587-AE05-7170018A2615}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +20,8 @@ Global
 		{68C6989A-A263-4DA6-B37D-F39411CABE02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68C6989A-A263-4DA6-B37D-F39411CABE02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68C6989A-A263-4DA6-B37D-F39411CABE02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{68C6989A-A263-4DA6-B37D-F39411CABE02} = {C533AD3E-8D22-4B19-860D-2AD9C5ED8587}
 	EndGlobalSection
 EndGlobal
