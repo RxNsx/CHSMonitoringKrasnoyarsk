@@ -68,6 +68,8 @@ public enum StreetNameEnum
     Altayskaya,
     [Description("6-я Алыкельская")]
     _6yaAlykelSkaya,
+    [Description("Алыкельская 6-я")]
+    AlykelSkaya6ya,
     [Description("Алюминиевая")]
     Alyumineevaya,
     [Description("Аманатский")]
@@ -127,8 +129,12 @@ public enum StreetNameEnum
     Baykalskaya,
     [Description("Байкитская 1-я")]
     Baykitskaya1,
+    [Description("1-я Байкитская")]
+    Baykitska_ya1,
     [Description("Байкитская 2-я")]
     Baykitskaya2,
+    [Description("2-я Байкитская")]
+    Baykitska_ya2,
     [Description("Балахтинская")]
     BalakhTinskaya,
     [Description("Бартатский")]
@@ -201,8 +207,12 @@ public enum StreetNameEnum
     Borisova,
     [Description("Боровая 1-я")]
     Borovaya1,
+    [Description("1-я Боровая")]
+    Borova_ya1,
     [Description("Боровая 2-я")]
     Borovaya2,
+    [Description("2-я Боровая")]
+    Borova_ya2,
     [Description("Бородинская")]
     Borodinskaya,
     [Description("Борьбы")]
@@ -211,10 +221,16 @@ public enum StreetNameEnum
     Botanicheskaya,
     [Description("Ботаническая 2-я")]
     Botanicheskaya2,
+    [Description("2-я Ботаническая")]
+    Botanicheska_ya2,
     [Description("Ботаническая 3-я")]
     Botanicheskaya3,
+    [Description("3-я Ботаническая")]
+    Botanicheska_ya3,
     [Description("Ботаническая 4-я")]
     Botanicheskaya4,
+    [Description("4-я Ботаническая")]
+    Botanicheska_ya4,
     [Description("Ботанический")]
     Botanicheskiy,
     [Description("Боткина")]
@@ -223,8 +239,12 @@ public enum StreetNameEnum
     Bokhtinskiy,
     [Description("Братская 1-я")]
     Bratskaya1,
+    [Description("1-я Братская")]
+    Bratska_ya1,
     [Description("Братская 2-я")]
     Bratskaya2,
+    [Description("2-я Братская")]
+    Bratska_ya2,
     [Description("Братьев Абалаковых")]
     BratEyAbalakovykh,
     [Description("Брестская")]
@@ -233,6 +253,8 @@ public enum StreetNameEnum
     Bryanskaya,
     [Description("Брянская 2-я")]
     Bryanskaya2,
+    [Description("2-я Брянская")]
+    Bryanska_ya2,
     [Description("Бугачевская")]
     Bugachevskaya,
     [Description("Быковского")]
@@ -282,8 +304,12 @@ public enum StreetNameEnum
     Vishnevyy,
     [Description("Внутриквартальная 1-я")]
     Vnutrikvartalnaya1,
+    [Description("1-я Внутриквартальная")]
+    Vnutrikvartalna_ya1,
     [Description("Внутриквартальная 3-я")]
     Vnutrikvartalnaya3,
+    [Description("3-я Внутриквартальная")]
+    Vnutrikvartalna_ya3,
     [Description("Водометный")]
     Vodometnyy,
     [Description("Водопьянова")]
@@ -357,6 +383,8 @@ public enum StreetNameEnum
     Geologicheskaya,
     [Description("Геологическая 2-я")]
     Geologicheskaya2,
+    [Description("2-я Геологическая")]
+    Geologicheska_ya2,
     [Description("Георгиевская")]
     Georgievskaya,
     [Description("Героев Страны")]
@@ -369,10 +397,16 @@ public enum StreetNameEnum
     Gipssovaya,
     [Description("Гипсовая 1-я")]
     Gipssovaya1,
+    [Description("1-я Гипсовая")]
+    Gipssova_ya1,
     [Description("Гипсовая 2-я")]
     Gipssovaya2,
+    [Description("2-я Гипсовая")]
+    Gipssova_ya2,
     [Description("Гипсовая 3-я")]
     Gipssovaya3,
+    [Description("3-я Гипсовая")]
+    Gipssova_ya3,
     [Description("Глинки")]
     Glinskiy,
     [Description("Глиняная")]
@@ -424,8 +458,12 @@ public enum StreetNameEnum
     Dalnevostochnaya,
     [Description("Дальневосточная 3-я")]
     Dalnevostochnaya3,
+    [Description("3-я Дальневосточная")]
+    Dalnevostochna_ya3,
     [Description("Дальневосточная 4-я")]
     Dalnevostochnaya4,
+    [Description("4-я Дальневосточная")]
+    Dalnevostochna_ya4,
     [Description("Дальняя")]
     DalNaya,
     [Description("Даурская")]
@@ -446,6 +484,8 @@ public enum StreetNameEnum
     Depovskiy,
     [Description("Депутатская 2-я")]
     Deputatskaya2,
+    [Description("2-я Депутатская")]
+    Deputatska_ya2,
     [Description("Детская")]
     Detskaya,
     [Description("Джамбульская")]
@@ -466,8 +506,12 @@ public enum StreetNameEnum
     DmytriyaMartynova,
     [Description("Днепропетровская 1-я")]
     Dnepropetrovskaya1,
+    [Description("1-я Днепропетровская")]
+    Dnepropetrovska_ya1,
     [Description("Днепропетровская 2-я")]
     Dnepropetrovskaya2,
+    [Description("2-я Днепропетровская")]
+    Dnepropetrovska_ya2,
     [Description("Добролюбова")]
     Dobrolubova,
     [Description("Дозорная")]
@@ -545,7 +589,7 @@ public enum StreetNameEnum
     Zabobonova,
     [Description("Заводская")]
     Zavodskaya,
-    [Description("Заводскойпр-д")]
+    [Description("Заводской")]
     ZavodskoyProyezd,
     [Description("Заводской")]
     Zavodskoy,
@@ -659,12 +703,20 @@ public enum StreetNameEnum
     Kamchatskaya,
     [Description("Камчатская 2-я")]
     Kamchatskaya2,
+    [Description("2-я Камчатская")]
+    Kamchatska_ya2,
     [Description("Камчатская 3-я")]
     Kamchatskaya3,
+    [Description("3-я Камчатская")]
+    Kamchatska_ya3,
     [Description("Камчатская 4-я")]
     Kamchatskaya4,
+    [Description("4-я Камчатская")]
+    Kamchatska_ya4,
     [Description("Камчатская 5-я")]
     Kamchatskaya5,
+    [Description("5-я Камчатская")]
+    Kamchatska_ya5,
     [Description("Кандагарская")]
     Kandagarskaya,
     [Description("Канская")]
@@ -727,8 +779,12 @@ public enum StreetNameEnum
     Klevernaya,
     [Description("Клинкерная 1-я")]
     Klinkernaya1,
+    [Description("1-я Клинкерная")]
+    Klinkerna_ya1,
     [Description("Клинкерная 2-я")]
     Klinkernaya2,
+    [Description("2-я Клинкерная")]
+    Klinkerna_ya2,
     [Description("Ключевская")]
     Klyuchevskaya,
     [Description("Ковыльная")]
@@ -809,16 +865,24 @@ public enum StreetNameEnum
     Krasnogorskaya,
     [Description("Красногорская 2-я")]
     Krasnogorskaya2,
+    [Description("2-я Красногорская")]
+    Krasnogorska_ya2,
     [Description("Красноградская")]
     Krasnogradskaya,
     [Description("Краснодарская")]
     Krasnodarskaya,
     [Description("Краснодарская 1-я")]
     Krasnodarskaya1,
+    [Description("1-я Краснодарская")]
+    Krasnodarska_ya1,
     [Description("Краснодарская 2-я")]
     Krasnodarskaya2,
+    [Description("2-я Краснодарская")]
+    Krasnodarska_ya2,
     [Description("Краснодарская 3-я")]
     Krasnodarskaya3,
+    [Description("3-я Краснодарская")]
+    Krasnodarska_ya3,
     [Description("Краснодонцев")]
     Krasnodontsev,
     [Description("Красной Армии")]
@@ -833,6 +897,8 @@ public enum StreetNameEnum
     Krasnopresnenskaya,
     [Description("Краснофлотская 2-я")]
     Krasnoflotskaya2,
+    [Description("2-я Краснофлотская")]
+    Krasnoflotska_ya2,
     [Description("Красных Зорь")]
     KrasnyhZor,
     [Description("Кривоколенный")]
@@ -843,14 +909,22 @@ public enum StreetNameEnum
     Krupskoy,
     [Description("Крутая 1-я")]
     Krutaya1,
+    [Description("1-я Крутая")]
+    Kruta_ya1,
     [Description("Крутая 2-я")]
     Krutaya2,
+    [Description("2-я Крутая")]
+    Kruta_ya2,
     [Description("Крутовского")]
     Krutovskogo,
     [Description("Крутогорская 1-я")]
     Krutogorskaya1,
+    [Description("1-я Крутогорская")]
+    Krutogorska_ya1,
     [Description("Крутогорская 2-я")]
     Krutogorskaya2,
+    [Description("2-я Крутогорская")]
+    Krutogorska_ya2,
     [Description("Крылова")]
     Krylova,
     [Description("Кубанская")]
@@ -877,6 +951,8 @@ public enum StreetNameEnum
     Kutuzova,
     [Description("Кутузова 2-я")]
     Kutuzova2,
+    [Description("2-я Кутузова")]
+    Kutuzova_2,
 
     #endregion
     
@@ -898,6 +974,8 @@ public enum StreetNameEnum
     Leningradskaya,
     [Description("Ленинградская 1-я")]
     Leningradskaya1,
+    [Description("1-я Ленинградская")]
+    Leningradska_ya1,
     [Description("Лермонтова")]
     Lermontova,
     [Description("Лесная")]
@@ -928,16 +1006,28 @@ public enum StreetNameEnum
     Lineynaya,
     [Description("Линейная 2-я")]
     Lineynaya2,
+    [Description("2-я Линейная")]
+    Lineyna_ya2,
     [Description("Линейная 3-я")]
     Lineynaya3,
+    [Description("3-я Линейная")]
+    Lineyna_ya3,
     [Description("Линейная 4-я")]
     Lineynaya4,
+    [Description("4-я Линейная")]
+    Lineyna_ya4,
     [Description("Линейная 5-я")]
     Lineynaya5,
+    [Description("5-я Линейная")]
+    Lineyna_ya5,
     [Description("Линейная 6-я")]
     Lineynaya6,
+    [Description("6-я Линейная")]
+    Lineyna_ya6,
     [Description("Линейная 7-я")]
     Lineynaya7,
+    [Description("7-я Линейная")]
+    Lineyna_ya7,
     [Description("Лириков")]
     Lirikov,
     [Description("Лиственная")]
@@ -1019,6 +1109,8 @@ public enum StreetNameEnum
     Melkombinatskaya,
     [Description("Мелькомбинатская 2-я")]
     Melkombinatskaya2,
+    [Description("2-я Мелькомбинатская")]
+    Melkombinatska_ya2,
     [Description("Менделеева")]
     Mendeleeva,
     [Description("Менжинского")]
@@ -1149,7 +1241,7 @@ public enum StreetNameEnum
     Oborony,
     [Description("Овражная")]
     Ovrashnaya,
-    [Description("Огородная 2-я")]
+    [Description("2-я Огородная")]
     Ogorodnaya2,
     [Description("Одесская")]
     Odesskaya,
@@ -1159,9 +1251,9 @@ public enum StreetNameEnum
     Odnostoronniy,
     [Description("Озерная")]
     Ozerennaya,
-    [Description("Озёрная 2-я")]
+    [Description("2-я Озёрная")]
     Ozernaya2,
-    [Description("Озёрная 4-я")]
+    [Description("4-я Озёрная")]
     Ozernaya4,
     [Description("Окаемная")]
     Okaymnaya,
@@ -1270,8 +1362,12 @@ public enum StreetNameEnum
     Petrushina,
     [Description("Пионеров 2-я")]
     Pionerov2,
+    [Description("2-я Пионеров")]
+    Pionerov_2,
     [Description("Пионеров 3-я")]
     Pionerov3,
+    [Description("3-я Пионеров")]
+    Pionerov_3,
     [Description("Пировская")]
     Pirovskaya,
     [Description("Пирогова")]
@@ -1316,15 +1412,15 @@ public enum StreetNameEnum
     Poltavskaya,
     [Description("Полярная")]
     Polyarnaya,
-    [Description("Полярная 3-я")]
+    [Description("3-я Полярная")]
     Polyarnaya3,
-    [Description("Полярная 4-я")]
+    [Description("4-я Полярная")]
     Polyarnaya4,
-    [Description("Полярная 5-я")]
+    [Description("5-я Полярная")]
     Polyarnaya5,
-    [Description("Полярная 6-я")]
+    [Description("6-я Полярная")]
     Polyarnaya6,
-    [Description("Полярная 7-я")]
+    [Description("7-я Полярная")]
     Polyarnaya7,
     [Description("Поперечный")]
     Poperechny,
@@ -1685,15 +1781,15 @@ public enum StreetNameEnum
     Bugachevo,
     [Description("Таймырская")]
     Taymyrskaya,
-    [Description("Таймырская 1-я")]
+    [Description("1-я Таймырская")]
     Taymyrskaya1,
-    [Description("Таймырская 2-я")]
+    [Description("2-я Таймырская")]
     Taymyrskaya2,
-    [Description("Таймырская 3-я")]
+    [Description("3-я Таймырская")]
     Taymyrskaya3,
-    [Description("Таймырская 4-я")]
+    [Description("4-я Таймырская")]
     Taymyrskaya4,
-    [Description("Таймырская 5-я")]
+    [Description("5-я Таймырская")]
     Taymyrskaya5,
     [Description("Талнахская")]
     Talnakhskaya,
