@@ -19,4 +19,14 @@ public class Role : Entity
     /// Разрешения для роли
     /// </summary>
     public Permission Permission { get; set; }
+
+    /// <summary>
+    /// Айди пользователя
+    /// </summary>
+    public Guid UserId { get; set; }
+    
+    /// <summary>
+    /// Навигационное свойство пользователя
+    /// </summary>
+    public User User { get; set; }
 }

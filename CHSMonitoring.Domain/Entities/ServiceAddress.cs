@@ -8,12 +8,12 @@ public class ServiceAddress : Entity
     /// <summary>
     /// Название улицы
     /// </summary>
-    public string Name { get; set; }
+    public string StreetName { get; set; }
     
     /// <summary>
     /// Номер дома
     /// </summary>
-    public string Number { get; set; }
+    public string HouseNumber { get; set; }
 
     /// <summary>
     /// Описание проблемы

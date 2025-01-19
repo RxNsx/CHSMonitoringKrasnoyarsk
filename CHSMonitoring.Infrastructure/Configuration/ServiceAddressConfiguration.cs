@@ -1,0 +1,45 @@
+﻿using CHSMonitoring.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace CHSMonitoring.Infrastructure.Configuration;
+
+/// <summary>
+/// Конфигурация адреса обслуживания
+/// </summary>
+public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddress>
+{
+    public void Configure(EntityTypeBuilder<ServiceAddress> builder)
+    {
+        builder.ToTable("service_addresses", "services");
+
+        builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.StreetName)
+            .HasMaxLength(100)
+            .IsRequired();
+
+        builder.Property(x => x.HouseNumber)
+            .HasMaxLength(30)
+            .IsRequired();
+
+        builder.Property(x => x.ServiceType)
+            .HasMaxLength(50)
+            .IsRequired();
+
+        builder.Property(x => x.Description)
+            .HasDefaultValue(string.Empty);
+
+        builder.Property(x => x.From)
+            .HasDefaultValue(DateTime.MinValue.ToUniversalTime());
+
+        builder.Property(x => x.To)
+            .HasDefaultValue(DateTime.MinValue.ToUniversalTime());
+        
+        builder.Property(x => x.DateTimeFromString)
+            .HasDefaultValue(string.Empty);
+
+        builder.Property(x => x.DateTimeToString)
+            .HasDefaultValue(string.Empty);
+    }
+}

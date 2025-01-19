@@ -1,4 +1,6 @@
-﻿using CHSMonitoring.Domain.Entities;
+﻿using System.Reflection;
+using CHSMonitoring.Domain.Entities;
+using CHSMonitoring.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace CHSMonitoring.Infrastructure.Context;
@@ -26,13 +28,8 @@ public class MonitoringDbContext : DbContext
     
     public virtual DbSet<User> Users { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        base.OnConfiguring(optionsBuilder);
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

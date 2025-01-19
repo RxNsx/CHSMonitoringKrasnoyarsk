@@ -18,20 +18,15 @@ public class User : Entity
     /// <summary>
     /// Описание пользователя
     /// </summary>
-    public string  Description { get; set; }
+    public string Description { get; set; }
     
     /// <summary>
-    /// Навигационное свойство для профиля
+    /// Навигационное свойство для профилей
     /// </summary>
-    public Profile Profile { get; set; }
-    
-    /// <summary>
-    /// Айди роли
-    /// </summary>
-    public Guid RoleId { get; set; }
+    public List<Profile> Profiles { get; set; }
     
     /// <summary>
     /// Навигационное свойство для роли
     /// </summary>
-    public Role Role { get; set; }
+    public List<Role> Roles { get; set; }
 }

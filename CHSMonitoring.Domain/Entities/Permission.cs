@@ -3,7 +3,7 @@
 /// <summary>
 /// Права пользователей
 /// </summary>
-public class Permission
+public class Permission : Entity
 {
     /// <summary>
     /// Название разрешения
