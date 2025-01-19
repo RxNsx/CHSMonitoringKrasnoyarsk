@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.API.Enums;
+﻿using System.Text.RegularExpressions;
+using CHSMonitoring.API.Enums;
 using CHSMonitoring.API.Extensions;
 using CHSMonitoring.API.Models.ServiceMessageAddress;
 
@@ -57,8 +58,7 @@ public static class AddressParser
         List<Address> addressList = new();
         foreach (var addressItem in concreteAddresses)
         {
-            var streetName = streetNames
-                .FirstOrDefault(x => streetNames.Any(t => addressItem.Contains(x, StringComparison.InvariantCultureIgnoreCase)));
+            var streetName = streetNames.FirstOrDefault(x => streetNames.Any(t => addressItem.Contains(x, StringComparison.InvariantCultureIgnoreCase)));
             var indexOfOccurs = addressItem.IndexOf(streetName, StringComparison.InvariantCultureIgnoreCase);
             var resultedAddressWithoutNumbers = addressItem.Remove(indexOfOccurs, streetName.Length).Trim();
             
@@ -67,14 +67,21 @@ public static class AddressParser
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .ToList();
             
-            
             if (numbers.Any())
             {
                 foreach (var number in numbers)
                 {
                     if (!number.Contains("-"))
                     {
-                        addressList.Add(Address.Create(streetName, number));
+                        if (Regex.IsMatch(number, @"^[а-яА-Я]"))
+                        {
+                            var pureNumber = string.Join("",number.Where(x => char.IsDigit(x)));
+                            addressList.Add(Address.Create(streetName, pureNumber));
+                        }
+                        else
+                        {
+                            addressList.Add(Address.Create(streetName, number));
+                        }
                     }
                 
                     var splitNumber = number.Split("-", StringSplitOptions.TrimEntries);
@@ -95,7 +102,7 @@ public static class AddressParser
                 addressList.Add(Address.Create(streetName, string.Empty));
             }
         }
-
+        
         return addressList;
     }
 }

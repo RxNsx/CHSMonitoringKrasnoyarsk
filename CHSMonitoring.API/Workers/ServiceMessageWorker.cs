@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using CHSMonitoring.API.Interfaces;
@@ -43,6 +44,10 @@ public class ServiceMessageWorker : BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
+            await Task.Delay(TimeSpan.FromSeconds(15), stoppingToken);
+
+            var stopwatch = Stopwatch.StartNew();
+            
             try
             {
                 var htmlDocument = await _httpClientService.GetHtmlDocumentByUrlAsync(_url, stoppingToken)
@@ -53,13 +58,16 @@ public class ServiceMessageWorker : BackgroundService
                 {
                     throw new ArgumentNullException("Пустой словарь");
                 }
+
+                Console.WriteLine("Total seconds elapsed: " + stopwatch.Elapsed.Seconds);
+                stopwatch.Stop();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-            await Task.Delay(TimeSpan.FromSeconds(20), stoppingToken);
+            await Task.Delay(TimeSpan.FromSeconds(15), stoppingToken);
         }
     }
 

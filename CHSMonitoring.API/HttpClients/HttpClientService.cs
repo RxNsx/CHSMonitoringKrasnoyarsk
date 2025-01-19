@@ -27,7 +27,6 @@ public class HttpClientService : IHttpClientService
             
         var convertedBytes = Encoding.Convert(encoding1251, Encoding.UTF8, reply);
         var result = Encoding.UTF8.GetString(convertedBytes);
-
         var htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(result);
 

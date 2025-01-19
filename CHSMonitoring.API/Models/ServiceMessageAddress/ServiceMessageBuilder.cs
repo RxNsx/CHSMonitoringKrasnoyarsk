@@ -27,8 +27,6 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
             .Select(x => x.GetDescriptionValue())
             .ToList();
         
-        
-        
         var splittedAddressesList = addressesText
             .Split(';', StringSplitOptions.TrimEntries)
             .ToList();
