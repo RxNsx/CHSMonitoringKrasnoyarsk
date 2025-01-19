@@ -10,7 +10,7 @@ public class MonitoringDbContext : DbContext
         
     }
 
-    public virtual DbSet<District> Type { get; set; }
+    public virtual DbSet<District> Districts { get; set; }
     
     public virtual DbSet<Permission> Permissions { get; set; }
     
