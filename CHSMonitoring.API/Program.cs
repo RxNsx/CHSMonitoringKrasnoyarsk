@@ -2,6 +2,8 @@ using CHSMonitoring.API.HttpClients;
 using CHSMonitoring.API.Interfaces;
 using CHSMonitoring.API.Services;
 using CHSMonitoring.API.Workers;
+using CHSMonitoring.Application;
+using CHSMonitoring.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IHttpClientService, HttpClientService>();
 builder.Services.AddSingleton<IHtmlParserService, HtmlParserService>();
 builder.Services.AddSingleton<ITdContentParserService, TdContentParserService>();
+
+builder.Services
+    .AddInfrastructureServices(builder.Configuration)
+    .AddApplicationServices();
 
 //HttpClient
 builder.Services.AddHttpClient<HttpClientService>(client =>
