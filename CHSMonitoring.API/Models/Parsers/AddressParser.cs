@@ -85,7 +85,7 @@ public static class AddressParser
                     }
                 
                     var splitNumber = number.Split("-", StringSplitOptions.TrimEntries);
-                    if (splitNumber.Length == 2)
+                    if (splitNumber.Length == 2 && Regex.IsMatch(splitNumber[0], @"^\d") && Regex.IsMatch(splitNumber[1], @"\d"))
                     {
                         var number1 = int.Parse(splitNumber[0]);
                         var number2 = int.Parse(splitNumber[1]);
