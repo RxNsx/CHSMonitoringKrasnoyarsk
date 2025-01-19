@@ -1,12 +1,18 @@
 ﻿using System.Reflection;
 using CHSMonitoring.Domain.Entities;
-using CHSMonitoring.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace CHSMonitoring.Infrastructure.Context;
 
+/// <summary>
+/// Контекст базы данных
+/// </summary>
 public class MonitoringDbContext : DbContext
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="options"></param>
     public MonitoringDbContext(DbContextOptions<MonitoringDbContext> options) : base(options)
     {
         
@@ -28,6 +34,10 @@ public class MonitoringDbContext : DbContext
     
     public virtual DbSet<User> Users { get; set; }
 
+    /// <summary>
+    /// Определение построения моделей
+    /// </summary>
+    /// <param name="modelBuilder"></param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
