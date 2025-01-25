@@ -5,6 +5,9 @@ using CHSMonitoring.API.Models.Parsers;
 
 namespace CHSMonitoring.API.Models.ServiceMessageAddress;
 
+/// <summary>
+/// Строитель объекта ServiceMessage
+/// </summary>
 public sealed class ServiceMessageBuilder : ServiceBuilder
 {
     private ServiceMessage _serviceMessage = new();
@@ -70,7 +73,7 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
         var dateInfo = DateParser.ParseDatesFromTo(splittedDateDescriptionList);
         _serviceMessage.SetDateInfo(dateInfo);
     }
-    
+
     internal override ServiceMessage BuildSupplyMessageDescription()
     {
         return _serviceMessage;

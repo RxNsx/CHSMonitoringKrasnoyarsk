@@ -3,7 +3,7 @@
 namespace CHSMonitoring.API.Abstractions;
 
 /// <summary>
-/// Строитель объекта SupplyDescription
+/// Строитель паттерн для ServiceMessage
 /// </summary>
 public abstract class ServiceBuilder
 {
