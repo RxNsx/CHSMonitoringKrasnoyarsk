@@ -1,9 +1,8 @@
-using CHSMonitoring.API.HttpClients;
-using CHSMonitoring.API.Interfaces;
-using CHSMonitoring.API.Services;
-using CHSMonitoring.API.Workers;
 using CHSMonitoring.Application;
 using CHSMonitoring.Infrastructure;
+using CHSMonitoring.Infrastructure.Interfaces.Workers;
+using CHSMonitoring.Infrastructure.Services;
+using CHSMonitoring.Infrastructure.Workers;
 
 var builder = WebApplication.CreateBuilder(args);
 

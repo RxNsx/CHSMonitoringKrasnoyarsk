@@ -1,0 +1,12 @@
+﻿using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
+using HtmlAgilityPack;
+
+namespace CHSMonitoring.Infrastructure.Interfaces.Workers;
+
+/// <summary>
+/// Интерфейс для получения данных из Html документа
+/// </summary>
+public interface IHtmlParserService
+{
+    public Dictionary<string, List<ServiceMessage>> GetServiceMessages(HtmlDocument htmlDocument);
+}
