@@ -70,6 +70,7 @@ public class TdContentParserService : ITdContentParserService
                     supplyDescriptionBuilder.BuildOrganization(organizationText);
                     supplyDescriptionBuilder.BuildAddressesList(addressesText);
                     supplyDescriptionBuilder.BuildDateInfo(dateInfoText);
+                    supplyDescriptionBuilder.BuildDistrictName(item.Key);
                     var supplyMessageDescription = supplyDescriptionBuilder.BuildSupplyMessageDescription();
 
                     if (!supplyDescriptionList.TryGetValue(item.Key, out _))

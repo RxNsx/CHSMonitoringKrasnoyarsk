@@ -26,6 +26,12 @@ public abstract class ServiceBuilder
     internal abstract void BuildDateInfo(string dateInfoText);
     
     /// <summary>
+    /// Установить значение имени района
+    /// </summary>
+    /// <param name="districtName"></param>
+    internal abstract void BuildDistrictName(string districtName);
+    
+    /// <summary>
     /// Сборка объекта полностью
     /// </summary>
     /// <returns></returns>

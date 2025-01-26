@@ -6,6 +6,11 @@
 public class ServiceAddress : Entity
 {
     /// <summary>
+    /// Название района
+    /// </summary>
+    public string DistrictName { get; set; }
+    
+    /// <summary>
     /// Название улицы
     /// </summary>
     public string StreetName { get; set; }
@@ -44,41 +49,4 @@ public class ServiceAddress : Entity
     /// Дата конца отключения в формате строки (или сообщение об отключении)
     /// </summary>
     public string DateTimeToString { get; set; }
-
-    // /// <summary>
-    // /// Конструктор
-    // /// </summary>
-    // /// <param name="name"></param>
-    // /// <param name="number"></param>
-    // /// <param name="description"></param>
-    // /// <param name="from"></param>
-    // /// <param name="dateTimeFromString"></param>
-    // /// <param name="to"></param>
-    // /// <param name="dateTimeToString"></param>
-    // private ServiceAddress(string name, string number, string description, DateTime from, string dateTimeFromString, DateTime to, string dateTimeToString)
-    // {
-    //     Name = name;
-    //     Number = number;
-    //     Description = description;
-    //     From = from;
-    //     DateTimeFromString = dateTimeFromString;
-    //     To = to;
-    //     DateTimeToString = dateTimeToString;
-    // }
-    //
-    // /// <summary>
-    // /// Фабричный метод для создания
-    // /// </summary>
-    // /// <param name="name"></param>
-    // /// <param name="number"></param>
-    // /// <param name="description"></param>
-    // /// <param name="from"></param>
-    // /// <param name="dateTimeFromString"></param>
-    // /// <param name="to"></param>
-    // /// <param name="dateTimeToString"></param>
-    // /// <returns></returns>
-    // public static ServiceAddress Create(string name, string number, string description, DateTime from, string dateTimeFromString, DateTime to, string dateTimeToString)
-    // {
-    //     return new ServiceAddress(name, number, description, from, dateTimeFromString, to, dateTimeToString);
-    // }
 }

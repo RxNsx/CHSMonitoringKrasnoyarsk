@@ -6,6 +6,11 @@
 public sealed class ServiceMessage
 {
     /// <summary>
+    /// Название района
+    /// </summary>
+    /// <returns></returns>
+    public string DistrictName { get; private set; }
+    /// <summary>
     /// Организация обслуживающая отключение
     /// </summary>
     public Organization Organization { get; private set; }
@@ -51,6 +56,12 @@ public sealed class ServiceMessage
     /// </summary>
     /// <param name="description"></param>
     public void SetDescription(string description) => Description = description;
+
+    /// <summary>
+    /// Установить название района
+    /// </summary>
+    /// <param name="districtName"></param>
+    public void SetDistrictName(string districtName) => DistrictName = districtName;
     
     /// <summary>
     /// Установить временные интервалы обслуживания 

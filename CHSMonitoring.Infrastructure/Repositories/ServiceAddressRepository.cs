@@ -36,15 +36,10 @@ public class ServiceAddressRepository : IServiceAddressRepository
          * 2. По последнему событию приходящему проверять актуальность данных
          * 3. Создать материализованное представление для агрегации на каждый день \ или таблицу с агрегацией данных
          * 4. КОРРЕКТНЫМ считается событие которое приходит последним, соответственно самым корректным с точки зрения точности данных
-         */ 
-        
-        foreach (var item in serviceAddresses)
-        {
-            if (await IsExistServiceAddressAsync(item, cancellationToken).ConfigureAwait(false))
-            {
-                
-            }
-        }
+         */
+
+        await _context.ServiceAddresses.AddRangeAsync(serviceAddresses, cancellationToken).ConfigureAwait(false);
+        await _context.SaveChangesAsync().ConfigureAwait(false);
     }
 
     public async Task<ServiceAddress> GetServiceAddressAsync(ServiceAddress serviceAddress,

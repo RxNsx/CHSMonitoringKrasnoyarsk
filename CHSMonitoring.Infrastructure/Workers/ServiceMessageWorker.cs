@@ -1,6 +1,9 @@
 ﻿using System.Diagnostics;
+using CHSMonitoring.Infrastructure.Context;
+using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -14,9 +17,14 @@ public class ServiceMessageWorker : BackgroundService
     private readonly ILogger<ServiceMessageWorker> _logger;
     private readonly IHttpClientService _httpClientService;
     private readonly IHtmlParserService _htmlParserService;
+    private readonly IServiceScopeFactory _serviceScopeFactory;
 
     private readonly string? _url;
 
+    
+    private MonitoringDbContext _context;
+    private IServiceAddressRepository _serviceAddressRepository;
+    
     /// <summary>
     /// Конструктор
     /// </summary>
@@ -24,9 +32,10 @@ public class ServiceMessageWorker : BackgroundService
     /// <param name="httpClientService"></param>
     /// <param name="configuration"></param>
     /// <param name="htmlParserService"></param>
-    public ServiceMessageWorker(ILoggerFactory loggerFactory, IHttpClientService httpClientService, IConfiguration configuration, IHtmlParserService htmlParserService)
+    public ServiceMessageWorker(ILoggerFactory loggerFactory, IServiceScopeFactory serviceScopeFactory, IHttpClientService httpClientService, IConfiguration configuration, IHtmlParserService htmlParserService)
     {
         _logger = loggerFactory.CreateLogger<ServiceMessageWorker>();
+        _serviceScopeFactory = serviceScopeFactory;
         
         _httpClientService = httpClientService;
         _htmlParserService = htmlParserService;
@@ -40,6 +49,10 @@ public class ServiceMessageWorker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        var scope = _serviceScopeFactory.CreateScope();
+        _context = scope.ServiceProvider.GetRequiredService<MonitoringDbContext>();
+        _serviceAddressRepository = scope.ServiceProvider.GetRequiredService<IServiceAddressRepository>();
+        
         while (!stoppingToken.IsCancellationRequested)
         {
             await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
@@ -56,7 +69,8 @@ public class ServiceMessageWorker : BackgroundService
                 {
                     throw new ArgumentNullException("Пустой словарь");
                 }
-
+                
+                //TODO: Добавить в каждую запись значение района
                 Console.WriteLine("Total seconds elapsed: " + stopwatch.Elapsed.Seconds);
                 stopwatch.Stop();
             }

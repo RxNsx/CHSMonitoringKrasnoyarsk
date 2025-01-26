@@ -74,6 +74,11 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
         _serviceMessage.SetDateInfo(dateInfo);
     }
 
+    internal override void BuildDistrictName(string districtName)
+    {
+        _serviceMessage.SetDistrictName(districtName);
+    }
+
     internal override ServiceMessage BuildSupplyMessageDescription()
     {
         return _serviceMessage;

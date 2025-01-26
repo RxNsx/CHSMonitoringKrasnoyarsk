@@ -39,8 +39,6 @@ public class HtmlParserService : IHtmlParserService
             
         var districtValues = _tdContentParserService.GetDistrictsDataFromTableDescriptions(tdContents);
         var eventsDictionary = _tdContentParserService.RestrictionTableDescriptionToDict(districtValues);
-        var supplyMessageDescriptionDict  = _tdContentParserService.GetServiceMessages(eventsDictionary);
-        
-        return supplyMessageDescriptionDict;
+        return _tdContentParserService.GetServiceMessages(eventsDictionary);
     }
 }
