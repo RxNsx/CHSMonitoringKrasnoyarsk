@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.Infrastructure.Interfaces.Workers;
+﻿using CHSMonitoring.Domain.Entities;
+using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Models;
 using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
 using HtmlAgilityPack;
@@ -26,7 +27,7 @@ public class HtmlParserService : IHtmlParserService
     /// </summary>
     /// <param name="htmlDocument"></param>
     /// <returns></returns>
-    public Dictionary<string, List<ServiceMessage>> GetServiceMessages(HtmlDocument htmlDocument)
+    public List<ServiceAddress> GetServiceMessages(HtmlDocument htmlDocument)
     {
         var tdContents = htmlDocument.DocumentNode.SelectNodes("//td")
             .Where(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty)
@@ -37,8 +38,6 @@ public class HtmlParserService : IHtmlParserService
             })
             .ToList();
             
-        var districtValues = _tdContentParserService.GetDistrictsDataFromTableDescriptions(tdContents);
-        var eventsDictionary = _tdContentParserService.RestrictionTableDescriptionToDict(districtValues);
-        return _tdContentParserService.GetServiceMessages(eventsDictionary);
+        return _tdContentParserService.GetServiceMessages(tdContents);
     }
 }

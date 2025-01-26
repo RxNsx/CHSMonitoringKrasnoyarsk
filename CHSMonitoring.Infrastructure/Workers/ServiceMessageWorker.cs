@@ -65,40 +65,9 @@ public class ServiceMessageWorker : BackgroundService
                 var htmlDocument = await _httpClientService.GetHtmlDocumentByUrlAsync(_url, stoppingToken)
                     .ConfigureAwait(false);
 
-                var supplyMessageDescriptions = _htmlParserService.GetServiceMessages(htmlDocument);
-                if (!supplyMessageDescriptions.Any())
-                {
-                    throw new ArgumentNullException("Пустой словарь");
-                }
-
-                List<ServiceAddress> serviceAddresses = [];
-                foreach (var serviceMessage in supplyMessageDescriptions.SelectMany(x => x.Value).ToList())
-                {
-                    var serviceAddress = new ServiceAddress();
-                    serviceAddress.DistrictName = serviceMessage.DistrictName;
-                    
-                    var addressList = serviceMessage.AddressList;
-                    foreach (var address in addressList)
-                    {
-                        serviceAddress.StreetName = address.StreetName;
-                        serviceAddress.HouseNumber = address.Number;
-                        serviceAddress.Description = serviceMessage.Description;
-                        serviceAddress.ServiceType = serviceMessage.Organization.SupplyTypeName;
-                        
-                        serviceAddress.DateTimeFromString = serviceMessage.DateInfo.DateFromString;
-                        serviceAddress.DateTimeToString = serviceMessage.DateInfo.DateToString;
-                        serviceAddress.From = serviceMessage.DateInfo.DateFrom;
-                        serviceAddress.To = serviceMessage.DateInfo.DateTo;
-                        serviceAddress.CreatedDate = serviceMessage.CreatedDate;
-                        
-                        serviceAddresses.Add(serviceAddress);
-                    }
-                }
-                
-                
+                var serviceAddresses = _htmlParserService.GetServiceMessages(htmlDocument);
                 await _serviceAddressRepository.AddServiceAddressesAsync(serviceAddresses, stoppingToken);
                 
-                //TODO: Добавить в каждую запись значение района
                 Console.WriteLine("Total seconds elapsed: " + stopwatch.Elapsed.Seconds);
                 stopwatch.Stop();
             }

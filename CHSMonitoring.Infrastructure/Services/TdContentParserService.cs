@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.Infrastructure.Extensions;
+﻿using CHSMonitoring.Domain.Entities;
+using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Models;
 using CHSMonitoring.Infrastructure.Models.Enums;
@@ -14,26 +15,26 @@ public class TdContentParserService : ITdContentParserService
     /// <summary>
     /// Конструктор
     /// </summary>
-    /// <param name="addressParserService"></param>
     public TdContentParserService()
     {
         
     }
 
     /// <summary>
-    /// Получение списка с индексами для каждого района
+    /// Получение сообщений об отключениях из данных парсинга
     /// </summary>
-    /// <param name="districtValues"></param>
-    /// <exception cref="ArgumentException"></exception>
-    public Dictionary<string, List<ServiceMessage>> GetServiceMessages(Dictionary<string, List<TableDescription>> districtValues)
+    /// <param name="tableDescriptions"></param>
+    public List<ServiceAddress> GetServiceMessages(List<TableDescription> tableDescriptions)
     {
+        var districtDataDict = GetDistrictsDataFromTableDescriptions(tableDescriptions);
+        
         var supplyTypesEnums = Enum.GetValues(typeof(ServiceTypeEnum))
             .Cast<ServiceTypeEnum>()
             .Select(x => x.GetDescriptionValue())
             .ToList();
 
         var supplyTypeIndexes = new Dictionary<string, List<int>>();
-        foreach (var item in districtValues)
+        foreach (var item in districtDataDict)
         {
             var indexesOfSupplies = item.Value
                 .Where(x => supplyTypesEnums.Any(t => x.InnerText.Contains(t)))
@@ -56,7 +57,7 @@ public class TdContentParserService : ITdContentParserService
                 var pointer1 = item.Value[i - 1];
                 var pointer2 = item.Value[i];
 
-                var tableDescriptionItemList = districtValues[item.Key]
+                var tableDescriptionItemList = districtDataDict[item.Key]
                     .Where(x => x.Index >= pointer1 && x.Index < pointer2)
                     .ToList();
 
@@ -85,7 +86,7 @@ public class TdContentParserService : ITdContentParserService
             }
         }
 
-        return supplyDescriptionList;
+        return GetServiceAddressList(supplyDescriptionList);
     }
 
     /// <summary>
@@ -93,7 +94,7 @@ public class TdContentParserService : ITdContentParserService
     /// </summary>
     /// <param name="supplyTypeIndexes"></param>
     /// <returns></returns>
-    public Dictionary<string, List<int>> AddTheEndOfSupplyInfo(Dictionary<string, List<int>> supplyTypeIndexes)
+    private Dictionary<string, List<int>> AddTheEndOfSupplyInfo(Dictionary<string, List<int>> supplyTypeIndexes)
     {
         //Количество записей в таблице на одно событие
         const int supplyItems = 3;
@@ -116,7 +117,7 @@ public class TdContentParserService : ITdContentParserService
     /// </summary>
     /// <param name="tableDescriptions"></param>
     /// <returns></returns>
-    public List<List<TableDescription>> GetDistrictsDataFromTableDescriptions(List<TableDescription> tableDescriptions)
+    private Dictionary<string, List<TableDescription>> GetDistrictsDataFromTableDescriptions(List<TableDescription> tableDescriptions)
     {
         var districtValues = new List<List<TableDescription>>();
         var districts = tableDescriptions
@@ -142,7 +143,7 @@ public class TdContentParserService : ITdContentParserService
             districtValue.InnerText = districtValue.InnerText.NormalizeText();
         }
         
-        return districtValues;
+        return RestrictionTableDescriptionToDict(districtValues);
     }
 
     /// <summary>
@@ -151,7 +152,7 @@ public class TdContentParserService : ITdContentParserService
     /// <param name="tableDescriptions"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
-    public Dictionary<string, List<TableDescription>> RestrictionTableDescriptionToDict(List<List<TableDescription>> tableDescriptions)
+    private Dictionary<string, List<TableDescription>> RestrictionTableDescriptionToDict(List<List<TableDescription>> tableDescriptions)
     {
         var dict = new Dictionary<string, List<TableDescription>>();
         var districtNames = Enum.GetValues(typeof(DistrictEnum))
@@ -185,7 +186,7 @@ public class TdContentParserService : ITdContentParserService
     /// </summary>
     /// <param name="tableDescriptions"></param>
     /// <returns></returns>
-    public List<List<TableDescription>> RemovePlannedTableDescription(List<List<TableDescription>> tableDescriptions)
+    private List<List<TableDescription>> RemovePlannedTableDescription(List<List<TableDescription>> tableDescriptions)
     {
         foreach (var item in tableDescriptions)
         {
@@ -197,5 +198,38 @@ public class TdContentParserService : ITdContentParserService
         }
 
         return tableDescriptions;
+    }
+    
+    /// <summary>
+    /// Получение списка адресов с отключениями
+    /// </summary>
+    /// <param name="serviceMessages"></param>
+    /// <returns></returns>
+    public List<ServiceAddress> GetServiceAddressList(Dictionary<string, List<ServiceMessage>> serviceMessages)
+    {
+        List<ServiceAddress> serviceAddresses = [];
+        foreach (var serviceMessage in serviceMessages.SelectMany(x => x.Value).ToList())
+        {
+            var addressList = serviceMessage.AddressList;
+            foreach (var address in addressList)
+            {
+                var serviceAddress = new ServiceAddress();
+                serviceAddress.DistrictName = serviceMessage.DistrictName;
+                serviceAddress.StreetName = address.StreetName;
+                serviceAddress.HouseNumber = address.Number;
+                serviceAddress.Description = serviceMessage.Description;
+                serviceAddress.ServiceType = serviceMessage.Organization.SupplyTypeName;
+                        
+                serviceAddress.DateTimeFromString = serviceMessage.DateInfo.DateFromString;
+                serviceAddress.DateTimeToString = serviceMessage.DateInfo.DateToString;
+                serviceAddress.From = serviceMessage.DateInfo.DateFrom;
+                serviceAddress.To = serviceMessage.DateInfo.DateTo;
+                serviceAddress.CreatedDate = serviceMessage.CreatedDate;
+                        
+                serviceAddresses.Add(serviceAddress);
+            }
+        }
+
+        return serviceAddresses;
     }
 }

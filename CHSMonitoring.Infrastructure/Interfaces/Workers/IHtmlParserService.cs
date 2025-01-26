@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
+﻿using CHSMonitoring.Domain.Entities;
+using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
 using HtmlAgilityPack;
 
 namespace CHSMonitoring.Infrastructure.Interfaces.Workers;
@@ -8,5 +9,5 @@ namespace CHSMonitoring.Infrastructure.Interfaces.Workers;
 /// </summary>
 public interface IHtmlParserService
 {
-    public Dictionary<string, List<ServiceMessage>> GetServiceMessages(HtmlDocument htmlDocument);
+    public List<ServiceAddress> GetServiceMessages(HtmlDocument htmlDocument);
 }
