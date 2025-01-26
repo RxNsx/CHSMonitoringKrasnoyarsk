@@ -45,7 +45,7 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
         }
                             
         var addresses = splittedAddressesList
-            .Where(x => streetDescriptionEnums.Any(t => x.Contains(t)))
+            .Where(x => streetDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
             .ToList();
         
         var addressList = new List<Address>();
