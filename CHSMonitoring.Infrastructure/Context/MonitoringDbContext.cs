@@ -27,7 +27,6 @@ public class MonitoringDbContext : DbContext
     public virtual DbSet<Profile> Profiles { get; set; }
     
     public virtual DbSet<Role> Roles { get; set; }
-    
     public virtual DbSet<ServiceAddress> ServiceAddresses { get; set; }
     
     public virtual DbSet<ServiceType> ServiceTypes { get; set; }
