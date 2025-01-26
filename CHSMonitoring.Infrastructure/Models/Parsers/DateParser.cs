@@ -36,9 +36,17 @@ public static class DateParser
             }
         }
 
-        // //TODO: В дате есть вариант "Отмена"
-        // //TODO: В дате есть вариант "До устранения"
+        DateTime? dateFromParsed = dateFrom;
+        DateTime? dateToParsed = dateTo;
+        if (dateFrom == DateTime.MinValue)
+        {
+            dateFromParsed = null;
+        }
+        if (dateTo == DateTime.MinValue)
+        {
+            dateToParsed = null;
+        }
         
-        return DateInfo.Create(dateFrom, dateTo, dateFromString, dateToString);
+        return DateInfo.Create(dateFromParsed, dateToParsed, dateFromString, dateToString);
     }
 }

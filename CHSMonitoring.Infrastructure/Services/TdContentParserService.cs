@@ -65,7 +65,7 @@ public class TdContentParserService : ITdContentParserService
                     var supplyDescriptionBuilder = new ServiceMessageBuilder();
                     var organizationText = tableDescriptionItemList[0].InnerText.NormalizeText();
                     var addressesText = tableDescriptionItemList[1].InnerText.NormalizeText();
-                    var dateInfoText = tableDescriptionItemList[2].InnerText.NormalizeTextWithNewLine();
+                    var dateInfoText = tableDescriptionItemList[2].InnerText.NormalizeText();
 
                     supplyDescriptionBuilder.BuildOrganization(organizationText);
                     supplyDescriptionBuilder.BuildAddressesList(addressesText);

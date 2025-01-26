@@ -5,8 +5,8 @@
 /// </summary>
 public class DateInfo
 {
-    public DateTime DateFrom { get; private set; }
-    public DateTime DateTo { get; private set; }
+    public DateTime? DateFrom { get; private set; }
+    public DateTime? DateTo { get; private set; }
     public string DateFromString { get; private set; }
     public string DateToString { get; private set; }
 
@@ -17,7 +17,7 @@ public class DateInfo
     /// <param name="dateTo"></param>
     /// <param name="dateFromString"></param>
     /// <param name="dateToString"></param>
-    private DateInfo(DateTime dateFrom, DateTime dateTo, string dateFromString, string dateToString)
+    private DateInfo(DateTime? dateFrom, DateTime? dateTo, string dateFromString, string dateToString)
     {
         DateFrom = dateFrom;
         DateTo = dateTo;
@@ -25,7 +25,7 @@ public class DateInfo
         DateToString = dateToString;
     }
 
-    public static DateInfo Create(DateTime dateFrom, DateTime dateTo, string dateFromString, string dateToString)
+    public static DateInfo Create(DateTime? dateFrom, DateTime? dateTo, string dateFromString, string dateToString)
     {
         return new DateInfo(dateFrom, dateTo, dateFromString, dateToString);
     }

@@ -15,6 +15,10 @@ public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddre
 
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.DistrictName)
+            .HasMaxLength(100)
+            .IsRequired();
+        
         builder.Property(x => x.StreetName)
             .HasMaxLength(100)
             .IsRequired();
@@ -28,18 +32,27 @@ public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddre
             .IsRequired();
 
         builder.Property(x => x.Description)
-            .HasDefaultValue(string.Empty);
+            .HasDefaultValue(string.Empty)
+            .IsRequired(false);
 
         builder.Property(x => x.From)
-            .HasDefaultValue(DateTime.MinValue.ToUniversalTime());
+            .HasConversion(x => x!.Value.ToUniversalTime(), x => DateTime.SpecifyKind(x, DateTimeKind.Utc))
+            .IsRequired(false)
+            .HasDefaultValue(null);
 
         builder.Property(x => x.To)
-            .HasDefaultValue(DateTime.MinValue.ToUniversalTime());
+            .HasConversion(x => x!.Value.ToUniversalTime(), x => DateTime.SpecifyKind(x, DateTimeKind.Utc))
+            .IsRequired(false)
+            .HasDefaultValue(null);
         
         builder.Property(x => x.DateTimeFromString)
             .HasDefaultValue(string.Empty);
 
         builder.Property(x => x.DateTimeToString)
             .HasDefaultValue(string.Empty);
+
+        builder.Property(x => x.CreatedDate)
+            .HasConversion(x => x.ToUniversalTime(), x => DateTime.SpecifyKind(x, DateTimeKind.Utc))
+            .IsRequired();
     }
 }

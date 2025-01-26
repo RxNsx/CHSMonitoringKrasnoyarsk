@@ -36,7 +36,7 @@ public static class OrganizationParser
         {
             //Название типа обеспечения
             var indexOfSupplyEnumItem = organizationText.IndexOf(supplyTextDescription, StringComparison.InvariantCultureIgnoreCase);
-            var supplyNameText = organizationText.Substring(indexOfSupplyEnumItem, supplyTextDescription.Length);
+            serviceTypeName = organizationText.Substring(indexOfSupplyEnumItem, supplyTextDescription.Length);
             var lastTextWithoutSupplyName = organizationText.Remove(indexOfSupplyEnumItem, supplyTextDescription.Length).Trim();
 
             //Номер телефона
@@ -49,7 +49,7 @@ public static class OrganizationParser
             }
             
             //Получение названия типа обслуживания
-            serviceTypeName = serviceTypeEnums.FirstOrDefault(x => supplyNameText.Contains(x, StringComparison.InvariantCultureIgnoreCase));
+            serviceTypeName = serviceTypeEnums.FirstOrDefault(x => serviceTypeName.Contains(x, StringComparison.InvariantCultureIgnoreCase));
             //Получение названия типа обслуживания как Enum
             serviceTypeEnum = Enum.GetValues(typeof(ServiceTypeEnum))
                 .Cast<ServiceTypeEnum>()

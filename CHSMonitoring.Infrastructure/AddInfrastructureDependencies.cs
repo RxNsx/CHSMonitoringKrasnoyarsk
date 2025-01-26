@@ -22,6 +22,7 @@ public static class AddInfrastructureDependencies
         services.AddDbContext<MonitoringDbContext>(options =>
         {
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
+            options.EnableSensitiveDataLogging(false);
         });
         
         return services;

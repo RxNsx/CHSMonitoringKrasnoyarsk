@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.Infrastructure.Abstractions;
+﻿using System.Text.RegularExpressions;
+using CHSMonitoring.Infrastructure.Abstractions;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Models.Enums;
 using CHSMonitoring.Infrastructure.Models.Parsers;
@@ -66,11 +67,14 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
 
     internal override void BuildDateInfo(string dateInfoText)
     {
-        var splittedDateDescriptionList = dateInfoText
-            .Split("\r\n", StringSplitOptions.TrimEntries)
+        var pattern = @"(\d{1,2} [а-я]+ \d{1,2}-\d{1,2})";
+        var splitted = Regex.Split(dateInfoText, pattern);
+
+        var messagesToParse = splitted
             .Where(x => !string.IsNullOrWhiteSpace(x))
             .ToList();
-        var dateInfo = DateParser.ParseDatesFromTo(splittedDateDescriptionList);
+
+        var dateInfo = DateParser.ParseDatesFromTo(messagesToParse);
         _serviceMessage.SetDateInfo(dateInfo);
     }
 

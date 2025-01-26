@@ -22,6 +22,6 @@ public class Organization
 
     public static Organization Create(ServiceTypeEnum serviceTypeEnum, string supplyTypeName, string name, string telephone)
     {
-        return new Organization(serviceTypeEnum, name, supplyTypeName, telephone);
+        return new Organization(serviceTypeEnum, supplyTypeName, name, telephone);
     }
 }

@@ -33,7 +33,7 @@ public class ServiceAddress : Entity
     /// <summary>
     /// Дата начала отключения
     /// </summary>
-    public DateTime From { get; set; }
+    public DateTime? From { get; set; }
 
     /// <summary>
     /// Дата начала отключения в формате строки (или сообщение об отключении)
@@ -43,10 +43,15 @@ public class ServiceAddress : Entity
     /// <summary>
     /// Дата окончания отключения
     /// </summary>
-    public DateTime To { get; set; }
+    public DateTime? To { get; set; }
     
     /// <summary>
     /// Дата конца отключения в формате строки (или сообщение об отключении)
     /// </summary>
     public string DateTimeToString { get; set; }
+    
+    /// <summary>
+    /// Дата чтения события
+    /// </summary>
+    public DateTime CreatedDate { get; set; }
 }

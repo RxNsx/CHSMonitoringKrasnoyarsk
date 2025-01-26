@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
@@ -69,6 +70,33 @@ public class ServiceMessageWorker : BackgroundService
                 {
                     throw new ArgumentNullException("Пустой словарь");
                 }
+
+                List<ServiceAddress> serviceAddresses = [];
+                foreach (var serviceMessage in supplyMessageDescriptions.SelectMany(x => x.Value).ToList())
+                {
+                    var serviceAddress = new ServiceAddress();
+                    serviceAddress.DistrictName = serviceMessage.DistrictName;
+                    
+                    var addressList = serviceMessage.AddressList;
+                    foreach (var address in addressList)
+                    {
+                        serviceAddress.StreetName = address.StreetName;
+                        serviceAddress.HouseNumber = address.Number;
+                        serviceAddress.Description = serviceMessage.Description;
+                        serviceAddress.ServiceType = serviceMessage.Organization.SupplyTypeName;
+                        
+                        serviceAddress.DateTimeFromString = serviceMessage.DateInfo.DateFromString;
+                        serviceAddress.DateTimeToString = serviceMessage.DateInfo.DateToString;
+                        serviceAddress.From = serviceMessage.DateInfo.DateFrom;
+                        serviceAddress.To = serviceMessage.DateInfo.DateTo;
+                        serviceAddress.CreatedDate = serviceMessage.CreatedDate;
+                        
+                        serviceAddresses.Add(serviceAddress);
+                    }
+                }
+                
+                
+                await _serviceAddressRepository.AddServiceAddressesAsync(serviceAddresses, stoppingToken);
                 
                 //TODO: Добавить в каждую запись значение района
                 Console.WriteLine("Total seconds elapsed: " + stopwatch.Elapsed.Seconds);
