@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using CHSMonitoring.Domain.Entities;
+using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
 using Microsoft.EntityFrameworkCore;
 
 namespace CHSMonitoring.Infrastructure.Context;
@@ -32,6 +33,8 @@ public class MonitoringDbContext : DbContext
     public virtual DbSet<ServiceType> ServiceTypes { get; set; }
     
     public virtual DbSet<User> Users { get; set; }
+    
+    public virtual DbSet<Street> Streets { get; set; }
 
     /// <summary>
     /// Определение построения моделей

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using CHSMonitoring.Infrastructure.Attributes;
 
 namespace CHSMonitoring.Infrastructure.Models.Enums;
 
@@ -7,106 +8,207 @@ public enum StreetNameEnum
     #region Улицы на букву A
     
     [Description("Абазинский")]
+    [EnumGuid("4B92ACAA-4050-42C3-88F6-CE52FA3B604D")]
     Abazinskiy,
+
     [Description("Абаканский")]
+    [EnumGuid("71EC9F1F-2A7D-4890-ADAE-C977C4CC4F6D")]
     Abakanskiy,
+
     [Description("Абытаевская")]
+    [EnumGuid("D34EFBD7-CA4E-47F1-BF9D-611638482E2A")]
     Abytaevskaya,
+
     [Description("Авамский")]
+    [EnumGuid("88E098D6-D106-4BF8-A6FA-4E9417EBB8BB")]
     Avamskiy,
+
     [Description("Авангардная")]
+    [EnumGuid("51020B54-70BD-41D5-9BE8-3B72C860A1E2")]
     Avangardnaya,
+
     [Description("Авиагородок")]
+    [EnumGuid("2C22A5F3-4949-49C6-97AE-D1CFD6015394")]
     Aviogorodok,
+
     [Description("Авиаторов")]
+    [EnumGuid("9ABD609B-496E-4354-B848-93F83F27237D")]
     Aviatory,
+
     [Description("Авиационная")]
+    [EnumGuid("6004E84B-885F-4207-BC87-BA50AA9815CA")]
     Aviatsionnaya,
+
     [Description("Автобусный")]
+    [EnumGuid("F7059F62-7B78-4466-86DC-F098A196C30E")]
     Avtobusnyy,
+
     [Description("Автомобилистов")]
+    [EnumGuid("F405128B-C367-4E88-9F3B-100341EC60A6")]
     Avtomobilistov,
+
     [Description("Адмирала Макарова")]
+    [EnumGuid("DA7E4C27-DD79-4BB5-8410-17B3A93BD42F")]
     AdmiralaMakarova,
+
     [Description("Ады Лебедевой")]
+    [EnumGuid("42CB342A-F5C5-4268-A483-BCD5FAF8BCFB")]
     AdyLebedevoi,
+
     [Description("Азовская")]
+    [EnumGuid("65554006-D39A-42E0-BB5E-1E5D7CB38AD9")]
     Azovskaya,
+
     [Description("Айвазовского")]
+    [EnumGuid("0E935E8D-6948-4BC0-B004-AECB18339CF8")]
     Ayvazovskogo,
+
     [Description("Академгородок")]
+    [EnumGuid("877FE754-DBE1-4BFB-A139-4CA78C88EE2B")]
     Akademgorodok,
+
     [Description("Академика Вавилова")]
+    [EnumGuid("C3C9289F-F743-45D2-98DA-2168F7FD4177")]
     AkademikaVavilova,
+
     [Description("Академика Киренского")]
+    [EnumGuid("D1634B26-4043-452F-924A-61E8BB1EDDAD")]
     AkademikaKirenskogo,
+
     [Description("Киренского")]
+    [EnumGuid("ED8B6C97-9793-40E0-9C32-2029D89F46DA")]
     Kirenskogo,
+
     [Description("Академика Павлова")]
+    [EnumGuid("C385DAD2-CB71-4045-B62D-AEF9F2652E7B")]
     AkademikaPavlova,
+
     [Description("Павлова")]
+    [EnumGuid("2D429E79-1A28-4626-B987-F42EF2133D00")]
     Pavlova,
+
     [Description("Аксеновского")]
+    [EnumGuid("5FCB03C3-BFAC-4FE1-B1C2-080B718264B3")]
     Aksenovskogo,
+
     [Description("Акционерная")]
+    [EnumGuid("9666F17C-CEBC-4369-AFF6-26C99A115D38")]
     Aktsionernaya,
+
     [Description("Александра Матросова")]
+    [EnumGuid("677A92AD-E011-47A7-A7F0-E20E4E9C2690")]
     AleksandraMatrosova,
+
     [Description("Матросова")]
+    [EnumGuid("367A6589-A7F5-4D23-9212-03094C70CE5F")]
     Matrosova,
+
     [Description("Александровский")]
+    [EnumGuid("F28521A0-4EBA-4D08-A873-4081BB6333A0")]
     Aleksandrovskiy,
+
     [Description("Алексеева")]
+    [EnumGuid("11EA64E8-1598-49E2-9800-BBFC20BDD274")]
     Alekseeva,
+
     [Description("Алексея Асеева")]
+    [EnumGuid("FCB4186B-BDCA-4BAB-9B44-09355693589E")]
     AlekseyaAseeva,
+
     [Description("Алеши Тимошенкова")]
+    [EnumGuid("9192D885-D480-457E-A665-9E55F65B2EE3")]
     AleshTimoshenkova,
+
     [Description("Алтайская")]
+    [EnumGuid("801E4F90-8CB9-41B2-9B06-595CD9D0F42D")]
     Altayskaya,
+
     [Description("6-я Алыкельская")]
+    [EnumGuid("BB02DA51-9C41-4D96-9EA1-E032F02F6813")]
     _6yaAlykelSkaya,
+
     [Description("Алыкельская 6-я")]
+    [EnumGuid("19CE8FCA-3A88-4551-97E0-708339195F73")]
     AlykelSkaya6ya,
+
     [Description("Алюминиевая")]
+    [EnumGuid("21348C0C-DA30-4883-87DF-F424CA4A8DF6")]
     Alyumineevaya,
+
     [Description("Аманатский")]
+    [EnumGuid("18496668-B982-4EE6-B6C2-33EFA43F1F49")]
     Amanatskiy,
+
     [Description("Амурская")]
+    [EnumGuid("45BBFEB3-134F-4C9F-8AE4-4F2385DFAC20")]
     Amurskaya,
+
     [Description("Анабарская")]
+    [EnumGuid("297766AA-5551-4418-B824-930CCD040EA5")]
     Anabarskaya,
+
     [Description("Анатолия Гладкова")]
+    [EnumGuid("0786249C-7911-423E-9DEC-647953EB64F3")]
     AnatoliyaGladkova,
+
     [Description("Ангарская")]
+    [EnumGuid("E8AFCD2C-74EF-4365-B834-213BBCC3E3E8")]
     Angarskaya,
+
     [Description("Анзельская")]
+    [EnumGuid("90730E9C-724D-46BE-9DB1-75BDC7DF3B52")]
     AnzelSkaya,
+
     [Description("Апрельская")]
+    [EnumGuid("005FE355-AC4F-40BB-B1EA-5069FE2B1189")]
     AprelSkaya,
+
     [Description("Аральская")]
+    [EnumGuid("216E16A4-DD56-4A51-901E-5261B545682F")]
     AralSkaya,
+
     [Description("Арейская")]
+    [EnumGuid("77C5F372-8948-4302-8DF0-7A94ECF2EF66")]
     Areyskaya,
+
     [Description("Аринская")]
+    [EnumGuid("611FB690-E11B-4F5F-923A-34CD7A2280F2")]
     Arinskaya,
+
     [Description("Армейская")]
+    [EnumGuid("8094D270-4744-4182-95A6-97CF9EAE36A1")]
     Armeyskaya,
+
     [Description("Арский")]
+    [EnumGuid("44E8F6FB-A38D-44F2-93C5-E1F24F97C81A")]
     Arskiy,
+
     [Description("Артемовская")]
+    [EnumGuid("69B571B6-F9E9-49DE-A57C-0766FAD92856")]
     Artemovskaya,
+
     [Description("Архангельская")]
+    [EnumGuid("7BDEA3FA-B183-45E0-B63F-6ABE35119C9E")]
     ArkhangelSkaya,
+
     [Description("Астраханская")]
+    [EnumGuid("827E90A1-C262-4078-857C-2D223F2A59B5")]
     Astrakhanskaya,
+
     [Description("Атаманская")]
+    [EnumGuid("C696B1B8-7FFD-4F88-89BA-CD2711EB25B6")]
     Atamanskaya,
+
     [Description("Афонтовский")]
+    [EnumGuid("E667F1BA-C9DC-458C-86A4-AA3F2AB25332")]
     Afontovskiy,
+
     [Description("Ачинский")]
+    [EnumGuid("509F10A6-2CE4-4926-B870-4DC9B07201B6")]
     Achinskiy,
+
     [Description("Аэровокзальная")]
+    [EnumGuid("5FDEC09D-55E8-4934-AAD1-3BC769CC3D4C")]
     Aerovokzalnaya,
     
     #endregion
