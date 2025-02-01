@@ -1044,276 +1044,412 @@ public enum StreetNameEnum
 
     #region Улицы на букву К
 
+    [EnumGuid("3BF2D2A1-110E-4D8B-B12F-75C70A93CDF7")]
     [Description("Крайняя")]
     Kraynyaya,
+	[EnumGuid("F5B6D9F9-1B9D-4B5F-9B5B-EBB4C2BBAE5E")]
     [Description("Кабульская")]
     Kabulskaya,
+    [EnumGuid("5C95A37A-E0FD-42DD-A88E-4B077F914818")]
     [Description("Казанская")]
     Kazanskaya,
+    [EnumGuid("2B2E8AE3-D54A-4722-8019-07D9B3B4BF44")]
     [Description("Казарменный")]
     Kazarmenniy,
+    [EnumGuid("F1B3A49C-DED5-4372-87E8-AE960B8DA855")]
     [Description("Калинина")]
     Kalinina,
+    [EnumGuid("1D17903E-22A6-4D16-A894-1F0821D795FF")]
     [Description("Калиновая")]
     Kalinovaya,
+    [EnumGuid("66246DF2-EB10-4C92-B46F-5DE110849729")]
     [Description("Камасинская")]
     Kamasinskaya,
+    [EnumGuid("C888E558-943B-4AA0-BDEB-F12C49B2F1E0")]
     [Description("Каменная")]
     Kamennaya,
+    [EnumGuid("2C1AD134-12E8-48CB-95E6-C963805945BB")]
     [Description("Камская")]
     Kamskaya,
+    [EnumGuid("813A8F9C-CD94-436B-B911-5B4A260CE2D1")]
     [Description("Камчатская")]
     Kamchatskaya,
+    [EnumGuid("5A54DEE7-E89D-4BE5-9D04-C530C815AABD")]
     [Description("Камчатская 2-я")]
     Kamchatskaya2,
+    [EnumGuid("F5F15458-5243-4D49-B3E1-F21474ED8064")]
     [Description("2-я Камчатская")]
     Kamchatska_ya2,
+    [EnumGuid("D33B14B3-60A0-4EB1-960B-0E853B4FFEE5")]
     [Description("Камчатская 3-я")]
     Kamchatskaya3,
+    [EnumGuid("E372AB17-AF6A-44CF-87F8-54616A783731")]
     [Description("3-я Камчатская")]
     Kamchatska_ya3,
+    [EnumGuid("915853CA-5CFE-4B5E-8DF8-D2DCCA89ED97")]
     [Description("Камчатская 4-я")]
     Kamchatskaya4,
+    [EnumGuid("2AF8239C-BD90-497B-9ADF-325F8307A76B")]
     [Description("4-я Камчатская")]
     Kamchatska_ya4,
+    [EnumGuid("397ADF26-48C8-429B-980F-70CEC30C0947")]
     [Description("Камчатская 5-я")]
     Kamchatskaya5,
+    [EnumGuid("365772AC-60DE-428A-874D-A6AA31727C86")]
     [Description("5-я Камчатская")]
     Kamchatska_ya5,
+    [EnumGuid("2B5F4314-CBAB-4780-B40E-047A70A4A410")]
     [Description("Кандагарская")]
     Kandagarskaya,
+    [EnumGuid("5E0C03F0-E92B-4411-B8CA-AF744C3ACE0C")]
     [Description("Канская")]
     Kanskaya,
+    [EnumGuid("3CB3E52F-39EF-40E4-A0DA-A4CEE7CE3AE7")]
     [Description("Капитанская")]
     Kapitanskaya,
+    [EnumGuid("17D6DC36-3CC2-4448-A057-4F5BC1863436")]
     [Description("Карамзина")]
     Karamzina,
+    [EnumGuid("D52263DE-934D-495C-A421-3AF51C8BB230")]
     [Description("Каратанова")]
     Karatanova,
+    [EnumGuid("75FBEDE8-0816-4D53-BEB1-2C86A004869D")]
     [Description("Каратузский")]
     Karatuzskiy,
+    [EnumGuid("F6427FE1-2AF3-4CD1-8F39-52B5CF3B2BA8")]
     [Description("Караульная")]
     Karaulnaya,
+    [EnumGuid("1D97330F-0939-4402-B82D-E8CB81124F39")]
     [Description("Карбышева")]
     Karbyshova,
+    [EnumGuid("CE15BB21-623D-4873-87F2-94BE1754D3F2")]
     [Description("Кардагчинская")]
     Kardagchinskaya,
+    [EnumGuid("D1D8E18B-41FC-47ED-AD3A-5C30E5B8C77A")]
     [Description("Карла Либкнехта")]
     KarlaLibknekhta,
+    [EnumGuid("FDC9C0C3-96E7-4768-8201-5901541FF390")]
     [Description("Карла Маркса")]
     KarlaMarksa,
+    [EnumGuid("F9C4DE11-2F8F-488F-BE6A-183F6412C041")]
     [Description("Карнавальная")]
     Karnavalnaya,
+    [EnumGuid("9E813CB5-9EC2-4449-AA38-61D03266A519")]
     [Description("Карьерная")]
     Karernaya,
+    [EnumGuid("5B37AAFC-3675-4F39-AC57-2E52E07F440F")]
     [Description("Карьерный")]
     Karerniy,
+    [EnumGuid("ECBC6D0C-6DD1-4740-9560-2A24280A6205")]
     [Description("Каурова")]
     Kaurova,
+    [EnumGuid("F5209866-F8DB-4EF6-955B-E4BB2CBA9BBA")]
     [Description("Каучуковый")]
     Kauchukoviy,
+    [EnumGuid("9E01C914-2636-45EC-B242-CFECF183A1D3")]
     [Description("Каховская")]
     Kakhovskaya,
+    [EnumGuid("73C00F32-D4C9-4E14-BE58-B5B5D7B43176")]
     [Description("Качи")]
     Kachi,
+    [EnumGuid("ED4E7028-FBE6-44BF-8052-A02C65B6BFD2")]
     [Description("Качинская")]
     Kachinskaya,
+    [EnumGuid("34BDB7F4-F031-4D07-AFEB-01A3EAEAA137")]
     [Description("Каштачная")]
     Kashtachnaya,
+    [EnumGuid("7322765A-4D56-4D15-A2DD-0BC064B9FB2A")]
     [Description("Квадратный")]
     Kvadratniy,
+    [EnumGuid("A1075693-C31F-4024-B7E4-9754313EDD8A")]
     [Description("Квартал 52-й")]
     Kvartal52,
+    [EnumGuid("06FCDC0F-7BE8-43A5-9E0D-54AE3E5313D3")]
     [Description("Квартальная")]
     Kvartalnaya,
+    [EnumGuid("55E74BA3-4DCF-4C1D-9543-5802906C6A66")]
     [Description("Кедровая")]
     Kedrovaya,
+    [EnumGuid("ADF58374-4C9C-4C3B-A234-B6D297AFF467")]
     [Description("Кедровый")]
     Kedrovoy,
+    [EnumGuid("095BF636-E149-4FD1-8E0B-5D4E1C0AF9D0")]
     [Description("Кипрейная")]
     Kipreynaya,
+    [EnumGuid("4F27F88E-EE9A-41B3-AC43-EC963BB0D25A")]
     [Description("Кирова")]
     Kirova,
+    [EnumGuid("8259A15E-C639-4841-9C21-C08AA3037447")]
     [Description("Кирпичников")]
     Kirpichnikova,
+    [EnumGuid("19F54BA9-5169-437C-BA0A-52A52AEC1333")]
     [Description("Кишинёвская")]
     Kishinevskaya,
+    [EnumGuid("3BB2E835-7A40-451A-BF21-E9FC06AC1D45")]
     [Description("Клеверный")]
     Klevernaya,
+    [EnumGuid("B486A65D-1BDC-4A6B-94FD-DDC61D650275")]
     [Description("Клинкерная 1-я")]
     Klinkernaya1,
+    [EnumGuid("87878ED3-9055-4336-A410-CD92C095CEE9")]
     [Description("1-я Клинкерная")]
     Klinkerna_ya1,
+    [EnumGuid("B9B8FA25-B780-409E-BA53-91454D288207")]
     [Description("Клинкерная 2-я")]
     Klinkernaya2,
+    [EnumGuid("0B60CD5A-A356-4B04-928D-BDFFF8104ED5")]
     [Description("2-я Клинкерная")]
     Klinkerna_ya2,
+    [EnumGuid("A26612D1-8079-46F2-A4FF-F41F519A94DE")]
     [Description("Ключевская")]
     Klyuchevskaya,
+    [EnumGuid("8BC33174-0EEB-4D7B-8EE4-B4096C44C5F4")]
     [Description("Ковыльная")]
     Kovylnaya,
+    [EnumGuid("1069B000-485F-46DA-8337-04094D9D5CB3")]
     [Description("Кодинская")]
     Kodinskaya,
+    [EnumGuid("D6756660-68DF-4991-9358-E24CCDD22F60")]
     [Description("Коломенская")]
     Kolomenskaya,
+    [EnumGuid("291CE929-0D55-4E55-9871-8BB32A4E59B7")]
     [Description("Колхозная")]
     Kolkhoznaya,
+    [EnumGuid("2CD618FA-8E6C-46EF-95FE-16E01E8ADCDA")]
     [Description("Кольцевая")]
     Koltevaya,
+    [EnumGuid("8C331DB7-9DA3-4331-B41A-ADCB3C2E4F89")]
     [Description("Кольцевой")]
     Koltevoy,
+    [EnumGuid("D3608789-28F6-46E7-8AF0-4FD4A0F7D22E")]
     [Description("Колягинская")]
     Kolyaginskaya,
+    [EnumGuid("2BFF9B30-5EB1-4CCA-BC85-A348AC3736EE")]
     [Description("Комарова")]
     Komarova,
+    [EnumGuid("8D461F85-397A-4193-ACAF-B882B27991FF")]
     [Description("Комбайнеров")]
     Kombaynerova,
+    [EnumGuid("28DD3AC0-5206-4887-BD1C-20D755D62177")]
     [Description("Комбайностроителей")]
     KombaynoStroiteley,
+    [EnumGuid("712E7A3C-1034-4866-9176-F76243922E58")]
     [Description("Коммунальная")]
     Kommunalnaya,
+    [EnumGuid("D1A2A14A-6198-451B-BD70-623F05615346")]
     [Description("Коммунистическая")]
     Kommunisticheskaya,
+    [EnumGuid("08BF1752-0C35-41A2-AD19-A85229B359A3")]
     [Description("Комсомольский")]
     Komsomolskiy,
+    [EnumGuid("385CA1D1-A5FE-4115-840F-3CE970821558")]
     [Description("Конечная")]
     Konechnaya,
+    [EnumGuid("D31332CB-1159-42B3-9367-BDB5073D5F2D")]
     [Description("Конституции СССР")]
     KonstitutsiiSssr,
+    [EnumGuid("440872EB-73D3-4CD2-A3F4-DD593D7060DA")]
     [Description("Конструкторов")]
     Konstruktorov,
+    [EnumGuid("E530A5FA-BEB7-4B20-9B48-CC723961A5B3")]
     [Description("Контейнерная")]
     Konteinernaya,
+    [EnumGuid("65A16729-CD55-4B62-A501-441203536621")]
     [Description("Кооперативная")]
     Kooperativnaya,
+    [EnumGuid("D050748B-9495-4534-9065-A9BD705BE843")]
     [Description("Копылова")]
     Kopylova,
+    [EnumGuid("C94CAF15-52D3-48B9-909E-BF9446573028")]
     [Description("Копьевская")]
     Kopyevskaya,
+    [EnumGuid("34062E2A-A445-4DC8-A876-473689370C09")]
     [Description("Корабельная")]
     Korabelnaya,
+    [EnumGuid("577B1B0D-E7A4-4CBD-91D1-07643E9F1BCF")]
     [Description("Корнеева")]
     Korneeva,
+    [EnumGuid("047AB155-CF89-4809-A333-4919F58E3A67")]
     [Description("Корнетова")]
     Kornetova,
+    [EnumGuid("1D064C51-ACDA-43AC-BE45-A531828447C7")]
     [Description("Королева")]
     Koroleva,
+    [EnumGuid("D92D7C5B-31CC-4A59-B64D-C1D2FA36889C")]
     [Description("Короленко")]
     Korolenko,
+    [EnumGuid("FB2E68D2-F0CB-45D9-AFB4-22D7F464CC9C")]
     [Description("Короткий")]
     Korotkiy,
+    [EnumGuid("DDB608CE-D120-4FBF-A1F1-D204CF233EF2")]
     [Description("Космическая")]
     Kosmicheskaya,
+    [EnumGuid("30447FDC-9A1F-4759-89D9-7848D791F7DE")]
     [Description("Космонавтов микрорайон Северный")]
     KosmonavtovSeverniy,
+    [EnumGuid("6804E765-67B2-44D5-8141-77F1463D064A")]
     [Description("Космонавтов")]
     Kosmonavtov,
+    [EnumGuid("DD03C61A-3C85-4BB6-AAAF-8F25EB5DB98B")]
     [Description("Косой")]
     Kosoy,
+    [EnumGuid("DB7DDF65-9E5F-4AD3-94BE-1475A7D84B18")]
     [Description("Котельникова")]
     Kotelnikova,
+    [EnumGuid("449C15E9-4DED-4F47-9C76-FFA6CCCF7E44")]
     [Description("Котовского")]
     Kotoskogo,
+    [EnumGuid("7AA23300-3AF4-4477-8B9F-1A48FCD7AA43")]
     [Description("Кочубея")]
     Kochubeya,
+    [EnumGuid("D9D76B89-8290-4765-A6E4-415254DA7A7C")]
     [Description("Кравченко")]
     Kravchenko,
+    [EnumGuid("E19D04DF-D80D-445A-A32F-D6AC31791D29")]
     [Description("Кразовская")]
     Krazovskaya,
+    [EnumGuid("31EC551E-4C29-406C-9733-B784FFC5362B")]
     [Description("Красикова")]
     Krasikova,
+    [EnumGuid("5B634DD6-0866-4367-BF34-BA3B13C95643")]
     [Description("Красная")]
     Krasnaya,
+    [EnumGuid("F062D8C2-0D66-4077-A1D1-B75DD6E07A33")]
     [Description("Красногорская")]
     Krasnogorskaya,
+    [EnumGuid("3AF9CC0C-487C-4F2E-88A0-F34070FFEEDF")]
     [Description("Красногорская 2-я")]
     Krasnogorskaya2,
+    [EnumGuid("85A5D7EA-3829-4658-BC2D-8A53ECF7E270")]
     [Description("2-я Красногорская")]
     Krasnogorska_ya2,
+    [EnumGuid("6AB6CFDD-B9EB-456F-A462-AEC13B4531DA")]
     [Description("Красноградская")]
     Krasnogradskaya,
+    [EnumGuid("899923DE-D73A-4357-BB5B-4751EC4216B2")]
     [Description("Краснодарская")]
     Krasnodarskaya,
+    [EnumGuid("DD879CD4-4D68-4E46-B783-D94A26FC100D")]
     [Description("Краснодарская 1-я")]
     Krasnodarskaya1,
+    [EnumGuid("A2F7887B-08EE-4951-8B88-46051A729CD2")]
     [Description("1-я Краснодарская")]
     Krasnodarska_ya1,
+    [EnumGuid("25B7ADA3-9E37-4E80-80DF-1A5A292F50E0")]
     [Description("Краснодарская 2-я")]
     Krasnodarskaya2,
+    [EnumGuid("9C29B42B-AF5E-4604-8E7F-0CE9A10614A7")]
     [Description("2-я Краснодарская")]
     Krasnodarska_ya2,
+    [EnumGuid("373F38F6-8541-4324-8674-D43D15EDF77B")]
     [Description("Краснодарская 3-я")]
     Krasnodarskaya3,
+    [EnumGuid("9A05736A-1614-4682-A01B-842460C6416E")]
     [Description("3-я Краснодарская")]
     Krasnodarska_ya3,
+    [EnumGuid("863BEA5A-FFE8-4638-ABB6-80BA82347D4A")]
     [Description("Краснодонцев")]
     Krasnodontsev,
+    [EnumGuid("08D3C3D4-9275-4B82-AC4E-21A672D45859")]
     [Description("Красной Армии")]
     KrasnoyArmii,
+    [EnumGuid("78E849AB-8EBC-4436-B0F9-92E483AAAAD0")]
     [Description("Красной Гвардии")]
     KrasnoyGvardii,
+    [EnumGuid("12DC60CE-6B70-48F8-9399-0093A4F2D6E9")]
     [Description("Красной Звезды")]
     KrasnoyZvezdy,
+    [EnumGuid("1D68FB6A-1061-4F2B-AD19-FBEAFC0664A1")]
     [Description("Красномосковская")]
     Krasnomoskovskaya,
+    [EnumGuid("BD87782A-B6AF-4A04-9928-ABB6EABBF6CC")]
     [Description("Краснопресненская")]
     Krasnopresnenskaya,
+    [EnumGuid("165E5CAC-8655-4C6D-B7F9-62F79B096227")]
     [Description("Краснофлотская 2-я")]
     Krasnoflotskaya2,
+    [EnumGuid("685526B2-B983-4845-AF81-EEC19905417B")]
     [Description("2-я Краснофлотская")]
     Krasnoflotska_ya2,
+    [EnumGuid("1044BB6E-AB8B-4F09-A48C-6B978726399F")]
     [Description("Красных Зорь")]
     KrasnyhZor,
+    [EnumGuid("BA5AFEE6-D0D1-497F-8FE9-AFC2775E5C58")]
     [Description("Кривоколенный")]
     Krivokolenniy,
+    [EnumGuid("9F5E1FA5-4D9F-499B-A7A2-506BE391BAFE")]
     [Description("Круговая")]
     Krugovaya,
+    [EnumGuid("9F1C98C0-C1A7-477E-B0E2-B279283FA0A3")]
     [Description("Крупской")]
     Krupskoy,
+    [EnumGuid("31A41238-F7D0-4081-9621-736C5FE23C22")]
     [Description("Крутая 1-я")]
     Krutaya1,
+    [EnumGuid("C3AD66B7-F879-4F4E-816D-A43B8AD14CFE")]
     [Description("1-я Крутая")]
     Kruta_ya1,
+    [EnumGuid("6F1EF89F-26DA-4494-AAC9-7A938884614A")]
     [Description("Крутая 2-я")]
     Krutaya2,
+    [EnumGuid("3711EE05-B67D-49FF-BBF6-3E36C9E8B889")]
     [Description("2-я Крутая")]
     Kruta_ya2,
+    [EnumGuid("9AB3804A-E6F8-440D-B7A1-B286E7B1EA40")]
     [Description("Крутовского")]
     Krutovskogo,
+    [EnumGuid("961795BB-E108-4D33-81DF-7C82F4CF436B")]
     [Description("Крутогорская 1-я")]
     Krutogorskaya1,
+    [EnumGuid("7D9CAB30-4479-4DD9-BEE1-843E8BBB76AC")]
     [Description("1-я Крутогорская")]
     Krutogorska_ya1,
+    [EnumGuid("94E4F1CF-9C36-4FC9-8300-D6AB015B098B")]
     [Description("Крутогорская 2-я")]
     Krutogorskaya2,
+    [EnumGuid("EEF84D69-36B7-44DB-B7F8-015053F41C21")]
     [Description("2-я Крутогорская")]
     Krutogorska_ya2,
+    [EnumGuid("337CD6FE-EFE0-4140-9217-609F38E86688")]
     [Description("Крылова")]
     Krylova,
+    [EnumGuid("79C3ADE4-41E1-4065-838D-1E7346904806")]
     [Description("Кубанская")]
     Kubanskaya,
+    [EnumGuid("CF1F4921-0520-4715-ABFC-F1D865927A5B")]
     [Description("Кузнецкий")]
     Kuznetskiy,
+    [EnumGuid("7AA9426C-D32A-49EE-94C8-42C8347BEA4E")]
     [Description("Куйбышева")]
     Kuybysheva,
+    [EnumGuid("A66AA241-33E0-408B-9C47-92859782923F")]
     [Description("Куйсумская")]
     Kuysumskaya,
+    [EnumGuid("F88683DB-0D70-4209-83D1-D95223E17FE9")]
     [Description("Куксинский")]
     Kuksinskiy,
+    [EnumGuid("04DFF58D-FC52-4608-BB20-0DF0EDA95B6F")]
     [Description("Курагинская")]
     Kuraginskaya,
+    [EnumGuid("84143D7A-798D-46DF-B53D-62FBA312F6E0")]
     [Description("Курганская")]
     Kurganskaya,
+    [EnumGuid("03FD75BE-7765-46DF-96FD-95CF6E0D8994")]
     [Description("Курейская")]
     Kureyskaya,
+    [EnumGuid("1B1FB442-2BFA-41FB-8C7C-9BF5ABC45B27")]
     [Description("Куренная")]
     Kurenaya,
+    [EnumGuid("339D60A8-7CD7-424F-97F8-E3AAAF4A16AF")]
     [Description("Курчатова")]
     Kurchatova,
+    [EnumGuid("6BCF2BAE-A83A-44B7-BA77-F905B358A680")]
     [Description("Кутузова")]
     Kutuzova,
+    [EnumGuid("45CFCDBF-6D25-48C0-B4B2-E87F43CE628C")]
     [Description("Кутузова 2-я")]
     Kutuzova2,
+    [EnumGuid("83889260-A685-4E24-A9EC-1FD24CA5BB5A")]
     [Description("2-я Кутузова")]
     Kutuzova_2,
 
