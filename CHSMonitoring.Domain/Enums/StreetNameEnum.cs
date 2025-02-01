@@ -1457,102 +1457,150 @@ public enum StreetNameEnum
     
     #region Улицы на букву Л
     
+    [EnumGuid("D24F5C54-F444-4006-A8E2-829525266089")]
     [Description("Лабазный")]
     Labazniy,
+    [EnumGuid("446ADC7D-8671-4D77-A1CC-67A5E8431DEF")]
     [Description("Ладо Кецховели")]
     LadoKechkhoveli,
+    [EnumGuid("08CE180E-DE3F-4292-880F-4714D33F71CA")]
     [Description("Лазурная")]
     Lazurnaya,
+    [EnumGuid("51AD2CF8-8371-44EB-B8C1-45440DFB50B0")]
     [Description("Лалетино")]
     Laletino,
+    [EnumGuid("64368AAC-655D-4C4A-9409-820AADEE39F0")]
     [Description("Ламская")]
     Lamskaya,
+    [EnumGuid("C553456E-7C31-46E8-BCF1-CC74D7776EEA")]
     [Description("Ленина")]
     Lenina,
+    [EnumGuid("6FBB86ED-87C0-40DA-B938-A38DF57F9CEB")]
     [Description("Ленинградская")]
     Leningradskaya,
+    [EnumGuid("4E9C46EE-AB66-407E-A35D-A516F4FCE98F")]
     [Description("Ленинградская 1-я")]
     Leningradskaya1,
+    [EnumGuid("7B6A0ACE-3F42-4309-87D9-B4A6B04760A9")]
     [Description("1-я Ленинградская")]
     Leningradska_ya1,
+    [EnumGuid("7D3861B2-CAA2-441F-AC0E-13978A8C6A5B")]
     [Description("Лермонтова")]
     Lermontova,
+    [EnumGuid("8763941A-907E-47D0-B371-C8895E5F64BE")]
     [Description("Лесная")]
     Lesnaya,
+    [EnumGuid("FBE34967-FB20-4AEA-83A7-76151D602C53")]
     [Description("Лесников")]
     Lesnikov,
+    [EnumGuid("BFCDA052-330C-4B38-ABED-DEE8545606C1")]
     [Description("Лесной")]
     Lesnoy,
+    [EnumGuid("49ABB922-8C73-4390-926A-F52A76F65600")]
     [Description("Лесопарковая")]
     Lesoparkovaya,
+    [EnumGuid("1EFE8EE3-4B32-413C-BF62-50704801AECC")]
     [Description("Лесоперевалочная")]
     Lesoperevalochnaya,
+    [EnumGuid("E31C5661-A483-466B-9B90-15E1C5EC0895")]
     [Description("Лесопильщиков")]
     Lesopilschikov,
+    [EnumGuid("5D802D83-2774-45F0-9C13-A22B841034D8")]
     [Description("Лесопитомник")]
     Lesopitomnik,
+    [EnumGuid("ACB26937-E0B2-487F-ABE8-D628540CA5C4")]
     [Description("Лесосибирский")]
     Lesosibirskiy,
+    [EnumGuid("4EDFC4D2-C07E-4B41-9E25-A232910E6718")]
     [Description("Лесосплавная")]
     Lesosplavnaya,
+    [EnumGuid("7DF94615-F8A6-47D4-903F-04BD0BB91807")]
     [Description("Летчиков")]
-    Letchikov,
+    Letchikov,[EnumGuid("C23ADDD9-97F8-4D55-9A91-F4F77CF24763")]
     [Description("Лиды Прушинской")]
     LidyPrushinskoy,
+    [EnumGuid("B5A0AF60-CD40-4676-9C3F-A98E2932CEFD")]
     [Description("Лизы Чайкиной")]
     LiziChaykinoy,
+    [EnumGuid("CAAFBD77-AF55-43ED-A218-17E80470C6D3")]
     [Description("Линейная")]
     Lineynaya,
+    [EnumGuid("FD009479-55EF-4DDB-AB64-BDD06E3EE98C")]
     [Description("Линейная 2-я")]
     Lineynaya2,
+    [EnumGuid("8E66BC17-0CDC-4BFE-AF64-B38B01AA5ADE")]
     [Description("2-я Линейная")]
     Lineyna_ya2,
+    [EnumGuid("D84B451E-923D-481F-BCAE-F241156F7C02")]
     [Description("Линейная 3-я")]
     Lineynaya3,
+    [EnumGuid("6E25CDF1-5E90-43EE-A607-A438A816C8A3")]
     [Description("3-я Линейная")]
     Lineyna_ya3,
+    [EnumGuid("12F7C60D-22DD-4437-9028-519D2317EB1D")]
     [Description("Линейная 4-я")]
     Lineynaya4,
+    [EnumGuid("6943E05F-1605-4B1F-824E-11A68A608A6D")]
     [Description("4-я Линейная")]
     Lineyna_ya4,
+    [EnumGuid("B513DB6C-59CC-44A5-846C-1352C495EC13")]
     [Description("Линейная 5-я")]
     Lineynaya5,
+    [EnumGuid("185238EF-14D1-408B-B9FC-A6CFB8E2748B")]
     [Description("5-я Линейная")]
     Lineyna_ya5,
+    [EnumGuid("D1FAFC07-152C-4947-8332-BAA76C71C3A6")]
     [Description("Линейная 6-я")]
     Lineynaya6,
+    [EnumGuid("6452493E-128C-4610-882B-744769889DC9")]
     [Description("6-я Линейная")]
     Lineyna_ya6,
+    [EnumGuid("DC6D01D8-EF09-4773-A14B-0BAEC19570AF")]
     [Description("Линейная 7-я")]
     Lineynaya7,
+    [EnumGuid("8B5F2D6F-3F68-4121-87AA-4A83C37182B5")]
     [Description("7-я Линейная")]
     Lineyna_ya7,
+    [EnumGuid("B51FC4C6-4505-4B40-955A-4614C386ABEE")]
     [Description("Лириков")]
     Lirikov,
+    [EnumGuid("00E058C5-DCE0-4CE4-AEB2-B73EB6C7F4CD")]
     [Description("Лиственная")]
     Listvennaya,
+    [EnumGuid("67FCDA21-FA59-49A5-9F16-13FCB7AD13BF")]
     [Description("Листвяжный Лог")]
     ListvyazhniyLog,
+    [EnumGuid("13D16C14-6C54-44C8-B2F9-E768CA27E328")]
     [Description("Литейная")]
     Liteynaya,
+    [EnumGuid("731A920F-B6B4-41AD-B08E-68401F002419")]
     [Description("Лихачева")]
     Likhacheva,
+    [EnumGuid("CACDA311-D416-40E2-8E65-6DE49EF37FF3")]
     [Description("Лодочная")]
     Lodochaya,
+    [EnumGuid("175B6A95-4A0F-433B-B628-841DA8C55B2E")]
     [Description("Локомотивная")]
     Lokomotivnaya,
+    [EnumGuid("74E57B61-4010-4798-9666-8DE8DDE4A066")]
     [Description("Ломоносова")]
     Lomonosova,
+    [EnumGuid("315AD927-DC15-4429-B5F9-094A10E22CD0")]
     [Description("Луговая")]
     Lugovaya,
+    [EnumGuid("4F31FC14-198B-4461-AAD1-682E8DEA891B")]
     [Description("Луначарского")]
     Lunacharskogo,
+    [EnumGuid("9E5FA752-1F76-44BF-AA9B-DB0F4FAFD207")]
     [Description("Лучистая")]
     Luchistaya,
+    [EnumGuid("C1FF17AB-0AA3-4A07-A929-EA5E3FF9A6EC")]
     [Description("Львовская")]
     Lvovskaya,
+    [EnumGuid("5BF43868-0CFE-478F-BDA9-7BACAD1BEBD5")]
     [Description("Любимый")]
     Lyubimiy,
+    [EnumGuid("E3E98362-CBA8-4E9A-87DE-F8EA36AC8A1C")]
     [Description("Любы Шевцовой")]
     LyubyShevtsovoy,
     
