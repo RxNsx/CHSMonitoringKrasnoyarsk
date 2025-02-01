@@ -847,20 +847,28 @@ public enum StreetNameEnum
 
     #region Улицы на букву Е
 
+    [EnumGuid("463927C0-D96C-40F3-B782-646A1E58EE55")]
     [Description("Елены Стасовой")]
     ElenyStasovoy,
+    [EnumGuid("DD219A0A-B755-4188-9A20-DB66D7AE5F54")]
     [Description("Еловая")]
     Yelovaya,
+    [EnumGuid("82D87217-FE17-46EF-8187-A81A44586C9B")]
     [Description("Емельяновская")]
     Yemelyanovskaya,
+    [EnumGuid("542750FE-A977-46C3-8FCD-AB329EDE3A09")]
     [Description("Енисейская")]
     Yeniseyskaya,
+    [EnumGuid("D6916773-59E0-4DA3-886B-070FEED55E00")]
     [Description("Енисейский тракт")]
     YeniseyskiyTrakt,
+    [EnumGuid("35AB97B9-E392-48B4-A625-F6E9DC22DDF0")]
     [Description("Ермаковская")]
     Yermakovskaya,
+    [EnumGuid("8E702617-348D-485E-8203-0A66EB845F4A")]
     [Description("Ерофеевская")]
     Yerofeyevskaya,
+    [EnumGuid("7A02219B-0B20-4653-9AF3-FFC3C8EB3335")]
     [Description("Есаульская")]
     Yesaulskaya,
 
@@ -868,20 +876,28 @@ public enum StreetNameEnum
     
     #region Улицы на букву Ж
     
+    [EnumGuid("A18CAAE0-79A5-4DF6-87C5-8C0757BB6243")]
     [Description("Жарковая")]
     Zarkovaya,
+    [EnumGuid("233F2119-4A39-49CC-9B3F-7B84E0364C6D")]
     [Description("Жданова")]
     Zhdanova,
+    [EnumGuid("4F34D258-2E06-4AE2-B4D4-2E211C0AE096")]
     [Description("Железнодорожников")]
     ZheleznoyDorožkov,
+    [EnumGuid("CBC20EB0-7F0F-4C4F-9E8D-537B7E4DC3B2")]
     [Description("Желябова")]
     Zhelebova,
+    [EnumGuid("502A2BD5-E59D-4D13-9362-CED3BF3146FF")]
     [Description("Жемчужная")]
     Zhemchuzhnaja,
+    [EnumGuid("FE4AAE70-84B8-4953-9F1A-B99A43B9FA14")]
     [Description("Живица")]
     Zhivitsa,
+    [EnumGuid("64B3703F-DB62-4C67-A2D9-09C3ED986B5C")]
     [Description("Живописная")]
     Zhivopisnaya,
+    [EnumGuid("313212E3-BC52-49CF-94E6-DD64B213C6AC")]
     [Description("Жуковского")]
     Zhukovskogo,
     
@@ -889,44 +905,64 @@ public enum StreetNameEnum
     
     #region Улицы на букву З
     
+    [EnumGuid("9B29312F-0BC4-4ADB-8C5E-3B1BBD4A470A")]
     [Description("Забобонова")]
     Zabobonova,
+    [EnumGuid("43215DB8-295D-498B-B83D-0B6BB1D20BB7")]
     [Description("Заводская")]
     Zavodskaya,
+    [EnumGuid("DF954BC7-5B50-484B-B499-2F3D64176B91")]
     [Description("Заводской")]
     ZavodskoyProyezd,
+    [EnumGuid("4DE053D0-09A2-4DC0-B3A4-481D34EB32D8")]
     [Description("Заводской")]
     Zavodskoy,
+    [EnumGuid("CEF5B07A-E12C-47FC-842B-B0FA00F7C69B")]
     [Description("Загородная")]
     Zagorodnaya,
+    [EnumGuid("25A84F65-DF49-4E6E-B39A-146C7728029A")]
     [Description("Загорская")]
     Zagorskaya,
+    [EnumGuid("57989A50-98B4-4414-8937-F46FE9AD7851")]
     [Description("Заливной")]
     Zalivnoy,
+    [EnumGuid("A4D35619-446B-465F-AA40-EFDC1BD59E9A")]
     [Description("Западная")]
     Zapadnaya,
+    [EnumGuid("ECD89E49-6877-4D0C-BADA-B58BCCF4DC36")]
     [Description("Заповедный")]
     Zapovednyy,
+    [EnumGuid("FB67C6CB-624A-42F2-B0CF-174EB33D358D")]
     [Description("Запорожская")]
     Zaporozhskaya,
+    [EnumGuid("EA33F4DC-97D7-4D65-98BD-A1415F4C87CD")]
     [Description("Заречная")]
     Zarechnaya,
+    [EnumGuid("6E501FEE-4FB1-432E-9825-64960541E34D")]
     [Description("Зарничная")]
     Zarnichnaya,
+    [EnumGuid("C3C0AF7E-A1AC-4B68-93E0-653B0F15D810")]
     [Description("Затонская")]
     Zatonskaya,
+    [EnumGuid("43482993-BF8E-4796-81F3-DB881866F3D2")]
     [Description("Затонский 1-й")]
     Zatonskiy1,
+    [EnumGuid("C4084716-30BD-4B2A-913A-8716342A0A16")]
     [Description("Затонский 2-й")]
     Zatonskiy2,
+    [EnumGuid("725BA835-46A6-4F29-9BDF-D317E347DF13")]
     [Description("Затонский 3-й")]
     Zatonskiy3,
+    [EnumGuid("706B8DE0-A5A4-4045-ABBB-60BECAA4B285")]
     [Description("Защитников Ленинграда")]
     ZashchitnikovLeningrada,
+    [EnumGuid("A9FC31EE-D7E1-4233-979F-87D4B6426147")]
     [Description("Зелёный")]
     Zelyoniy,
+    [EnumGuid("83DB9744-AFD9-4BB8-81FA-1D95FF3F8291")]
     [Description("Знаменская")]
     Znamenskaya,
+    [EnumGuid("2961E17C-2326-481D-9A2F-35F9C15CCDC0")]
     [Description("Зои Космодемьянской")]
     ZoiKosmodemyanskoy,
     
@@ -934,50 +970,73 @@ public enum StreetNameEnum
     
     #region Улицы на букву И
     
+    [EnumGuid("1C7C40F9-2A28-4380-8EAA-95B59CE2BD08")]
     [Description("Ивченко")]
     Ivchenko,
+    [EnumGuid("DC2176F3-A724-479D-BB53-04304173F643")]
     [Description("Игарская")]
     Igarskaya,
+    [EnumGuid("E66C9927-EFF9-4B63-8E2A-EFD11C31C671")]
     [Description("Извилистая")]
     Izvilistaya,
+    [EnumGuid("C0C35655-3166-4928-905F-4CC93F3C59FE")]
     [Description("Измайлова")]
     Izmaylova,
+    [EnumGuid("C3F4E1FB-1941-43D8-85A4-081E0C48692F")]
     [Description("Изумрудная")]
     Izumrudnaya,
+    [EnumGuid("AF7471C4-A5DD-4A19-B72C-D4777D7FC874")]
     [Description("Изыскательский")]
     IzyvatelSkiy,
+    [EnumGuid("048CE447-6EC7-4F05-8025-78131E053854")]
     [Description("Иланская")]
     Ilanskaya,
+    [EnumGuid("E9D28F8E-B55C-4105-ACFE-C05E75259E0A")]
     [Description("Имбежский")]
     Imbezhskiy,
+    [EnumGuid("AF1BC1EE-15EE-4D7D-A71C-3FB1873B1D8C")]
     [Description("Красноярский Рабочий")]
     KrasnoyarskiyRabochiy,
+    [EnumGuid("3657CA63-916E-4A65-A237-6A7D2653D5ED")]
     [Description("Пионерская Правда")]
     PionerskayaPravda,
+    [EnumGuid("9FC51095-5ECD-41EB-8186-B4AA3310B0A5")]
     [Description("Я.М. Свердлова")]
     YaMSverdlova,
+    [EnumGuid("EEA0C393-F14B-4B98-9593-55DFAADA78A5")]
     [Description("Индустриальный 1-й")]
     Industrialniy1,
+    [EnumGuid("4DF4C315-DED2-40E6-A851-E43DAB3B8ED9")]
     [Description("Индустриальный 2-й")]
     Industrialniy2,
+    [EnumGuid("E32A7E68-D550-44D0-B773-19BC2E4B04D8")]
     [Description("Инженерный")]
     Inzhenerniy,
+    [EnumGuid("2178D974-2EB3-4357-8D81-598A6299E322")]
     [Description("Инициаторов")]
     Initsiativov,
+    [EnumGuid("734E1C0D-B6D4-450D-A0A1-9805E3C0ABFE")]
     [Description("Инструментальная")]
     Instrumentalnaya,
+    [EnumGuid("C0890C99-6B85-4C2A-8B58-967B37BC0FD0")]
     [Description("Интернациональная")]
     Internatsionalnaya,
+    [EnumGuid("41019E5D-96D0-441C-8FEB-0AE7F205C88F")]
     [Description("Ипподром")]
     Ippodrom,
+    [EnumGuid("D9D657E5-6124-45AC-83B7-1D7DE2BC0AE2")]
     [Description("Ирбейская")]
     Irbeyskaya,
+    [EnumGuid("42D6BE8F-3D1D-44C1-9669-F1AF6981045E")]
     [Description("Иркутская")]
     Irkutskaya,
+    [EnumGuid("28DF51DE-A55A-4B6F-A074-42C144E507B3")]
     [Description("Иртышская")]
     Irtishskaya,
+    [EnumGuid("E18ACC51-4936-44B5-9CB7-8EB85AC314F3")]
     [Description("Историческая")]
     Istoricheskaya,
+    [EnumGuid("C2D8BB06-9B55-4365-A530-8E8D54A47AE7")]
     [Description("Ишимская")]
     Ishimskaya,
     
