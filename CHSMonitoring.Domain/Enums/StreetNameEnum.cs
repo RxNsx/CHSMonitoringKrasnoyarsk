@@ -583,92 +583,132 @@ public enum StreetNameEnum
     [EnumGuid("DF400B70-6F4D-4E8E-A8AB-C466FEFE1226")]
     [Description("Высоцкого")]
     Vysotskogo,
-    [EnumGuid("0A6A374A-FD71-4DDA-8534-3B277E7617FD")]
     
     #endregion
 
     #region Улицы на букву Г
 
+    [EnumGuid("7419095A-5F27-4A56-9F0B-FD62C1CCD497")]
     [Description("Гадалова")]
     Gadalova,
+    [EnumGuid("61427BA8-56E1-4CB2-A544-701F778F3A19")]
     [Description("Гайдара")]
     Gaydara,
+    [EnumGuid("8E1BE986-F389-45A5-A188-FE29A1CBE7F2")]
     [Description("Гайдашовка")]
     Gaydashovka,
+    [EnumGuid("DA708040-940A-4CF3-B82F-8A8FD37685A5")]
     [Description("Гаражный")]
     Garazhnyy,
+    [EnumGuid("FD0615E0-2164-4228-B5B0-C9708FBD5CED")]
     [Description("Гастелло")]
     Gastello,
+    [EnumGuid("2036B070-16A2-4E11-85CE-90F22848295C")]
     [Description("Геодезическая")]
     Geodezicheskaya,
+    [EnumGuid("8088B005-3CCC-4DB3-ADE6-38DBAF22A953")]
     [Description("Геологическая")]
     Geologicheskaya,
+    [EnumGuid("11BFDF0E-9C0D-46F0-9C68-07C4D61285AA")]
     [Description("Геологическая 2-я")]
     Geologicheskaya2,
+    [EnumGuid("90279CE9-AF8F-40A7-A78E-2A8A9016C95A")]
     [Description("2-я Геологическая")]
     Geologicheska_ya2,
+    [EnumGuid("9CD0781D-8078-45EA-BF40-2108647D1074")]
     [Description("Георгиевская")]
     Georgievskaya,
+    [EnumGuid("73707B16-9962-4F15-B0E5-05E732A267BF")]
     [Description("Героев Страны")]
     GeroevStrany,
+    [EnumGuid("5C40382D-3015-4F01-8C74-5D488DF33517")]
     [Description("Героев Чернобыля")]
     GeroevChernobylya,
+    [EnumGuid("C57CB024-56FB-4925-A288-635F9C7BB1D9")]
     [Description("Герцена")]
     Gertsena,
+    [EnumGuid("01227C2D-CD15-45C0-88F6-7EE23CACFB5E")]
     [Description("Гипсовая")]
     Gipssovaya,
+    [EnumGuid("6DA13887-DACC-4D78-83D5-58503C986163")]
     [Description("Гипсовая 1-я")]
     Gipssovaya1,
+    [EnumGuid("3824F9E0-40FB-42FF-81C9-0C89B12D24D3")]
     [Description("1-я Гипсовая")]
     Gipssova_ya1,
+    [EnumGuid("56401696-C27C-4B34-8CC9-1947D0E1958D")]
     [Description("Гипсовая 2-я")]
     Gipssovaya2,
+    [EnumGuid("6E6ED651-2505-4CB0-91C1-1D79E25F5F64")]
     [Description("2-я Гипсовая")]
     Gipssova_ya2,
+    [EnumGuid("BD8C825E-779E-45B9-8A7D-145CF1FF87CB")]
     [Description("Гипсовая 3-я")]
     Gipssovaya3,
+    [EnumGuid("6A8E3753-DC79-41C3-8812-16DCD33EC8CB")]
     [Description("3-я Гипсовая")]
     Gipssova_ya3,
+    [EnumGuid("548AD3CB-99E6-4794-8532-27EB0C50E2B5")]
     [Description("Глинки")]
     Glinskiy,
+    [EnumGuid("90EA7ACB-B9D6-42DE-B63E-65189209F049")]
     [Description("Глиняная")]
     Glinyanaya,
+    [EnumGuid("F19025DC-DE4A-4679-9FDF-8F62C7338D3D")]
     [Description("Говорова")]
     Govorova,
+    [EnumGuid("22898CEE-07F2-4FD5-B22A-E90F9ED6C880")]
     [Description("Гоголя")]
     Gogolya,
+    [EnumGuid("14337323-F01A-4D41-8217-66E4B1B1E0C0")]
     [Description("Горийский")]
     Goriyskiy,
+    [EnumGuid("3EDB4AB6-9A21-417C-9D4A-26746E251DC2")]
     [Description("Гористая")]
     Goristaya,
+    [EnumGuid("0E1427BB-C662-4DC3-8F20-82DAFD179F1D")]
     [Description("Горная")]
     Gornaya,
+    [EnumGuid("EE772FC7-603A-4694-AB9E-30474453D04A")]
     [Description("Горького")]
     Gorkogo,
+    [EnumGuid("B8A52572-76A3-4E0C-AB14-FD4E4944737D")]
     [Description("Гражданский")]
     Grazhdanskiy,
+    [EnumGuid("CA3D1978-6AAC-4FDA-9653-CCDBBED7EF67")]
     [Description("Гранитная")]
     Granitnaya,
+    [EnumGuid("F439F1DD-DF2B-4F6A-B68C-A26994504EE6")]
     [Description("Графитная")]
     Grafichnaya,
+    [EnumGuid("D8018E5E-F122-46F6-8F8E-BEEF3B350C73")]
     [Description("Гремячий 1-й")]
     Gremyachiy1,
+    [EnumGuid("6C0E6192-E1AA-4037-9738-18ABF28939EF")]
     [Description("Гремячий 2-й")]
     Gremyachiy2,
+    [EnumGuid("04AFB032-B407-48AF-AE29-5D9E57D05F88")]
     [Description("Гремячий 3-й")]
     Gremyachiy3,
+    [EnumGuid("7A57137E-CCDF-4049-A491-B3C7C6F3C97F")]
     [Description("Гремячий 4-й")]
     Gremyachiy4,
+    [EnumGuid("A47A16A2-4E2F-4816-A4D8-F41D7F5D4E66")]
     [Description("Грибная")]
     Gribyanaya,
+    [EnumGuid("CBDD14EC-52CB-4775-AB7B-7ED24214B8E3")]
     [Description("Гросовцев")]
     Grossovtsa,
+    [EnumGuid("75188344-823C-4F8D-8B5E-A2B9200272FE")]
     [Description("Грунтовая")]
     Gruntovaya,
+    [EnumGuid("05EE08CD-9994-4A98-A374-24C8A4593E1F")]
     [Description("Грушевая")]
     Grushevaya,
+    [EnumGuid("8A6BC17A-E58D-4874-9BE3-DDE22FEF29CD")]
     [Description("Гуляева")]
     Gulyaeva,
+    [EnumGuid("6AD9D174-75C7-4F49-AF31-54648E2D9E17")]
     [Description("Гусарова")]
     Gusarova,
 

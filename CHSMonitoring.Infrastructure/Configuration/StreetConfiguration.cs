@@ -209,11 +209,55 @@ public class StreetConfiguration : IEntityTypeConfiguration<Street>
             new() { Id = Guid.Parse("2D21530B-3E67-46C3-8705-4357CF8E8872"), Name = "Выборгский", Description = string.Empty },
             new() { Id = Guid.Parse("014BE2A9-8971-47E0-A243-61B6AB83EBE6"), Name = "Высокая", Description = string.Empty },
             new() { Id = Guid.Parse("63BF5104-E343-48F0-AAF0-1A87747FB3E5"), Name = "Высотная", Description = string.Empty },
-            new() { Id = Guid.Parse("DF400B70-6F4D-4E8E-A8AB-C466FEFE1226"), Name = "Высоцкого", Description = string.Empty }
+            new() { Id = Guid.Parse("DF400B70-6F4D-4E8E-A8AB-C466FEFE1226"), Name = "Высоцкого", Description = string.Empty },
 
             #endregion
 
-            
+            #region Улицы на букву Г
+
+            new() { Id = Guid.Parse("7419095A-5F27-4A56-9F0B-FD62C1CCD497"), Name = "Гадалова", Description = string.Empty },
+            new() { Id = Guid.Parse("61427BA8-56E1-4CB2-A544-701F778F3A19"), Name = "Гайдара", Description = string.Empty },
+            new() { Id = Guid.Parse("8E1BE986-F389-45A5-A188-FE29A1CBE7F2"), Name = "Гайдашовка", Description = string.Empty },
+            new() { Id = Guid.Parse("DA708040-940A-4CF3-B82F-8A8FD37685A5"), Name = "Гаражный", Description = string.Empty },
+            new() { Id = Guid.Parse("FD0615E0-2164-4228-B5B0-C9708FBD5CED"), Name = "Гастелло", Description = string.Empty },
+            new() { Id = Guid.Parse("2036B070-16A2-4E11-85CE-90F22848295C"), Name = "Геодезическая", Description = string.Empty },
+            new() { Id = Guid.Parse("8088B005-3CCC-4DB3-ADE6-38DBAF22A953"), Name = "Геологическая", Description = string.Empty },
+            new() { Id = Guid.Parse("11BFDF0E-9C0D-46F0-9C68-07C4D61285AA"), Name = "Геологическая 2-я", Description = string.Empty },
+            new() { Id = Guid.Parse("90279CE9-AF8F-40A7-A78E-2A8A9016C95A"), Name = "2-я Геологическая", Description = string.Empty },
+            new() { Id = Guid.Parse("9CD0781D-8078-45EA-BF40-2108647D1074"), Name = "Георгиевская", Description = string.Empty },
+            new() { Id = Guid.Parse("73707B16-9962-4F15-B0E5-05E732A267BF"), Name = "Героев Страны", Description = string.Empty },
+            new() { Id = Guid.Parse("5C40382D-3015-4F01-8C74-5D488DF33517"), Name = "Героев Чернобыля", Description = string.Empty },
+            new() { Id = Guid.Parse("C57CB024-56FB-4925-A288-635F9C7BB1D9"), Name = "Герцена", Description = string.Empty },
+            new() { Id = Guid.Parse("01227C2D-CD15-45C0-88F6-7EE23CACFB5E"), Name = "Гипсовая", Description = string.Empty },
+            new() { Id = Guid.Parse("6DA13887-DACC-4D78-83D5-58503C986163"), Name = "Гипсовая 1-я", Description = string.Empty },
+            new() { Id = Guid.Parse("3824F9E0-40FB-42FF-81C9-0C89B12D24D3"), Name = "1-я Гипсовая", Description = string.Empty },
+            new() { Id = Guid.Parse("56401696-C27C-4B34-8CC9-1947D0E1958D"), Name = "Гипсовая 2-я", Description = string.Empty },
+            new() { Id = Guid.Parse("6E6ED651-2505-4CB0-91C1-1D79E25F5F64"), Name = "2-я Гипсовая", Description = string.Empty },
+            new() { Id = Guid.Parse("BD8C825E-779E-45B9-8A7D-145CF1FF87CB"), Name = "Гипсовая 3-я", Description = string.Empty },
+            new() { Id = Guid.Parse("6A8E3753-DC79-41C3-8812-16DCD33EC8CB"), Name = "3-я Гипсовая", Description = string.Empty },
+            new() { Id = Guid.Parse("548AD3CB-99E6-4794-8532-27EB0C50E2B5"), Name = "Глинки", Description = string.Empty },
+            new() { Id = Guid.Parse("90EA7ACB-B9D6-42DE-B63E-65189209F049"), Name = "Глиняная", Description = string.Empty },
+            new() { Id = Guid.Parse("F19025DC-DE4A-4679-9FDF-8F62C7338D3D"), Name = "Говорова", Description = string.Empty },
+            new() { Id = Guid.Parse("22898CEE-07F2-4FD5-B22A-E90F9ED6C880"), Name = "Гоголя", Description = string.Empty },
+            new() { Id = Guid.Parse("14337323-F01A-4D41-8217-66E4B1B1E0C0"), Name = "Горийский", Description = string.Empty },
+            new() { Id = Guid.Parse("3EDB4AB6-9A21-417C-9D4A-26746E251DC2"), Name = "Гористая", Description = string.Empty },
+            new() { Id = Guid.Parse("0E1427BB-C662-4DC3-8F20-82DAFD179F1D"), Name = "Горная", Description = string.Empty },
+            new() { Id = Guid.Parse("EE772FC7-603A-4694-AB9E-30474453D04A"), Name = "Горького", Description = string.Empty },
+            new() { Id = Guid.Parse("B8A52572-76A3-4E0C-AB14-FD4E4944737D"), Name = "Гражданский", Description = string.Empty },
+            new() { Id = Guid.Parse("CA3D1978-6AAC-4FDA-9653-CCDBBED7EF67"), Name = "Гранитная", Description = string.Empty },
+            new() { Id = Guid.Parse("F439F1DD-DF2B-4F6A-B68C-A26994504EE6"), Name = "Графитная", Description = string.Empty },
+            new() { Id = Guid.Parse("D8018E5E-F122-46F6-8F8E-BEEF3B350C73"), Name = "Гремячий 1-й", Description = string.Empty },
+            new() { Id = Guid.Parse("6C0E6192-E1AA-4037-9738-18ABF28939EF"), Name = "Гремячий 2-й", Description = string.Empty },
+            new() { Id = Guid.Parse("04AFB032-B407-48AF-AE29-5D9E57D05F88"), Name = "Гремячий 3-й", Description = string.Empty },
+            new() { Id = Guid.Parse("7A57137E-CCDF-4049-A491-B3C7C6F3C97F"), Name = "Гремячий 4-й", Description = string.Empty },
+            new() { Id = Guid.Parse("A47A16A2-4E2F-4816-A4D8-F41D7F5D4E66"), Name = "Грибная", Description = string.Empty },
+            new() { Id = Guid.Parse("CBDD14EC-52CB-4775-AB7B-7ED24214B8E3"), Name = "Гросовцев", Description = string.Empty },
+            new() { Id = Guid.Parse("75188344-823C-4F8D-8B5E-A2B9200272FE"), Name = "Грунтовая", Description = string.Empty },
+            new() { Id = Guid.Parse("05EE08CD-9994-4A98-A374-24C8A4593E1F"), Name = "Грушевая", Description = string.Empty },
+            new() { Id = Guid.Parse("8A6BC17A-E58D-4874-9BE3-DDE22FEF29CD"), Name = "Гуляева", Description = string.Empty },
+            new() { Id = Guid.Parse("6AD9D174-75C7-4F49-AF31-54648E2D9E17"), Name = "Гусарова", Description = string.Empty },
+
+            #endregion
                        
         };
         
