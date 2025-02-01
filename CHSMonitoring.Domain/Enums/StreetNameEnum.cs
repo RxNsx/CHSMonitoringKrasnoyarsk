@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using CHSMonitoring.Infrastructure.Attributes;
 
 namespace CHSMonitoring.Infrastructure.Models.Enums;
@@ -1775,56 +1776,82 @@ public enum StreetNameEnum
     
     #region Улицы на букву Н
     
+    [EnumGuid("8096791D-36BC-47D9-AD00-1A178EFF255E")]
     [Description("Навигационная")]
     Navigatsionnaya,
+    [EnumGuid("F3087FDC-9852-498E-B8E8-1FC3B1599723")]
     [Description("Нагорная")]
     Nagornaya,
+    [EnumGuid("07828B06-39E7-4FA1-9167-5B1786A501BE")]
     [Description("Назаровская")]
     Nazarovskaya,
+    [EnumGuid("F546DBF7-E25F-4DBD-9377-A436A3F6A136")]
     [Description("Наклонная")]
     Naklonnaya,
+    [EnumGuid("E5D91DFB-F488-4F79-B15E-FD4F894AF9ED")]
     [Description("Нанжульская")]
     Nanzhulskaya,
+    [EnumGuid("C63F6F59-6803-4956-871A-2A33A36651AD")]
     [Description("Национальная")]
     Natsionalnaya,
+    [EnumGuid("3F13483F-BB1D-45AD-BB54-89C2E7DDA977")]
     [Description("Невская")]
     Nevskaya,
+    [EnumGuid("8F5A5617-48A3-491F-BA8A-69B3FD5B02E7")]
     [Description("Независимости")]
     Nezavisimosti,
+    [EnumGuid("AB1E3256-C022-4418-9294-53F768AA55FA")]
     [Description("Некрасова")]
     Nekrasova,
+    [EnumGuid("C93E3A2E-9146-435C-9B2D-6C3EA11AAD38")]
     [Description("Нерчинская")]
     Nerchinskaya,
+    [EnumGuid("BCCE07B7-4E52-4CD3-8E16-1ABAFD3BBDEE")]
     [Description("Нестерова")]
     Nesterova,
+    [EnumGuid("8150236D-6179-4677-AD81-4BADF5AFB56B")]
     [Description("Нефтяной")]
     Neftyanoy,
+    [EnumGuid("424BDEA0-395A-4C9E-B7EA-075BC5DE0610")]
     [Description("Никитина")]
     Nikitina,
+    [EnumGuid("A2D9C47A-E89A-4351-8439-8CD587A6B6BE")]
     [Description("Николаева")]
     Nikolaeva,
+    [EnumGuid("8F434227-00CE-4D8D-803E-F3F94BCC3643")]
     [Description("Николаевский")]
     Nikolaevskiy,
+    [EnumGuid("ABFF20AE-D4BB-4428-B12F-E12F5DC9BE4E")]
     [Description("Николая Донского")]
     NikolayaDonskogo,
+    [EnumGuid("815A1467-9357-40AA-B8C5-8CE4E65C2B4A")]
     [Description("Новаторская")]
     Novatorskaya,
+    [EnumGuid("346F2F4A-4588-4ED4-8713-32B8A86EC740")]
     [Description("Новая")]
     Novaya,
+    [EnumGuid("7027475E-7FB3-4932-84CF-AB8747E637A4")]
     [Description("Новая Заря")]
     NovayaZarya,
+    [EnumGuid("8344B66F-0A32-49EE-9C98-C6CC4AAADE7A")]
     [Description("Новгородская")]
     Novgorodskaya,
+    [EnumGuid("FA7F3D0F-C797-4C36-ACA7-38C109451FD2")]
     [Description("Новогорская")]
     Novogorskaya,
+    [EnumGuid("29839413-845A-4663-A8F0-F9C9BFFDB97A")]
     [Description("Новой Жизни")]
     NovoyZhizni,
+    [EnumGuid("F7E70193-8781-4AAF-86BD-0A1D2E760DF7")]
     [Description("Новомлинская")]
     Novomlinskaya,
+    [EnumGuid("3DC0CCED-C8E0-4990-8692-5801901AE337")]
     [Description("Новосибирская")]
     Novosibirskaya,
+    [EnumGuid("331A10D9-A8F8-457D-A6A1-C6F0B38C25B7")]
     [Description("Новостроек")]
     Novostroyek,
+    [EnumGuid("78D600A2-AE32-44E0-8237-A72B12617136")]
     [Description("Норильская")]
     Norilskaya,
     
