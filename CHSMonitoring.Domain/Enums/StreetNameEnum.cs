@@ -1859,70 +1859,103 @@ public enum StreetNameEnum
     
     #region Улицы на букву О
     
+    [EnumGuid("E7224507-0037-4105-A50A-D4B684794BEB")]
     [Description("Обзорная")]
     Obzornaya,
+    [EnumGuid("43FC901B-3470-4163-B4CA-B7064439A4DE")]
     [Description("Облачная")]
     Oblachnaya,
+    [EnumGuid("01C087A9-B6A1-4BA2-9D72-DFC7DDD0A22E")]
     [Description("Облепиховая")]
     Oblepikhovaya,
+    [EnumGuid("37E1B7E2-0455-488E-B36E-E1B68F63FEE9")]
     [Description("Обороны")]
     Oborony,
+    [EnumGuid("77CEC8ED-27CC-4300-B241-86CEFD199F38")]
     [Description("Овражная")]
     Ovrashnaya,
+    [EnumGuid("C643CE83-FF4C-4956-AD4B-E748168AD57A")]
     [Description("2-я Огородная")]
     Ogorodnaya2,
+    [EnumGuid("8D27DD01-3002-4845-8C23-BBEFB721AEBB")]
     [Description("Одесская")]
     Odesskaya,
+    [EnumGuid("2FA676A8-7711-41AD-93DD-73CD5A22E4AE")]
     [Description("Одесский")]
     Odesskiy,
+    [EnumGuid("19FF63FC-4F49-42AF-AC17-888CC86105A0")]
     [Description("Односторонний")]
     Odnostoronniy,
+    [EnumGuid("54FBB146-B236-4C69-9869-62D660B82618")]
     [Description("Озерная")]
     Ozerennaya,
+    [EnumGuid("DC8F6FCB-F875-40EE-9158-6876DE8D1D85")]
     [Description("2-я Озёрная")]
     Ozernaya2,
+    [EnumGuid("3A1509F8-0726-4D64-BC9E-11E718F58D06")]
     [Description("4-я Озёрная")]
     Ozernaya4,
+    [EnumGuid("C6CF64CA-E3DC-4333-BF35-15BD9BFD22D8")]
     [Description("Окаемная")]
     Okaymnaya,
+    [EnumGuid("677C8408-1CB5-45E0-AD60-138D2A2AE716")]
     [Description("Окружная")]
     Okruzhnaya,
+    [EnumGuid("403D71D2-AFFC-4498-AAA9-D70F473C09E3")]
     [Description("Октябрьская")]
     Oktyabrskaya,
+    [EnumGuid("F7C29146-E1F9-4942-B328-6FB34F08DEE7")]
     [Description("Олега Кошевого")]
     OlegaKoshevoy,
+    [EnumGuid("985AE251-EB7E-4F04-8D4E-9BA82C1C6562")]
     [Description("Олейникова")]
     Oleynikova,
+    [EnumGuid("76F85A6E-4E77-48CE-BDEE-73427B50B0E3")]
     [Description("Олониченко")]
     Olonichenko,
+    [EnumGuid("D4C2EF57-E0FA-4CF3-AEAF-E7E2A9377617")]
     [Description("Ольховая")]
     Olkhovaya,
+    [EnumGuid("0B367053-C66F-4550-9344-488633A62D47")]
     [Description("Омская")]
     Omskaya,
+    [EnumGuid("C4CFF567-554E-42EA-A32C-AE67EFFEA6AD")]
     [Description("Ореховская")]
     Orekhovskaya,
+    [EnumGuid("05DB46AE-26F4-4ABF-9E8A-44ABCD9B5769")]
     [Description("Орловская")]
     Orlovskaya,
+    [EnumGuid("56A96858-9D86-4024-B42C-2AD73E1EF2B9")]
     [Description("Осенняя")]
     Osennaya,
+    [EnumGuid("7A3DFC55-2BFF-4FA9-8844-C616F75FBCC0")]
     [Description("Осипенко")]
     Osipenko,
+    [EnumGuid("07357FE0-0AB5-4620-8977-B58359E3A81E")]
     [Description("Остров Отдыха")]
     OstrovOtdyha,
+    [EnumGuid("C293EABC-2FDF-4BC0-ADE7-8F389CDD90BB")]
     [Description("Островная")]
     Ostrovskaya,
+    [EnumGuid("4376888F-A2B6-47BC-9EF2-E7C6A0E79513")]
     [Description("Островского")]
     Ostrovskogo,
+    [EnumGuid("993C8489-D295-4344-AD7D-BD26085ADD19")]
     [Description("Острожная")]
     Ostrozhnaya,
+    [EnumGuid("ED74B65D-617B-4D14-B776-04600BE9CE97")]
     [Description("Отважный")]
     Otvazhniy,
+    [EnumGuid("7FF72DFD-D848-47E9-AB55-940FC3F49768")]
     [Description("Отдыха")]
     Otdyha,
+    [EnumGuid("18074366-B9C0-4BC6-BD6C-CD14853F931C")]
     [Description("Отрадная")]
     Otrada,
+    [EnumGuid("F1A98B7D-AC0A-4759-8C67-87E330C5DAEC")]
     [Description("Офицерская")]
     Ofitserskaya,
+    [EnumGuid("CD3D23ED-4CB8-4247-A148-C95030E85993")]
     [Description("Охраны Труда")]
     OkhranyTruda,
     
