@@ -258,6 +258,53 @@ public class StreetConfiguration : IEntityTypeConfiguration<Street>
             new() { Id = Guid.Parse("6AD9D174-75C7-4F49-AF31-54648E2D9E17"), Name = "Гусарова", Description = string.Empty },
 
             #endregion
+
+            #region Улицы на букву Д
+
+            new() { Id = Guid.Parse("727CE5CB-09E4-4544-92F2-24A7930AAE53"), Name = "Дальневосточная", Description = string.Empty },
+            new() { Id = Guid.Parse("A28DBD16-44E8-4870-8430-3906FDF80D6C"), Name = "Дальневосточная 3-я", Description = string.Empty },
+            new() { Id = Guid.Parse("790EDB22-EBFB-4BE6-B126-511076F1661C"), Name = "3-я Дальневосточная", Description = string.Empty },
+            new() { Id = Guid.Parse("22F6F37B-4DF2-41B7-B877-347AF4BA2460"), Name = "Дальневосточная 4-я", Description = string.Empty },
+            new() { Id = Guid.Parse("600BBD9A-CBF8-45E0-B7D6-A066B9D4972C"), Name = "4-я Дальневосточная", Description = string.Empty },
+            new() { Id = Guid.Parse("AB716A17-0AC9-4CF1-9F3E-476B8A59F58C"), Name = "Дальняя", Description = string.Empty },
+            new() { Id = Guid.Parse("3DE48F2D-4442-454C-85E7-0CED2AFB3A62"), Name = "Даурская", Description = string.Empty },
+            new() { Id = Guid.Parse("F5AAC9CB-7296-4B40-9FFB-C685A79EC0A0"), Name = "Дачная", Description = string.Empty },
+            new() { Id = Guid.Parse("CA23AF25-5795-4745-B753-11530C5CF57F"), Name = "Декабристов", Description = string.Empty },
+            new() { Id = Guid.Parse("117EEC35-E9B4-46F4-BF76-AE2FAC4BFDDA"), Name = "Делегатская", Description = string.Empty },
+            new() { Id = Guid.Parse("F64991CE-DABF-4B90-9CEC-9AA217950B66"), Name = "Деловая", Description = string.Empty },
+            new() { Id = Guid.Parse("F7FE0E36-4FC0-4F71-9B10-86944010C521"), Name = "Видьяна Бедного", Description = string.Empty },
+            new() { Id = Guid.Parse("CE021594-03B5-4C2B-A133-5DDF72D84A55"), Name = "Деповская", Description = string.Empty },
+            new() { Id = Guid.Parse("492FABD2-8C6D-4356-AC33-EE987B764355"), Name = "Деповский", Description = string.Empty },
+            new() { Id = Guid.Parse("F6359F94-D76F-4F17-BE55-9053191C43DE"), Name = "Депутатская 2-я", Description = string.Empty },
+            new() { Id = Guid.Parse("FB6250CC-71BC-4BF4-BA8A-9AD9E6E54BCC"), Name = "2-я Депутатская", Description = string.Empty },
+            new() { Id = Guid.Parse("F2D17AE0-A6A2-4A67-A27B-4CC7C5CB412C"), Name = "Детская", Description = string.Empty },
+            new() { Id = Guid.Parse("A71B41E6-CE2E-43B4-85EA-32E010D01755"), Name = "Джамбульская", Description = string.Empty },
+            new() { Id = Guid.Parse("4C41A94F-FC52-4A2D-9FB3-F9E000DF09B4"), Name = "Дзержинского", Description = string.Empty },
+            new() { Id = Guid.Parse("34566E06-482E-4651-AE2D-7A8727C05D0E"), Name = "Дивная", Description = string.Empty },
+            new() { Id = Guid.Parse("701374D0-C37F-475C-B567-7B47F326AD7B"), Name = "Дивногорская", Description = string.Empty },
+            new() { Id = Guid.Parse("083EA217-6621-405D-9955-421DF85C05B1"), Name = "Диксона", Description = string.Empty },
+            new() { Id = Guid.Parse("37EBF339-EF7A-4C75-82FD-1AD1F93FA8AB"), Name = "Диктатуры Пролетариата", Description = string.Empty },
+            new() { Id = Guid.Parse("9830FC00-445B-408D-97DF-1D1FA7979CB8"), Name = "Димитрова", Description = string.Empty },
+            new() { Id = Guid.Parse("2B0B43D2-8E10-4AA1-9B69-26EA57261508"), Name = "Дмитрия Мартынова", Description = string.Empty },
+            new() { Id = Guid.Parse("CFC46B3F-65AB-4BE6-AFC1-A6BEE6F575C3"), Name = "Днепропетровская 1-я", Description = string.Empty },
+            new() { Id = Guid.Parse("B6D8125B-72A7-4887-A656-476E46AF5C0D"), Name = "1-я Днепропетровская", Description = string.Empty },
+            new() { Id = Guid.Parse("443678F2-CDFE-487D-89CB-1CA0300AA2E0"), Name = "Днепропетровская 2-я", Description = string.Empty },
+            new() { Id = Guid.Parse("286C8B7A-33A2-4BD1-B146-C9CA070BCC79"), Name = "2-я Днепропетровская", Description = string.Empty },
+            new() { Id = Guid.Parse("BAC1D176-93CE-4F9A-ADA6-3D580EE79E94"), Name = "Добролюбова", Description = string.Empty },
+            new() { Id = Guid.Parse("7663B13F-672F-4E3E-83A7-05A7A87A428A"), Name = "Дозорная", Description = string.Empty },
+            new() { Id = Guid.Parse("43B59854-BCE6-4C63-850D-DC89813B0FF0"), Name = "Докучаева", Description = string.Empty },
+            new() { Id = Guid.Parse("6416DE38-07E0-40DD-AD3C-14D9E20F6B5C"), Name = "Донецкая", Description = string.Empty },
+            new() { Id = Guid.Parse("C5B42127-41F5-465D-A728-B63890835CAC"), Name = "Дорожная", Description = string.Empty },
+            new() { Id = Guid.Parse("B4871F29-3698-4D2A-891F-C1487C84566A"), Name = "Достоевского", Description = string.Empty },
+            new() { Id = Guid.Parse("692AE3CB-FE4E-4C2C-978F-8BD9AD8D568F"), Name = "Дрокинская", Description = string.Empty },
+            new() { Id = Guid.Parse("4E9D1B76-2014-4896-967E-FDA98F7C6BAE"), Name = "Дружбы", Description = string.Empty },
+            new() { Id = Guid.Parse("0CA119E7-E5FB-4C4E-8BE2-8C06233C269E"), Name = "Дружный", Description = string.Empty },
+            new() { Id = Guid.Parse("5B92CBEB-1A3E-4032-A777-F61E36081208"), Name = "Дубенского", Description = string.Empty },
+            new() { Id = Guid.Parse("D4EA9F1E-0BC6-4A35-BDE5-87ACD90FD493"), Name = "Дубровинского", Description = string.Empty },
+            new() { Id = Guid.Parse("9A3D9937-9B4B-46A4-BE59-367D88609001"), Name = "Дудинская", Description = string.Empty },
+            new() { Id = Guid.Parse("0A2409AD-9141-4E9D-87B3-6F88070C7766"), Name = "Дюнная", Description = string.Empty }
+
+            #endregion
                        
         };
         
