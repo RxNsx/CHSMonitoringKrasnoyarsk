@@ -436,104 +436,154 @@ public enum StreetNameEnum
     
     #region Улицы на букву В
     
+    [EnumGuid("E2C49141-255A-42E1-B18A-7D4F0EABF393")]
     [Description("Васильковый")]
     Vasilikovoy,
+    [EnumGuid("22AE9636-F5EF-498E-B7C5-470CF4CD7D60")]
     [Description("Васнецова")]
     Vasnetsova,
+    [EnumGuid("C3C483F0-D285-4230-9CF4-03F19F1FAC62")]
     [Description("Ватутина")]
     Vatutina,
+    [EnumGuid("D2043CD2-186D-48DE-B4AE-81BA8A9E1206")]
     [Description("Вейнбаума")]
     VeinBauma,
+    [EnumGuid("F4EC565E-8462-41D4-8870-249A6DC3CD05")]
     [Description("Вербная")]
     Verbnaya,
+    [EnumGuid("AEC15368-AF3F-44AA-8081-487DB6FF9369")]
     [Description("Верещагина")]
     Vereshchagina,
+    [EnumGuid("F1E27637-29D6-479C-B66D-63529197EA2A")]
     [Description("Верхняя")]
     VerkhNeya,
+    [EnumGuid("A6117427-D665-4E2A-9A68-BE4CD6A3CAE5")]
     [Description("Верховая")]
     Verkhovaya,
+    [EnumGuid("804A3DE9-F94A-4133-A457-06ED49AAA8FA")]
     [Description("Верхотельский")]
     VerkhotelSkiy,
+    [EnumGuid("F751A786-4F95-4B0D-9A42-9E5FE960E1A5")]
     [Description("Весёлая")]
     Veselyaya,
+    [EnumGuid("F976C36B-015F-49B2-89B4-1F943FC3C286")]
     [Description("Веселовская")]
     Veselovskaya,
+    [EnumGuid("581C04DD-2F77-49EE-9B27-F05E16196560")]
     [Description("Весенняя")]
     VesenNaya,
+    [EnumGuid("251AC25F-A1D4-4D2F-AEE7-9495BC00C3D7")]
     [Description("Весны")]
     Vesny,
+    [EnumGuid("37ED781C-690F-4AC7-B0FE-18F4161A55D8")]
     [Description("Вечерняя")]
     VecherNeya,
+    [EnumGuid("9B7F5109-7193-4B60-8AAC-FDC9AB7F96F7")]
     [Description("Вешняя")]
     VeshNeya,
+    [EnumGuid("826CEEAA-42AC-4564-A424-EF82CF0AA6B0")]
     [Description("Взлётная")]
     Vzletnaya,
+    [EnumGuid("DC5498CD-1148-4A53-8BBA-55680B6BDD11")]
     [Description("Вильского")]
     VilSkogo,
+    [EnumGuid("0754DF01-E4FA-4F47-8BFA-4F3F6AC7A2F8")]
     [Description("Виражная")]
     Viazhnaya,
+    [EnumGuid("F037DE96-0D1C-4E64-84C0-C3CB8C518304")]
     [Description("Вишневый")]
     Vishnevyy,
+    [EnumGuid("D0381A9E-2F5D-4D5F-A38D-3A49FCF6FCED")]
     [Description("Внутриквартальная 1-я")]
     Vnutrikvartalnaya1,
+    [EnumGuid("C7DB5832-B257-4D15-B307-7F2D477EAEF2")]
     [Description("1-я Внутриквартальная")]
     Vnutrikvartalna_ya1,
+    [EnumGuid("FF83B91D-6964-4B11-B0EB-F8F06A5F26F1")]
     [Description("Внутриквартальная 3-я")]
     Vnutrikvartalnaya3,
+    [EnumGuid("90090D6C-645D-4312-A5E1-32E4593DF52D")]
     [Description("3-я Внутриквартальная")]
     Vnutrikvartalna_ya3,
+    [EnumGuid("B443EE6B-703F-4736-93B3-C933034BB626")]
     [Description("Водометный")]
     Vodometnyy,
+    [EnumGuid("E02DADA7-2FB1-4F30-A6C7-4B59909355B7")]
     [Description("Водопьянова")]
     Vodopyanova,
+    [EnumGuid("FAB8D86B-96B3-4A7B-9916-1F2B95B6AD51")]
     [Description("Водянникова")]
     VodyanNikova,
+    [EnumGuid("A9A0283E-98E3-4F97-8367-AC4F01AA3DD0")]
     [Description("Возвышенная")]
     VozvyshchenNaya,
+    [EnumGuid("782E3426-6A22-4D3C-B7F9-C2D6F9F566D4")]
     [Description("Вознесенская")]
     Voznesenskaya,
+    [EnumGuid("04111CCC-C822-4456-B55B-F33E9B72930D")]
     [Description("Возрождения")]
     Rozhdeniya,
+    [EnumGuid("97B77775-7221-4D87-92D0-3422E86E89B6")]
     [Description("Вокзальная")]
     Vokzalnaya,
+    [EnumGuid("A8909F83-DFDD-46F0-A3E7-DFC14B921E24")]
     [Description("Волгоградская")]
     Volgogradskaya,
+    [EnumGuid("3BCB9FCA-E200-461E-BE2A-0938367D94C9")]
     [Description("Волжская")]
     Volzhskaya,
+    [EnumGuid("F74A57DF-0908-4BE0-B17F-65F486A93E85")]
     [Description("Володнева")]
     Volodinova,
+    [EnumGuid("DFE593B6-4AF5-4120-AFE8-1F74C473B753")]
     [Description("Волочаевская")]
     Volochayevskaya,
+    [EnumGuid("E0B03896-498A-44BD-96C0-B4194F14E57D")]
     [Description("Волочанская")]
     Volochanskaya,
+    [EnumGuid("524A9233-0ACE-4783-80EF-8F8C5431502E")]
     [Description("Вольный")]
     Volnyy,
+    [EnumGuid("08901AD1-684B-4135-AA63-E737F4A6A63A")]
     [Description("Воровского")]
     Vorovskogo,
+    [EnumGuid("B8AA44B1-9334-4D1F-8318-552B0EFB27FF")]
     [Description("Воронова")]
     Voronova,
+    [EnumGuid("2C63DF86-59FA-4F2B-B670-A165AE545A34")]
     [Description("Воскресенская")]
     Voskresenskaya,
+    [EnumGuid("9EB4DDBB-11E0-434E-A6B4-035FA401009A")]
     [Description("Воскресная")]
     Voskresnaya,
+    [EnumGuid("FE277F1F-234C-4295-9C27-D8C5D97A8859")]
     [Description("Восточная")]
     Vostochnaya,
+    [EnumGuid("E55F1E67-C086-46D7-95AC-F1FDE58ED8B2")]
     [Description("Восточный")]
     Vostochnyy,
+    [EnumGuid("F9D3DF78-55A7-420F-A57E-C22773E6FA8F")]
     [Description("Восходная")]
     Voskhodnaya,
+    [EnumGuid("E92E506D-4B6F-4123-AC21-5F55805D0381")]
     [Description("Встречная")]
     Vstrechnaya,
+    [EnumGuid("A6CCDE22-2528-449E-808B-BEE9018277E9")]
     [Description("Вузовский")]
     Vuzovskiy,
+    [EnumGuid("2D21530B-3E67-46C3-8705-4357CF8E8872")]
     [Description("Выборгский")]
     Vyborgskiy,
+    [EnumGuid("014BE2A9-8971-47E0-A243-61B6AB83EBE6")]
     [Description("Высокая")]
     Vysokaya,
+    [EnumGuid("63BF5104-E343-48F0-AAF0-1A87747FB3E5")]
     [Description("Высотная")]
     Vysostnaya,
+    [EnumGuid("DF400B70-6F4D-4E8E-A8AB-C466FEFE1226")]
     [Description("Высоцкого")]
     Vysotskogo,
+    [EnumGuid("0A6A374A-FD71-4DDA-8534-3B277E7617FD")]
     
     #endregion
 
