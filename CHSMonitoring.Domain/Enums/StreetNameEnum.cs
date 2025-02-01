@@ -1608,112 +1608,166 @@ public enum StreetNameEnum
     
     #region Улицы на букву М
     
+    [EnumGuid("CD6AC6BC-319B-43DE-A63B-27B275A3456B")]
     [Description("Магистральная")]
     Magistralnaya,
+    [EnumGuid("74339A80-4F3E-47C2-87C5-77CADD2138AD")]
     [Description("Магнитогорская")]
     Magnitogorskaya,
+    [EnumGuid("B440E53F-EF62-4454-94E3-38863B0357A4")]
     [Description("Маерчака")]
     Mayerchaka,
+    [EnumGuid("588725C6-DAEF-42A2-BE8D-F8E447AB66EA")]
     [Description("Майская")]
     Mayskaya,
+    [EnumGuid("FDA2B1DB-B973-4951-85E3-EFE787A917F0")]
     [Description("Макаренко")]
     Makarenko,
+    [EnumGuid("DC7BDE3A-BA2A-48A4-8A4D-503085235076")]
     [Description("Малаховская")]
     Malahovskaya,
+    [EnumGuid("D348DB1C-55C2-478A-AA41-22069890B68E")]
     [Description("Малая")]
     Malaya,
+    [EnumGuid("BF4A4DDA-EB45-44D5-A24B-4A64DE5D986E")]
     [Description("Малиновая")]
     Malinovaya,
+    [EnumGuid("6294EE0E-6373-4F6E-A731-7921F3C4E630")]
     [Description("Малиновского")]
     Malinovskogo,
+    [EnumGuid("E233CEBB-B0EC-455E-A574-BED9070B9656")]
     [Description("Малтатский")]
     Maltatskiy,
+    [EnumGuid("50560BCA-8145-46BE-BE10-5B1B171EBECC")]
     [Description("Мангазейская")]
     Mangazeyskaya,
+    [EnumGuid("5BE0ED6B-1FB6-4A3F-84C0-CD98C17A5C1D")]
     [Description("Марата")]
     Marata,
+    [EnumGuid("137A050B-7C4D-43FF-A72E-C33604E34663")]
     [Description("Марии Ульяновой")]
     MariiUlyanovoy,
+    [EnumGuid("94F7B59E-BC5C-4DE7-A6D7-CDC5166C6023")]
     [Description("Марии Цукановой")]
     MariiTsukanovoy,
+    [EnumGuid("27EBB392-5EF2-49F5-B98F-F1F9C864C5FA")]
     [Description("Марковского")]
     Markovskogo,
+    [EnumGuid("4BD21C60-7A3B-425F-8B9B-1BD91664361F")]
     [Description("Матвеева")]
     Matveeva,
+    [EnumGuid("AF0BC9AA-26C7-4762-AB5D-0356E3F30F14")]
     [Description("Мате Залки")]
     MateZalki,
+    [EnumGuid("54D419DB-EA34-4662-8AEB-951C7E21FCA2")]
     [Description("Машиностроителей")]
     Mashinostroiteley,
+    [EnumGuid("FDACEA43-7982-4631-87B0-C9CFF158D8E5")]
     [Description("Маяковского")]
     Mayakovskogo,
+    [EnumGuid("9D9D5C2D-78F6-4B1B-A0DB-C30EECCCF7E9")]
     [Description("Мебельная")]
     Mebelnaya,
+    [EnumGuid("69482E02-C4F1-452D-B543-E06A5DA2110C")]
     [Description("Медицинский")]
     Meditsinskiy,
+    [EnumGuid("0DB6B8CF-3B91-48F0-AAE9-71835ACD353A")]
     [Description("Медовая")]
     Medovaya,
+    [EnumGuid("6020C496-4D7E-4514-831C-C5C849D0638E")]
     [Description("Мелькомбинатская")]
     Melkombinatskaya,
+    [EnumGuid("1F88CED2-F4FB-43C6-9F62-24D09944068C")]
     [Description("Мелькомбинатская 2-я")]
     Melkombinatskaya2,
+    [EnumGuid("A64379E3-AF11-43BA-BBA6-AA58D43549E3")]
     [Description("2-я Мелькомбинатская")]
     Melkombinatska_ya2,
+    [EnumGuid("830771D8-B277-41D0-B30B-F917A3141E8F")]
     [Description("Менделеева")]
     Mendeleeva,
+    [EnumGuid("529B39CC-9BEA-4E20-8160-0AEDF15C72C4")]
     [Description("Менжинского")]
     Menzhinskogo,
+    [EnumGuid("5304C549-1E46-4B40-8C1B-4D0026EA5C30")]
     [Description("Металлургов")]
     Metallurgov,
+    [EnumGuid("66FC275E-A2DA-4B5B-82ED-8C7016248FBE")]
     [Description("Мечникова")]
     Mechnikova,
+    [EnumGuid("A75D63FD-F3C5-4A0D-8D1C-B8B2E8BDE707")]
     [Description("Микуцкого")]
     Mikutskogo,
+    [EnumGuid("C84CA287-927A-4FA1-A07C-8298E3C25137")]
     [Description("Минина")]
     Minina,
+    [EnumGuid("8D83303B-A78E-410A-9C97-B0D1DDD208E0")]
     [Description("Минская")]
     Minskaya,
+    [EnumGuid("A5109F8F-EF43-4611-96DC-889623BCBAB7")]
     [Description("Минусинская")]
     Minusinskaya,
+    [EnumGuid("21F0CAD5-33B1-4EC7-942F-B5C56171E4FE")]
     [Description("Мира")]
     Mira,
+    [EnumGuid("5AAEC5BC-825F-48A7-8A65-4F8C649A3F19")]
     [Description("Мирошниченко")]
     Miroshnichenko,
+    [EnumGuid("B9D09132-DD4B-4704-90BB-A6FDD4F2EBB2")]
     [Description("Михаила Годенко")]
     MikhailaGodenko,
+    [EnumGuid("BCEF5E9C-4B2D-40B9-99E5-D8DB5EEC6745")]
 	[Description("Годенко")]
     Godenko,
+    [EnumGuid("0EACFAF9-9FB2-4D62-BB17-1CDE5E19C064")]
     [Description("Мичурина")]
     Michurina,
+    [EnumGuid("9D501510-5A2D-474F-B18D-165C000B514E")]
     [Description("Можайского")]
     Mozhayskogo,
+    [EnumGuid("B7574F97-F154-4DAD-AB65-EB332D869073")]
     [Description("Молодежный")]
     Molodezhniy,
+    [EnumGuid("63DB6BA6-8734-47DB-8933-2EAAE55A4B46")]
     [Description("Молодогвардейцев")]
     Molodogvardeytsev,
+    [EnumGuid("EEE93BFE-2A43-4194-B7D3-56FB40632A63")]
     [Description("Молодости")]
     Molodosti,
+    [EnumGuid("3D8FF1A1-B7BD-474F-82BE-0B19FAE8E6F6")]
     [Description("Молокова")]
     Molokova,
+    [EnumGuid("901B2CDD-CC84-42ED-84B4-471B475CC47F")]
     [Description("Монастырская")]
     Monastyrskaya,
+    [EnumGuid("6D139A02-1E6F-4B63-8BFB-EF0521B17E76")]
     [Description("Монтажников")]
     Montazhnikov,
+    [EnumGuid("07E3F35C-EA9C-4DED-B78F-5C05825D9CBD")]
     [Description("Московская")]
     Moskovskaya,
+    [EnumGuid("820C67DB-255D-47CA-AAFB-91108B46221F")]
     [Description("Мостовиков")]
     Mostovikov,
+    [EnumGuid("CF8E7708-102A-4808-8B6F-042EC83B0606")]
     [Description("Моторная")]
     Motornaya,
+    [EnumGuid("B2A58868-98BB-48B7-89AC-F629AFB9A509")]
     [Description("Моховая")]
     Mokhovaya,
+    [EnumGuid("1254ADC6-7DB7-43E6-B77C-8B7CD6B461E5")]
     [Description("МПС")]
     Mps,
+    [EnumGuid("3DF05FD1-7F33-4DFA-B07C-B2F711E946BD")]
     [Description("Мужества")]
     Muzhestva,
+    [EnumGuid("84572DA3-2353-4DC2-8420-76A68BC4DED5")]
     [Description("Мурманская")]
     Murmanskaya,
+    [EnumGuid("95796331-9E68-40A3-B427-EADE68988B37")]
     [Description("Мусоргского")]
     Musorgskogo,
+    [EnumGuid("6F043DED-3126-4DA2-AC30-D3CA82FBF472")]
     [Description("Мясокомбинат")]
     Myasokombinat,
     
