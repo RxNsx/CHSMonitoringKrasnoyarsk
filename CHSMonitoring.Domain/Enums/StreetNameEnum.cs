@@ -216,147 +216,219 @@ public enum StreetNameEnum
     #region Улицы на букву Б
     
     [Description("Бабушкина")]
+    [EnumGuid("340FDBB0-8771-4032-AF9C-742D76F093D5")]
     Babushkina,
     [Description("Бадалык")]
+    [EnumGuid("1DA25A69-14BB-46ED-A455-4B207BA423C6")]
     Badalyk,
     [Description("Бадалыкская")]
+    [EnumGuid("7E3C29F4-AE05-4973-B2C0-3D251C09B415")]
     Badalykskaya,
     [Description("Базайская")]
+    [EnumGuid("7783C928-3FC1-4657-9EE1-C209E03A3EBB")]
     Bazayskaya,
+    [EnumGuid("D40EB451-C5A3-43EB-8227-4BB01FA346BD")]
     [Description("Базарная")]
     BazarNaya,
+    [EnumGuid("1913B8B2-4349-489B-9FD6-7726F16BA155")]
     [Description("Байкальская")]
     Baykalskaya,
+    [EnumGuid("790FB554-9455-4B7D-8180-5042FD745B69")]
     [Description("Байкитская 1-я")]
     Baykitskaya1,
+    [EnumGuid("4921FAC3-1AD0-4C75-B58D-4C4DFDB61105")]
     [Description("1-я Байкитская")]
     Baykitska_ya1,
+    [EnumGuid("58E4F4F3-E34D-4AF9-BFDA-F79AEC29437C")]
     [Description("Байкитская 2-я")]
     Baykitskaya2,
+    [EnumGuid("3A68611F-3CCA-4179-A108-C74720A8DAD9")]
     [Description("2-я Байкитская")]
     Baykitska_ya2,
+    [EnumGuid("3A3B3FDB-D5FA-4870-A04D-F388B8D70D17")]
     [Description("Балахтинская")]
     BalakhTinskaya,
+    [EnumGuid("73B989B5-2598-4EAC-B4D2-DC084FBF6D10")]
     [Description("Бартатский")]
     Bartatskiy,
+    [EnumGuid("F9DD1DD1-7155-47A2-B39A-6838F5439139")]
     [Description("Батурина")]
     BatUrIna,
+    [EnumGuid("A75A5913-91FD-42F1-8BBC-0E3CCE879135")]
     [Description("Баумана")]
     BaUmana,
+    [EnumGuid("6BD83066-6D1C-422D-BC47-2EEED0307A83")]
     [Description("Башиловская")]
     BashIlovskaya,
+    [EnumGuid("58357327-651B-48B0-B98D-A148B13CFAD0")]
     [Description("Бебеля")]
     Bebelya,
+    [EnumGuid("F564D2A9-4034-41BD-9D84-1C47370DFC26")]
     [Description("Бегичева")]
     Begicheva,
+    [EnumGuid("5BBDC256-9183-4096-A517-8A02B79DCAB7")]
     [Description("Белинского")]
     Belinskogo,
+    [EnumGuid("E0038B19-06B0-46F6-8F0F-A604888A593F")]
     [Description("Беловежская")]
     BelovezhSkaya,
+    [EnumGuid("AE589CB2-8A96-4073-8EF4-F1D8AA091B09")]
     [Description("Белопольского")]
     BelopolSkogo,
+    [EnumGuid("F28DB2CC-6807-4F93-B9AB-919CB348997A")]
     [Description("Белорусская")]
     Belorusskaya,
+    [EnumGuid("CE09C6F4-5DD8-4B8D-B3E2-A2668C72E4AB")]
     [Description("Беляева")]
     Belyaeva,
+    [EnumGuid("4A6501E6-2025-4FE8-9904-8515A4BFD495")]
     [Description("Березина")]
     Berezina,
+    [EnumGuid("44C6E9D7-880E-48AD-A06D-4CE6B4383E79")]
     [Description("Березовая")]
     Berezovaya,
+    [EnumGuid("4C5BB0B5-9BE7-415B-9104-796688E74FA3")]
     [Description("Биатлонная")]
     Biathlonnaya,
+    [EnumGuid("1DDA1D20-6987-4DC6-B8CE-5C59D83EEE2D")]
     [Description("Бийская")]
     Biyskaya,
+    [EnumGuid("606695E0-F18A-4FD2-A0C1-8835473BF889")]
     [Description("Бийхемская")]
     BiyKhemsKaya,
+    [EnumGuid("E4FC60FD-D34C-4C28-88E4-8E2250398369")]
     [Description("Биологов")]
     Biologov,
+    [EnumGuid("1D944DB8-EBD4-4384-93AB-0F0CFB8F7053")]
     [Description("Бирикчульский")]
     BirikchulSkiy,
+    [EnumGuid("505CA6DD-C84E-4B12-878E-B46799B20341")]
     [Description("Бирилюсская")]
     Birilyusskaya,
+    [EnumGuid("F9C8D455-F765-495F-89BF-9C1314E89962")]
     [Description("Бирюсинская")]
     Biryusinskaya,
+    [EnumGuid("E098423A-23A0-4CFE-A1AA-F81DB0162A60")]
     [Description("Благодатная")]
     Blagodatnaya,
+    [EnumGuid("76A54C8E-6C8F-40A6-885F-C709D19BB3B4")]
     [Description("Бобровый")]
     Bobrovyy,
+    [EnumGuid("DADE1DBD-E283-49C1-AEA4-FCCB0CCB8F30")]
     [Description("Богдана Хмельницкого")]
     BogdanaKhmelNitskogo,
+    [EnumGuid("9E11873E-3F64-407E-9E1F-AA5E544F5006")]
     [Description("Боголеповская")]
     Bogolepovskaya,
+    [EnumGuid("66730A61-F9C0-40A0-8BD9-872FF6193536")]
     [Description("Боготольский")]
     BogotolSkiy,
+    [EnumGuid("5AD1B114-F218-419A-98F5-A839E6721B0C")]
     [Description("Бограда")]
     Bograda,
+    [EnumGuid("F0559193-CDA8-4A22-9228-57051322703B")]
     [Description("Богучанская")]
     Boguchanskaya,
+    [EnumGuid("99C9F1C8-8E68-4ECD-83E9-1C92A89074B5")]
     [Description("Бодрая")]
     Bodraya,
+    [EnumGuid("C5B9C252-671E-4C84-AF1B-06AE80D596A4")]
     [Description("Бойкая")]
     Boykaya,
+    [EnumGuid("E03B169C-F2D7-4EB6-906E-8E9EC963BD9E")]
     [Description("Болдинская")]
     Boldinskaya,
+    [EnumGuid("2578A7C3-4844-49D4-A239-0BA8735D5B91")]
     [Description("Большегвардейская")]
     BolSheGvardeyskaya,
+    [EnumGuid("51E0248F-6495-41D7-9ED0-4A14BB2EA9E4")]
     [Description("Большой")]
     BolShoy,
+    [EnumGuid("1586CF47-E0E4-4991-A16A-C0DF09C80AEE")]
     [Description("Борисевича")]
     Borisevicha,
+    [EnumGuid("04EE1734-2DB8-44B8-A0F7-209D9E162D02")]
     [Description("Борисова")]
     Borisova,
+    [EnumGuid("F6D63F44-807A-41AF-A73C-E772BA365E43")]
     [Description("Боровая 1-я")]
     Borovaya1,
+    [EnumGuid("D0B017FD-B1E5-468A-8C81-B668AAA41A10")]
     [Description("1-я Боровая")]
     Borova_ya1,
+    [EnumGuid("227DC29C-6B99-4030-B56A-A4B5BE66FB2E")]
     [Description("Боровая 2-я")]
     Borovaya2,
+    [EnumGuid("66C32B42-D699-42AB-B9BC-845E2DC9F8B7")]
     [Description("2-я Боровая")]
     Borova_ya2,
+    [EnumGuid("93D87292-132F-4E75-913B-FCEA8AE1BD4A")]
     [Description("Бородинская")]
     Borodinskaya,
+    [EnumGuid("B3AED898-3FAB-46B5-B154-841DD8690660")]
     [Description("Борьбы")]
     BorBy,
+    [EnumGuid("F5DD4A68-5514-4CED-A399-4F031012FE92")]
     [Description("Ботаническая")]
     Botanicheskaya,
+    [EnumGuid("29FA9049-7868-477E-AD3A-DB2B3C652BD9")]
     [Description("Ботаническая 2-я")]
     Botanicheskaya2,
+    [EnumGuid("419D93C1-DDC6-4ADB-BDDE-CD3F724748AE")]
     [Description("2-я Ботаническая")]
     Botanicheska_ya2,
+    [EnumGuid("FEAEC3BC-29EC-475C-8D9A-C6DFAED079EB")]
     [Description("Ботаническая 3-я")]
     Botanicheskaya3,
+    [EnumGuid("B44637A6-8943-4EC0-9C8A-80EB746B9040")]
     [Description("3-я Ботаническая")]
     Botanicheska_ya3,
+    [EnumGuid("5286F0D9-D604-4F27-BEDD-8A5D36DBBD3F")]
     [Description("Ботаническая 4-я")]
     Botanicheskaya4,
+    [EnumGuid("A65F90A6-83D6-42EC-A657-5AA1D7F65F84")]
     [Description("4-я Ботаническая")]
     Botanicheska_ya4,
+    [EnumGuid("7AAD11B6-5625-4A10-A38C-B6B5E8D87DC2")]
     [Description("Ботанический")]
     Botanicheskiy,
+    [EnumGuid("D71E1701-3F85-4701-AF24-3301977BDC28")]
     [Description("Боткина")]
     Botkina,
+    [EnumGuid("B201C7EB-6EC0-4285-A16E-325EB29268AF")]
     [Description("Бохтинский")]
     Bokhtinskiy,
+    [EnumGuid("EC674EC0-22C8-4329-8180-FEA7F2307A82")]
     [Description("Братская 1-я")]
     Bratskaya1,
+    [EnumGuid("4B013D92-67BF-4D1C-81AE-CA73C0FA5D0C")]
     [Description("1-я Братская")]
     Bratska_ya1,
+    [EnumGuid("E22CFBCB-EA1B-4467-A5C5-DF4FA68361B9")]
     [Description("Братская 2-я")]
     Bratskaya2,
+    [EnumGuid("C3444383-2E12-4939-BAF0-274F7292044E")]
     [Description("2-я Братская")]
     Bratska_ya2,
+    [EnumGuid("BE5A29FA-D677-4470-A39E-DD231C296C22")]
     [Description("Братьев Абалаковых")]
     BratEyAbalakovykh,
+    [EnumGuid("A3E7FD67-33F9-4BDF-A7D7-7CAF54D752C4")]
     [Description("Брестская")]
     Brestskaya,
+    [EnumGuid("93BA21AA-7E26-467B-AB17-8F7FDF57E07B")]
     [Description("Брянская")]
     Bryanskaya,
+    [EnumGuid("B302E806-5C81-4A87-99CC-6D9300DDD528")]
     [Description("Брянская 2-я")]
     Bryanskaya2,
+    [EnumGuid("F03D7457-D7E8-4A49-AC01-B4851D2228B3")]
     [Description("2-я Брянская")]
     Bryanska_ya2,
+    [EnumGuid("FB6B66C2-6AF2-4E1E-B3D8-AC9F93F405BB")]
     [Description("Бугачевская")]
     Bugachevskaya,
+    [EnumGuid("384AD73D-89B3-42CD-9D8E-69837456D86E")]
     [Description("Быковского")]
     Bykovskogo,
     
