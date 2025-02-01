@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.Domain.Entities;
+﻿using System.Collections.Immutable;
+using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Models;
@@ -49,7 +50,7 @@ public class TdContentParserService : ITdContentParserService
         
         supplyTypeIndexes = AddTheEndOfSupplyInfo(supplyTypeIndexes);
         
-        var supplyDescriptionList = new Dictionary<string, List<ServiceMessage>>();
+        var serviceAddressDict = new Dictionary<string, List<ServiceMessage>>();
         foreach (var item in supplyTypeIndexes)
         {
             for (var i = 1; i < item.Value.Count; i++)
@@ -63,30 +64,30 @@ public class TdContentParserService : ITdContentParserService
 
                 if (tableDescriptionItemList.Any())
                 {
-                    var supplyDescriptionBuilder = new ServiceMessageBuilder();
+                    var serviceAddressMessageBuilder = new ServiceMessageBuilder();
                     var organizationText = tableDescriptionItemList[0].InnerText.NormalizeText();
                     var addressesText = tableDescriptionItemList[1].InnerText.NormalizeText();
                     var dateInfoText = tableDescriptionItemList[2].InnerText.NormalizeText();
 
-                    supplyDescriptionBuilder.BuildOrganization(organizationText);
-                    supplyDescriptionBuilder.BuildAddressesList(addressesText);
-                    supplyDescriptionBuilder.BuildDateInfo(dateInfoText);
-                    supplyDescriptionBuilder.BuildDistrictName(item.Key);
-                    var supplyMessageDescription = supplyDescriptionBuilder.BuildSupplyMessageDescription();
+                    serviceAddressMessageBuilder.BuildOrganization(organizationText);
+                    serviceAddressMessageBuilder.BuildAddressesList(addressesText);
+                    serviceAddressMessageBuilder.BuildDateInfo(dateInfoText);
+                    serviceAddressMessageBuilder.BuildDistrictName(item.Key);
+                    var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
 
-                    if (!supplyDescriptionList.TryGetValue(item.Key, out _))
+                    if (!serviceAddressDict.TryGetValue(item.Key, out _))
                     {
-                        supplyDescriptionList.Add(item.Key, new List<ServiceMessage> { supplyMessageDescription });
+                        serviceAddressDict.Add(item.Key, new List<ServiceMessage> { supplyMessageDescription });
                     }
                     else
                     {
-                        supplyDescriptionList[item.Key].Add(supplyMessageDescription);
+                        serviceAddressDict[item.Key].Add(supplyMessageDescription);
                     }
                 }
             }
         }
 
-        return GetServiceAddressList(supplyDescriptionList);
+        return GetServiceAddressList(serviceAddressDict);
     }
 
     /// <summary>
@@ -199,7 +200,7 @@ public class TdContentParserService : ITdContentParserService
 
         return tableDescriptions;
     }
-    
+
     /// <summary>
     /// Получение списка адресов с отключениями
     /// </summary>
@@ -207,29 +208,34 @@ public class TdContentParserService : ITdContentParserService
     /// <returns></returns>
     public List<ServiceAddress> GetServiceAddressList(Dictionary<string, List<ServiceMessage>> serviceMessages)
     {
-        List<ServiceAddress> serviceAddresses = [];
+        List<ServiceAddress> serviceAddressList = [];
+        var uniqueAddresses = new HashSet<(string StreetName, string HouseNumber)>();
+        
         foreach (var serviceMessage in serviceMessages.SelectMany(x => x.Value).ToList())
         {
             var addressList = serviceMessage.AddressList;
             foreach (var address in addressList)
             {
-                var serviceAddress = new ServiceAddress();
-                serviceAddress.DistrictName = serviceMessage.DistrictName;
-                serviceAddress.StreetName = address.StreetName;
-                serviceAddress.HouseNumber = address.Number;
-                serviceAddress.Description = serviceMessage.Description;
-                serviceAddress.ServiceType = serviceMessage.Organization.SupplyTypeName;
-                        
-                serviceAddress.DateTimeFromString = serviceMessage.DateInfo.DateFromString;
-                serviceAddress.DateTimeToString = serviceMessage.DateInfo.DateToString;
-                serviceAddress.From = serviceMessage.DateInfo.DateFrom;
-                serviceAddress.To = serviceMessage.DateInfo.DateTo;
-                serviceAddress.CreatedDate = serviceMessage.CreatedDate;
-                        
-                serviceAddresses.Add(serviceAddress);
+                if (uniqueAddresses.Add((address.StreetName, address.Number)))
+                {
+                    var serviceAddress = new ServiceAddress()
+                    {
+                        DistrictName = serviceMessage.DistrictName,
+                        StreetName = address.StreetName,
+                        HouseNumber = address.Number,
+                        Description = serviceMessage.Description,
+                        ServiceType = serviceMessage.Organization.SupplyTypeName,
+                        DateTimeFromString = serviceMessage.DateInfo.DateFromString,
+                        DateTimeToString = serviceMessage.DateInfo.DateToString,
+                        From = serviceMessage.DateInfo.DateFrom,
+                        To = serviceMessage.DateInfo.DateTo,
+                        CreatedDate = serviceMessage.CreatedDate
+                    };
+                    serviceAddressList.Add(serviceAddress);
+                }
             }
         }
 
-        return serviceAddresses;
+        return serviceAddressList;
     }
 }

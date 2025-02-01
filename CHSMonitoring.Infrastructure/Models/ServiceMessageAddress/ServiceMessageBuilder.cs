@@ -83,7 +83,7 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
         _serviceMessage.SetDistrictName(districtName);
     }
 
-    internal override ServiceMessage BuildSupplyMessageDescription()
+    internal override ServiceMessage BuildServiceAddressMessage()
     {
         return _serviceMessage;
     }

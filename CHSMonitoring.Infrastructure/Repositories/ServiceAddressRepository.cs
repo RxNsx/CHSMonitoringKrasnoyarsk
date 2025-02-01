@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.Domain.Entities;
+﻿using System.Collections.Immutable;
+using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,8 @@ public class ServiceAddressRepository : IServiceAddressRepository
         return await _context.ServiceAddresses.ToListAsync(cancellationToken);
     }
 
-    public async Task AddServiceAddressesAsync(List<ServiceAddress> serviceAddresses, CancellationToken cancellationToken)
+    public async Task AddServiceAddressesAsync(List<ServiceAddress> serviceAddresses,
+        CancellationToken cancellationToken)
     {
         
         /*

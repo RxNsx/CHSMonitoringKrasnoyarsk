@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.Domain.Entities;
+﻿using System.Collections.Immutable;
+using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Infrastructure.Models;
 using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
 

@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.Domain.Entities;
+﻿using System.Collections.Immutable;
+using CHSMonitoring.Domain.Entities;
 
 namespace CHSMonitoring.Infrastructure.Interfaces;
 
@@ -13,7 +14,7 @@ public interface IServiceAddressRepository
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<List<ServiceAddress>> GetServiceAddressesAsynс(CancellationToken cancellationToken);
-    
+
     /// <summary>
     /// Добавить список событий обслуживания адреса
     /// </summary>

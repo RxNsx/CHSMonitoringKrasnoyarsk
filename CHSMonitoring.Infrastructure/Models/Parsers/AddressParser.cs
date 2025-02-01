@@ -71,6 +71,12 @@ public static class AddressParser
             {
                 foreach (var number in numbers)
                 {
+                    var match = Regex.Match(number, @"\b\d+[а-яА-Я]?\d*/\d+\b");
+                    if (match.Success)
+                    {
+                        addressList.Add(Address.Create(streetName, match.Value));
+                    }
+                    
                     if (!number.Contains("-"))
                     {
                         if (Regex.IsMatch(number, @"^[а-яА-Я]"))

@@ -35,5 +35,5 @@ public abstract class ServiceBuilder
     /// Сборка объекта полностью
     /// </summary>
     /// <returns></returns>
-    internal abstract ServiceMessage BuildSupplyMessageDescription();
+    internal abstract ServiceMessage BuildServiceAddressMessage();
 }

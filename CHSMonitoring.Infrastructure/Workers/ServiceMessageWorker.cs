@@ -68,6 +68,7 @@ public class ServiceMessageWorker : BackgroundService
                 var serviceAddresses = _htmlParserService.GetServiceMessages(htmlDocument);
                 await _serviceAddressRepository.AddServiceAddressesAsync(serviceAddresses, stoppingToken);
                 
+                //TODO: Equatable для адресов чтобы сравнивать их через Distinct
                 Console.WriteLine("Total seconds elapsed: " + stopwatch.Elapsed.Seconds);
                 stopwatch.Stop();
             }
