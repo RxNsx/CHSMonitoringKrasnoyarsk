@@ -18,6 +18,9 @@ public class DistrictConfiguration : IEntityTypeConfiguration<District>
         builder.Property(x => x.Name)
             .HasMaxLength(100)
             .IsRequired();
+
+        builder.Property(x => x.IsReadOnly)
+            .HasDefaultValue(true);
         
         PrepareData(builder);
     }
@@ -26,13 +29,13 @@ public class DistrictConfiguration : IEntityTypeConfiguration<District>
     {
         var districtList = new List<District>()
         {
-            new() { Name = "Октябрьский район", Id = Guid.Parse("4d6d7a46-6d26-4e2f-be49-8f6040582049") },
-            new() { Name = "Железнодорожный район", Id = Guid.Parse("8e68bf05-fcb5-4a9b-b75d-549a9aeb66b7") },
-            new() { Name = "Центральный район", Id = Guid.Parse("3e93400d-d611-45e7-b4fc-fa3473859d11") },
-            new() { Name = "Советский район", Id = Guid.Parse("dfbca6ca-a5cc-40a8-a411-f9c6220f563b") },
-            new() { Name = "Ленинский район", Id = Guid.Parse("6b64b853-6ba2-407f-96c5-65c16e04ad98") },
-            new() { Name = "Кировский район", Id = Guid.Parse("fb3418b0-0aee-4c9c-9b07-362247577ccb") },
-            new() { Name = "Свердловский район", Id = Guid.Parse("f15b7e0d-2817-4fd6-813a-57af65304e1f") },
+            new() { Name = "Октябрьский район", Id = Guid.Parse("E137A377-6281-4074-BA80-E7460C328354") },
+            new() { Name = "Железнодорожный район", Id = Guid.Parse("590B4A73-E859-4FFD-A544-23C5DD012760") },
+            new() { Name = "Центральный район", Id = Guid.Parse("07432E9E-C030-4676-9CFE-438D8C76FFCF") },
+            new() { Name = "Советский район", Id = Guid.Parse("1439FFC7-FE1E-4EFF-89B9-8ED6EF9DD323") },
+            new() { Name = "Ленинский район", Id = Guid.Parse("EC99DB28-33A9-4526-B790-C4EDCB44955F") },
+            new() { Name = "Кировский район", Id = Guid.Parse("215A4634-5671-49A3-8563-7B9A8E9DEA10") },
+            new() { Name = "Свердловский район", Id = Guid.Parse("224359E3-827D-4C2D-95BE-E496418966E0") },
         };
 
         builder.HasData(districtList);
