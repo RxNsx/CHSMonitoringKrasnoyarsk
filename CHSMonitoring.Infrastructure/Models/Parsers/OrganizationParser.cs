@@ -1,5 +1,5 @@
-﻿using CHSMonitoring.Infrastructure.Extensions;
-using CHSMonitoring.Infrastructure.Models.Enums;
+﻿using CHSMonitoring.Domain.Enums;
+using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
 
 namespace CHSMonitoring.Infrastructure.Models.Parsers;

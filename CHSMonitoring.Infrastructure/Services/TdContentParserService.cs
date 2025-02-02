@@ -1,5 +1,5 @@
-﻿using System.Collections.Immutable;
-using CHSMonitoring.Domain.Entities;
+﻿using CHSMonitoring.Domain.Entities;
+using CHSMonitoring.Domain.Enums;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Models;

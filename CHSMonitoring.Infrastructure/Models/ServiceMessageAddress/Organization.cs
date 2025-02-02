@@ -1,4 +1,4 @@
-﻿using CHSMonitoring.Infrastructure.Models.Enums;
+﻿using CHSMonitoring.Domain.Enums;
 
 namespace CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
 
