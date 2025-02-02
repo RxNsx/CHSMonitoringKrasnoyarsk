@@ -54,5 +54,8 @@ public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddre
         builder.Property(x => x.CreatedDate)
             .HasConversion(x => x.ToUniversalTime(), x => DateTime.SpecifyKind(x, DateTimeKind.Utc))
             .IsRequired();
+
+        builder.Property(x => x.IsReadOnly)
+            .HasDefaultValue(true);
     }
 }

@@ -51,6 +51,11 @@ public class ServiceAddress : Entity
     public string DateTimeToString { get; set; }
     
     /// <summary>
+    /// Признак только для чтения
+    /// </summary>
+    public bool IsReadOnly { get; set; }
+    
+    /// <summary>
     /// Дата чтения события
     /// </summary>
     public DateTime CreatedDate { get; set; }
