@@ -9,4 +9,9 @@ public class District : Entity
     /// Название района
     /// </summary>
     public string Name { get; set; }
+
+    /// <summary>
+    /// Признак только для чтения
+    /// </summary>
+    public bool IsReadOnly { get; set; }
 }
