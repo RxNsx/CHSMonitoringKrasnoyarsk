@@ -14,5 +14,10 @@ public class Street : Entity
     /// </summary>
     public string Description { get; set; }
     
+    /// <summary>
+    /// Признак только для чтения 
+    /// </summary>
+    public bool IsReadonly { get; set; }
+    
     public List<ServiceAddress> ServiceAddresses { get; set; }
 }

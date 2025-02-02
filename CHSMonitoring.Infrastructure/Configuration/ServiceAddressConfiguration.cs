@@ -15,6 +15,21 @@ public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddre
 
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.StreetId)
+            .HasDefaultValue(null)
+            .IsRequired(false);
+            
+        builder.Property(x => x.DistrictId)
+            .IsRequired();
+    
+        builder.Property(x => x.ServiceTypeId)
+            .IsRequired();
+        
+        builder.Property(x => x.StreetName)
+            .HasMaxLength(150)
+            .HasDefaultValue(string.Empty)
+            .IsRequired();
+        
         builder.Property(x => x.HouseNumber)
             .HasMaxLength(30)
             .IsRequired();

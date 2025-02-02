@@ -30,19 +30,24 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
             .Cast<PlannedSupplyTypeEnum>()
             .Select(x => x.GetDescriptionValue())
             .ToList();
+
+        ///Получение минимального индекса
+        var plannedIndexOfText = plannedDescriptionEnums
+            .DefaultIfEmpty()
+            .Select(x => addressesText.IndexOf(x, StringComparison.InvariantCultureIgnoreCase))
+            .Where(x => x != -1)
+            .Min();
+        if (plannedIndexOfText != 0)
+        {
+            var additionalDescriptionValue = addressesText.Substring(plannedIndexOfText, addressesText.Length - plannedIndexOfText);
+            addressesText = addressesText.Remove(plannedIndexOfText, addressesText.Length - plannedIndexOfText).Trim();
+            _serviceMessage.SetDescription(additionalDescriptionValue);
+        }
         
+        //TODO: Отсекать полностью строку если она начинается на какой то плановый вид обслуживания
         var splittedAddressesList = addressesText
             .Split(';', StringSplitOptions.TrimEntries)
             .ToList();
-                            
-        ///Получение дополнительных описаний адресов
-        var additionalDescriptionList = splittedAddressesList
-            .Where(x => plannedDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
-            .ToList();
-        foreach (var additionalDescription in additionalDescriptionList)
-        {
-            splittedAddressesList.Remove(additionalDescription);
-        }
                             
         var addresses = splittedAddressesList
             .Where(x => streetDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
@@ -61,7 +66,7 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
             addressList = AddressParser.ParseAddresses(addresses);
         }
 
-        _serviceMessage.SetDescription(string.Join(",", additionalDescriptionList));
+        // _serviceMessage.SetDescription(string.Join(",", additionalDescriptionList));
         _serviceMessage.SetAddressList(addressList);
     }
 

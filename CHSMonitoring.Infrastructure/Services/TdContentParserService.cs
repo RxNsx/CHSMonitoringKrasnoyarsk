@@ -250,7 +250,7 @@ public class TdContentParserService : ITdContentParserService
                     {
                         DistrictId = districts.FirstOrDefault(x => x.DistrictName.Equals(serviceMessage.DistrictName, StringComparison.InvariantCultureIgnoreCase)).Id,
                         StreetId = streets.FirstOrDefault(x => x.StreetName.Equals(address.StreetName,StringComparison.InvariantCultureIgnoreCase)).Id,
-                        
+                        StreetName = address.StreetName,
                         ServiceTypeId = serviceTypes.FirstOrDefault(x => x.ServiceTypeName.Equals(serviceMessage.Organization.SupplyTypeName, StringComparison.InvariantCultureIgnoreCase)).Id,
                         HouseNumber = address.Number,
                         Description = serviceMessage.Description,
@@ -258,7 +258,8 @@ public class TdContentParserService : ITdContentParserService
                         DateTimeToString = serviceMessage.DateInfo.DateToString,
                         From = serviceMessage.DateInfo.DateFrom,
                         To = serviceMessage.DateInfo.DateTo,
-                        CreatedDate = serviceMessage.CreatedDate
+                        CreatedDate = serviceMessage.CreatedDate,
+                        IsReadOnly = true
                     });
                 }
             }

@@ -20,6 +20,9 @@ public class StreetConfiguration : IEntityTypeConfiguration<Street>
         builder.Property(x => x.Description)
             .HasMaxLength(150)
             .HasDefaultValue(string.Empty);
+
+        builder.Property(x => x.IsReadonly)
+            .HasDefaultValue(true);
         
         PrepareData(builder);
     }

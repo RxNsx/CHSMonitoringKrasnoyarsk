@@ -6,6 +6,11 @@
 public class ServiceAddress : Entity
 {
     /// <summary>
+    /// Название улицы
+    /// </summary>
+    public required string StreetName { get; set; }
+    
+    /// <summary>
     /// Номер дома
     /// </summary>
     public required string HouseNumber { get; set; }
@@ -58,7 +63,7 @@ public class ServiceAddress : Entity
     /// <summary>
     /// Ид улицы
     /// </summary>
-    public required Guid StreetId { get; set; }
+    public required Guid? StreetId { get; set; }
     
     /// <summary>
     /// Навигационное свойство улицы
