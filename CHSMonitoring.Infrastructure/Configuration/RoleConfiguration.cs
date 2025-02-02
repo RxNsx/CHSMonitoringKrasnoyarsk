@@ -23,5 +23,8 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
 
         builder.Property(x => x.UserId)
             .IsRequired();
+
+        builder.Property(x => x.IsReadOnly)
+            .HasDefaultValue(true);
     }
 }
