@@ -1963,218 +1963,325 @@ public enum StreetNameEnum
     
     #region Улицы на букву П
     
+    [EnumGuid("798FD25C-F2C5-4522-8D2C-7C2A779F71D0")]
     [Description("Павлика Морозова")]
     PavlikaMorozova,
+    [EnumGuid("AB54F774-EB20-4629-BC4F-28979C8FE8D4")]
     [Description("Памяти Героев")]
     PamyatiGeroev,
+    [EnumGuid("B186CCF3-90E2-4837-9355-5E10B0A1F1B7")]
     [Description("Паниковская")]
     Panikovskaya,
+    [EnumGuid("48AE61FA-C2A5-4588-A2C6-BC11358A92C3")]
     [Description("Панорамная")]
     Panoramnaya,
+    [EnumGuid("F88F50E0-5775-4E02-A1E5-7F253728E8F1")]
     [Description("Панфиловцев")]
     Panfilovtsev,
+    [EnumGuid("CEDE606B-F859-40EB-ABBD-A4BDB562727D")]
     [Description("Папанинцев")]
     Papanintsev,
+    [EnumGuid("E02271C7-D93A-45AE-8E56-5FC493B72D8F")]
     [Description("Парадовского")]
     Paradovskogo,
+    [EnumGuid("84C05C08-C1BF-4B29-9B0C-7F925AEFA297")]
     [Description("Парашютная")]
     Parashyutnaya,
+    [EnumGuid("7B9731B1-9461-4177-86CB-E76275546548")]
     [Description("Парижской Коммуны")]
     ParizhskoyKommuny,
+    [EnumGuid("F2755B75-5B38-46D1-BF77-A24ACF06F67C")]
     [Description("Парковая")]
     Parkovaya,
+    [EnumGuid("AEBFB968-13B5-4532-B917-D1A3FD340610")]
     [Description("Паровозная")]
     Parovoznaya,
+    [EnumGuid("969C18C3-87E5-49D8-B63A-7195DCEF0307")]
     [Description("Партизана Железняка")]
     PartizanaZheleznaka,
+    [EnumGuid("BF05AC6E-526C-4695-8940-FDE1D9F15936")]
     [Description("Партизанская")]
     Partizanskaya,
+    [EnumGuid("AC5418CE-2834-47A1-A305-DC524995AEE0")]
     [Description("Парусная")]
     Parusnaya,
+    [EnumGuid("14B427B2-A95D-43A2-99F0-6FD0385BB9AE")]
     [Description("Пархоменко")]
     Parkhomenko,
+    [EnumGuid("D9E6778C-E2C5-43D3-BD1B-20F70A099E3D")]
     [Description("Пасечная")]
     Pasechnaya,
+    [EnumGuid("16DF0D50-C655-498E-9448-912CCD560EB3")]
     [Description("Пастеровская")]
     Pasterevskaya,
+    [EnumGuid("2C5248E3-3D69-4553-9BD6-81697EBAF11F")]
     [Description("Пасхальная")]
     Paskhalnaya,
+    [EnumGuid("7675E111-577D-4486-AB52-AE698BB360E2")]
     [Description("Первых Пионеров")]
     PervykhPionerov,
+    [EnumGuid("72B020DB-BB64-4A4A-BDAF-1DF4CEE06A67")]
     [Description("Перенсона")]
     Perensona,
+    [EnumGuid("5B1E61AD-6251-4303-9691-BB9854FF78FE")]
     [Description("Перепелиная")]
     Perepelina,
+    [EnumGuid("2869739E-66BA-4AF1-A59E-16B9EEABF511")]
     [Description("Перспективная")]
     Perspektivnaya,
+    [EnumGuid("334D8FC3-F7A2-404F-B22F-0899BC5EF1E3")]
     [Description("Песочная")]
     Pesochaya,
+    [EnumGuid("398CCA0E-24CB-4D96-9EE6-1D23EC042BD8")]
     [Description("Петлина")]
     Petlina,
+    [EnumGuid("853BAB77-0517-4DE3-B434-D4776C67A485")]
     [Description("Петра Ломако")]
     PetraLomako,
+    [EnumGuid("AC23BA3B-0400-4981-AFF9-29972D1073AC")]
     [Description("Петра Подзолкова")]
     PetraPodzolkova,
+    [EnumGuid("55466740-AFB7-488C-AD29-5A866BE38D2A")]
     [Description("Петра Словцова")]
     PetraSlovtsa,
+    [EnumGuid("1ED82390-3D8D-4139-9BE3-7E9AD538C4C7")]
     [Description("Словцова")]
     Slovtsova,
+    [EnumGuid("E1A7D264-8C3F-49C8-94CF-ED6C6CB5C47E")]
     [Description("Петрушина")]
     Petrushina,
+    [EnumGuid("97C09283-0B06-4D50-ADE6-A7804E5598FC")]
     [Description("Пионеров 2-я")]
     Pionerov2,
+    [EnumGuid("5C28313C-FD9F-4535-BF0A-E88A46270E35")]
     [Description("2-я Пионеров")]
     Pionerov_2,
+    [EnumGuid("71C2DC1F-5C3B-45B6-8525-76AC1E8E7B16")]
     [Description("Пионеров 3-я")]
     Pionerov3,
+    [EnumGuid("B081E9C3-01CE-4AE4-B3EB-4C05C1690A34")]
     [Description("3-я Пионеров")]
     Pionerov_3,
+    [EnumGuid("5659236B-5A82-4C80-A2B6-E6F078AC463E")]
     [Description("Пировская")]
     Pirovskaya,
+    [EnumGuid("52A72087-E0C1-4C13-853A-5A8CD970F21A")]
     [Description("Пирогова")]
     Pirogova,
+    [EnumGuid("6FFD8351-712B-4B17-8DE5-C96409C9B6A3")]
     [Description("Писарева")]
     Pisareva,
+    [EnumGuid("9EE7CECD-8474-41CC-ACAB-0FB6888C664A")]
     [Description("Пихтовая")]
     Pikhtovaya,
+    [EnumGuid("B46A7F6D-3FE7-4FA3-ABD3-C3ED09CBB340")]
     [Description("Плановая")]
     Planovaya,
+    [EnumGuid("2837FA7D-7F18-4D91-91CC-58D518AA53D1")]
     [Description("Плодовая")]
     Plodovaya,
+    [EnumGuid("01305FF7-6829-4B3E-853A-220C1C6A0109")]
     [Description("Победы")]
     Pobedy,
+    [EnumGuid("7DEDE235-DAA3-44AB-91EE-BEFA7F6A5554")]
     [Description("Побежимова")]
     Pobezhimova,
+    [EnumGuid("6A69E287-C5BA-4DDA-B58C-695941D2B5FF")]
     [Description("Пограничников")]
     Pogranichnikov,
+    [EnumGuid("B781323B-65A1-4F9C-BDE1-10C8A1F4D171")]
     [Description("Подгорная")]
     Podgornaya,
+    [EnumGuid("5269634C-18C4-4CF7-AF74-C8239A645CAF")]
     [Description("Подсобная")]
     Podsobnaya,
+    [EnumGuid("6BD7ABA2-4138-44E2-B645-FAC4FCBA3720")]
     [Description("Подъемная")]
     Podyomnaya,
+    [EnumGuid("05E26084-F179-46EA-96FA-3BF8664C0E8A")]
     [Description("Пожарского")]
     Pozharskogo,
+    [EnumGuid("E50A266B-C916-43E7-AE44-B9A07FAA2C8C")]
     [Description("Позднякова")]
     Pozdnyakova,
+    [EnumGuid("072C986E-A5A0-4330-825C-527A6DF497FC")]
     [Description("Пойменный")]
     Poymenny,
+    [EnumGuid("624ED360-2C57-476A-B682-C15C4F218A40")]
     [Description("Покровская")]
     Pokrovskaya,
+    [EnumGuid("EA3F190F-0A48-4796-95BF-63E8F0AE9C57")]
     [Description("Полевая")]
     Polevaya,
+    [EnumGuid("466D3379-779F-451E-997B-5E6A40708795")]
     [Description("Полевой")]
     Polevoy,
+    [EnumGuid("00A840D2-5D1D-48F1-ADB3-2A48E794318B")]
     [Description("Ползунова")]
     Polzunova,
+    [EnumGuid("9C3F6C98-9C25-4865-BAA3-C62D47D1E95F")]
     [Description("Полигонная")]
     Poligonaya,
+    [EnumGuid("9BF8C597-407F-4C5E-AD9F-7EBB3C6BB1CD")]
     [Description("Полтавская")]
     Poltavskaya,
+    [EnumGuid("BCEEF0B1-C8D4-4F17-BCEF-8240CB76A99C")]
     [Description("Полярная")]
     Polyarnaya,
+    [EnumGuid("F4917AA0-AB6B-436E-89CD-242B7D6144A5")]
     [Description("3-я Полярная")]
     Polyarnaya3,
+    [EnumGuid("B4C4DC5B-E936-4A2F-B9AE-2AA1D892DF2C")]
     [Description("4-я Полярная")]
     Polyarnaya4,
+    [EnumGuid("A90673A6-130A-4019-A19D-6B4C73E6112F")]
     [Description("5-я Полярная")]
     Polyarnaya5,
+    [EnumGuid("3F876403-DE63-44C7-BC9D-5E31DB6F7C7D")]
     [Description("6-я Полярная")]
     Polyarnaya6,
+    [EnumGuid("8DF51AAD-A350-44C7-ACA6-DA95FCC1F08D")]
     [Description("7-я Полярная")]
     Polyarnaya7,
+    [EnumGuid("C8EAF472-2CF8-4984-9C48-9268A0D60F6F")]
     [Description("Поперечный")]
     Poperechny,
+    [EnumGuid("A577F8CF-059C-448F-A8FD-CD505420DD88")]
     [Description("Попова")]
     Popova,
+    [EnumGuid("CC20DD4C-F618-49C6-B561-55263999C522")]
     [Description("Пороховой")]
     Porokhovoy,
+    [EnumGuid("4B905109-0A19-434A-BD17-2EB06739A938")]	
     [Description("Посадный")]
     Posadniy,
+    [EnumGuid("801F0932-C4F2-44DE-B347-A3A7B7830487")]
     [Description("Посадская")]
     Posadskaya,
+    [EnumGuid("708E0579-B9D2-4929-BF44-30DF42467ED4")]
     [Description("Послушников")]
     Poslushnikov,
+    [EnumGuid("4F89A21E-3677-438B-B6A8-C1E1825B0BC1")]
     [Description("Послушников")]
     Poslushnikov2,
+    [EnumGuid("E78AAD3C-C174-4D50-957A-416A1B0750F7")]
     [Description("Походная")]
     Pokhodnaya,
+    [EnumGuid("9CF3A59B-EE96-48EA-A583-0E3C6DD5A8AE")]
     [Description("Преображенская")]
     Preobrazhenskaya,
+    [EnumGuid("6A2F2B40-7E31-4D8E-A617-E6C3E77B70FC")]
     [Description("Пржевальского")]
     Przhevalskogo,
+    [EnumGuid("383E69CA-BF49-428B-89BB-5FDE52B3921A")]
     [Description("Прибойная")]
     Priboynaya,
+    [EnumGuid("47DB5ECB-6D95-455C-8E4B-476B909919B8")]
     [Description("Привокзальная")]
     Privokzalnaya,
+    [EnumGuid("C78ABDFF-B0BF-4B48-A92D-BB54E9C38871")]
     [Description("Пригорная")]
     Prigornaya,
+    [EnumGuid("84EEC862-234E-4F82-BE96-3E51519E0FD6")]
     [Description("Придорожная")]
     Pridorozhnaya,
+    [EnumGuid("0AB2FC37-889A-43E3-9899-D563E4787265")]
     [Description("Приручейная")]
     Prirucheynaya,
+    [EnumGuid("A00556B2-D07D-4F57-87C7-45E4B9FA4059")]
     [Description("Приручейная 2-я")]
     Prirucheynaya2,
+    [EnumGuid("10BF3896-3245-481F-A415-B46B58B24CA3")]
     [Description("Приручейный")]
     Prirucheyny,
+    [EnumGuid("CF310ED5-C9DB-4E31-8366-907EAFA3C377")]
     [Description("Приусадебный")]
     Priusadebny,
+    [EnumGuid("46ABD1E3-4FFA-4AA5-AE50-E490D46EF07D")]
     [Description("Причальная 5-я")]
     Prichalnaya5,
+    [EnumGuid("66C0C3EE-9EA4-45CA-8D44-C99034880F4E")]
     [Description("Прогулочная")]
     Progulochnaya,
+    [EnumGuid("99F4E8AA-A0DF-41D7-ACD7-E09EAB3FF245")]
     [Description("Продольная")]
     Prodolnaya,
+    [EnumGuid("19379761-11D3-463D-8955-9AF8245BFB27")]
     [Description("Продольная 10-я")]
     Prodolnaya10,
+    [EnumGuid("E83DCB2A-F26C-490C-8026-7B88FF576BE5")]
     [Description("Продольная 11-я")]
     Prodolnaya11,
+    [EnumGuid("4EC52EC6-FB43-4282-9752-405A5D92CADC")]
     [Description("Продольная 2-я")]
     Prodolnaya2,
+    [EnumGuid("EA147AAA-A17C-4004-8C3F-7ECD9512A932")]
     [Description("Продольная 3-я")]
     Prodolnaya3,
+    [EnumGuid("2476D432-CA23-4658-8490-C64EE50598F3")]
     [Description("Продольная 4-я")]
     Prodolnaya4,
+    [EnumGuid("F6FF042B-BCFA-4463-A83A-C327B09D9F01")]
     [Description("Продольная 5-я")]
     Prodolnaya5,
+    [EnumGuid("5A0BB97E-F7A5-4B11-AEA8-AECB360814C1")]
     [Description("Продольная 6-я")]
     Prodolnaya6,
+    [EnumGuid("5D7B40FB-3795-46E5-B18D-3EBECB541410")]
     [Description("Продольная 7-я")]
     Prodolnaya7,
+    [EnumGuid("92E396BA-2E21-4A0F-8DB6-02667176C251")]
     [Description("Продольная 8-я")]
     Prodolnaya8,
+    [EnumGuid("B88503FF-E291-4F95-AF7F-3C69FEF59254")]
     [Description("Продольная 9-я")]
     Prodolnaya9,
+    [EnumGuid("9E9B0CC0-9BF9-48ED-8B05-5F7283F6EEBE")]
     [Description("Проектная")]
     Proyektnaya,
+    [EnumGuid("7EC57A88-EDCE-4B1D-A3F7-A5B3EF3CA218")]
     [Description("Пролетарская")]
     Proletarskaya,
+    [EnumGuid("D5525A79-0506-401E-BE2C-6B7C658C276A")]
     [Description("Промбаза")]
     Prombaza,
+    [EnumGuid("14C620BF-9029-4709-B52E-D119FF84402B")]
     [Description("Промысловая")]
     Promyslovaya,
+    [EnumGuid("B7C97797-433D-423A-A1AC-56B07FA2A6A6")]
     [Description("Промышленный")]
     Promyshlenniy,
+    [EnumGuid("F95D523A-7DEF-4368-902D-BC9445A7F0C8")]
     [Description("Просвещения")]
     ProsvesheniyaBerezovka,
+    [EnumGuid("195DE901-C971-4354-838B-8ACEA1C62392")]
     [Description("Просторная")]
     Prostoraya,
+    [EnumGuid("FF5649E5-1F87-4797-81A4-6DA48FB71560")]
     [Description("Профсоюзов")]
     Profsoyuzov,
+    [EnumGuid("998F1D1B-3809-4FB8-A9AD-5FC99D84E3C3")]
     [Description("Прохладный")]
     Prokhladniy,
+    [EnumGuid("82F17505-FB5A-40E5-952E-01C04A9E36C0")]
     [Description("Прямая")]
     Pryamaya,
+    [EnumGuid("AE489205-B38B-494E-A665-6AC985D23689")]
     [Description("Пугачева")]
     Pugacheva,
+    [EnumGuid("E1DF4CCF-1310-4F08-9F27-7D7AE1CA1DF8")]
     [Description("Путевая")]
     Putevaya,
+    [EnumGuid("2000FE34-0AA9-4C96-818A-0D28F5F8273F")]
     [Description("Путиловская")]
     Putilovskaya,
+    [EnumGuid("EFC5633C-0CB9-4C29-ACE0-F22392820D1E")]
     [Description("Путоранская")]
     Putoranskaya,
+    [EnumGuid("22CAEF05-78CC-49C9-80B0-9DF31129DB4E")]
     [Description("Пушкина")]
     Pushkina,
+    [EnumGuid("FAC5892C-C062-47F7-A507-3B597A1A4CB2")]
     [Description("Пясинская")]
     Pyasinskaya,
     
@@ -2182,62 +2289,91 @@ public enum StreetNameEnum
     
     #region Улицы на букву Р
     
+    [EnumGuid("D4700958-EAD2-4F0E-B205-6583195A285F")]
     [Description("Рабочая")]
     Rabochaya,
+    [EnumGuid("A8F58005-0C30-49DC-986F-76A3FFA354FE")]
     [Description("Радищева")]
     Raditsheva,
+    [EnumGuid("51CE76CE-5D1F-4F59-9264-418B8A504A2A")]
     [Description("Радужная")]
     Radzhumnaya,
+    [EnumGuid("65FF4971-FB92-4200-9ABC-98CB34309B34")]
     [Description("Раздольная")]
     Razdolnaya,
+    [EnumGuid("399270A4-4F3B-417A-B366-E56474D53D64")]
     [Description("Раскатная")]
     Raskatnaya,
+    [EnumGuid("9978B431-DC84-4F32-B69D-BB4DEBA8C843")]
     [Description("Рассветная")]
     Rossvetnaya,
+    [EnumGuid("80431A82-D460-4E61-AF43-1000FBEBEC75")]
     [Description("Революции")]
     Revolyutsionnaya,
+    [EnumGuid("D7179D78-B89B-49AE-9A75-37920E88842B")]
     [Description("Регатная")]
     Regatnaya,
+    [EnumGuid("94204F24-BF6D-418F-B8C0-C3F398D764B8")]
     [Description("Рейдовая")]
     Reydovaya,
+    [EnumGuid("3E555D8D-661D-46C5-B2A3-CF8E04CB0C23")]
     [Description("Ремесловская")]
     Remeslovskaya,
+    [EnumGuid("7F424E30-79AA-4202-9CE8-80B64CA27BA2")]
     [Description("Ремесленная")]
     Remeslennaya,
+    [EnumGuid("5636F465-6A3B-4312-9EAE-323CC7E570F4")]
     [Description("Республика")]
     Respublika,
+    [EnumGuid("29A6DAD9-EDE3-472C-9CD9-FE77973EC644")]
     [Description("Речников")]
     Rechkov,
+    [EnumGuid("4EF7F052-7EBB-41B8-8B98-6F1515E16C46")]
     [Description("Речной")]
     Rechnyy,
+    [EnumGuid("370163EA-0C39-4455-9C77-FEA697C053DE")]
     [Description("Робеспьера")]
     Robespierre,
+    [EnumGuid("E723A68D-9453-4489-8603-F6258E0AD305")]
     [Description("Ровная")]
     Rovnaya,
+    [EnumGuid("B2E75DFE-6F43-4064-B484-0F7FA897A020")]
     [Description("Рогова")]
     Rogova,
+    [EnumGuid("D0EBC1FA-7B65-4284-BD00-11ED704BE8AD")]
     [Description("Родниковая")]
     Rodnikovaya,
+    [EnumGuid("2519EB75-C93D-4193-8F5B-7A8E86F47B44")]
     [Description("Рождественская")]
     Rozhdestvenskaya,
+    [EnumGuid("DCE21F81-D88C-4CF0-959A-445624539730")]
     [Description("Рождественская")]
     Rozhdestvenskaya2,
+    [EnumGuid("FE8E3C0A-3D35-42B6-8ED3-BB71C2C84C76")]
     [Description("Розы Люксембург")]
     RozyLuksemburg,
+    [EnumGuid("AEEA391C-6D24-4E09-AB9C-7C1BFBE35D9C")]
     [Description("Рокоссовского")]
     Rozhdonskogo,
+    [EnumGuid("5CC17E89-9D03-4E1C-A0E4-4F8461BBD4E3")]
     [Description("Российская")]
     Rossiyskaya,
+    [EnumGuid("CFA08766-EABC-4334-98D3-71EFDB9FA5AA")]
     [Description("Рощевая")]
     Rozchevaya,
+    [EnumGuid("062ED5D8-DB74-4147-A841-E40930B8EEE8")]
     [Description("Русаковская")]
     Rusakovskaya,
+    [EnumGuid("5E8C3382-2CBE-411E-A4DF-7A970E67307D")]
     [Description("Ручейная")]
     Rechnyaya,
+    [EnumGuid("319DD61D-40AB-4885-97EA-62C0F74B5B8E")]
     [Description("Рябиновая")]
     Rabanovaya,
+    [EnumGuid("3A30EBAA-8E55-4FB3-8DCD-DDF2BA71B908")]
     [Description("Рязанская")]
     Ryazanskaya,
+    [EnumGuid("5D1CDFFE-41A5-44C5-A7BC-5CAB6AEBC7E5")]
     [Description("Ряузовский")]
     Ryauzovskii,
     
@@ -2245,190 +2381,283 @@ public enum StreetNameEnum
 
     #region Улицы на букву С
 
+    [EnumGuid("AEF0D7AD-998B-45D0-9CF6-6140D07B1808")]
     [Description("Сад Крутовского")]
     SadKrutovskogo,
+    [EnumGuid("6697F601-4FC7-4173-903B-57123EDA6237")]
     [Description("Садовая")]
     Sadovaya,
+    [EnumGuid("06105139-D27F-4AE8-A2F1-E72AEC704F77")]
     [Description("Садовая")]
     Sadovaya2,
+    [EnumGuid("00685919-6D7C-4B1E-8E07-49E7ED358306")]
     [Description("Садовая")]
     Sadovaya3,
+    [EnumGuid("1047577B-6DD0-40A3-9EEF-83EBB9111F6F")]
     [Description("Сады")]
     Sady,
+    [EnumGuid("AE674334-93B7-410E-981B-BC05F21B4A15")]
     [Description("Самарский")]
     Samarskiy,
+    [EnumGuid("22BFC0BB-8F7F-4A2E-885A-2BB204BE3271")]
     [Description("Самодеятельности")]
     Samodeyatelnosti,
+    [EnumGuid("BCCD1A15-69C0-4C0C-A311-4DA9E6A256B9")]
     [Description("Санаторная")]
     Sanatornaya,
+    [EnumGuid("64123707-BA59-4444-867C-6D9BF8246434")]
     [Description("Саянская")]
     Sayanskaya,
+    [EnumGuid("AC1375EC-327E-4271-822C-B349294C68A7")]
     [Description("Свердловская")]
     Sverdlovskaya,
+    [EnumGuid("5F6F9D87-4C06-489A-AFB6-87B18B5623E0")]
     [Description("Светлая Элита")]
     SvetlayaElita,
+    [EnumGuid("19874D33-8C26-48C6-B41B-CA9393DF71A2")]
     [Description("Светлова")]
     Svetlova,
+    [EnumGuid("3E200386-86C6-4F20-A765-A3813551D877")]
     [Description("Светлогорская")]
     Svetlogorskaya,
+    [EnumGuid("83880821-3B54-4BB2-AB24-934A10929F6E")]
     [Description("Светлогорский")]
     Svetlogorskiy,
+    [EnumGuid("00873C50-91BF-4F5C-A57E-BBD126A78EC2")]
     [Description("Светлогорский")]
     Svetlogorskiy2,
+    [EnumGuid("9E266437-B441-415E-8F1F-528E185FE0F5")]
     [Description("Светлый")]
     Svetliy,
+    [EnumGuid("F2987110-B9D9-4AFD-B3DD-7C974259047C")]
     [Description("Свободная")]
     Svobodnaya,
+    [EnumGuid("1F0F25BF-030E-4FDE-A05E-4049CE348511")]
     [Description("Свободный")]
     Svobodniy,
+    [EnumGuid("B6BF2D70-D959-48F5-A751-6AD28C01D15A")]
     [Description("Связи")]
     Svazi,
+    [EnumGuid("B131BBBC-66A8-45F0-BAE6-349D77ECC002")]
     [Description("Связистов")]
     Svyazistov,
+    [EnumGuid("517716FD-EBF3-41BD-910F-6E2656AA2166")]
     [Description("Севастопольский")]
     Sevastopolskiy,
+    [EnumGuid("B2C4D1CC-C5D8-40F0-91C4-07F5A4ABFAF4")]
     [Description("Северная")]
     Severnaya,
+    [EnumGuid("7CB9EFFB-1634-4331-B3F9-0BBCEA20D627")]
     [Description("Северное")]
     Severnoe,
+    [EnumGuid("3CD38DB4-49DF-41DA-B54F-F25F529A8E5C")]
     [Description("Северный")]
     Severniy,
+    [EnumGuid("88010BDF-95E3-41B0-88B7-77F1991A9238")]
     [Description("Северо-Енисейская")]
     SeveroYeniseyskaya,
+    [EnumGuid("F635D6A2-5E30-4240-B21B-1CFA097BD530")]
     [Description("Седова")]
     Sedova,
+    [EnumGuid("7157EB51-12C2-4906-A2D2-DC9E71E1011E")]
     [Description("Сезонников")]
     Sezonnikov,
+    [EnumGuid("0D5E7E0F-0A64-4F85-82FC-2B26495918A1")]
     [Description("Сельская")]
     Selskaya,
+    [EnumGuid("0F0B23AD-C4CD-44F0-A433-78FE357C52C2")]
     [Description("Семафорная")]
     Semafornaya,
+    [EnumGuid("1BAE4D84-3FAE-4A8A-8496-1F3A660BB2B7")]
     [Description("Семена Давыдова")]
     SemenaDavydova,
+    [EnumGuid("DDDC4428-0452-412A-8906-E9D9CBB71E2F")]
     [Description("Сенная")]
     Sennaya,
+    [EnumGuid("29AB2402-1EBB-4014-B7FA-A0BEF62B7D92")]
     [Description("Серафимовича")]
     Serafimovicha,
+    [EnumGuid("7F633905-0DEA-4044-B99C-280BCD58BE4A")]
     [Description("Сергея Куликова")]
     SergeyaKulikova,
+    [EnumGuid("8A3AB83D-7E50-4316-B323-035811D74EBB")]
     [Description("Сергея Лазо")]
     SergeyaLazo,
+    [EnumGuid("5F6964E0-0073-470C-AC39-D0B674F7D202")]
     [Description("Сергея Тюленина")]
     SergeyaTyulenina,
+    [EnumGuid("9143155C-7290-453C-B25A-344180DAB33E")]
     [Description("Серебряный")]
     Serebryaniy,
+    [EnumGuid("514E986F-A1FE-469B-AFB3-F48AF2B03FB0")]
     [Description("Серебряный Бор")]
     SerebryaniyBor,
+    [EnumGuid("A75D8BD8-7ACC-48E9-B7F0-6088403DE8F3")]
     [Description("Серова")]
     Serova,
+    [EnumGuid("A0E5F795-AAB4-48EA-9EF3-06496EFA62DF")]
     [Description("Сеченова")]
     Sechenova,
+    [EnumGuid("3B4335C8-BF74-4282-B243-A197FAFE6DD1")]
     [Description("Сибирская")]
     Sibirskaya,
+    [EnumGuid("0813E142-8D71-49FC-A7A0-0C2BD816F4BE")]
     [Description("Сибирский")]
     Sibirskiy,
+    [EnumGuid("CD1CC520-0F4D-42ED-A812-2EBF4A12611A")]
     [Description("Сиреневая")]
     Sirennevaya,
+    [EnumGuid("4510662F-43F5-4035-BEF0-7E732B19295C")]
     [Description("Сисимский")]
     Sisimskiy,
+    [EnumGuid("1D3B08B4-9AB5-45CA-AD10-153422A99FB5")]
     [Description("Скальная")]
     Skalnaya,
+    [EnumGuid("F9B06AD2-0B54-4C07-9C7E-1DA3AF19C324")]
     [Description("Сквозной")]
     Skvoznoy,
+    [EnumGuid("153F22ED-3867-4E3A-8B92-8CE4E0F4A04E")]
     [Description("Складская")]
     Skladskaya,
+    [EnumGuid("23DAEAA6-8C7F-4545-9F9D-6CAA1F6900BA")]
     [Description("Славы")]
     Slavy,
+    [EnumGuid("1593DEC3-F07B-442F-B855-1B44B2399258")]
     [Description("Славянская")]
     Slavyanskaya,
+    [EnumGuid("0E2ABED1-ED64-43E4-8F54-91A207FA2D5A")]
     [Description("Слободская")]
     Slobodskaya,
+    [EnumGuid("D3ED33EF-E0D5-40A3-93CB-4C91FB49B23D")]
     [Description("Смоленская 1-я")]
     Smolenskaya1,
+    [EnumGuid("1147EAC1-6665-4680-9E12-CE92C3362B35")]
     [Description("Смоленская 2-я")]
     Smolenskaya2,
+    [EnumGuid("DEAB652D-580F-44B6-BC08-27BF04B6F03D")]
     [Description("Смоленская 3-я")]
     Smolenskaya3,
+    [EnumGuid("0976C806-7D20-4BC2-8D20-171F7704BF0D")]
     [Description("Снежная")]
     Snezhnaya,
+    [EnumGuid("37617871-D331-4F79-883D-6EB16382F93F")]
     [Description("Советская")]
     Sovetskaya,
+    [EnumGuid("0E4BF6FE-37D5-467F-8FC8-D5534E5C6031")]
     [Description("Содружества")]
     Sodruzhestva,
+    [EnumGuid("F65AAD2E-4B64-4332-BA39-BFD9FFE054FF")]
     [Description("Соколовская")]
     Sokolovskaya,
+    [EnumGuid("2FA099A3-0E94-4269-9E51-7038A0BE761D")]
     [Description("Сокольский")]
     Sokolskiy,
+    [EnumGuid("0ED02514-8DE5-487E-BA14-38A72A538B83")]
     [Description("Солнечная")]
     Solnechnaya,
+    [EnumGuid("E6DDF91D-8C51-4E99-8AD3-AE28A15E1C75")]
     [Description("Солнечный")]
     Solnechniy,
+    [EnumGuid("7E213562-C392-4C0A-BD77-8DCB3532E905")]
     [Description("Солонцовая")]
     Solontsovaya,
+    [EnumGuid("DFDD997E-BA10-47C8-A787-CBD82A7386B3")]
     [Description("Сопочная")]
     Sopochaya,
+    [EnumGuid("9CB60000-FE27-4FE6-909F-E21EA94592CF")]
     [Description("Соревнования")]
     Sorevnovaniya,
+    [EnumGuid("D19C2E8D-964C-4E91-829F-8F125A413559")]
     [Description("Сосновая")]
     Sosnovaya,
+    [EnumGuid("3461282F-AB0A-4675-A4F2-2FD6ABA4C23B")]
     [Description("Сосновая")]
     Sosnovaya2,
+    [EnumGuid("48815CDE-4949-490C-9382-3B32389E8BFC")]
     [Description("Сосновского")]
     Sosnovskogo,
+    [EnumGuid("219D381C-51EB-4AA9-A7E6-C25AE0DEBF0B")]
     [Description("Сосновый Бор")]
     SosnoviyBor,
+    [EnumGuid("5FFA7560-E669-49DF-85D8-929BED117475")]
     [Description("Софьи Ковалевской")]
     SofyiKovalevskoy,
+    [EnumGuid("C7806735-1DF2-4620-9FDA-6EBF69328D99")]
     [Description("Социалистическая")]
     Sotsialisticheskaya,
+    [EnumGuid("F6440BC0-51E1-4ED7-BA9A-DB0E95FE3901")]
     [Description("Спандаряна")]
     Spandaryana,
+    [EnumGuid("233B6B28-A6FC-45C6-A254-A6E9B9B498A9")]
     [Description("Спартаковцев")]
     Spartakovtsev,
+    [EnumGuid("8C384A4B-D114-415D-9361-779D6E2568B2")]
     [Description("Спасского")]
     Spasskogo,
+    [EnumGuid("E199CF35-CEEA-4874-8BF0-091FAFB89547")]
     [Description("Сплавучасток")]
     Splavuchastok,
+    [EnumGuid("FA0EB70A-6CCA-450A-8405-690FD9221C57")]
     [Description("Спокойная")]
     Spokoinaya,
+    [EnumGuid("5FEF8F89-2FC0-4CE7-AFF8-365E15791EB1")]
     [Description("Спорта")]
     Sporta,
+    [EnumGuid("7856D271-1905-47CF-9689-AC2FD1F45D08")]
     [Description("Спортивная")]
     Sportivnaya,
+    [EnumGuid("9ED58301-EDD4-48BF-BD3B-E4C4C8A81C4E")]
     [Description("Спортивный")]
     Sportivniy,
+    [EnumGuid("18443FCE-F975-4F00-A521-BB8CFA5DB576")]
     [Description("Средний")]
     Sredniy,
+    [EnumGuid("D6541C53-AFD9-4021-A456-9F955B9C4F43")]
     [Description("Сретенская")]
     Sretenkaya,
+    [EnumGuid("DEF63267-CA4C-4B0D-BFB0-EA5C638E5193")]
     [Description("Стадионная")]
     Stadionnaya,
+    [EnumGuid("0C0B6227-5EF2-4BC6-8E45-B0F55BB20162")]
     [Description("Станиславского")]
     Stanislavskogo,
+    [EnumGuid("81C4EC76-68EF-4E18-918B-60B7640F47D3")]
     [Description("Станичная")]
     Stanichnaya,
+    [EnumGuid("0B935F67-D4E3-43E0-856D-D39BEA96D4F9")]
     [Description("Становая")]
     Stanovaya,
+    [EnumGuid("5F25753A-08F9-48E2-A48F-8BE1927EB5DB")]
     [Description("Станочная")]
     Stanochaya,
+    [EnumGuid("63EC252A-BC5B-4823-BB2B-35DCBCDB622C")]
     [Description("Станционная")]
     Stantsionnaya,
+    [EnumGuid("487ADA37-D131-4175-A5DC-BD0FFC0FD0D2")]
     [Description("Степана Разина")]
     StepanaRazina,
+    [EnumGuid("C37ED1E9-7C9B-4458-815A-E0C03AB51620")]
     [Description("Столбовая")]
     Stolbovaya,
+    [EnumGuid("53BED7FE-76C5-4440-80E9-2D63AEB8DF26")]
     [Description("Стрелецкая")]
     Streltskaya,
+    [EnumGuid("97696037-A856-45B5-8BA4-7ABA2900411A")]
     [Description("Стрелочная")]
     Strelochnaya,
+    [EnumGuid("9A143CA9-AA4C-4AFE-995D-AD1C8431667F")]
     [Description("Строительная")]
     Stroitelnaya,
+    [EnumGuid("1892124A-B803-4008-A811-B7C46E128381")]
     [Description("Суворова")]
     Suvorova,
+    [EnumGuid("05D727BE-45F4-452E-A015-664C682A7636")]
     [Description("Судостроительная")]
     Sudostroitelnaya,
+    [EnumGuid("36C7892C-F960-4439-AC26-2DA91AECE52D")]
     [Description("Сурикова")]
     Surikova,
+    [EnumGuid("7D24F754-6DDF-44FD-932C-228DAEBC52C2")]
     [Description("Счастливая")]
     Schastlivaya,
 
@@ -2436,108 +2665,160 @@ public enum StreetNameEnum
 
     #region Улицы на букву Т
 
+    [EnumGuid("7B9E17D4-4151-4C91-A9EF-7486E00265B3")]
     [Description("Таежная")]
     Tayezhnaya,
+    [EnumGuid("07F3785E-86C5-40A9-B017-970DDEFA1364")]
     [Description("Бугачево")]
     Bugachevo,
+    [EnumGuid("9B6C34C8-DC7D-423B-804F-C1AE0FF3F352")]
     [Description("Таймырская")]
     Taymyrskaya,
+    [EnumGuid("69985192-7E9C-4DC7-A087-E8FA68C1ADC5")]
     [Description("1-я Таймырская")]
     Taymyrskaya1,
+    [EnumGuid("7617790C-B000-4EAE-B10B-5E47485E5846")]
     [Description("2-я Таймырская")]
     Taymyrskaya2,
+    [EnumGuid("B5000FF2-95AB-4D4E-B94D-0191E2A3B0E8")]
     [Description("3-я Таймырская")]
     Taymyrskaya3,
+    [EnumGuid("D51ED3A5-3EA4-4397-AF71-E18B745F9E88")]
     [Description("4-я Таймырская")]
     Taymyrskaya4,
+    [EnumGuid("EBE1F94D-6BD9-4FC7-A76B-8EE4B36B8912")]
     [Description("5-я Таймырская")]
     Taymyrskaya5,
+    [EnumGuid("89090BC7-0BBC-499B-90AB-A06AFBE0B98F")]
     [Description("Талнахская")]
     Talnakhskaya,
+    [EnumGuid("23B32D31-9CBF-40FA-B3DA-366D424B9A98")]
     [Description("Тамбовская")]
     Tambovskaya,
+    [EnumGuid("19954DF9-99C3-439A-9FD8-D2B3D0E68222")]
     [Description("Танкистов")]
     Tankistov,
+    [EnumGuid("8B5048A5-DB53-44D7-9925-87191D917C28")]
     [Description("Таскинская")]
     Taskinskaya,
+    [EnumGuid("87DF5E15-D4D6-45CE-9327-B9E9085D3A0E")]
     [Description("Татышев")]
     Tatyshev,
+    [EnumGuid("4FA1C438-C914-468C-A2AE-4D9D60C3956A")]
     [Description("Таштыпский")]
     Tashtypskiy,
+    [EnumGuid("1EF29DAD-26B5-464F-8B64-9CCACABAD137")]
     [Description("Театральная")]
     Teatralnaya,
+    [EnumGuid("18BF61CB-6E54-400A-9CCE-881C9A903ABE")]
     [Description("Текстильщиков")]
     Tekstilshchikov,
+    [EnumGuid("8F2BDAFF-C6F3-4A82-A8D1-C2D7954AB110")]
     [Description("Телевизорная")]
     Televidzornaya,
+    [EnumGuid("6B1C2B21-CC59-44E3-A4C4-27265736086C")]
     [Description("Телевизорный")]
     Televidzorniy,
+    [EnumGuid("31AF1D7F-949E-4A07-8C42-ABDD281BF830")]
     [Description("Тельмана")]
     Telmana,
+    [EnumGuid("6D622793-730D-4F20-8C08-A1C18510A8B3")]
     [Description("Тенистая")]
     Tenistaya,
+    [EnumGuid("BD148654-8332-4161-9BF0-AECA8AD9C2B0")]
     [Description("Теплый")]
     Teplyy,
+    [EnumGuid("0FA2A3D2-28A4-440F-A324-EE0893FE9D36")]
     [Description("Терешковой")]
     Tereshkovoy,
+    [EnumGuid("B38EF6D8-D3C3-43C2-A6AC-9D211D5E92E6")]
     [Description("Техническая")]
     Tekhnicheskaya,
+    [EnumGuid("D98EF8FA-CCB3-449B-97AC-1B4FE4DDF3BA")]
     [Description("Технический Поселок")]
     TekhnicheskiyPoselok,
+    [EnumGuid("31D9B643-F461-4DED-8BC5-8DE395B3BAD1")]
     [Description("Технологическая")]
     Tekhnologicheskaya,
+    [EnumGuid("60D1F76D-FE82-4A58-8BEB-487623583899")]
     [Description("Тимирязева")]
     Timiryazeva,
+    [EnumGuid("1C00551F-65A7-4008-AC48-C6C621A95B85")]
     [Description("Тихий")]
     Tikhiy,
+    [EnumGuid("2A9457D1-93B9-46CD-AFD1-D9134071AA77")]
     [Description("Тихоновская")]
     Tikhonovskaya,
+    [EnumGuid("C787D864-4020-4A48-A5D4-53AFBCDAD2BA")]
     [Description("Тобольская")]
     Tobolskaya,
+    [EnumGuid("FA477421-C78E-48ED-B96A-8032E564F052")]
     [Description("Толстого")]
     Tolstogo,
+    [EnumGuid("B6D39F5B-316B-474B-8A80-561356BBF801")]
     [Description("Томская")]
     Tomskaya,
+    [EnumGuid("7EEB7838-CD70-4395-B9C5-CCC46AB76839")]
     [Description("Торгашинская")]
     Torgashinskaya,
+    [EnumGuid("4CB68190-69A0-497F-A4D0-02790033D30F")]
     [Description("Торговая")]
     Torgovaya,
+    [EnumGuid("8406AD7C-9D0A-4D4B-9958-BB681B75DB09")]
     [Description("Тотмина")]
     Totmina,
+    [EnumGuid("3AF552D8-F6CF-4669-A64C-E5543D52F38C")]
     [Description("Трактовая")]
     Traktovaya,
+    [EnumGuid("C5F08B6C-2ED5-4D26-93DD-8596AE0F228F")]
     [Description("Трактористов")]
     Traktoristov,
+    [EnumGuid("5F8AEF78-2633-42DC-8ED8-B90024215745")]
     [Description("Транзитная")]
     Tranzitnaya,
+    [EnumGuid("AC4A0C00-636B-4AEF-8356-1BF066613D75")]
     [Description("Транспортный")]
     Transportniy,
+    [EnumGuid("C3DAF816-8EED-4F9A-8775-C880E9E4EE8E")]
     [Description("Транспортный")]
     Transportniy2,
+    [EnumGuid("50C0AA6B-5510-4AC0-80E1-1EEB6946E65D")]
     [Description("Троицкая")]
     Troitskaya,
+    [EnumGuid("114C544B-DF5C-4F58-927D-39DF5E700390")]
     [Description("Труда")]
     Truda,
+    [EnumGuid("B0106C5C-2160-445F-80AE-5352219A6BB3")]
     [Description("Тубинская")]
     Tubinskaya,
+    [EnumGuid("4D31C35A-F8DC-41FA-AEC2-55B6FEDA8D21")]
     [Description("Туимский")]
     Tuimskiy,
+    [EnumGuid("AA403EF0-D9EA-4848-876D-A52BD8E83806")]
     [Description("Туманный")]
     Tumanniy,
+    [EnumGuid("BAB097FD-8126-401B-9EBF-9C60D264FA6A")]
     [Description("Тупиковый")]
     Tupikoviy,
+    [EnumGuid("0608E7BC-5B11-4795-8C53-73D2681B8B4A")]
     [Description("Турбаза")]
     Turbaza,
+    [EnumGuid("894DA46F-03FE-44CC-9DE9-9593121E8E80")]
     [Description("Турбинная")]
     Turbinaya,
+    [EnumGuid("31BCB708-1FE2-4E2F-8041-C6BC38C88D39")]
     [Description("Тургенева")]
     Turgeneva,
+    [EnumGuid("5404E128-91CD-4D82-87B1-96921EA349E0")]
     [Description("Туристская")]
     Turistskaya,
+    [EnumGuid("6565BF4A-91C1-4E20-9231-972112B160EC")]
     [Description("Туруханская")]
     Turukhanskaya,
+    [EnumGuid("607BECAF-5B99-42F0-9D26-48C8219E202A")]
     [Description("Турчанинова")]
     Turchaninova,
+    [EnumGuid("21FB4A3D-A1E2-41D6-ABE7-7787FEE27361")]
     [Description("Тюхтетский")]
     Tyukhtetskaya,
 
@@ -2545,56 +2826,82 @@ public enum StreetNameEnum
 
     #region Улицы на букву У
 
+    [EnumGuid("2C3D10ED-693A-41ED-B9A7-1E4FCD29364F")]
     [Description("Угловой")]
     Uglovoy,
+    [EnumGuid("CEB1F119-B672-4E93-97FE-2B8A32601EE4")]
     [Description("Угольный")]
     Ugolniy,
+    [EnumGuid("6D32E121-CA49-4D2D-94A6-F8D9260BAB3C")]
     [Description("Угольщиков")]
     Ugolshchikov,
+    [EnumGuid("C5E1B271-6ECF-4C45-A3FA-5C62F8642786")]
     [Description("Ударный")]
     Udarniy,
+    [EnumGuid("2211AC2C-8641-4D9A-ADD0-0F6D582BA26B")]
     [Description("Удачная")]
     Udachnaya,
+    [EnumGuid("2E68CC16-F135-4DE7-B5B2-23FEE1456396")]
     [Description("Удобный")]
     Udobniy,
+    [EnumGuid("23710265-9814-4FDF-8D27-2E51BD77FD4B")]
     [Description("Узкий")]
     Uzkij,
+    [EnumGuid("33899FD3-6FF3-4F5A-B78A-8B60089CBD07")]
     [Description("Украинская")]
     Ukrainskaya,
+    [EnumGuid("0DB7EDF2-F510-42B2-BB0F-AEBD1AC6ADB6")]
     [Description("Уланова")]
     Ulanova,
+    [EnumGuid("22B2B508-0C97-4775-9A49-7CCA581ACA77")]
     [Description("Ульяновский")]
     Ulyanovskiy,
+    [EnumGuid("75EA8E8A-705A-4600-994A-93189BAC253A")]
     [Description("Ульяны Громовой")]
     UlyaniGromovoy,
+    [EnumGuid("21A2A574-F82A-41C3-8CAB-A218BE6A5F64")]
     [Description("Уральский")]
     Uraliskiy,
+    [EnumGuid("06C9359A-6C09-4FCE-B63B-F4AA4EF6F82F")]
     [Description("Урванцева")]
     Urvantseva,
+    [EnumGuid("240A3A01-7125-45E4-900C-49B9F8FF221C")]
     [Description("Урицкого")]
     Uritskogo,
+    [EnumGuid("7A56D006-3AE6-408B-BB0E-80F35B4A24D3")]
     [Description("Урожайная")]
     Urozhaynaya,
+    [EnumGuid("FF5E3D0A-27F5-488C-943D-9E0CE0ED4BDC")]
     [Description("Усадебная")]
     Usadebnaya,
+    [EnumGuid("29D4AE59-D6E6-4A7F-8C71-5C5E678831CA")]
     [Description("Успенская")]
     Uspenskaya,
+    [EnumGuid("CBE72B0D-A93E-46C2-A18D-1BB5E3B944E5")]
     [Description("Уссурийская")]
     Ussuriyskaya,
+    [EnumGuid("9A68A489-6813-48C7-B8BC-49ABD45A06A7")]
     [Description("Устиновича")]
     Ustinovicha,
+    [EnumGuid("AC930576-F0A1-4743-9B5F-796CF529DD73")]
     [Description("Утренняя")]
     Utrennyaya,
+    [EnumGuid("7ACE7286-2BD1-42BE-B0DA-FAA3939EAB6A")]
     [Description("Ухоженный")]
     Ukhozhenniy,
+    [EnumGuid("F7BEE84B-BE55-483C-A3FE-5432B7F57BE5")]
     [Description("Участок 5-й")]
     Uchastok5,
+    [EnumGuid("56168172-D0F3-4195-900F-080FC7325E0E")]
     [Description("Учумская")]
     Uchumskaya,
+    [EnumGuid("9E355D5D-1B1B-4C4D-8A22-105418962B9A")]
     [Description("Уютная")]
     Uyutnaya,
+    [EnumGuid("B4F53BC7-5353-43BA-AE3C-E94A0CF08DFF")]
     [Description("Уютный")]
     Uyutniy,
+    [EnumGuid("91E22415-3A90-4B36-9614-97E55C973275")]
     [Description("Уярская")]
     Uyarskaya,
 
@@ -2602,18 +2909,25 @@ public enum StreetNameEnum
 
     #region Улицы на букву Ф
 
+    [EnumGuid("8BADE87A-5346-4D06-B724-4CCE1B7B88F1")]
     [Description("Фабричная")]
     Fabrichnaya,
+    [EnumGuid("36C2504F-A953-49C9-99EF-B53164FDE603")]
     [Description("Ферганская")]
     Ferganskaya,
+    [EnumGuid("8E28FAD3-524A-4B47-982E-F55AEEE62058")]
     [Description("Фестивальная")]
     Festivalnaya,
+    [EnumGuid("889F2D8E-E42C-4B46-B8F0-9FBEE8B37A1D")]
     [Description("Фигурная")]
     Figurnaya,
+    [EnumGuid("191E015A-E5B6-451F-8936-91D676CC304D")]
     [Description("Фруктовая")]
     Fructovaya,
+    [EnumGuid("1BA19D30-B641-47F4-A4E1-BC12CF9A416A")]
     [Description("Фрунзе")]
     Frunze,
+    [EnumGuid("317B4EAF-C0A0-49D7-98B9-57F51B57C4B1")]
     [Description("Фурманова")]
     Furmanova,
 
@@ -2621,22 +2935,31 @@ public enum StreetNameEnum
 
     #region Улицы на букву Х
 
+    [EnumGuid("AB12063F-000E-4715-859B-A3FF45C35477")]
     [Description("Хабаровская 1-я")]
     Khabarovskaya1,
+    [EnumGuid("0DCFF0AF-172E-4C63-A574-F0108A6998A1")]
     [Description("Хабаровская 2-я")]
     Khabarovskaya2,
+    [EnumGuid("96928748-546D-4367-9BF1-FA3106678332")]
     [Description("Хантайская")]
     Khantayskaya,
+    [EnumGuid("F394B787-C42E-45B7-AFCB-B78A1807A67A")]
     [Description("Харламова")]
     Kharlamova,
+    [EnumGuid("E4BDB2A3-E477-4966-BE92-6D09CC24ED58")]
     [Description("Хетская")]
     Khetskaya,
+    [EnumGuid("5CAE70CB-304F-45B2-A048-3C8D91ADAD19")]
     [Description("Холмистая")]
     Kholmistaya,
+    [EnumGuid("25427496-F491-45C3-9F55-25493C13BB49")]
     [Description("Храпова")]
     Khrapova,
+    [EnumGuid("9BED6308-4592-4C60-9CCB-29DB5FD7B58A")]
     [Description("Хрустальная")]
     Khristalnaya,
+    [EnumGuid("572EEBF1-9FD4-41D7-99C0-B621F3D92B24")]
     [Description("Хуторская")]
     Khutorskaya,
 
@@ -2644,18 +2967,25 @@ public enum StreetNameEnum
 
     #region Улицы на букву Ц
 
+    [EnumGuid("A7D37156-C67F-4FBD-9C33-2B8449A60755")]
     [Description("Цветной")]
     Tsvetnoy,
+    [EnumGuid("76CF8AB6-79BF-4241-A871-4BDCC33F34B5")]
     [Description("Цветочная")]
     Tsvetochnaya,
+    [EnumGuid("3CCECF9B-26C7-46BC-AAB8-69ADC98A6681")]
     [Description("Цветущая")]
     Tsvetusshaya,
+    [EnumGuid("ABE34199-D3EE-46DD-BBB4-9CCB07E9E3AA")]
     [Description("Цементников")]
     Tsementnikov,
+    [EnumGuid("79FFE264-CDBF-4ED4-9A06-BED9BBDF6376")]
     [Description("Центральный")]
     Tsentralniy,
+    [EnumGuid("FF6118E3-D53E-4A58-BEC7-DCF86F339B74")]
     [Description("Цимлянская")]
     Tsimalanskaya,
+    [EnumGuid("D9837763-45ED-4C9F-AF21-7C750B2491D6")]
     [Description("Циолковского")]
     Tsolkovskogo,
 
@@ -2663,36 +2993,52 @@ public enum StreetNameEnum
 
     #region Улицы на букву Ч
 
+    [EnumGuid("D1355196-E618-41D8-8204-EE0BECC5FC70")]
     [Description("Чайковского")]
     Chaykovskogo,
+    [EnumGuid("3CA9FA2A-A778-4DB6-9C48-51263FA06496")]
     [Description("Частоостровская")]
     Chastoostrovskaya,
+    [EnumGuid("03E043A5-5E9B-4CEE-8830-9F58F7DA8656")]
     [Description("Челюскинцев")]
     Chelyuskintsev,
+    [EnumGuid("0D5DF015-32CB-449D-9C68-B40E4537F942")]
     [Description("Черёмуховая")]
     Cheryomukhovaya,
+    [EnumGuid("EBC03110-9129-450D-A29C-074F140A36F8")]
     [Description("Черемховская 2-я")]
     Cheremkhovskaya2,
+    [EnumGuid("C436B5E7-8AC0-47E7-AF81-F6A8F13AE387")]
     [Description("Черепнина")]
     Cherepnina,
+    [EnumGuid("F0FE3E53-0D97-46F0-9C6A-20F38E7934A4")]
     [Description("Черничная")]
     Chernichnaya,
+    [EnumGuid("AAEF5E81-A413-4D6C-BDBC-E678E68DC078")]
     [Description("Чернышева")]
     Chernysheva,
+    [EnumGuid("FC7C23BF-DA64-4F10-9AAB-9FE2467DA319")]
     [Description("Чернышевского")]
     Chernyshevskogo,
+    [EnumGuid("1C2A6E2C-4AA9-4D20-91F1-F8D457EC1CCA")]
     [Description("Черняховского")]
     Chernyakhovskogo,
+    [EnumGuid("72A0F734-6F53-48E8-AC11-0C16FDCED31A")]
     [Description("Чехова")]
     Chekhova,
+    [EnumGuid("FC253252-642B-4A54-89C9-564603B7CF53")]
     [Description("Чечеульский")]
     Checheulskiy,
+    [EnumGuid("3011B8FD-F968-4C63-BC6A-C16E45E88611")]
     [Description("Чистопрудная")]
     Chistoprudnaya,
+    [EnumGuid("19B185D3-221E-4F4C-BB47-F96A67CA9F83")]
     [Description("Чистый Лог")]
     ChistiyLog,
+    [EnumGuid("7027BDB7-F090-401F-B227-BCE02429387B")]
     [Description("Читинская")]
     Chitinskaya,
+    [EnumGuid("F898DE7C-2B38-4A71-92CB-8AEBF5A37E34")]
     [Description("Чкалова")]
     Chkalova,
 
@@ -2700,36 +3046,52 @@ public enum StreetNameEnum
 
     #region Улицы на букву Ш
 
+    [EnumGuid("A5417791-EFEC-44D1-A83C-3183C30E62A6")]
     [Description("Шахтёров")]
     Shakhtyorov,
+    [EnumGuid("63175FD4-D231-40AB-9DCB-61F1068EB624")]
     [Description("Шевченко")]
     Shevchenko,
+    [EnumGuid("C8755BF1-A7B6-4278-B2C9-382EFADA4E61")]
     [Description("Шелковая")]
     Shelkovaya,
+    [EnumGuid("345B98BD-9CEE-4976-96C3-9D057B567606")]
     [Description("Шиверская")]
     Shiverskaya,
+    [EnumGuid("C11816D5-BAED-451D-B3B5-0C67702C0893")]
     [Description("Шиндандская улица")]
     Shindandskaya,
+    [EnumGuid("CD4C43C5-1372-47CF-A4FF-245381B66CBF")]
     [Description("Шинная 1-я")]
     Shinnaya1,
+    [EnumGuid("EA3BA672-594C-4ABB-97A5-20DD57A5AFF2")]
     [Description("Шинная 2-я")]
     Shinnaya2,
+    [EnumGuid("AD5EC753-5960-43B4-BFAD-2036F31FBBC0")]
     [Description("Шинная 3-я")]
     Shinnaya3,
+    [EnumGuid("B4C03C58-C5B2-438D-ACFB-51E8C59D51EB")]
     [Description("Шинная 4-я")]
     Shinnaya4,
+    [EnumGuid("289DCD89-1DF6-404B-9216-03826265C3EA")]
     [Description("Ширинская")]
     Shirinskaya,
+    [EnumGuid("E9F36CEA-2F9E-4331-8543-E440992FC3F7")]
     [Description("Широкая")]
     Shirokaya,
+    [EnumGuid("40B2F43D-A39B-44F6-883B-14B08801FBF6")]
     [Description("Шиферников")]
     Shiferinikov,
+    [EnumGuid("A96359BC-EAE7-4A5B-BF19-69AB5CEFBB14")]
     [Description("Школьный")]
     Shkolniy,
+    [EnumGuid("6374C82A-1488-43A5-BAC4-E67174825784")]
     [Description("Шмидта")]
     Shmidta,
+    [EnumGuid("3BFACA88-F3CC-4393-8E6D-E8A4AFFC1A5C")]
     [Description("Шумяцкого")]
     Shumyatskogo,
+    [EnumGuid("FDD2B462-0E75-4002-B9F9-59F8E5AE1CFE")]
     [Description("Шушенская")]
     Shushenskaya,
 
@@ -2737,10 +3099,13 @@ public enum StreetNameEnum
 
     #region Улицы на букву Щ
 
+    [EnumGuid("F30D8B0B-5A08-4C81-B6D0-6BB5F718A9AE")]
     [Description("Щербакова")]
     Shcherbakova,
+    [EnumGuid("E625BAC6-1B7E-466B-9864-332A75F37931")]
     [Description("Щетинкина")]
     Shchetinkina,
+    [EnumGuid("D50A21B9-A6A9-4223-9E08-399EBCFC943E")]
     [Description("Щорса")]
     Shchorssa,
 
@@ -2748,18 +3113,25 @@ public enum StreetNameEnum
 
     #region Улицы на букву Э
 
+    [EnumGuid("3940EC43-5201-402C-B0A8-1524CF741823")]
     [Description("Эвенкийская")]
     Evenkiyskaya,
+    [EnumGuid("C44C0703-F3DD-425A-9D2E-DDCA6A601C57")]
     [Description("Экологов")]
     Ekologov,
+    [EnumGuid("78F168AF-5AFB-467B-BAFA-9602BEBE47B5")]
     [Description("Экскурсантов")]
     Ekskursantov,
+    [EnumGuid("7335C2FD-F9EC-47DC-AC83-417A52A8AA39")]
     [Description("Электриков")]
     Elektrokov,
+    [EnumGuid("AF3C2960-6F0C-42CA-A7BA-B3C31A70019D")]
     [Description("Энгельса")]
     Engelsa,
+    [EnumGuid("54B02F2E-92CA-46A0-99BA-2C14DABECAF0")]
     [Description("Энергетиков")]
     Energetikov,
+    [EnumGuid("ABFE8B71-384B-496F-8D51-1F5DD111C27B")]
     [Description("Энтузиастов")]
     Entuziastov,
 
@@ -2767,16 +3139,22 @@ public enum StreetNameEnum
 
     #region Улицы на букву Ю
 
+    [EnumGuid("33BDFEFE-C2D3-4EB5-9746-6ACCD6FF809C")]
     [Description("Юбилейная")]
     Yubileynaya,
+    [EnumGuid("1F2CF922-BC1A-49F4-B96E-80FD95736E51")]
     [Description("Южная")]
     Yuzhnaya,
+    [EnumGuid("0FA0758C-E00E-4770-8548-2DC9CDEFB13B")]
     [Description("Юности")]
     Yunosti,
+    [EnumGuid("FF51506A-B8B0-4B23-B7F9-ACB5A207686D")]
     [Description("Юрия Гагарина")]
     YuriyaGagarina,
+    [EnumGuid("3F025014-89C5-4B3B-B19C-07B2385CE851")]
     [Description("Юрия Смирнова")]
     YuriyaSmirnova,
+    [EnumGuid("8C8AB3BB-5092-4BD5-B213-B1E2ECEF64F5")]
     [Description("Юшкова")]
     Yushkova,
 
@@ -2784,42 +3162,61 @@ public enum StreetNameEnum
 
     #region Улицы на букву Я 
 
+    [EnumGuid("C0D42C82-A57B-4D56-8357-1FDFD73B81D2")]
     [Description("Яблоневая")]
     Yablonovaya,
+    [EnumGuid("6B8DD42A-9C22-4025-B96A-4BFAAB29151C")]
     [Description("Яблочкова")]
     Yablochkova,
+    [EnumGuid("09A7554B-1C7B-48EE-AD3F-8C56647627A5")]
     [Description("Ягельный")]
     Yagelniy,
+    [EnumGuid("6742EC20-B322-44E9-838D-ABA385E07868")]
     [Description("Ягодная")]
     Yagodnaya,
+    [EnumGuid("7E048420-86AB-4480-8092-70B30A97DD10")]
     [Description("Ягодный")]
     Yagodniy,
+    [EnumGuid("9DDDB5FE-F429-49F4-BAC3-E9940AD27813")]
     [Description("Яковлева")]
     Yakovleva,
+    [EnumGuid("22BE3311-2702-441A-A55B-DB8750C594FA")]
     [Description("Якорный")]
     Yakorniy,
+    [EnumGuid("C5B2535B-1310-4B88-8C36-5E1FEE6691F3")]
     [Description("Якутская")]
     Yakutskaya,
+    [EnumGuid("7087001E-D069-411F-B5EF-455D9F17F442")]
     [Description("Якутская 1-я")]
     Yakutskaya1,
+    [EnumGuid("D752869D-10F3-47A0-B45F-7D828BD5284E")]
     [Description("Ялтинский")]
     Yaltinskiy,
+    [EnumGuid("D9B1097E-A520-402D-944B-FF98F1B54DC5")]
     [Description("Янковского")]
     Yankovskogo,
+    [EnumGuid("93BDBD32-D7D3-40FD-8F51-869378EAE365")]
     [Description("Янтарная")]
     Yantarnaya,
+    [EnumGuid("1D0D6BF0-DC9E-429E-8A1C-74E2F8CCB669")]
     [Description("Ярлыковская")]
     Yarlykovskaya,
+    [EnumGuid("7D0657BC-1E75-4BDC-912F-BBEB0575A75D")]
     [Description("Ярославская")]
     Yaroslavskaya,
+    [EnumGuid("D2F3C61B-2562-498B-9E18-BC3FA0FE09C7")]
     [Description("Ярцевский")]
     Yarcevskiy,
+    [EnumGuid("20D78B76-C2E4-47E8-BDB3-673FF109A951")]
     [Description("Ярыгинская")]
     Yaryginskaya,
+    [EnumGuid("7AF8AF4F-266E-4223-9F68-15EA9CBC4F63")]
     [Description("Ярыгинский")]
     Yaryginskiy,
+    [EnumGuid("888A50E6-58B7-4340-8D31-76A494DAD488")]
     [Description("Ясная")]
     Yasnaya,
+    [EnumGuid("FBBF82AC-53C9-4D90-B0A2-17B767068307")]
     [Description("Ястынская")]
     Yastinskaya,
 
@@ -2827,26 +3224,37 @@ public enum StreetNameEnum
 
     #region Улицы на цифру
 
+    [EnumGuid("CA7F0141-102E-4AB3-A2A4-23C5A62E3B8B")]
     [Description("3 Августа")]
     ThirdOfAugust,
+    [EnumGuid("CBAD7ABB-1BD2-4A2B-BA46-F8F97FB84DFF")]
     [Description("8 Марта")]
     EighthOfMarch,
+    [EnumGuid("40F0F05C-6A5F-4E20-B6AC-3509334B4565")]
     [Description("9 Мая")]
     NinthOfMay,
+    [EnumGuid("38FAC84D-DD0A-4D3B-B29C-A0FDBB0BF2BD")]
     [Description("9 Января")]
     NinthOfJanuary,
+    [EnumGuid("03303C1D-9568-454E-8C33-BEE73A87E334")]
     [Description("26 Бакинских Комиссаров")]
     TwentySixBakinskihKomissarov,
+    [EnumGuid("32EC904B-231F-4729-A7D1-79E3E2A272BA")]
     [Description("30 Июля")]
     ThirtiethOfJuly,
+    [EnumGuid("ED07E863-802C-448C-896C-5E4208C1012B")]
     [Description("40 лет Победы")]
     FortyYearsOfVictory,
+    [EnumGuid("4C814E6B-9552-427F-93A2-D2C21D061564")]
     [Description("60 лет Образования СССР")]
     SixtyYearsOfUssrFormation,
+    [EnumGuid("EA94B6D6-2BE7-4B86-B5A2-99405F2BDAFE")]
     [Description("60 лет Октября")]
     SixtyYearsOfOctober,
+    [EnumGuid("B5580D04-D8E4-4950-BFA6-AC5BB599724A")]
     [Description("78-й Добровольческой Бригады")]
     SeventyEighthDobrovolcheskoyBrigady,
+    [EnumGuid("B7FD54B4-F4DA-4081-BF27-537A4515F582")]
     [Description("78 Добровольческой Бригады")]
     SeventyEDobrovolcheskoyBrigady,
 

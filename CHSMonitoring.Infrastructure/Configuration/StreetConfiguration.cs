@@ -799,12 +799,365 @@ public class StreetConfiguration : IEntityTypeConfiguration<Street>
             new() { Id = Guid.Parse("2000FE34-0AA9-4C96-818A-0D28F5F8273F"), Name = "Путиловская", Description = string.Empty },
             new() { Id = Guid.Parse("EFC5633C-0CB9-4C29-ACE0-F22392820D1E"), Name = "Путоранская", Description = string.Empty },
             new() { Id = Guid.Parse("22CAEF05-78CC-49C9-80B0-9DF31129DB4E"), Name = "Пушкина", Description = string.Empty },
-            new() { Id = Guid.Parse("FAC5892C-C062-47F7-A507-3B597A1A4CB2"), Name = "Пясинская", Description = string.Empty }
+            new() { Id = Guid.Parse("FAC5892C-C062-47F7-A507-3B597A1A4CB2"), Name = "Пясинская", Description = string.Empty },
+
+            #endregion
+            
+            #region Улицы на букву Р
+            
+            new() { Id = Guid.Parse("D4700958-EAD2-4F0E-B205-6583195A285F"), Name = "Рабочая", Description = string.Empty },
+            new() { Id = Guid.Parse("A8F58005-0C30-49DC-986F-76A3FFA354FE"), Name = "Радищева", Description = string.Empty },
+            new() { Id = Guid.Parse("51CE76CE-5D1F-4F59-9264-418B8A504A2A"), Name = "Радужная", Description = string.Empty },
+            new() { Id = Guid.Parse("65FF4971-FB92-4200-9ABC-98CB34309B34"), Name = "Раздольная", Description = string.Empty },
+            new() { Id = Guid.Parse("399270A4-4F3B-417A-B366-E56474D53D64"), Name = "Раскатная", Description = string.Empty },
+            new() { Id = Guid.Parse("9978B431-DC84-4F32-B69D-BB4DEBA8C843"), Name = "Рассветная", Description = string.Empty },
+            new() { Id = Guid.Parse("80431A82-D460-4E61-AF43-1000FBEBEC75"), Name = "Революции", Description = string.Empty },
+            new() { Id = Guid.Parse("D7179D78-B89B-49AE-9A75-37920E88842B"), Name = "Регатная", Description = string.Empty },
+            new() { Id = Guid.Parse("94204F24-BF6D-418F-B8C0-C3F398D764B8"), Name = "Рейдовая", Description = string.Empty },
+            new() { Id = Guid.Parse("3E555D8D-661D-46C5-B2A3-CF8E04CB0C23"), Name = "Ремесловская", Description = string.Empty },
+            new() { Id = Guid.Parse("7F424E30-79AA-4202-9CE8-80B64CA27BA2"), Name = "Ремесленная", Description = string.Empty },
+            new() { Id = Guid.Parse("5636F465-6A3B-4312-9EAE-323CC7E570F4"), Name = "Республика", Description = string.Empty },
+            new() { Id = Guid.Parse("29A6DAD9-EDE3-472C-9CD9-FE77973EC644"), Name = "Речников", Description = string.Empty },
+            new() { Id = Guid.Parse("4EF7F052-7EBB-41B8-8B98-6F1515E16C46"), Name = "Речной", Description = string.Empty },
+            new() { Id = Guid.Parse("370163EA-0C39-4455-9C77-FEA697C053DE"), Name = "Робеспьера", Description = string.Empty },
+            new() { Id = Guid.Parse("E723A68D-9453-4489-8603-F6258E0AD305"), Name = "Ровная", Description = string.Empty },
+            new() { Id = Guid.Parse("B2E75DFE-6F43-4064-B484-0F7FA897A020"), Name = "Рогова", Description = string.Empty },
+            new() { Id = Guid.Parse("D0EBC1FA-7B65-4284-BD00-11ED704BE8AD"), Name = "Родниковая", Description = string.Empty },
+            new() { Id = Guid.Parse("2519EB75-C93D-4193-8F5B-7A8E86F47B44"), Name = "Рождественская", Description = string.Empty },
+            new() { Id = Guid.Parse("DCE21F81-D88C-4CF0-959A-445624539730"), Name = "Рождественская", Description = string.Empty },
+            new() { Id = Guid.Parse("FE8E3C0A-3D35-42B6-8ED3-BB71C2C84C76"), Name = "Розы Люксембург", Description = string.Empty },
+            new() { Id = Guid.Parse("AEEA391C-6D24-4E09-AB9C-7C1BFBE35D9C"), Name = "Рокоссовского", Description = string.Empty },
+            new() { Id = Guid.Parse("5CC17E89-9D03-4E1C-A0E4-4F8461BBD4E3"), Name = "Российская", Description = string.Empty },
+            new() { Id = Guid.Parse("CFA08766-EABC-4334-98D3-71EFDB9FA5AA"), Name = "Рощевая", Description = string.Empty },
+            new() { Id = Guid.Parse("062ED5D8-DB74-4147-A841-E40930B8EEE8"), Name = "Русаковская", Description = string.Empty },
+            new() { Id = Guid.Parse("5E8C3382-2CBE-411E-A4DF-7A970E67307D"), Name = "Ручейная", Description = string.Empty },
+            new() { Id = Guid.Parse("319DD61D-40AB-4885-97EA-62C0F74B5B8E"), Name = "Рябиновая", Description = string.Empty },
+            new() { Id = Guid.Parse("3A30EBAA-8E55-4FB3-8DCD-DDF2BA71B908"), Name = "Рязанская", Description = string.Empty },
+            new() { Id = Guid.Parse("5D1CDFFE-41A5-44C5-A7BC-5CAB6AEBC7E5"), Name = "Ряузовский", Description = string.Empty },
+
+            
+            #endregion
+            
+            #region Улицы на букву C
+            
+            new() { Id = Guid.Parse("AEF0D7AD-998B-45D0-9CF6-6140D07B1808"), Name = "Сад Крутовского", Description = string.Empty },
+            new() { Id = Guid.Parse("6697F601-4FC7-4173-903B-57123EDA6237"), Name = "Садовая", Description = string.Empty },
+            new() { Id = Guid.Parse("06105139-D27F-4AE8-A2F1-E72AEC704F77"), Name = "Садовая", Description = string.Empty },
+            new() { Id = Guid.Parse("00685919-6D7C-4B1E-8E07-49E7ED358306"), Name = "Садовая", Description = string.Empty },
+            new() { Id = Guid.Parse("1047577B-6DD0-40A3-9EEF-83EBB9111F6F"), Name = "Сады", Description = string.Empty },
+            new() { Id = Guid.Parse("AE674334-93B7-410E-981B-BC05F21B4A15"), Name = "Самарский", Description = string.Empty },
+            new() { Id = Guid.Parse("22BFC0BB-8F7F-4A2E-885A-2BB204BE3271"), Name = "Самодеятельности", Description = string.Empty },
+            new() { Id = Guid.Parse("BCCD1A15-69C0-4C0C-A311-4DA9E6A256B9"), Name = "Санаторная", Description = string.Empty },
+            new() { Id = Guid.Parse("64123707-BA59-4444-867C-6D9BF8246434"), Name = "Саянская", Description = string.Empty },
+            new() { Id = Guid.Parse("A75D8BD8-7ACC-48E9-B7F0-6088403DE8F3"), Name = "Сергея Куликова", Description = string.Empty },
+            new() { Id = Guid.Parse("8A3AB83D-7E50-4316-B323-035811D74EBB"), Name = "Сергея Лазо", Description = string.Empty },
+            new() { Id = Guid.Parse("5F6964E0-0073-470C-AC39-D0B674F7D202"), Name = "Сергея Тюленина", Description = string.Empty },
+            new() { Id = Guid.Parse("9143155C-7290-453C-B25A-344180DAB33E"), Name = "Серебряный", Description = string.Empty },
+            new() { Id = Guid.Parse("514E986F-A1FE-469B-AFB3-F48AF2B03FB0"), Name = "Серебряный Бор", Description = string.Empty },
+            new() { Id = Guid.Parse("A75D8BD8-7ACC-48E9-B7F0-6088403DE8F3"), Name = "Серова", Description = string.Empty },
+            new() { Id = Guid.Parse("A0E5F795-AAB4-48EA-9FDA-6EBF69328D99"), Name = "Сеченова", Description = string.Empty },
+            new() { Id = Guid.Parse("3B4335C8-BF74-4282-B243-A197FAFE6DD1"), Name = "Сибирская", Description = string.Empty },
+            new() { Id = Guid.Parse("0813E142-8D71-49FC-A7A0-0C2BD816F4BE"), Name = "Сибирский", Description = string.Empty },
+            new() { Id = Guid.Parse("7F633905-0DEA-4044-B99C-280BCD58BE4A"), Name = "Сиреневая", Description = string.Empty },
+            new() { Id = Guid.Parse("4510662F-43F5-4035-BEF0-7E732B19295C"), Name = "Сисимский", Description = string.Empty },
+            new() { Id = Guid.Parse("1D3B08B4-9AB5-45CA-AD10-153422A99FB5"), Name = "Скальная", Description = string.Empty },
+            new() { Id = Guid.Parse("F9B06AD2-0B54-4C07-9C7E-1DA3AF19C324"), Name = "Сквозной", Description = string.Empty },
+            new() { Id = Guid.Parse("153F22ED-3867-4E3A-8B92-8CE4E0F4A04E"), Name = "Складская", Description = string.Empty },
+            new() { Id = Guid.Parse("23DAEAA6-8C7F-4545-9F9D-6CAA1F6900BA"), Name = "Славы", Description = string.Empty },
+            new() { Id = Guid.Parse("1593DEC3-F07B-442F-B855-1B44B2399258"), Name = "Славянская", Description = string.Empty },
+            new() { Id = Guid.Parse("0E2ABED1-ED64-43E4-8F54-91A207FA2D5A"), Name = "Слободская", Description = string.Empty },
+            new() { Id = Guid.Parse("D6541C53-AFD9-4021-A456-9F955B9C4F43"), Name = "Станиславского", Description = string.Empty },
+            new() { Id = Guid.Parse("81C4EC76-68EF-4E18-918B-60B7640F47D3"), Name = "Станичная", Description = string.Empty },
+            new() { Id = Guid.Parse("0B935F67-D4E3-43E0-856D-D39BEA96D4F9"), Name = "Становая", Description = string.Empty },
+            new() { Id = Guid.Parse("5F25753A-08F9-48E2-A48F-8BE1927EB5DB"), Name = "Станочная", Description = string.Empty },
+            new() { Id = Guid.Parse("63EC252A-BC5B-4823-BB2B-35DCBCDB622C"), Name = "Станционная", Description = string.Empty },
+            new() { Id = Guid.Parse("487ADA37-D131-4175-A5DC-BD0FFC0FD0D2"), Name = "Степана Разина", Description = string.Empty },
+            new() { Id = Guid.Parse("C37ED1E9-7C9B-4458-815A-E0C03AB51620"), Name = "Столбовая", Description = string.Empty },
+            new() { Id = Guid.Parse("53BED7FE-76C5-4440-80E9-2D63AEB8DF26"), Name = "Стрелецкая", Description = string.Empty },
+            new() { Id = Guid.Parse("97696037-A856-45B5-8BA4-7ABA2900411A"), Name = "Стрелочная", Description = string.Empty },
+            new() { Id = Guid.Parse("9A143CA9-AA4C-4AFE-995D-AD1C8431667F"), Name = "Строительная", Description = string.Empty },
+            new() { Id = Guid.Parse("1892124A-B803-4008-A811-B7C46E128381"), Name = "Суворова", Description = string.Empty },
+            new() { Id = Guid.Parse("05D727BE-45F4-452E-A015-664C682A7636"), Name = "Судостроительная", Description = string.Empty },
+            new() { Id = Guid.Parse("36C7892C-F960-4439-AC26-2DA91AECE52D"), Name = "Сурикова", Description = string.Empty },
+            new() { Id = Guid.Parse("7D24F754-6DDF-44FD-932C-228DAEBC52C2"), Name = "Счастливая", Description = string.Empty },
+            new() { Id = Guid.Parse("F2987110-B9D9-4AFD-B3DD-7C974259047C"), Name = "Спокойная", Description = string.Empty },
+            new() { Id = Guid.Parse("5FEF8F89-2FC0-4CE7-AFF8-365E15791EB1"), Name = "Спорта", Description = string.Empty },
+            new() { Id = Guid.Parse("7856D271-1905-47CF-9689-AC2FD1F45D08"), Name = "Спортивная", Description = string.Empty },
+            new() { Id = Guid.Parse("9ED58301-EDD4-48BF-BD3B-E4C4C8A81C4E"), Name = "Спортивный", Description = string.Empty },
+            new() { Id = Guid.Parse("18443FCE-F975-4F00-A521-BB8CFA5DB576"), Name = "Средний", Description = string.Empty },
+            new() { Id = Guid.Parse("D6541C53-AFD9-4021-A456-9F955B9C4F43"), Name = "Станиславского", Description = string.Empty },
+            new() { Id = Guid.Parse("81C4EC76-68EF-4E18-918B-60B7640F47D3"), Name = "Станичная", Description = string.Empty },
+            new() { Id = Guid.Parse("0B935F67-D4E3-43E0-856D-D39BEA96D4F9"), Name = "Становая", Description = string.Empty },
+            new() { Id = Guid.Parse("5F25753A-08F9-48E2-A48F-8BE1927EB5DB"), Name = "Станочная", Description = string.Empty },
+            new() { Id = Guid.Parse("63EC252A-BC5B-4823-BB2B-35DCBCDB622C"), Name = "Станционная", Description = string.Empty },
+            new() { Id = Guid.Parse("487ADA37-D131-4175-A5DC-BD0FFC0FD0D2"), Name = "Степана Разина", Description = string.Empty },
+            new() { Id = Guid.Parse("C37ED1E9-7C9B-4458-815A-E0C03AB51620"), Name = "Столбовая", Description = string.Empty },
+            new() { Id = Guid.Parse("53BED7FE-76C5-4440-80E9-2D63AEB8DF26"), Name = "Стрелецкая", Description = string.Empty },
+            new() { Id = Guid.Parse("97696037-A856-45B5-8BA4-7ABA2900411A"), Name = "Стрелочная", Description = string.Empty },
+            new() { Id = Guid.Parse("9A143CA9-AA4C-4AFE-995D-AD1C8431667F"), Name = "Строительная", Description = string.Empty },
+            new() { Id = Guid.Parse("1892124A-B803-4008-A811-B7C46E128381"), Name = "Суворова", Description = string.Empty },
+            new() { Id = Guid.Parse("05D727BE-45F4-452E-A015-664C682A7636"), Name = "Судостроительная", Description = string.Empty },
+            new() { Id = Guid.Parse("36C7892C-F960-4439-AC26-2DA91AECE52D"), Name = "Сурикова", Description = string.Empty },
+            new() { Id = Guid.Parse("7D24F754-6DDF-44FD-932C-228DAEBC52C2"), Name = "Счастливая", Description = string.Empty },
+
+            
+            #endregion
+
+            #region Улицы на букву Т
+
+            new() { Id = Guid.Parse("7B9E17D4-4151-4C91-A9EF-7486E00265B3"), Name = "Таежная", Description = string.Empty },
+            new() { Id = Guid.Parse("07F3785E-86C5-40A9-B017-970DDEFA1364"), Name = "Бугачево", Description = string.Empty },
+            new() { Id = Guid.Parse("9B6C34C8-DC7D-423B-804F-C1AE0FF3F352"), Name = "Таймырская", Description = string.Empty },
+            new() { Id = Guid.Parse("69985192-7E9C-4DC7-A087-E8FA68C1ADC5"), Name = "1-я Таймырская", Description = string.Empty },
+            new() { Id = Guid.Parse("7617790C-B000-4EAE-B10B-5E47485E5846"), Name = "2-я Таймырская", Description = string.Empty },
+            new() { Id = Guid.Parse("B5000FF2-95AB-4D4E-B94D-0191E2A3B0E8"), Name = "3-я Таймырская", Description = string.Empty },
+            new() { Id = Guid.Parse("D51ED3A5-3EA4-4397-AF71-E18B745F9E88"), Name = "4-я Таймырская", Description = string.Empty },
+            new() { Id = Guid.Parse("EBE1F94D-6BD9-4FC7-A76B-8EE4B36B8912"), Name = "5-я Таймырская", Description = string.Empty },
+            new() { Id = Guid.Parse("89090BC7-0BBC-499B-90AB-A06AFBE0B98F"), Name = "Талнахская", Description = string.Empty },
+            new() { Id = Guid.Parse("23B32D31-9CBF-40FA-B3DA-366D424B9A98"), Name = "Тамбовская", Description = string.Empty },
+            new() { Id = Guid.Parse("19954DF9-99C3-439A-9FD8-D2B3D0E68222"), Name = "Танкистов", Description = string.Empty },
+            new() { Id = Guid.Parse("8B5048A5-DB53-44D7-9925-87191D917C28"), Name = "Таскинская", Description = string.Empty },
+            new() { Id = Guid.Parse("87DF5E15-D4D6-45CE-9327-B9E9085D3A0E"), Name = "Татышев", Description = string.Empty },
+            new() { Id = Guid.Parse("4FA1C438-C914-468C-A2AE-4D9D60C3956A"), Name = "Таштыпский", Description = string.Empty },
+            new() { Id = Guid.Parse("1EF29DAD-26B5-464F-8B64-9CCACABAD137"), Name = "Театральная", Description = string.Empty },
+            new() { Id = Guid.Parse("18BF61CB-6E54-400A-9CCE-881C9A903ABE"), Name = "Текстильщиков", Description = string.Empty },
+            new() { Id = Guid.Parse("8F2BDAFF-C6F3-4A82-A8D1-C2D7954AB110"), Name = "Телевизорная", Description = string.Empty },
+            new() { Id = Guid.Parse("6B1C2B21-CC59-44E3-A4C4-27265736086C"), Name = "Телевизорный", Description = string.Empty },
+            new() { Id = Guid.Parse("31AF1D7F-949E-4A07-8C42-ABDD281BF830"), Name = "Тельмана", Description = string.Empty },
+            new() { Id = Guid.Parse("6D622793-730D-4F20-8C08-A1C18510A8B3"), Name = "Тенистая", Description = string.Empty },
+            new() { Id = Guid.Parse("BD148654-8332-4161-9BF0-AECA8AD9C2B0"), Name = "Теплый", Description = string.Empty },
+            new() { Id = Guid.Parse("0FA2A3D2-28A4-440F-A324-EE0893FE9D36"), Name = "Терешковой", Description = string.Empty },
+            new() { Id = Guid.Parse("B38EF6D8-D3C3-43C2-A6AC-9D211D5E92E6"), Name = "Техническая", Description = string.Empty },
+            new() { Id = Guid.Parse("D98EF8FA-CCB3-449B-97AC-1B4FE4DDF3BA"), Name = "Технический Поселок", Description = string.Empty },
+            new() { Id = Guid.Parse("31D9B643-F461-4DED-8BC5-8DE395B3BAD1"), Name = "Технологическая", Description = string.Empty },
+            new() { Id = Guid.Parse("60D1F76D-FE82-4A58-8BEB-487623583899"), Name = "Тимирязева", Description = string.Empty },
+            new() { Id = Guid.Parse("1C00551F-65A7-4008-AC48-C6C621A95B85"), Name = "Тихий", Description = string.Empty },
+            new() { Id = Guid.Parse("2A9457D1-93B9-46CD-AFD1-D9134071AA77"), Name = "Тихоновская", Description = string.Empty },
+            new() { Id = Guid.Parse("C787D864-4020-4A48-A5D4-53AFBCDAD2BA"), Name = "Тобольская", Description = string.Empty },
+            new() { Id = Guid.Parse("FA477421-C78E-48ED-B96A-8032E564F052"), Name = "Толстого", Description = string.Empty },
+            new() { Id = Guid.Parse("B6D39F5B-316B-474B-8A80-561356BBF801"), Name = "Томская", Description = string.Empty },
+            new() { Id = Guid.Parse("7EEB7838-CD70-4395-B9C5-CCC46AB76839"), Name = "Торгашинская", Description = string.Empty },
+            new() { Id = Guid.Parse("4CB68190-69A0-497F-A4D0-02790033D30F"), Name = "Торговая", Description = string.Empty },
+            new() { Id = Guid.Parse("8406AD7C-9D0A-4D4B-9958-BB681B75DB09"), Name = "Тотмина", Description = string.Empty },
+            new() { Id = Guid.Parse("3AF552D8-F6CF-4669-A64C-E5543D52F38C"), Name = "Трактовая", Description = string.Empty },
+            new() { Id = Guid.Parse("C5F08B6C-2ED5-4D26-93DD-8596AE0F228F"), Name = "Трактористов", Description = string.Empty },
+            new() { Id = Guid.Parse("5F8AEF78-2633-42DC-8ED8-B90024215745"), Name = "Транзитная", Description = string.Empty },
+            new() { Id = Guid.Parse("AC4A0C00-636B-4AEF-8356-1BF066613D75"), Name = "Транспортный", Description = string.Empty },
+            new() { Id = Guid.Parse("C3DAF816-8EED-4F9A-8775-C880E9E4EE8E"), Name = "Транспортный", Description = string.Empty },
+            new() { Id = Guid.Parse("50C0AA6B-5510-4AC0-80E1-1EEB6946E65D"), Name = "Троицкая", Description = string.Empty },
+            new() { Id = Guid.Parse("114C544B-DF5C-4F58-927D-39DF5E700390"), Name = "Труда", Description = string.Empty },
+            new() { Id = Guid.Parse("B0106C5C-2160-445F-80AE-5352219A6BB3"), Name = "Тубинская", Description = string.Empty },
+            new() { Id = Guid.Parse("4D31C35A-F8DC-41FA-AEC2-55B6FEDA8D21"), Name = "Туимский", Description = string.Empty },
+            new() { Id = Guid.Parse("AA403EF0-D9EA-4848-876D-A52BD8E83806"), Name = "Туманный", Description = string.Empty },
+            new() { Id = Guid.Parse("BAB097FD-8126-401B-9EBF-9C60D264FA6A"), Name = "Тупиковый", Description = string.Empty },
+            new() { Id = Guid.Parse("0608E7BC-5B11-4795-8C53-73D2681B8B4A"), Name = "Турбаза", Description = string.Empty },
+            new() { Id = Guid.Parse("894DA46F-03FE-44CC-9DE9-9593121E8E80"), Name = "Турбинная", Description = string.Empty },
+            new() { Id = Guid.Parse("31BCB708-1FE2-4E2F-8041-C6BC38C88D39"), Name = "Тургенева", Description = string.Empty },
+            new() { Id = Guid.Parse("5404E128-91CD-4D82-87B1-96921EA349E0"), Name = "Туристская", Description = string.Empty },
+            new() { Id = Guid.Parse("6565BF4A-91C1-4E20-9231-972112B160EC"), Name = "Туруханская", Description = string.Empty },
+            new() { Id = Guid.Parse("607BECAF-5B99-42F0-9D26-48C8219E202A"), Name = "Турчанинова", Description = string.Empty },
+            new() { Id = Guid.Parse("21FB4A3D-A1E2-41D6-ABE7-7787FEE27361"), Name = "Тюхтетский", Description = string.Empty },
+            
+            #endregion
+            
+            #region Улицы на букву У
+            
+            new() { Id = Guid.Parse("2C3D10ED-693A-41ED-B9A7-1E4FCD29364F"), Name = "Угловой", Description = string.Empty },
+            new() { Id = Guid.Parse("CEB1F119-B672-4E93-97FE-2B8A32601EE4"), Name = "Угольный", Description = string.Empty },
+            new() { Id = Guid.Parse("6D32E121-CA49-4D2D-94A6-F8D9260BAB3C"), Name = "Угольщиков", Description = string.Empty },
+            new() { Id = Guid.Parse("C5E1B271-6ECF-4C45-A3FA-5C62F8642786"), Name = "Ударный", Description = string.Empty },
+            new() { Id = Guid.Parse("2211AC2C-8641-4D9A-ADD0-0F6D582BA26B"), Name = "Удачная", Description = string.Empty },
+            new() { Id = Guid.Parse("2E68CC16-F135-4DE7-B5B2-23FEE1456396"), Name = "Удобный", Description = string.Empty },
+            new() { Id = Guid.Parse("23710265-9814-4FDF-8D27-2E51BD77FD4B"), Name = "Узкий", Description = string.Empty },
+            new() { Id = Guid.Parse("33899FD3-6FF3-4F5A-B78A-8B60089CBD07"), Name = "Украинская", Description = string.Empty },
+            new() { Id = Guid.Parse("0DB7EDF2-F510-42B2-BB0F-AEBD1AC6ADB6"), Name = "Уланова", Description = string.Empty },
+            new() { Id = Guid.Parse("22B2B508-0C97-4775-9A49-7CCA581ACA77"), Name = "Ульяновский", Description = string.Empty },
+            new() { Id = Guid.Parse("75EA8E8A-705A-4600-994A-93189BAC253A"), Name = "Ульяны Громовой", Description = string.Empty },
+            new() { Id = Guid.Parse("21A2A574-F82A-41C3-8CAB-A218BE6A5F64"), Name = "Уральский", Description = string.Empty },
+            new() { Id = Guid.Parse("06C9359A-6C09-4FCE-B63B-F4AA4EF6F82F"), Name = "Урванцева", Description = string.Empty },
+            new() { Id = Guid.Parse("240A3A01-7125-45E4-900C-49B9F8FF221C"), Name = "Урицкого", Description = string.Empty },
+            new() { Id = Guid.Parse("7A56D006-3AE6-408B-BB0E-80F35B4A24D3"), Name = "Урожайная", Description = string.Empty },
+            new() { Id = Guid.Parse("FF5E3D0A-27F5-488C-943D-9E0CE0ED4BDC"), Name = "Усадебная", Description = string.Empty },
+            new() { Id = Guid.Parse("29D4AE59-D6E6-4A7F-8C71-5C5E678831CA"), Name = "Успенская", Description = string.Empty },
+            new() { Id = Guid.Parse("CBE72B0D-A93E-46C2-A18D-1BB5E3B944E5"), Name = "Уссурийская", Description = string.Empty },
+            new() { Id = Guid.Parse("9A68A489-6813-48C7-B8BC-49ABD45A06A7"), Name = "Устиновича", Description = string.Empty },
+            new() { Id = Guid.Parse("AC930576-F0A1-4743-9B5F-796CF529DD73"), Name = "Утренняя", Description = string.Empty },
+            new() { Id = Guid.Parse("7ACE7286-2BD1-42BE-B0DA-FAA3939EAB6A"), Name = "Ухоженный", Description = string.Empty },
+            new() { Id = Guid.Parse("F7BEE84B-BE55-483C-A3FE-5432B7F57BE5"), Name = "Участок 5-й", Description = string.Empty },
+            new() { Id = Guid.Parse("56168172-D0F3-4195-900F-080FC7325E0E"), Name = "Учумская", Description = string.Empty },
+            new() { Id = Guid.Parse("9E355D5D-1B1B-4C4D-8A22-105418962B9A"), Name = "Уютная", Description = string.Empty },
+            new() { Id = Guid.Parse("B4F53BC7-5353-43BA-AE3C-E94A0CF08DFF"), Name = "Уютный", Description = string.Empty },
+            new() { Id = Guid.Parse("91E22415-3A90-4B36-9614-97E55C973275"), Name = "Уярская", Description = string.Empty },
+            
+            #endregion
+
+            #region Улицы на букву Ф
+
+            new() { Id = Guid.Parse("8BADE87A-5346-4D06-B724-4CCE1B7B88F1"), Name = "Фабричная", Description = string.Empty },
+            new() { Id = Guid.Parse("36C2504F-A953-49C9-99EF-B53164FDE603"), Name = "Ферганская", Description = string.Empty },
+            new() { Id = Guid.Parse("8E28FAD3-524A-4B47-982E-F55AEEE62058"), Name = "Фестивальная", Description = string.Empty },
+            new() { Id = Guid.Parse("889F2D8E-E42C-4B46-B8F0-9FBEE8B37A1D"), Name = "Фигурная", Description = string.Empty },
+            new() { Id = Guid.Parse("191E015A-E5B6-451F-8936-91D676CC304D"), Name = "Фруктовая", Description = string.Empty },
+            new() { Id = Guid.Parse("1BA19D30-B641-47F4-A4E1-BC12CF9A416A"), Name = "Фрунзе", Description = string.Empty },
+            new() { Id = Guid.Parse("317B4EAF-C0A0-49D7-98B9-57F51B57C4B1"), Name = "Фурманова", Description = string.Empty },
+
+
+            #endregion
+            
+            #region Улицы на букву Х
+
+            new() { Id = Guid.Parse("AB12063F-000E-4715-859B-A3FF45C35477"), Name = "Хабаровская 1-я", Description = string.Empty },
+            new() { Id = Guid.Parse("0DCFF0AF-172E-4C63-A574-F0108A6998A1"), Name = "Хабаровская 2-я", Description = string.Empty },
+            new() { Id = Guid.Parse("96928748-546D-4367-9BF1-FA3106678332"), Name = "Хантайская", Description = string.Empty },
+            new() { Id = Guid.Parse("F394B787-C42E-45B7-AFCB-B78A1807A67A"), Name = "Харламова", Description = string.Empty },
+            new() { Id = Guid.Parse("E4BDB2A3-E477-4966-BE92-6D09CC24ED58"), Name = "Хетская", Description = string.Empty },
+            new() { Id = Guid.Parse("5CAE70CB-304F-45B2-A048-3C8D91ADAD19"), Name = "Холмистая", Description = string.Empty },
+            new() { Id = Guid.Parse("25427496-F491-45C3-9F55-25493C13BB49"), Name = "Храпова", Description = string.Empty },
+            new() { Id = Guid.Parse("9BED6308-4592-4C60-9CCB-29DB5FD7B58A"), Name = "Хрустальная", Description = string.Empty },
+            new() { Id = Guid.Parse("572EEBF1-9FD4-41D7-99C0-B621F3D92B24"), Name = "Хуторская", Description = string.Empty },
+
+
+            #endregion
+            
+            #region Улицы на букву Ц
+
+            new() { Id = Guid.Parse("A7D37156-C67F-4FBD-9C33-2B8449A60755"), Name = "Цветной", Description = string.Empty },
+            new() { Id = Guid.Parse("76CF8AB6-79BF-4241-A871-4BDCC33F34B5"), Name = "Цветочная", Description = string.Empty },
+            new() { Id = Guid.Parse("3CCECF9B-26C7-46BC-AAB8-69ADC98A6681"), Name = "Цветущая", Description = string.Empty },
+            new() { Id = Guid.Parse("ABE34199-D3EE-46DD-BBB4-9CCB07E9E3AA"), Name = "Цементников", Description = string.Empty },
+            new() { Id = Guid.Parse("79FFE264-CDBF-4ED4-9A06-BED9BBDF6376"), Name = "Центральный", Description = string.Empty },
+            new() { Id = Guid.Parse("FF6118E3-D53E-4A58-BEC7-DCF86F339B74"), Name = "Цимлянская", Description = string.Empty },
+            new() { Id = Guid.Parse("D9837763-45ED-4C9F-AF21-7C750B2491D6"), Name = "Циолковского", Description = string.Empty },
+
+            #endregion
+            
+            #region Улицы на букву Ч
+
+            
+            new() { Id = Guid.Parse("D1355196-E618-41D8-8204-EE0BECC5FC70"), Name = "Чайковского", Description = string.Empty },
+            new() { Id = Guid.Parse("3CA9FA2A-A778-4DB6-9C48-51263FA06496"), Name = "Частоостровская", Description = string.Empty },
+            new() { Id = Guid.Parse("03E043A5-5E9B-4CEE-8830-9F58F7DA8656"), Name = "Челюскинцев", Description = string.Empty },
+            new() { Id = Guid.Parse("0D5DF015-32CB-449D-9C68-B40E4537F942"), Name = "Черёмуховая", Description = string.Empty },
+            new() { Id = Guid.Parse("EBC03110-9129-450D-A29C-074F140A36F8"), Name = "Черемховская 2-я", Description = string.Empty },
+            new() { Id = Guid.Parse("C436B5E7-8AC0-47E7-AF81-F6A8F13AE387"), Name = "Черепнина", Description = string.Empty },
+            new() { Id = Guid.Parse("F0FE3E53-0D97-46F0-9C6A-20F38E7934A4"), Name = "Черничная", Description = string.Empty },
+            new() { Id = Guid.Parse("AAEF5E81-A413-4D6C-BDBC-E678E68DC078"), Name = "Чернышева", Description = string.Empty },
+            new() { Id = Guid.Parse("FC7C23BF-DA64-4F10-9AAB-9FE2467DA319"), Name = "Чернышевского", Description = string.Empty },
+            new() { Id = Guid.Parse("1C2A6E2C-4AA9-4D20-91F1-F8D457EC1CCA"), Name = "Черняховского", Description = string.Empty },
+            new() { Id = Guid.Parse("72A0F734-6F53-48E8-AC11-0C16FDCED31A"), Name = "Чехова", Description = string.Empty },
+            new() { Id = Guid.Parse("FC253252-642B-4A54-89C9-564603B7CF53"), Name = "Чечеульский", Description = string.Empty },
+            new() { Id = Guid.Parse("3011B8FD-F968-4C63-BC6A-C16E45E88611"), Name = "Чистопрудная", Description = string.Empty },
+            new() { Id = Guid.Parse("19B185D3-221E-4F4C-BB47-F96A67CA9F83"), Name = "Чистый Лог", Description = string.Empty },
+            new() { Id = Guid.Parse("7027BDB7-F090-401F-B227-BCE02429387B"), Name = "Читинская", Description = string.Empty },
+            new() { Id = Guid.Parse("F898DE7C-2B38-4A71-92CB-8AEBF5A37E34"), Name = "Чкалова", Description = string.Empty },
+
+
+            #endregion
+            
+            
+            #region Улицы на букву Ш
+
+            new() { Id = Guid.Parse("A5417791-EFEC-44D1-A83C-3183C30E62A6"), Name = "Шахтёров", Description = string.Empty },
+            new() { Id = Guid.Parse("63175FD4-D231-40AB-9DCB-61F1068EB624"), Name = "Шевченко", Description = string.Empty },
+            new() { Id = Guid.Parse("C8755BF1-A7B6-4278-B2C9-382EFADA4E61"), Name = "Шелковая", Description = string.Empty },
+            new() { Id = Guid.Parse("345B98BD-9CEE-4976-96C3-9D057B567606"), Name = "Шиверская", Description = string.Empty },
+            new() { Id = Guid.Parse("C11816D5-BAED-451D-B3B5-0C67702C0893"), Name = "Шиндандская улица", Description = string.Empty },
+            new() { Id = Guid.Parse("CD4C43C5-1372-47CF-A4FF-245381B66CBF"), Name = "Шинная 1-я", Description = string.Empty },
+            new() { Id = Guid.Parse("EA3BA672-594C-4ABB-97A5-20DD57A5AFF2"), Name = "Шинная 2-я", Description = string.Empty },
+            new() { Id = Guid.Parse("AD5EC753-5960-43B4-BFAD-2036F31FBBC0"), Name = "Шинная 3-я", Description = string.Empty },
+            new() { Id = Guid.Parse("B4C03C58-C5B2-438D-ACFB-51E8C59D51EB"), Name = "Шинная 4-я", Description = string.Empty },
+            new() { Id = Guid.Parse("289DCD89-1DF6-404B-9216-03826265C3EA"), Name = "Ширинская", Description = string.Empty },
+            new() { Id = Guid.Parse("E9F36CEA-2F9E-4331-8543-E440992FC3F7"), Name = "Широкая", Description = string.Empty },
+            new() { Id = Guid.Parse("40B2F43D-A39B-44F6-883B-14B08801FBF6"), Name = "Шиферников", Description = string.Empty },
+            new() { Id = Guid.Parse("A96359BC-EAE7-4A5B-BF19-69AB5CEFBB14"), Name = "Школьный", Description = string.Empty },
+            new() { Id = Guid.Parse("6374C82A-1488-43A5-BAC4-E67174825784"), Name = "Шмидта", Description = string.Empty },
+            new() { Id = Guid.Parse("3BFACA88-F3CC-4393-8E6D-E8A4AFFC1A5C"), Name = "Шумяцкого", Description = string.Empty },
+            new() { Id = Guid.Parse("FDD2B462-0E75-4002-B9F9-59F8E5AE1CFE"), Name = "Шушенская", Description = string.Empty },
+
+
+            #endregion
+            
+            #region Улицы на букву Щ
+
+            
+            new() { Id = Guid.Parse("F30D8B0B-5A08-4C81-B6D0-6BB5F718A9AE"), Name = "Щербакова", Description = string.Empty },
+            new() { Id = Guid.Parse("E625BAC6-1B7E-466B-9864-332A75F37931"), Name = "Щетинкина", Description = string.Empty },
+            new() { Id = Guid.Parse("D50A21B9-A6A9-4223-9E08-399EBCFC943E"), Name = "Щорса", Description = string.Empty },
+
+
+            #endregion
+            
+            #region Улицы на букву Э
+
+            
+            new() { Id = Guid.Parse("3940EC43-5201-402C-B0A8-1524CF741823"), Name = "Эвенкийская", Description = string.Empty },
+            new() { Id = Guid.Parse("C44C0703-F3DD-425A-9D2E-DDCA6A601C57"), Name = "Экологов", Description = string.Empty },
+            new() { Id = Guid.Parse("78F168AF-5AFB-467B-BAFA-9602BEBE47B5"), Name = "Экскурсантов", Description = string.Empty },
+            new() { Id = Guid.Parse("7335C2FD-F9EC-47DC-AC83-417A52A8AA39"), Name = "Электриков", Description = string.Empty },
+            new() { Id = Guid.Parse("AF3C2960-6F0C-42CA-A7BA-B3C31A70019D"), Name = "Энгельса", Description = string.Empty },
+            new() { Id = Guid.Parse("54B02F2E-92CA-46A0-99BA-2C14DABECAF0"), Name = "Энергетиков", Description = string.Empty },
+            new() { Id = Guid.Parse("ABFE8B71-384B-496F-8D51-1F5DD111C27B"), Name = "Энтузиастов", Description = string.Empty },
+
+
+            #endregion
+            
+            #region Улицы на букву Ю
+
+            
+            new() { Id = Guid.Parse("33BDFEFE-C2D3-4EB5-9746-6ACCD6FF809C"), Name = "Юбилейная", Description = string.Empty },
+            new() { Id = Guid.Parse("1F2CF922-BC1A-49F4-B96E-80FD95736E51"), Name = "Южная", Description = string.Empty },
+            new() { Id = Guid.Parse("0FA0758C-E00E-4770-8548-2DC9CDEFB13B"), Name = "Юности", Description = string.Empty },
+            new() { Id = Guid.Parse("FF51506A-B8B0-4B23-B7F9-ACB5A207686D"), Name = "Юрия Гагарина", Description = string.Empty },
+            new() { Id = Guid.Parse("3F025014-89C5-4B3B-B19C-07B2385CE851"), Name = "Юрия Смирнова", Description = string.Empty },
+            new() { Id = Guid.Parse("8C8AB3BB-5092-4BD5-B213-B1E2ECEF64F5"), Name = "Юшкова", Description = string.Empty },
+
+
+            #endregion
+            
+            #region Улицы на букву Я
+
+            new() { Id = Guid.Parse("C0D42C82-A57B-4D56-8357-1FDFD73B81D2"), Name = "Яблоневая", Description = string.Empty },
+            new() { Id = Guid.Parse("6B8DD42A-9C22-4025-B96A-4BFAAB29151C"), Name = "Яблочкова", Description = string.Empty },
+            new() { Id = Guid.Parse("09A7554B-1C7B-48EE-AD3F-8C56647627A5"), Name = "Ягельный", Description = string.Empty },
+            new() { Id = Guid.Parse("6742EC20-B322-44E9-838D-ABA385E07868"), Name = "Ягодная", Description = string.Empty },
+            new() { Id = Guid.Parse("7E048420-86AB-4480-8092-70B30A97DD10"), Name = "Ягодный", Description = string.Empty },
+            new() { Id = Guid.Parse("9DDDB5FE-F429-49F4-BAC3-E9940AD27813"), Name = "Яковлева", Description = string.Empty },
+            new() { Id = Guid.Parse("22BE3311-2702-441A-A55B-DB8750C594FA"), Name = "Якорный", Description = string.Empty },
+            new() { Id = Guid.Parse("C5B2535B-1310-4B88-8C36-5E1FEE6691F3"), Name = "Якутская", Description = string.Empty },
+            new() { Id = Guid.Parse("7087001E-D069-411F-B5EF-455D9F17F442"), Name = "Якутская 1-я", Description = string.Empty },
+            new() { Id = Guid.Parse("D752869D-10F3-47A0-B45F-7D828BD5284E"), Name = "Ялтинский", Description = string.Empty },
+            new() { Id = Guid.Parse("D9B1097E-A520-402D-944B-FF98F1B54DC5"), Name = "Янковского", Description = string.Empty },
+            new() { Id = Guid.Parse("93BDBD32-D7D3-40FD-8F51-869378EAE365"), Name = "Янтарная", Description = string.Empty },
+            new() { Id = Guid.Parse("1D0D6BF0-DC9E-429E-8A1C-74E2F8CCB669"), Name = "Ярлыковская", Description = string.Empty },
+            new() { Id = Guid.Parse("7D0657BC-1E75-4BDC-912F-BBEB0575A75D"), Name = "Ярославская", Description = string.Empty },
+            new() { Id = Guid.Parse("D2F3C61B-2562-498B-9E18-BC3FA0FE09C7"), Name = "Ярцевский", Description = string.Empty },
+            new() { Id = Guid.Parse("20D78B76-C2E4-47E8-BDB3-673FF109A951"), Name = "Ястынская", Description = string.Empty },
+            new() { Id = Guid.Parse("7AF8AF4F-266E-4223-9F68-15EA9CBC4F63"), Name = "Ястыгинский", Description = string.Empty },
+            new() { Id = Guid.Parse("888A50E6-58B7-4340-8D31-76A494DAD488"), Name = "Ясная", Description = string.Empty },
+            new() { Id = Guid.Parse("FBBF82AC-53C9-4D90-B0A2-17B767068307"), Name = "Ястынская", Description = string.Empty },
+
+
+            #endregion
+            
+            #region Улицы на цифру
+
+            
+            new() { Id = Guid.Parse("CA7F0141-102E-4AB3-A2A4-23C5A62E3B8B"), Name = "3 Августа", Description = string.Empty },
+            new() { Id = Guid.Parse("CBAD7ABB-1BD2-4A2B-BA46-F8F97FB84DFF"), Name = "8 Марта", Description = string.Empty },
+            new() { Id = Guid.Parse("40F0F05C-6A5F-4E20-B6AC-3509334B4565"), Name = "9 Мая", Description = string.Empty },
+            new() { Id = Guid.Parse("38FAC84D-DD0A-4D3B-B29C-A0FDBB0BF2BD"), Name = "9 Января", Description = string.Empty },
+            new() { Id = Guid.Parse("03303C1D-9568-454E-8C33-BEE73A87E334"), Name = "26 Бакинских Комиссаров", Description = string.Empty },
+            new() { Id = Guid.Parse("32EC904B-231F-4729-A7D1-79E3E2A272BA"), Name = "30 Июля", Description = string.Empty },
+            new() { Id = Guid.Parse("ED07E863-802C-448C-896C-5E4208C1012B"), Name = "40 лет Победы", Description = string.Empty },
+            new() { Id = Guid.Parse("4C814E6B-9552-427F-93A2-D2C21D061564"), Name = "60 лет Образования СССР", Description = string.Empty },
+            new() { Id = Guid.Parse("EA94B6D6-2BE7-4B86-B5A2-99405F2BDAFE"), Name = "60 лет Октября", Description = string.Empty },
+            new() { Id = Guid.Parse("B5580D04-D8E4-4950-BFA6-AC5BB599724A"), Name = "78-й Добровольческой Бригады", Description = string.Empty },
+            new() { Id = Guid.Parse("B7FD54B4-F4DA-4081-BF27-537A4515F582"), Name = "78 Добровольческой Бригады", Description = string.Empty }
+
 
             #endregion
         };
         
-        //TODO: Указать пресет сюда
         builder.HasData(streetEnums);
     }
 }
