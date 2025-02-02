@@ -47,12 +47,12 @@ public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddre
             .HasDefaultValue(true);
 
         builder.HasOne(x => x.District)
-            .WithOne(x => x.ServiceAddress);
+            .WithMany(x => x.ServiceAddresses);
 
         builder.HasOne(x => x.Street)
-            .WithOne(x => x.ServiceAddress);
+            .WithMany(x => x.ServiceAddresses);
 
         builder.HasOne(x => x.ServiceType)
-            .WithOne(x => x.ServiceAddress);
+            .WithMany(x => x.ServiceAddresses);
     }
 }

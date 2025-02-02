@@ -1,8 +1,11 @@
 ﻿using System.Diagnostics;
 using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Infrastructure.Context;
+using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
+using CHSMonitoring.Infrastructure.Models.Enums;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

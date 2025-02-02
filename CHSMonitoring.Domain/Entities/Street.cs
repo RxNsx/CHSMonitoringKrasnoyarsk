@@ -14,5 +14,5 @@ public class Street : Entity
     /// </summary>
     public string Description { get; set; }
     
-    public ServiceAddress ServiceAddress { get; set; }
+    public List<ServiceAddress> ServiceAddresses { get; set; }
 }

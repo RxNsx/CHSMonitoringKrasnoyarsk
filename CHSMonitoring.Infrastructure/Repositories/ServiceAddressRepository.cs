@@ -47,24 +47,28 @@ public class ServiceAddressRepository : IServiceAddressRepository
     public async Task<ServiceAddress> GetServiceAddressAsync(ServiceAddress serviceAddress,
         CancellationToken cancellationToken)
     {
-        var result =  await _context.ServiceAddresses
-            .FirstOrDefaultAsync(x => x.StreetName == serviceAddress.StreetName
-                                      && x.HouseNumber == serviceAddress.HouseNumber
-                                      && x.ServiceType == serviceAddress.ServiceType
-                                      && x.From == serviceAddress.From
-                                      && x.To == serviceAddress.To)
-            .ConfigureAwait(false);
+        // var result =  await _context.ServiceAddresses
+        //     .FirstOrDefaultAsync(x => x.StreetName == serviceAddress.StreetName
+        //                               && x.HouseNumber == serviceAddress.HouseNumber
+        //                               && x.ServiceType == serviceAddress.ServiceType
+        //                               && x.From == serviceAddress.From
+        //                               && x.To == serviceAddress.To)
+        //     .ConfigureAwait(false);
+        //
+        // //TODO: Result Pattern
+        // return result;
 
-        //TODO: Result Pattern
-        return result;
+        return null;
     }
 
     public async Task<bool> IsExistServiceAddressAsync(ServiceAddress serviceAddress, CancellationToken cancellationToken)
     {
-        //TODO: Result Pattern
-        return (await GetServiceAddressesAsynс(cancellationToken).ConfigureAwait(false))
-            .Any(x => x.StreetName == serviceAddress.StreetName 
-                   && x.HouseNumber == serviceAddress.HouseNumber 
-                   && x.ServiceType == serviceAddress.ServiceType);
+        // //TODO: Result Pattern
+        // return (await GetServiceAddressesAsynс(cancellationToken).ConfigureAwait(false))
+        //     .Any(x => x.StreetName == serviceAddress.StreetName 
+        //            && x.HouseNumber == serviceAddress.HouseNumber 
+        //            && x.ServiceType == serviceAddress.ServiceType);
+        
+        return false;
     }
 }

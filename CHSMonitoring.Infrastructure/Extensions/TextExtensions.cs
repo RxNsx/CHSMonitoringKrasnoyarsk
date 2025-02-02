@@ -65,4 +65,16 @@ public static class TextExtensions
         
         return text;
     }
+
+    public static string NormalizedSplitNumber(this string text)
+    {
+        text = text.Trim();
+        var indexOfSpace = text.IndexOf(" ");
+        if (indexOfSpace == -1)
+        {
+            return text;
+        }
+        
+        return text.Substring(0, indexOfSpace);
+    }
 }

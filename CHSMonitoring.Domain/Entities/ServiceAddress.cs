@@ -8,32 +8,32 @@ public class ServiceAddress : Entity
     /// <summary>
     /// Номер дома
     /// </summary>
-    public string HouseNumber { get; set; }
+    public required string HouseNumber { get; set; }
 
     /// <summary>
     /// Описание проблемы
     /// </summary>
-    public string Description { get; set; }
+    public required string Description { get; set; }
     
     /// <summary>
     /// Дата начала отключения
     /// </summary>
-    public DateTime? From { get; set; }
+    public required DateTime? From { get; set; }
 
     /// <summary>
     /// Дата начала отключения в формате строки (или сообщение об отключении)
     /// </summary>
-    public string DateTimeFromString { get; set; }
+    public required string DateTimeFromString { get; set; }
     
     /// <summary>
     /// Дата окончания отключения
     /// </summary>
-    public DateTime? To { get; set; }
+    public required DateTime? To { get; set; }
     
     /// <summary>
     /// Дата конца отключения в формате строки (или сообщение об отключении)
     /// </summary>
-    public string DateTimeToString { get; set; }
+    public required string DateTimeToString { get; set; }
     
     /// <summary>
     /// Признак только для чтения
@@ -43,16 +43,35 @@ public class ServiceAddress : Entity
     /// <summary>
     /// Дата чтения события
     /// </summary>
-    public DateTime CreatedDate { get; set; }
+    public required DateTime CreatedDate { get; set; }
     
-    public Guid DistrictId { get; set; }
+    /// <summary>
+    /// Ид района
+    /// </summary>
+    public required Guid DistrictId { get; set; }
     
+    /// <summary>
+    /// Навигационное свойство района
+    /// </summary>
     public District District { get; set; }
     
-    public Guid StreetId { get; set; }
+    /// <summary>
+    /// Ид улицы
+    /// </summary>
+    public required Guid StreetId { get; set; }
     
+    /// <summary>
+    /// Навигационное свойство улицы
+    /// </summary>
     public Street Street { get; set; }
     
-    public Guid ServiceTypeId { get; set; }
+    /// <summary>
+    /// Ид типа обслуживания
+    /// </summary>
+    public required Guid ServiceTypeId { get; set; }
+    
+    /// <summary>
+    /// Навигационное свойство типа обслуживания
+    /// </summary>
     public ServiceType ServiceType { get; set; }
 }

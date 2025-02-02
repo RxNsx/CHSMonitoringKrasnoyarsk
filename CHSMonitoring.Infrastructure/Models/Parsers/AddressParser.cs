@@ -93,8 +93,10 @@ public static class AddressParser
                     var splitNumber = number.Split("-", StringSplitOptions.TrimEntries);
                     if (splitNumber.Length == 2 && Regex.IsMatch(splitNumber[0], @"^\d") && Regex.IsMatch(splitNumber[1], @"\d"))
                     {
-                        var number1 = int.Parse(splitNumber[0]);
-                        var number2 = int.Parse(splitNumber[1]);
+                        var normalizedNumber = splitNumber[0].NormalizedSplitNumber();
+                        var normalizedNumber2 = splitNumber[1].NormalizedSplitNumber();
+                        var number1 = int.Parse(normalizedNumber);
+                        var number2 = int.Parse(normalizedNumber2);
             
                         for (var streetNumber = number1; streetNumber <= number2; streetNumber++)
                         {

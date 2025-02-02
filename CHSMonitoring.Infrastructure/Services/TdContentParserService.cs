@@ -210,6 +210,34 @@ public class TdContentParserService : ITdContentParserService
     {
         List<ServiceAddress> serviceAddressList = [];
         var uniqueAddresses = new HashSet<(string StreetName, string HouseNumber)>();
+
+        var districts = Enum.GetValues(typeof(DistrictEnum))
+            .Cast<DistrictEnum>()
+            .Select(x => new
+            {
+                Id = x.GetGuidValue(),
+                DistrictName = x.GetDescriptionValue()
+            })
+            .ToList();
+        
+        var streets = Enum.GetValues(typeof(StreetNameEnum))
+            .Cast<StreetNameEnum>()
+            .Select(x => new
+            {
+                Id = x.GetGuidValue(),
+                StreetName = x.GetDescriptionValue()
+            })
+            .ToList();
+        
+        var serviceTypes = Enum.GetValues(typeof(ServiceTypeEnum))
+            .Cast<ServiceTypeEnum>()
+            .Select(x => new
+            {
+                Id = x.GetGuidValue(),
+                ServiceTypeName = x.GetDescriptionValue()
+            })
+            .ToList();;
+        
         
         foreach (var serviceMessage in serviceMessages.SelectMany(x => x.Value).ToList())
         {
@@ -218,20 +246,20 @@ public class TdContentParserService : ITdContentParserService
             {
                 if (uniqueAddresses.Add((address.StreetName, address.Number)))
                 {
-                    var serviceAddress = new ServiceAddress()
+                    serviceAddressList.Add(new ServiceAddress()
                     {
-                        DistrictName = serviceMessage.DistrictName,
-                        StreetName = address.StreetName,
+                        DistrictId = districts.FirstOrDefault(x => x.DistrictName.Equals(serviceMessage.DistrictName, StringComparison.InvariantCultureIgnoreCase)).Id,
+                        StreetId = streets.FirstOrDefault(x => x.StreetName.Equals(address.StreetName,StringComparison.InvariantCultureIgnoreCase)).Id,
+                        
+                        ServiceTypeId = serviceTypes.FirstOrDefault(x => x.ServiceTypeName.Equals(serviceMessage.Organization.SupplyTypeName, StringComparison.InvariantCultureIgnoreCase)).Id,
                         HouseNumber = address.Number,
                         Description = serviceMessage.Description,
-                        ServiceType = serviceMessage.Organization.SupplyTypeName,
                         DateTimeFromString = serviceMessage.DateInfo.DateFromString,
                         DateTimeToString = serviceMessage.DateInfo.DateToString,
                         From = serviceMessage.DateInfo.DateFrom,
                         To = serviceMessage.DateInfo.DateTo,
                         CreatedDate = serviceMessage.CreatedDate
-                    };
-                    serviceAddressList.Add(serviceAddress);
+                    });
                 }
             }
         }

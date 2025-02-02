@@ -15,5 +15,5 @@ public class District : Entity
     /// </summary>
     public bool IsReadOnly { get; set; }
     
-    public ServiceAddress ServiceAddress { get; set; }
+    public List<ServiceAddress> ServiceAddresses { get; set; }
 }
