@@ -3259,4 +3259,291 @@ public enum StreetNameEnum
     SeventyEDobrovolcheskoyBrigady,
 
     #endregion
+
+    #region СНТ и СТ
+
+    [EnumGuid("37623FF5-4312-4E91-B37F-B2ECC776D7C2")]
+    [Description("ТСН Заимка")]
+    SNTZaimka,
+    [EnumGuid("F1CA041A-31A6-4FA8-B569-18FA66CCA31E")]
+    [Description("СНТ Строитель 22")]
+    SNTStroitel22,
+    [EnumGuid("842C910E-A80B-44C1-99AD-BDCA648C0F80")]
+    [Description("СНТ Сад 5 Локомотив")]
+    SNTSad5Lokomotiv,
+    [EnumGuid("8042DE68-6391-4AF5-99C0-A89A9C45E1DE")]
+    [Description("СНТ Сирень")]
+	SNTSiren,
+	[EnumGuid("B70D823B-1D71-4DA0-9AD1-36E5500DA92C")]
+	[Description("СНТ Строитель")]
+	SNTStroitel,
+	[EnumGuid("69F03113-E7F9-4178-8AB8-AA18B6B74142")]
+	[Description("СТ Электрик")]
+	STElektrik,
+	[EnumGuid("A0D9E8FA-E6EE-49DD-9BC5-5E3797C30072")]
+	[Description("СТ Березка")]
+	STBerezka,
+	[EnumGuid("54B85B01-7142-4721-9F19-1A5B26985295")]
+	[Description("СТ Берёзка")]
+	STBereеzka,
+	[EnumGuid("13589C81-526C-4855-BEF5-B241B7E48AD4")]
+	[Description("СТ Колос")]
+	STKolos,
+	[EnumGuid("24C39679-E557-493B-A646-CABB98FBFFAF")]
+	[Description("СТ Октябрьское-2")]
+	STOktyabrskoe2,
+	[EnumGuid("91803FA9-D35C-49D2-A0B7-FF61346F5E63")]
+	[Description("СНТ Энергия 1")]
+	SNTEnergia1,
+	[EnumGuid("C967BCA8-954B-4967-AF07-83F59B3C8FC9")]
+	[Description("СТ Боровинка")]
+	STBorovinka,
+	[EnumGuid("2E21C1A9-B877-498A-8CA1-282375DD8BA8")]
+	[Description("СТ Локомотив")]
+	STLokomotiv,
+	[EnumGuid("CB83E30D-0CEA-473A-A459-8F43C79578F0")]
+	[Description("СТ Лесная полянка")]
+	STLesnayaPolianka,
+	[EnumGuid("5F547E62-75BA-416E-8988-A0E74359E984")]
+	[Description("СТ Мир")]
+	STMir,
+	[EnumGuid("BA50EAC8-6370-4A91-8BE1-E9558C148308")]
+	[Description("СТ Юбилейный")]
+	STYubileyniy,
+	[EnumGuid("E347B7E6-90EB-4805-96DA-752BD2B4FF38")]
+	[Description("СНТ Дружба")]
+	SNTDruzhba,
+	[EnumGuid("43744EC2-A4AA-4ED0-A388-7EBCD672FAA7")]
+	[Description("СНТ Восход")]
+	SNTVoshod,
+	[EnumGuid("B8296371-8751-4462-9B9A-F4F017D66182")]
+	[Description("СНТ Сад 2 Комбайного завода")]
+	SNTSad2KombaynogoZavoda,
+	[EnumGuid("355A2F84-FBE7-4BAF-933B-20B2AC0265B5")]
+	[Description("СНТ Шафран")]
+	SNTShafran,
+	[EnumGuid("0D691064-466A-4F37-8AF3-DE4AD2D183D2")]
+	[Description("СНТ Сад 2 ЭВРЗ")]
+	SNTSad2EVRZ,
+	[EnumGuid("0034C507-3DB3-463C-A276-2916C175A6CF")]
+	[Description("СНТ Родничок-2")]
+	SNTRodnichok2,
+	[EnumGuid("FC9CEDBC-F7A4-49C7-BC36-2AD9CE77594E")]
+	[Description("СПК Родничок")]
+	SPKRodnichok,
+	[EnumGuid("B046DC1A-DA4B-42D8-8C75-B8EDF573A1F7")]
+	[Description("СПК Коммунальник")]
+	SPKKomunalnik,
+	[EnumGuid("712BA46E-98B1-4916-A9CD-DB5DA5701A7B")]
+	[Description("СНТ Сад 1 завода телевизоров")]
+	SNTSad1ZavodaTelevisorov,
+	[EnumGuid("36F73088-45BB-4A75-9EC0-55B419C096BD")]
+	[Description("СТ Сад 2 Локомотивного депо")]
+	STSad2LokomotivnogoDepo,
+	[EnumGuid("C9A1FF7D-CBEC-47BA-A56B-A28A3D879A05")]
+	[Description("СО Объединённый сад 1")]
+	SOObshchennyySad1,
+	[EnumGuid("DBBC383A-4386-457D-9E96-C337984F4E36")]
+	[Description("СО Родничок")]
+	SORodnichok,
+	[EnumGuid("047D60FC-E327-40AC-98AE-6D831855DD7E")]
+	[Description("СТ Сад 2 Вагонного депо")]
+	STSad2VagonnogoDepo,
+	[EnumGuid("A4E431ED-7088-469F-BACE-001140971501")]
+	[Description("СНТ Сад 1 Сельхозинститута")]
+	SNTSad1Selskhozinstituta,
+	[EnumGuid("F26C4385-1B10-4C13-81F2-6A2CD4833F54")]
+	[Description("СТ Горстройбанк")]
+	STDstroybank,
+	[EnumGuid("2C98BCDD-CBD0-404A-9CF8-E090D6455743")]
+	[Description("СТ Енисей")]
+	STEnisei,
+	[EnumGuid("91625A7B-A326-4FFA-B7B7-FB375BC9ACA0")]
+	[Description("СТ Зорька")]
+	STZorka,
+	[EnumGuid("BDC35BBB-338F-43B0-AD41-8746D56A1374")]
+	[Description("СО Сад 1 Крайсельхозуправления")]
+	SOSad1Krayshelhozupravleniya,
+	[EnumGuid("CDEC234B-02E3-476A-9812-1DAAB75AA105")]
+	[Description("СНТ Сад 3 Локомотивного депо")]
+	SNTSad3LokomotivnogoDepo,
+	[EnumGuid("679831C8-D530-4A7C-9952-1839FC89CD2B")]
+	[Description("СТ Сад 1 НОД-3")]
+	STSad1NOD3,
+	[EnumGuid("BAB71193-F53B-4F28-8703-F5D5CAD25B5B")]
+	[Description("СНТ Победа")]
+	SNTPobeda,
+	[EnumGuid("58644821-9183-4CAE-BDAE-B11BD9751DF4")]
+	[Description("СНТ Склад топлива")]
+	SNTSkldTopliva,
+	[EnumGuid("49FEA93F-EF8E-4473-B513-0DA4367FF6E4")]
+	[Description("СТ Дом матери и ребёнка")]
+	STDomMateryiRebeenka,
+	[EnumGuid("56830706-D388-4D87-B130-3DFBFDF968C2")]
+	[Description("СНТ Маяк")]
+	SNTMayak,
+	[EnumGuid("DAFDFCE2-C785-4DB7-8541-C903E74C95CF")]
+	[Description("СК Берёзка-2")]
+	SKBerezka2,
+	[EnumGuid("30185623-24F4-48E5-A82A-F487577C53E4")]
+	[Description("СК Березка-2")]
+	SKBereеzka2,
+	[EnumGuid("2114D16A-6470-47C0-89A7-E51B01A8208E")]
+	[Description("СНТ Гремячий ключ")]
+	SNTGremyachiyKlyuch,
+	[EnumGuid("9483D7CB-E64C-4623-AA46-FE9860DCC674")]
+	[Description("СНТ Здоровье Красфарма")]
+	SNTZdorovieKrasfarma,
+	[EnumGuid("FC3E8455-97F7-4C71-8709-ECF5801F5CFF")]
+	[Description("СНТ Лесник")]
+	SNTLesnik,
+	[EnumGuid("2F32A9C3-E7A1-4F44-93F2-3DD32FC98B65")]
+	[Description("СНТ Мебельщик")]
+	SNTMebelshchik,
+	[EnumGuid("946C0B3D-E5F6-4157-8CCE-681A42A1F605")]
+	[Description("СНТ Звёздочка")]
+	SNTZvezdochka,
+	[EnumGuid("7C53677E-BB2D-4AAF-9439-5DB8FEA600DB")]
+	[Description("СПК Восход-2")]
+	SPKVoshod2,
+	[EnumGuid("5F22C9B0-FBBF-41ED-8A59-162B6D488500")]
+	[Description("СНТ Заря")]
+	SNTZarya,
+	[EnumGuid("19061E5B-955C-4241-9F05-C6B61A013B71")]
+	[Description("СНТ Градостроитель")]
+	SNTGradostroitel,
+	[EnumGuid("B0AC708D-84A3-4872-B200-E3E75000AF66")]
+	[Description("СНТ Ключи")]
+	SNTKlyuchi,
+	[EnumGuid("FC7EE791-56C3-468D-9C42-4EB75EC16411")]
+	[Description("СНТ Шинник")]
+	SNTShinnik,
+	[EnumGuid("31571D2F-BBEA-4C63-A612-FE4F7214712A")]
+	[Description("СНТ Заря АК-1265")]
+	SNTZaryaAK1265,
+	[EnumGuid("1FF981AC-38D2-40BA-A19A-DC42BFCE1344")]
+	[Description("СНТ Труд")]
+	SNTTrud,
+	[EnumGuid("E59F7697-AE28-4EB6-8AFA-84374DDABA4E")]
+	[Description("СНТ Нагорное")]
+	SNTNagornoe,
+	[EnumGuid("0931848C-FD18-45DA-8F4C-3CF63A8C2E70")]
+	[Description("СНТ Сад 8 Сопка")]
+	SNTSad8Sopka,
+	[EnumGuid("23BD40E8-B759-415C-8A35-6AC734FBCD9D")]
+	[Description("СНТ Транспортник")]
+	SNTTransportnik,
+	[EnumGuid("875C22E6-7407-4CC4-BFAB-BA8F4C1C1451")]
+	[Description("СНТ Мечта")]
+	SNTMecha,
+	[EnumGuid("F38E5663-2AF5-4791-B7DC-BF02C191CBC7")]
+	[Description("СНТ Судостроитель")]
+	SNTSudostroitel,
+	[EnumGuid("F62C246C-CC8D-4F5C-9FCB-4F6D78044135")]
+	[Description("СНТ Текстильщик")]
+	SNTTekstilshchik,
+	[EnumGuid("68D969C9-5CAA-427D-B007-FC75AE3F6A24")]
+	[Description("СНТ 7 Дядин Лог")]
+	SNT7DyadinLog,
+	[EnumGuid("F2B30C18-497C-4B22-99CC-E48415C1F5C8")]
+	[Description("СТ Весна")]
+	STVesna,
+	[EnumGuid("D6FEE572-D845-48FC-853D-434325A05375")]
+	[Description("СНТ ВОС")]
+	SNTVOS,
+	[EnumGuid("D27840F2-F0B9-41AD-9330-7F6DBE8E1987")]
+	[Description("СНТ Красноярец 4")]
+	SNTKrasnoyarets4,
+	[EnumGuid("E663FD8B-937C-4810-BBCC-161FF446763A")]
+	[Description("СНТ Саяны")]
+	SNTSayany,
+	[EnumGuid("68D7862E-46FE-43CF-885D-29F463120963")]
+	[Description("СНТ Звезда-1")]
+	SNTZvezda1,
+	[EnumGuid("BEA6F265-BA6B-46CE-B929-03B610041B1A")]
+	[Description("СНТ Здоровье")]
+	SNTZdorovie,
+	[EnumGuid("691A2FEF-454D-4101-959D-0A37DD9C12A0")]
+	[Description("СНТ Богатырь")]
+	SNTBogatyr,
+	[EnumGuid("5E6D2207-B750-4345-9625-F404A4965E1C")]
+	[Description("СНТ Звезда-2")]
+	SNTZvezda2,
+	[EnumGuid("02AD16A6-F388-4436-8F07-68241D81EEE7")]
+	[Description("СНТ 1 Завода Сибэлектросталь")]
+	SNT1ZavodaSibelektrostal,
+	[EnumGuid("68E7B539-02CC-470E-867C-16E876E5DFEE")]
+	[Description("СНТ Мечта-2")]
+	SNTMecha2,
+	[EnumGuid("BCC9FDCF-E80C-4C51-AAE1-2079CAF4F68B")]
+	[Description("СНТ 3 Красноярец")]
+	SNT3Krasnoyarets,
+	[EnumGuid("A300B56E-4A97-47C2-9654-FBB08DE1613D")]
+	[Description("СНТ Речник")]
+	SNTRechnik,
+	[EnumGuid("953AFAED-52D5-41B5-8AE5-662228BD8392")]
+	[Description("СНТ Сад 1")]
+	SNTSad1,
+	[EnumGuid("024C5950-131D-41E5-B933-ACB3CC087144")]
+	[Description("СНТ завода Красцветмет сад 2")]
+	SNTZavodaKrascvetmetSad2,
+	[EnumGuid("2C1C8B43-43D6-4975-BA7F-800E3D4C43A5")]
+	[Description("СТ Химик")]
+	STHimik,
+	[EnumGuid("37071EAC-4A91-41F1-A0B0-7F40CBC00AC5")]
+	[Description("СТ Сад 1 Черёмушки")]
+	STSad1Chereomushki,
+	[EnumGuid("8146950C-42C4-451E-8A20-3E06E0D21FA7")]
+	[Description("СТ Семья")]
+	STSemya,
+	[EnumGuid("8017058D-D5A6-4EF4-B7A8-D6947FF12956")]
+	[Description("СНТ Солнечный")]
+	SNTSolechnyy,
+	[EnumGuid("77D34BBF-7719-4B70-9376-44F52A90B582")]
+	[Description("СНТ Алюминий")]
+	SNTAluminium,
+	[EnumGuid("ABCB169A-4E41-472D-AF3D-92BE68E75ADC")]
+	[Description("СНТ Ветерок")]
+	SNTVeterek,
+	[EnumGuid("9CE14F62-F475-425F-9795-8F1E28D6C953")]
+	[Description("СНТ Радуга")]
+	SNTRaduga,
+	[EnumGuid("DCBAD7A4-37B3-4474-877C-FABB93A979E1")]
+	[Description("СНТ Автодорожник")]
+	SNTAvtodorozhnik,
+	[EnumGuid("8E680431-4FCD-4A63-8E57-0AD7C55216DC")]
+	[Description("СНТ Калина")]
+	SNTKalina,
+	[EnumGuid("83F99799-FCD5-4606-AD5E-C03521D98056")]
+	[Description("СНТ Родничок")]
+	SNTRodnichok,
+	[EnumGuid("82F6F30E-72FD-425D-86F7-42826D24469A")]
+	[Description("СНТ Надежда")]
+	SNTNadezhda,
+	[EnumGuid("E3CC923A-7EA3-4B7A-B904-079274D07CF2")]
+	[Description("СТ Лира")]
+	STLira,
+	[EnumGuid("00965453-1EF0-4B96-9E61-5FA09F40ACC4")]
+	[Description("СТ Управление")]
+	STUpravlenie,
+	[EnumGuid("3CD25DF2-A570-447E-9E9E-C950E2DE1A4E")]
+	[Description("СТ Лаванда")]
+	STLavanda,
+	[EnumGuid("B6BE4ABD-773A-4AAE-9B4F-8A9CF930A56C")]
+	[Description("СТ Восход")]
+	STVoshod,
+	[EnumGuid("434AD1B4-6160-4CB4-9476-DD3D34D0B7AC")]
+	[Description("СНТ Олимп-92")]
+	SNTOlimp92,
+	[EnumGuid("C24BACC3-D9EF-4DF3-8336-1D385E256593")]
+	[Description("СТ Ветеран-10")]
+	STVeteran10,
+	[EnumGuid("0A142088-62EB-46B6-B1ED-2A9E817A48FD")]
+	[Description("СНТ Отдых")]
+	SNTOtdikh,
+	[EnumGuid("F97272AF-3096-4E41-8405-A45898FCADE4")]
+	[Description("СНТ Отдых-2")]
+	SNTOtdikh2
+
+    #endregion
 }
