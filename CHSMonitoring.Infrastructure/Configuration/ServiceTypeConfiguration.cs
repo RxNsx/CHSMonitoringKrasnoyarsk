@@ -23,6 +23,9 @@ public class ServiceTypeConfiguration : IEntityTypeConfiguration<ServiceType>
             .HasDefaultValue(string.Empty)
             .HasMaxLength(150);
 
+        builder.Property(x => x.IsReadOnly)
+            .HasDefaultValue(true);
+
         PrepareData(builder);
     }
 
@@ -30,9 +33,10 @@ public class ServiceTypeConfiguration : IEntityTypeConfiguration<ServiceType>
     {
         var serviceTypes = new List<ServiceType>()
         {
-            new() { Name = "Теплоснабжение", Description = string.Empty, Id = Guid.Parse("913164af-4599-434f-8145-72f2bf937566") },
-            new() { Name = "Холодное водоснабжение", Description = string.Empty, Id = Guid.Parse("9c5ab80d-64d3-4cf4-81d0-751aa37624f9") },
-            new() { Name = "Электроснабжение", Description = string.Empty, Id = Guid.Parse("47e046c3-a591-4f17-ac64-061a337270cf") }
+            new() { Name = "Пустой тип снабжения", Description = string.Empty, Id = Guid.Parse("DA945797-A35E-4F41-A63D-520FA11C213A") },
+            new() { Name = "Теплоснабжение", Description = string.Empty, Id = Guid.Parse("93139275-C7D9-43F1-ABE3-E71259DF2E50") },
+            new() { Name = "Холодное водоснабжение", Description = string.Empty, Id = Guid.Parse("4E96DE1C-1443-4148-8DA6-92BA3A95A828") },
+            new() { Name = "Электроснабжение", Description = string.Empty, Id = Guid.Parse("25969C01-7291-458B-8A20-88A2338F62C9") }
         };
         
         builder.HasData(serviceTypes);
