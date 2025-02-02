@@ -14,4 +14,6 @@ public class District : Entity
     /// Признак только для чтения
     /// </summary>
     public bool IsReadOnly { get; set; }
+    
+    public ServiceAddress ServiceAddress { get; set; }
 }

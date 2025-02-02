@@ -13,4 +13,6 @@ public class Street : Entity
     /// Описание улицы
     /// </summary>
     public string Description { get; set; }
+    
+    public ServiceAddress ServiceAddress { get; set; }
 }

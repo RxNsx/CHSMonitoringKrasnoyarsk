@@ -6,16 +6,6 @@
 public class ServiceAddress : Entity
 {
     /// <summary>
-    /// Название района
-    /// </summary>
-    public string DistrictName { get; set; }
-    
-    /// <summary>
-    /// Название улицы
-    /// </summary>
-    public string StreetName { get; set; }
-    
-    /// <summary>
     /// Номер дома
     /// </summary>
     public string HouseNumber { get; set; }
@@ -24,11 +14,6 @@ public class ServiceAddress : Entity
     /// Описание проблемы
     /// </summary>
     public string Description { get; set; }
-
-    /// <summary>
-    /// Тип обслуживания (SupplyEnumType)
-    /// </summary>
-    public string ServiceType { get; set; }
     
     /// <summary>
     /// Дата начала отключения
@@ -59,4 +44,15 @@ public class ServiceAddress : Entity
     /// Дата чтения события
     /// </summary>
     public DateTime CreatedDate { get; set; }
+    
+    public Guid DistrictId { get; set; }
+    
+    public District District { get; set; }
+    
+    public Guid StreetId { get; set; }
+    
+    public Street Street { get; set; }
+    
+    public Guid ServiceTypeId { get; set; }
+    public ServiceType ServiceType { get; set; }
 }

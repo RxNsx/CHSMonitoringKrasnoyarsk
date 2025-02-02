@@ -2119,7 +2119,7 @@ public enum StreetNameEnum
     [EnumGuid("00A840D2-5D1D-48F1-ADB3-2A48E794318B")]
     [Description("Ползунова")]
     Polzunova,
-    [EnumGuid("9C3F6C98-9C25-4865-BAA3-C62D47D1E95F")]
+    [EnumGuid("CC20DD4C-F618-49C6-B561-55263999C522")]
     [Description("Полигонная")]
     Poligonaya,
     [EnumGuid("9BF8C597-407F-4C5E-AD9F-7EBB3C6BB1CD")]
@@ -2149,7 +2149,7 @@ public enum StreetNameEnum
     [EnumGuid("A577F8CF-059C-448F-A8FD-CD505420DD88")]
     [Description("Попова")]
     Popova,
-    [EnumGuid("CC20DD4C-F618-49C6-B561-55263999C522")]
+    [EnumGuid("F1A26EB4-D399-4A04-9EF6-1B4F874FEA27")]
     [Description("Пороховой")]
     Porokhovoy,
     [EnumGuid("4B905109-0A19-434A-BD17-2EB06739A938")]	
@@ -2477,7 +2477,7 @@ public enum StreetNameEnum
     [EnumGuid("29AB2402-1EBB-4014-B7FA-A0BEF62B7D92")]
     [Description("Серафимовича")]
     Serafimovicha,
-    [EnumGuid("7F633905-0DEA-4044-B99C-280BCD58BE4A")]
+    [EnumGuid("A75D8BD8-7ACC-48E9-B7F0-6088403DE8F3")]
     [Description("Сергея Куликова")]
     SergeyaKulikova,
     [EnumGuid("8A3AB83D-7E50-4316-B323-035811D74EBB")]
@@ -2492,7 +2492,7 @@ public enum StreetNameEnum
     [EnumGuid("514E986F-A1FE-469B-AFB3-F48AF2B03FB0")]
     [Description("Серебряный Бор")]
     SerebryaniyBor,
-    [EnumGuid("A75D8BD8-7ACC-48E9-B7F0-6088403DE8F3")]
+    [EnumGuid("2FE84DC1-8D2B-46ED-814B-9235040B0E64")]
     [Description("Серова")]
     Serova,
     [EnumGuid("A0E5F795-AAB4-48EA-9EF3-06496EFA62DF")]

@@ -15,20 +15,8 @@ public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddre
 
         builder.HasKey(x => x.Id);
 
-        builder.Property(x => x.DistrictName)
-            .HasMaxLength(100)
-            .IsRequired();
-        
-        builder.Property(x => x.StreetName)
-            .HasMaxLength(100)
-            .IsRequired();
-
         builder.Property(x => x.HouseNumber)
             .HasMaxLength(30)
-            .IsRequired();
-
-        builder.Property(x => x.ServiceType)
-            .HasMaxLength(50)
             .IsRequired();
 
         builder.Property(x => x.Description)
@@ -57,5 +45,14 @@ public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddre
 
         builder.Property(x => x.IsReadOnly)
             .HasDefaultValue(true);
+
+        builder.HasOne(x => x.District)
+            .WithOne(x => x.ServiceAddress);
+
+        builder.HasOne(x => x.Street)
+            .WithOne(x => x.ServiceAddress);
+
+        builder.HasOne(x => x.ServiceType)
+            .WithOne(x => x.ServiceAddress);
     }
 }

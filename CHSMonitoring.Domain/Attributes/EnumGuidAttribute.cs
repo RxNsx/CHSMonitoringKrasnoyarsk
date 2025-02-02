@@ -3,10 +3,10 @@
 [AttributeUsage(AttributeTargets.Field | AttributeTargets.Enum)]
 public class EnumGuidAttribute : Attribute
 {
-    private Guid _value { get; set; }
+    public Guid GuidValue { get; private set; }
 
     public EnumGuidAttribute(string guidString)
     {
-        _value = new Guid(guidString);
+        GuidValue = new Guid(guidString);
     }
 }

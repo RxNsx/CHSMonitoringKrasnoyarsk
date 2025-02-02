@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Reflection;
+using CHSMonitoring.Infrastructure.Attributes;
 
 namespace CHSMonitoring.Infrastructure.Extensions;
 
@@ -15,7 +17,20 @@ public static class EnumExtension
     public static string GetDescriptionValue(this Enum value)
     {
         var field = value.GetType().GetField(value.ToString());
-        var attributes = field.GetCustomAttributes(typeof(DescriptionAttribute), false);
-        return ((DescriptionAttribute)attributes[0]).Description;
+        var attribute = field.GetCustomAttribute(typeof(DescriptionAttribute), false);
+        return ((DescriptionAttribute)attribute).Description;
+    }
+
+    /// <summary>
+    /// Получить значение Guid из аттрибута enum
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static Guid GetGuidValue(this Enum value)
+    {
+        var field = value.GetType().GetField(value.ToString());
+        var attribute = field.GetCustomAttribute(typeof(EnumGuidAttribute), false);
+        return ((EnumGuidAttribute)attribute).GuidValue;
+
     }
 }
