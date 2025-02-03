@@ -5,7 +5,6 @@ using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Models.Enums;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,14 +24,14 @@ public class ServiceMessageWorker : BackgroundService
 
     private readonly string? _url;
 
-    
     private MonitoringDbContext _context;
     private IServiceAddressRepository _serviceAddressRepository;
-    
+
     /// <summary>
     /// Конструктор
     /// </summary>
     /// <param name="loggerFactory"></param>
+    /// <param name="serviceScopeFactory"></param>
     /// <param name="httpClientService"></param>
     /// <param name="configuration"></param>
     /// <param name="htmlParserService"></param>
@@ -40,7 +39,6 @@ public class ServiceMessageWorker : BackgroundService
     {
         _logger = loggerFactory.CreateLogger<ServiceMessageWorker>();
         _serviceScopeFactory = serviceScopeFactory;
-        
         _httpClientService = httpClientService;
         _htmlParserService = htmlParserService;
         
@@ -70,8 +68,8 @@ public class ServiceMessageWorker : BackgroundService
 
                 var serviceAddresses = _htmlParserService.GetServiceMessages(htmlDocument);
                 await _serviceAddressRepository.AddServiceAddressesAsync(serviceAddresses, stoppingToken);
-                
-                //TODO: Equatable для адресов чтобы сравнивать их через Distinct
+
+                CheckMissedAddreses(serviceAddresses);
                 Console.WriteLine("Total seconds elapsed: " + stopwatch.Elapsed.Seconds);
                 stopwatch.Stop();
             }
@@ -81,6 +79,26 @@ public class ServiceMessageWorker : BackgroundService
             }
 
             await Task.Delay(TimeSpan.FromSeconds(15), stoppingToken);
+        }
+    }
+
+    private static void CheckMissedAddreses(List<ServiceAddress> serviceAddresses)
+    {
+        var streetEnums = Enum.GetValues(typeof(StreetNameEnum))
+            .Cast<StreetNameEnum>()
+            .Select(x => new
+            {
+                Id = x.GetGuidValue(),
+                Name = x.GetDescriptionValue(),
+            })
+            .ToList();
+        var exceptList = serviceAddresses
+            .Where(x => !streetEnums.Any(t => t.Name.Equals(x.StreetName, StringComparison.InvariantCultureIgnoreCase)))
+            .ToList();
+
+        if (exceptList.Any())
+        {
+            Console.WriteLine("Missed addresses: " + string.Join(", ", exceptList.Select(x => x.StreetName)));
         }
     }
 

@@ -26,6 +26,12 @@ public class Address
         Number = number;
     }
 
+    /// <summary>
+    /// Фабричный метод создания информации по адресу отключения
+    /// </summary>
+    /// <param name="streetName"></param>
+    /// <param name="number"></param>
+    /// <returns></returns>
     public static Address Create(string streetName, string number)
     {
         return new Address(streetName, number);

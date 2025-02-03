@@ -70,9 +70,9 @@ public class TdContentParserService : ITdContentParserService
                     var dateInfoText = tableDescriptionItemList[2].InnerText.NormalizeText();
 
                     serviceAddressMessageBuilder.BuildOrganization(organizationText);
-                    serviceAddressMessageBuilder.BuildAddressesList(addressesText);
-                    serviceAddressMessageBuilder.BuildDateInfo(dateInfoText);
-                    serviceAddressMessageBuilder.BuildDistrictName(item.Key);
+                    serviceAddressMessageBuilder.AddAddressesList(addressesText);
+                    serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
+                    serviceAddressMessageBuilder.AddDistrictName(item.Key);
                     var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
 
                     if (!serviceAddressDict.TryGetValue(item.Key, out _))

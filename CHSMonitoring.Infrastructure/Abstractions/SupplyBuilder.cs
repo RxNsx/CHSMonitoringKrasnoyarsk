@@ -17,19 +17,19 @@ public abstract class ServiceBuilder
     /// Получение списка адресов
     /// </summary>
     /// <param name="addressesText"></param>
-    internal abstract void BuildAddressesList(string addressesText);
+    internal abstract void AddAddressesList(string addressesText);
     
     /// <summary>
     /// Получение временных интвервалов работ
     /// </summary>
     /// <param name="dateInfoText"></param>
-    internal abstract void BuildDateInfo(string dateInfoText);
+    internal abstract void AddDateInfo(string dateInfoText);
     
     /// <summary>
     /// Установить значение имени района
     /// </summary>
     /// <param name="districtName"></param>
-    internal abstract void BuildDistrictName(string districtName);
+    internal abstract void AddDistrictName(string districtName);
     
     /// <summary>
     /// Сборка объекта полностью

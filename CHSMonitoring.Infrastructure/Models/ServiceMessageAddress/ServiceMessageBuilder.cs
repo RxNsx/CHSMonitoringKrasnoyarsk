@@ -19,7 +19,7 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
         _serviceMessage.SetOrganization(organization);
     }
 
-    internal override void BuildAddressesList(string addressesText)
+    internal override void AddAddressesList(string addressesText)
     {
         var streetDescriptionEnums = Enum.GetValues(typeof(StreetNameEnum))
             .Cast<StreetNameEnum>()
@@ -70,7 +70,7 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
         _serviceMessage.SetAddressList(addressList);
     }
 
-    internal override void BuildDateInfo(string dateInfoText)
+    internal override void AddDateInfo(string dateInfoText)
     {
         var pattern = @"(\d{1,2} [а-я]+ \d{1,2}-\d{1,2})";
         var splitted = Regex.Split(dateInfoText, pattern);
@@ -83,7 +83,7 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
         _serviceMessage.SetDateInfo(dateInfo);
     }
 
-    internal override void BuildDistrictName(string districtName)
+    internal override void AddDistrictName(string districtName)
     {
         _serviceMessage.SetDistrictName(districtName);
     }
