@@ -23,10 +23,8 @@ public class ServiceAddressRepository : IServiceAddressRepository
         return await _context.ServiceAddresses.ToListAsync(cancellationToken);
     }
 
-    public async Task AddServiceAddressesAsync(List<ServiceAddress> serviceAddresses,
-        CancellationToken cancellationToken)
+    public async Task AddServiceAddressesAsync(List<ServiceAddress> serviceAddresses, CancellationToken cancellationToken)
     {
-        
         /*
          * TODO: Реализовать логику парсинга и определения нового события
          * 
@@ -44,9 +42,20 @@ public class ServiceAddressRepository : IServiceAddressRepository
         await _context.SaveChangesAsync().ConfigureAwait(false);
     }
 
-    public async Task<ServiceAddress> GetServiceAddressAsync(ServiceAddress serviceAddress,
+    public async Task<ServiceAddress> GetServiceAddressAsync(string streetName, string houseNumber,
         CancellationToken cancellationToken)
     {
+        var result = await _context.ServiceAddresses
+            .GroupBy(x => new { x.StreetName, x.HouseNumber })
+            .Select(x => new
+            {
+                x.Key.StreetName,
+                x.Key.HouseNumber,
+                CreatedDate = x.Max(t => t.CreatedDate)
+            })
+            .ToListAsync()
+            .ConfigureAwait(false);
+        
         // var result =  await _context.ServiceAddresses
         //     .FirstOrDefaultAsync(x => x.StreetName == serviceAddress.StreetName
         //                               && x.HouseNumber == serviceAddress.HouseNumber

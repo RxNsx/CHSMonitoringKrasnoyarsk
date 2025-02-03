@@ -26,10 +26,11 @@ public interface IServiceAddressRepository
     /// <summary>
     /// Получить конкретное событие обслуживания адреса
     /// </summary>
-    /// <param name="serviceAddress"></param>
+    /// <param name="streetName"></param>
+    /// <param name="houseNumber"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<ServiceAddress> GetServiceAddressAsync(ServiceAddress serviceAddress, CancellationToken cancellationToken);
+    Task<ServiceAddress> GetServiceAddressAsync(string streetName, string houseNumber, CancellationToken cancellationToken);
     
     /// <summary>
     /// Проверка существования события обслуживания в базе

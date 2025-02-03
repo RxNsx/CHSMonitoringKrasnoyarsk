@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+using CHSMonitoring.Application.Behaviours;
+using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CHSMonitoring.Application;
 
@@ -14,6 +18,11 @@ public static class AddApplicationDependencies
     /// <returns></returns>
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
+        services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehaviour<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        
         return services;
     }
 }
