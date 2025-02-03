@@ -82,7 +82,7 @@ public class ServiceMessageWorker : BackgroundService
         }
     }
 
-    private static void CheckMissedAddreses(List<ServiceAddress> serviceAddresses)
+    private void CheckMissedAddreses(List<ServiceAddress> serviceAddresses)
     {
         var streetEnums = Enum.GetValues(typeof(StreetNameEnum))
             .Cast<StreetNameEnum>()
@@ -95,10 +95,9 @@ public class ServiceMessageWorker : BackgroundService
         var exceptList = serviceAddresses
             .Where(x => !streetEnums.Any(t => t.Name.Equals(x.StreetName, StringComparison.InvariantCultureIgnoreCase)))
             .ToList();
-
         if (exceptList.Any())
         {
-            Console.WriteLine("Missed addresses: " + string.Join(", ", exceptList.Select(x => x.StreetName)));
+            _logger.LogCritical($"Отсутсвующие адреса: {string.Join(", ", exceptList.Select(x => x.StreetName))}");
         }
     }
 
