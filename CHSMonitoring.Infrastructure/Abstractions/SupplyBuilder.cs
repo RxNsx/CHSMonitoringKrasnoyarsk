@@ -14,19 +14,19 @@ public abstract class ServiceBuilder
     internal abstract void BuildOrganization(string organizationText);
     
     /// <summary>
-    /// Получение списка адресов
+    /// Добавление списка адресов
     /// </summary>
     /// <param name="addressesText"></param>
     internal abstract void AddAddressesList(string addressesText);
     
     /// <summary>
-    /// Получение временных интвервалов работ
+    /// Добавление временных интвервалов работ
     /// </summary>
     /// <param name="dateInfoText"></param>
     internal abstract void AddDateInfo(string dateInfoText);
     
     /// <summary>
-    /// Установить значение имени района
+    /// Добавление значения имени района
     /// </summary>
     /// <param name="districtName"></param>
     internal abstract void AddDistrictName(string districtName);
