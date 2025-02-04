@@ -45,7 +45,8 @@ public class ServiceAddressRepository : IServiceAddressRepository
     public async Task<ServiceAddress> GetServiceAddressAsync(string streetName, string houseNumber,
         CancellationToken cancellationToken)
     {
-        var result = await _context.ServiceAddresses
+        var lastCreatedDateServiceAddress = await _context.ServiceAddresses
+            .Where(x => x.StreetName == streetName && x.HouseNumber == houseNumber)
             .GroupBy(x => new { x.StreetName, x.HouseNumber })
             .Select(x => new
             {
@@ -53,21 +54,19 @@ public class ServiceAddressRepository : IServiceAddressRepository
                 x.Key.HouseNumber,
                 CreatedDate = x.Max(t => t.CreatedDate)
             })
-            .ToListAsync()
+            .FirstOrDefaultAsync()
             .ConfigureAwait(false);
-        
-        // var result =  await _context.ServiceAddresses
-        //     .FirstOrDefaultAsync(x => x.StreetName == serviceAddress.StreetName
-        //                               && x.HouseNumber == serviceAddress.HouseNumber
-        //                               && x.ServiceType == serviceAddress.ServiceType
-        //                               && x.From == serviceAddress.From
-        //                               && x.To == serviceAddress.To)
-        //     .ConfigureAwait(false);
-        //
-        // //TODO: Result Pattern
-        // return result;
 
-        return null;
+        var serviceAddress = await _context.ServiceAddresses
+            .Include(x => x.District)
+            .Include(x => x.ServiceType)
+            .Where(x => x.CreatedDate == lastCreatedDateServiceAddress!.CreatedDate 
+                        && lastCreatedDateServiceAddress.StreetName == x.StreetName 
+                        && lastCreatedDateServiceAddress.HouseNumber == x.HouseNumber)
+            .FirstOrDefaultAsync()
+            .ConfigureAwait(false);
+
+        return serviceAddress;
     }
 
     public async Task<bool> IsExistServiceAddressAsync(ServiceAddress serviceAddress, CancellationToken cancellationToken)

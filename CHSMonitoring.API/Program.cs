@@ -28,9 +28,6 @@ builder.Services.AddHttpClient<HttpClientService>(client =>
     client.Timeout = TimeSpan.FromMinutes(1);
 });
 
-//Workers
-builder.Services.AddHostedService<ServiceMessageWorker>();
-
 var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();

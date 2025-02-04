@@ -26,7 +26,7 @@ public class GetServiceAddressQueryHandler : IRequestHandler<GetServiceAddressQu
     /// <exception cref="NotImplementedException"></exception>
     public async Task<ServiceAddress> Handle(GetServiceAddressQuery request, CancellationToken cancellationToken)
     {
-        return await _serviceAddressRepository.GetServiceAddressAsync(request.HouseNumber, request.StreetName,cancellationToken)
+        return await _serviceAddressRepository.GetServiceAddressAsync(request.StreetName, request.HouseNumber, cancellationToken)
             .ConfigureAwait(false);
     }
 }

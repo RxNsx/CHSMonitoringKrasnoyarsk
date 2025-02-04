@@ -29,6 +29,7 @@ public static class AddressParser
         
         if (!concreteAddresses.Any())
         {
+            Console.WriteLine($"Addresses: {string.Join(", ", addresses)}");
             throw new ArgumentNullException(nameof(concreteAddresses), "concreteAddresses must be not null");
         }
 
@@ -58,9 +59,15 @@ public static class AddressParser
         List<Address> addressList = new();
         foreach (var addressItem in concreteAddresses)
         {
-            var streetName = streetNames.FirstOrDefault(x => streetNames.Any(t => addressItem.Contains(x, StringComparison.InvariantCultureIgnoreCase)));
-            var indexOfOccurs = addressItem.IndexOf(streetName, StringComparison.InvariantCultureIgnoreCase);
-            var resultedAddressWithoutNumbers = addressItem.Remove(indexOfOccurs, streetName.Length).Trim();
+            //Выбираем все улицы которые могут подойти по названию
+            var streetNameOccursList = streetNames
+                .Where(x => streetNames.Any(t => addressItem.Contains(x, StringComparison.InvariantCultureIgnoreCase)))
+                .ToList();
+            //Выбираем точное вхождение улицы
+            var streetNameResult = GetResultStreetName(streetNameOccursList, addressItem);
+            
+            var indexOfOccurs = addressItem.IndexOf(streetNameResult, StringComparison.InvariantCultureIgnoreCase);
+            var resultedAddressWithoutNumbers = addressItem.Remove(indexOfOccurs, streetNameResult.Length).Trim();
             
             var numbers = resultedAddressWithoutNumbers
                 .Split(",", StringSplitOptions.TrimEntries)
@@ -74,7 +81,7 @@ public static class AddressParser
                     var match = Regex.Match(number, @"\b\d+[а-яА-Я]?\d*/\d+\b");
                     if (match.Success)
                     {
-                        addressList.Add(Address.Create(streetName, match.Value));
+                        addressList.Add(Address.Create(streetNameResult, match.Value));
                     }
                     
                     if (!number.Contains("-"))
@@ -82,11 +89,11 @@ public static class AddressParser
                         if (Regex.IsMatch(number, @"^[а-яА-Я]"))
                         {
                             var pureNumber = string.Join("",number.Where(x => char.IsDigit(x)));
-                            addressList.Add(Address.Create(streetName, pureNumber));
+                            addressList.Add(Address.Create(streetNameResult, pureNumber));
                         }
                         else
                         {
-                            addressList.Add(Address.Create(streetName, number));
+                            addressList.Add(Address.Create(streetNameResult, number));
                         }
                     }
                 
@@ -100,17 +107,42 @@ public static class AddressParser
             
                         for (var streetNumber = number1; streetNumber <= number2; streetNumber++)
                         {
-                            addressList.Add(Address.Create(streetName, streetNumber.ToString()));
+                            addressList.Add(Address.Create(streetNameResult, streetNumber.ToString()));
                         }
                     }
                 }
             }
             else
             {
-                addressList.Add(Address.Create(streetName, string.Empty));
+                addressList.Add(Address.Create(streetNameResult, string.Empty));
             }
         }
         
         return addressList;
+    }
+
+    private static string GetResultStreetName(List<string> streetNameOccursList, string addressItem)
+    {
+        if (streetNameOccursList.Count > 1)
+        {
+            var patternToCheck = string.Empty;
+            for (var i = 0; i < addressItem.Length; i++)
+            {
+                foreach (var symbol in addressItem)
+                {
+                    patternToCheck += symbol;
+                    if (streetNameOccursList.Any(x => patternToCheck.Equals(x, StringComparison.InvariantCultureIgnoreCase)))
+                    {
+                        return streetNameOccursList.FirstOrDefault(x => patternToCheck.Equals(x, StringComparison.InvariantCultureIgnoreCase));
+                    }
+                }
+            }
+        }
+        else if (streetNameOccursList.Count == 1)
+        {
+            return streetNameOccursList.First();
+        }
+
+        return string.Empty;
     }
 }
