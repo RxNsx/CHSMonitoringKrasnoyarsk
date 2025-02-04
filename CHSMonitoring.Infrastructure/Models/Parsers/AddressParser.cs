@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Models.Enums;
 using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
@@ -22,11 +23,9 @@ public static class AddressParser
             .Cast<StreetNameEnum>()
             .Select(x => x.GetDescriptionValue())
             .ToList();
-
         var concreteAddresses = addresses
             .Where(x => streetNames.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
             .ToList();
-        
         if (!concreteAddresses.Any())
         {
             Console.WriteLine($"Addresses: {string.Join(", ", addresses)}");
@@ -47,16 +46,13 @@ public static class AddressParser
         foreach (var doubleStreet in doubleStreets)
         {
             concreteAddresses.Remove(doubleStreet);
-        }
-        
-        foreach (var doubleStreet in doubleStreets)
-        {
             concreteAddresses.AddRange(doubleStreet.Split("/", StringSplitOptions.TrimEntries));
         }
         
         #endregion
         
         List<Address> addressList = new();
+        var addressDictionary = new Dictionary<string, List<string>>();
         foreach (var addressItem in concreteAddresses)
         {
             //Выбираем все улицы которые могут подойти по названию
@@ -65,82 +61,138 @@ public static class AddressParser
                 .ToList();
             //Выбираем точное вхождение улицы
             var streetNameResult = GetResultStreetName(streetNameOccursList, addressItem);
-            
-            var indexOfOccurs = addressItem.IndexOf(streetNameResult, StringComparison.InvariantCultureIgnoreCase);
-            var resultedAddressWithoutNumbers = addressItem.Remove(indexOfOccurs, streetNameResult.Length).Trim();
-            
-            var numbers = resultedAddressWithoutNumbers
+            var streetHouseNumberResult = GetResultStreetNumbers(addressItem, streetNameResult);
+            var numbers = streetHouseNumberResult
                 .Split(",", StringSplitOptions.TrimEntries)
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .ToList();
-            
-            if (numbers.Any())
+            addressDictionary.Add(streetNameResult, numbers);
+        }
+
+        
+        HashSet<(string streetNames, string number)> uniqueAddresses = new();
+        var regexAddressWithSlash = new Regex(@"\b\d+[а-яА-Я]?\d*/\d+\b", RegexOptions.Compiled);
+        var regexRegularAddress = new Regex(@"^[а-яА-Я]", RegexOptions.Compiled);
+        foreach (var item in addressDictionary)
+        {
+            if (item.Value.Any())
             {
-                foreach (var number in numbers)
+                foreach (var number in item.Value)
                 {
-                    var match = Regex.Match(number, @"\b\d+[а-яА-Я]?\d*/\d+\b");
+                    var match = regexAddressWithSlash.Match(number);
                     if (match.Success)
                     {
-                        addressList.Add(Address.Create(streetNameResult, match.Value));
+                        if (uniqueAddresses.Add((item.Key, match.Value)))
+                        {
+                            addressList.Add(Address.Create(item.Key, match.Value));
+                        }
+                        continue;
                     }
                     
                     if (!number.Contains("-"))
                     {
-                        if (Regex.IsMatch(number, @"^[а-яА-Я]"))
+                        if (regexRegularAddress.IsMatch(number))
                         {
-                            var pureNumber = string.Join("",number.Where(x => char.IsDigit(x)));
-                            addressList.Add(Address.Create(streetNameResult, pureNumber));
+                            var pureNumber = new string(number.Where(x => char.IsDigit(x)).ToArray()); 
+                            if (uniqueAddresses.Add((item.Key, pureNumber)))
+                            {
+                                addressList.Add(Address.Create(item.Key, pureNumber));
+                            }
                         }
                         else
                         {
-                            addressList.Add(Address.Create(streetNameResult, number));
+                            if (uniqueAddresses.Add((item.Key, number)))
+                            {
+                                addressList.Add(Address.Create(item.Key, number));
+                            }
                         }
+                        continue;
                     }
                 
                     var splitNumber = number.Split("-", StringSplitOptions.TrimEntries);
                     if (splitNumber.Length == 2 && Regex.IsMatch(splitNumber[0], @"^\d") && Regex.IsMatch(splitNumber[1], @"\d"))
                     {
-                        var normalizedNumber = splitNumber[0].NormalizedSplitNumber();
-                        var normalizedNumber2 = splitNumber[1].NormalizedSplitNumber();
-                        var number1 = int.Parse(normalizedNumber);
-                        var number2 = int.Parse(normalizedNumber2);
-            
-                        for (var streetNumber = number1; streetNumber <= number2; streetNumber++)
+                        var normalizedNumber = int.Parse(splitNumber[0].NormalizedSplitNumber());
+                        var normalizedNumber2 = int.Parse(splitNumber[1].NormalizedSplitNumber());
+                        for (var initialNumber = Math.Min(normalizedNumber, normalizedNumber2); initialNumber <= Math.Max(normalizedNumber,normalizedNumber2); initialNumber++)
                         {
-                            addressList.Add(Address.Create(streetNameResult, streetNumber.ToString()));
+                            if (uniqueAddresses.Add((item.Key, initialNumber.ToString())))
+                            {
+                                addressList.Add(Address.Create(item.Key, initialNumber.ToString()));
+                            }
                         }
                     }
                 }
             }
             else
             {
-                addressList.Add(Address.Create(streetNameResult, string.Empty));
+                addressList.Add(Address.Create(item.Key, string.Empty));
             }
         }
         
         return addressList;
     }
 
+    /// <summary>
+    /// Получаем точное вхождение когда вариантов улиц несколько
+    /// </summary>
+    /// <param name="streetNameOccursList"></param>
+    /// <param name="addressItem"></param>
+    /// <returns></returns>
     private static string GetResultStreetName(List<string> streetNameOccursList, string addressItem)
     {
+        if (addressItem.Contains("ВРК:", StringComparison.InvariantCultureIgnoreCase))
+        {
+            var result = addressItem.Substring("ВРК:".Length, addressItem.Length - "ВРК:".Length).Trim();
+            var indexOfSpace = result.IndexOf(" ", StringComparison.InvariantCultureIgnoreCase);
+            if (indexOfSpace != -1)
+            {
+                result = result.Substring(0, indexOfSpace);
+            }
+            
+            return streetNameOccursList.FirstOrDefault(x => result.Equals(x, StringComparison.InvariantCultureIgnoreCase));
+        }
+        
         if (streetNameOccursList.Count > 1)
         {
-            var patternToCheck = string.Empty;
-            for (var i = 0; i < addressItem.Length; i++)
+            var sb = new StringBuilder();
+            foreach (var symbol in addressItem)
             {
-                foreach (var symbol in addressItem)
+                sb.Append(symbol);
+                if (streetNameOccursList.Any(x => x.Equals(sb.ToString(), StringComparison.InvariantCultureIgnoreCase)))
                 {
-                    patternToCheck += symbol;
-                    if (streetNameOccursList.Any(x => patternToCheck.Equals(x, StringComparison.InvariantCultureIgnoreCase)))
-                    {
-                        return streetNameOccursList.FirstOrDefault(x => patternToCheck.Equals(x, StringComparison.InvariantCultureIgnoreCase));
-                    }
+                    return sb.ToString();
                 }
             }
         }
         else if (streetNameOccursList.Count == 1)
         {
             return streetNameOccursList.First();
+        }
+
+        return string.Empty;
+    }
+
+    /// <summary>
+    /// Получаем номера домов конкретной улицы
+    /// </summary>
+    /// <param name="addressItem"></param>
+    /// <param name="streetNameResult"></param>
+    /// <returns></returns>
+    private static string GetResultStreetNumbers(string addressItem, string streetNameResult)
+    {
+        var indexOfOccurs = addressItem.IndexOf(streetNameResult, StringComparison.InvariantCultureIgnoreCase);
+        if (indexOfOccurs != -1)
+        {
+            if (indexOfOccurs != 0)
+            {
+                var pureString = addressItem.Remove(0, indexOfOccurs);
+                var numbers = pureString.Remove(0,streetNameResult.Length).Trim();
+                return numbers;
+            }
+
+            var noPrefixNumber = addressItem.Remove(indexOfOccurs, streetNameResult.Length).Trim();
+            return noPrefixNumber;
         }
 
         return string.Empty;

@@ -1,4 +1,6 @@
-﻿using CHSMonitoring.Domain.Entities;
+﻿using System.Collections.Concurrent;
+using System.Diagnostics;
+using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Domain.Enums;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
@@ -49,45 +51,44 @@ public class TdContentParserService : ITdContentParserService
         }
         
         supplyTypeIndexes = AddTheEndOfSupplyInfo(supplyTypeIndexes);
-        
-        var serviceAddressDict = new Dictionary<string, List<ServiceMessage>>();
+
+        var tableDescriptionList = new List<List<TableDescription>>();
         foreach (var item in supplyTypeIndexes)
         {
             for (var i = 1; i < item.Value.Count; i++)
             {
                 var pointer1 = item.Value[i - 1];
                 var pointer2 = item.Value[i];
-
-                var tableDescriptionItemList = districtDataDict[item.Key]
+                tableDescriptionList.Add(districtDataDict[item.Key]
                     .Where(x => x.Index >= pointer1 && x.Index < pointer2)
-                    .ToList();
-
-                if (tableDescriptionItemList.Any())
-                {
-                    var serviceAddressMessageBuilder = new ServiceMessageBuilder();
-                    var organizationText = tableDescriptionItemList[0].InnerText.NormalizeText();
-                    var addressesText = tableDescriptionItemList[1].InnerText.NormalizeText();
-                    var dateInfoText = tableDescriptionItemList[2].InnerText.NormalizeText();
-
-                    serviceAddressMessageBuilder.BuildOrganization(organizationText);
-                    serviceAddressMessageBuilder.AddAddressesList(addressesText);
-                    serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
-                    serviceAddressMessageBuilder.AddDistrictName(item.Key);
-                    var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
-
-                    if (!serviceAddressDict.TryGetValue(item.Key, out _))
-                    {
-                        serviceAddressDict.Add(item.Key, new List<ServiceMessage> { supplyMessageDescription });
-                    }
-                    else
-                    {
-                        serviceAddressDict[item.Key].Add(supplyMessageDescription);
-                    }
-                }
+                    .ToList());
             }
         }
+        
+        //TODO: Check concurrent flow
+        var serviceAddressDict = new ConcurrentDictionary<string, List<ServiceMessage>>();
+        var x = 0;
+        Parallel.ForEach(tableDescriptionList, tableDescriptionItem =>
+        {
+            Console.WriteLine($"Hello {Interlocked.Increment(ref x)})");
+            var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index))
+                .Key;
+            var serviceAddressMessageBuilder = new ServiceMessageBuilder();
+            var organizationText = tableDescriptionItem[0].InnerText.NormalizeText();
+            var addressesText = tableDescriptionItem[1].InnerText.NormalizeText();
+            var dateInfoText = tableDescriptionItem[2].InnerText.NormalizeText();
 
-        return GetServiceAddressList(serviceAddressDict);
+            serviceAddressMessageBuilder.BuildOrganization(organizationText);
+            serviceAddressMessageBuilder.AddAddressesList(addressesText);
+            serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
+            serviceAddressMessageBuilder.AddDistrictName(districtKey);
+            var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
+
+            serviceAddressDict.GetOrAdd(districtKey, key => new List<ServiceMessage>())
+                .Add(supplyMessageDescription);
+        });
+
+        return GetServiceAddressList(serviceAddressDict.ToDictionary());
     }
 
     /// <summary>
@@ -209,8 +210,6 @@ public class TdContentParserService : ITdContentParserService
     public List<ServiceAddress> GetServiceAddressList(Dictionary<string, List<ServiceMessage>> serviceMessages)
     {
         List<ServiceAddress> serviceAddressList = [];
-        var uniqueAddresses = new HashSet<(string StreetName, string HouseNumber)>();
-
         var districts = Enum.GetValues(typeof(DistrictEnum))
             .Cast<DistrictEnum>()
             .Select(x => new
@@ -238,30 +237,26 @@ public class TdContentParserService : ITdContentParserService
             })
             .ToList();;
         
-        
         foreach (var serviceMessage in serviceMessages.SelectMany(x => x.Value).ToList())
         {
             var addressList = serviceMessage.AddressList;
             foreach (var address in addressList)
             {
-                if (uniqueAddresses.Add((address.StreetName, address.Number)))
+                serviceAddressList.Add(new ServiceAddress()
                 {
-                    serviceAddressList.Add(new ServiceAddress()
-                    {
-                        DistrictId = districts.FirstOrDefault(x => x.DistrictName.Equals(serviceMessage.DistrictName, StringComparison.InvariantCultureIgnoreCase)).Id,
-                        StreetId = streets.FirstOrDefault(x => x.StreetName.Equals(address.StreetName,StringComparison.InvariantCultureIgnoreCase)).Id,
-                        StreetName = address.StreetName,
-                        ServiceTypeId = serviceTypes.FirstOrDefault(x => x.ServiceTypeName.Equals(serviceMessage.Organization.SupplyTypeName, StringComparison.InvariantCultureIgnoreCase)).Id,
-                        HouseNumber = address.Number,
-                        Description = serviceMessage.Description,
-                        DateTimeFromString = serviceMessage.DateInfo.DateFromString,
-                        DateTimeToString = serviceMessage.DateInfo.DateToString,
-                        From = serviceMessage.DateInfo.DateFrom,
-                        To = serviceMessage.DateInfo.DateTo,
-                        CreatedDate = serviceMessage.CreatedDate,
-                        IsReadOnly = true
-                    });
-                }
+                    DistrictId = districts.FirstOrDefault(x => x.DistrictName.Equals(serviceMessage.DistrictName, StringComparison.InvariantCultureIgnoreCase)).Id,
+                    StreetId = streets.FirstOrDefault(x => x.StreetName.Equals(address.StreetName,StringComparison.InvariantCultureIgnoreCase)).Id,
+                    StreetName = address.StreetName,
+                    ServiceTypeId = serviceTypes.FirstOrDefault(x => x.ServiceTypeName.Equals(serviceMessage.Organization.SupplyTypeName, StringComparison.InvariantCultureIgnoreCase)).Id,
+                    HouseNumber = address.Number,
+                    Description = serviceMessage.Description,
+                    DateTimeFromString = serviceMessage.DateInfo.DateFromString,
+                    DateTimeToString = serviceMessage.DateInfo.DateToString,
+                    From = serviceMessage.DateInfo.DateFrom,
+                    To = serviceMessage.DateInfo.DateTo,
+                    CreatedDate = serviceMessage.CreatedDate,
+                    IsReadOnly = true
+                });
             }
         }
 

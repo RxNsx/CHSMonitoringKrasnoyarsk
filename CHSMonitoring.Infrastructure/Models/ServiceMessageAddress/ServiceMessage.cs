@@ -49,7 +49,7 @@ public sealed class ServiceMessage
     /// Установить адреса
     /// </summary>
     /// <param name="addressList"></param>
-    public void SetAddressList(List<Address> addressList) => AddressList = addressList;
+    public void SetAddressList(List<Address> addressList) => AddressList = addressList.Where(x => !string.IsNullOrEmpty(x.StreetName)).ToList();
     
     /// <summary>
     /// Установить дополнительное описание проблемы

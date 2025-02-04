@@ -25,19 +25,6 @@ public class ServiceAddressRepository : IServiceAddressRepository
 
     public async Task AddServiceAddressesAsync(List<ServiceAddress> serviceAddresses, CancellationToken cancellationToken)
     {
-        /*
-         * TODO: Реализовать логику парсинга и определения нового события
-         * 
-         */
-        
-        /*
-         * TODO: Реализовать следующую логику для добавления
-         * 1. Создать сущность для хранения истории с ID ServiceAddress и датой
-         * 2. По последнему событию приходящему проверять актуальность данных
-         * 3. Создать материализованное представление для агрегации на каждый день \ или таблицу с агрегацией данных
-         * 4. КОРРЕКТНЫМ считается событие которое приходит последним, соответственно самым корректным с точки зрения точности данных
-         */
-
         await _context.ServiceAddresses.AddRangeAsync(serviceAddresses, cancellationToken).ConfigureAwait(false);
         await _context.SaveChangesAsync().ConfigureAwait(false);
     }
