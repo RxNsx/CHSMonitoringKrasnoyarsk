@@ -2188,6 +2188,12 @@ public enum StreetNameEnum
     [EnumGuid("0AB2FC37-889A-43E3-9899-D563E4787265")]
     [Description("Приручейная")]
     Prirucheynaya,
+    [EnumGuid("A85CB9BB-DE67-42F8-9E58-473BED058CF4")]
+    [Description("1-я Приручейная")]
+    Prirucheynaya1r,
+    [EnumGuid("BD81563F-1CA1-46B9-824A-F81802DE5F9C")]
+    [Description("2-я Приручейная")]
+    Prirucheynaya2r,
     [EnumGuid("A00556B2-D07D-4F57-87C7-45E4B9FA4059")]
     [Description("Приручейная 2-я")]
     Prirucheynaya2,
@@ -2209,33 +2215,63 @@ public enum StreetNameEnum
     [EnumGuid("19379761-11D3-463D-8955-9AF8245BFB27")]
     [Description("Продольная 10-я")]
     Prodolnaya10,
+    [EnumGuid("C1BB5B07-AF97-4130-AFFC-17538CBE0F03")]
+    [Description("10-я Продольная")]
+    Prodolnaya10r,
     [EnumGuid("E83DCB2A-F26C-490C-8026-7B88FF576BE5")]
     [Description("Продольная 11-я")]
     Prodolnaya11,
+    [EnumGuid("63B3FBA6-A2F5-4C16-9FCC-E346029AA468")]
+    [Description("11-я Продольная")]
+    Prodolnaya11r,
     [EnumGuid("4EC52EC6-FB43-4282-9752-405A5D92CADC")]
     [Description("Продольная 2-я")]
     Prodolnaya2,
+    [EnumGuid("354CACAB-DCEB-4D72-A6D9-8D72B0738CB7")]
+    [Description("2-я Продольная")]
+    Prodolnaya2r,
     [EnumGuid("EA147AAA-A17C-4004-8C3F-7ECD9512A932")]
     [Description("Продольная 3-я")]
     Prodolnaya3,
+    [EnumGuid("D573E761-C74D-451D-B8C3-E2ACE01FB871")]
+    [Description("3-я Продольная")]
+    Prodolnaya3r,
     [EnumGuid("2476D432-CA23-4658-8490-C64EE50598F3")]
     [Description("Продольная 4-я")]
     Prodolnaya4,
+    [EnumGuid("5F95389E-558F-4050-8CD6-DC5C7742FBDE")]
+    [Description("4-я Продольная")]
+    Prodolnaya4r,
     [EnumGuid("F6FF042B-BCFA-4463-A83A-C327B09D9F01")]
     [Description("Продольная 5-я")]
     Prodolnaya5,
+    [EnumGuid("F52DF1A7-BCF1-4520-BED9-5B76C4E4D097")]
+    [Description("5-я Продольная")]
+    Prodolnaya5r,
     [EnumGuid("5A0BB97E-F7A5-4B11-AEA8-AECB360814C1")]
     [Description("Продольная 6-я")]
     Prodolnaya6,
+    [EnumGuid("60D229E0-8F09-4C29-ADEC-C891DB3B227A")]
+    [Description("6-я Продольная")]
+    Prodolnaya6r,
     [EnumGuid("5D7B40FB-3795-46E5-B18D-3EBECB541410")]
     [Description("Продольная 7-я")]
     Prodolnaya7,
+    [EnumGuid("5F0EE8C9-4EB7-4245-9EEF-A33A4D473207")]
+    [Description("7-я Продольная")]
+    Prodolnaya7r,
     [EnumGuid("92E396BA-2E21-4A0F-8DB6-02667176C251")]
     [Description("Продольная 8-я")]
     Prodolnaya8,
+    [EnumGuid("0D692EB1-D601-4D15-9163-0A30445E3BCE")]
+    [Description("8-я Продольная")]
+    Prodolnaya8r,
     [EnumGuid("B88503FF-E291-4F95-AF7F-3C69FEF59254")]
     [Description("Продольная 9-я")]
     Prodolnaya9,
+    [EnumGuid("D2AD6240-6C87-4331-95B9-EFDCD21226FC")]
+    [Description("9-я Продольная")]
+    Prodolnaya9r,
     [EnumGuid("9E9B0CC0-9BF9-48ED-8B05-5F7283F6EEBE")]
     [Description("Проектная")]
     Proyektnaya,
@@ -2537,6 +2573,15 @@ public enum StreetNameEnum
     [EnumGuid("DEAB652D-580F-44B6-BC08-27BF04B6F03D")]
     [Description("Смоленская 3-я")]
     Smolenskaya3,
+    [EnumGuid("BEEA32AD-EC62-4C24-A39A-752B3F14BD4C")]
+    [Description("1-я Смоленская ")]
+    Smolenskaya1r,
+    [EnumGuid("BA0B9C9D-A155-4BD0-B926-365A81F4EF0E")]
+    [Description("2-я Смоленская ")]
+    Smolenskaya2r,
+    [EnumGuid("A9C384F7-12F0-4104-B093-3A002BE78108")]
+    [Description("3-я Смоленская ")]
+    Smolenskaya3r,
     [EnumGuid("0976C806-7D20-4BC2-8D20-171F7704BF0D")]
     [Description("Снежная")]
     Snezhnaya,
@@ -2941,6 +2986,12 @@ public enum StreetNameEnum
     [EnumGuid("0DCFF0AF-172E-4C63-A574-F0108A6998A1")]
     [Description("Хабаровская 2-я")]
     Khabarovskaya2,
+    [EnumGuid("D99A0A01-61D7-43BB-82D0-F8A394BC4C03")]
+    [Description("1-я Хабаровская")]
+    Khabarovskaya1r,
+    [EnumGuid("07B56EB6-9300-44FC-8E60-2527CA8F8BFE")]
+    [Description("2-я Хабаровская")]
+    Khabarovskaya2r,
     [EnumGuid("96928748-546D-4367-9BF1-FA3106678332")]
     [Description("Хантайская")]
     Khantayskaya,
@@ -3007,7 +3058,10 @@ public enum StreetNameEnum
     Cheryomukhovaya,
     [EnumGuid("EBC03110-9129-450D-A29C-074F140A36F8")]
     [Description("Черемховская 2-я")]
-    Cheremkhovskaya2,
+    Cheryomukhovaya2,
+    [EnumGuid("0651B8CB-5530-4D08-BE38-89F321831736")]
+    [Description("2-я Черемховская")]
+    Cheremkhovskaya2r,
     [EnumGuid("C436B5E7-8AC0-47E7-AF81-F6A8F13AE387")]
     [Description("Черепнина")]
     Cherepnina,
@@ -3071,8 +3125,20 @@ public enum StreetNameEnum
     [Description("Шинная 3-я")]
     Shinnaya3,
     [EnumGuid("B4C03C58-C5B2-438D-ACFB-51E8C59D51EB")]
-    [Description("Шинная 4-я")]
+    [Description("4-я Шинная")]
     Shinnaya4,
+    [EnumGuid("BE043C3B-85C7-49B4-888D-6AA0DC98DF58")]
+    [Description("1-я Шинная")]
+    Shinnaya1r,
+    [EnumGuid("01C4F04A-8878-4A76-AEC8-ED4443326BC7")]
+    [Description("1-я Шинная")]
+    Shinnaya2r,
+    [EnumGuid("35C4C5BA-F113-4206-AE52-3D76A84FDFC8")]
+    [Description("3-я Шинная")]
+    Shinnaya3r,
+    [EnumGuid("A0C7320A-F40F-4EF4-94A5-FF7145A0DF8F")]
+    [Description("4-я Шинная")]
+    Shinnaya4r,
     [EnumGuid("289DCD89-1DF6-404B-9216-03826265C3EA")]
     [Description("Ширинская")]
     Shirinskaya,
