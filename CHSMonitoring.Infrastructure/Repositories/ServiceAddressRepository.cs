@@ -28,6 +28,13 @@ public class ServiceAddressRepository : IServiceAddressRepository
             .ConfigureAwait(false);
     }
 
+    public async Task<List<ServiceAddress>> GetServiceAddressesAsync(List<string> streetName, CancellationToken cancellationToken)
+    {
+        return await _context.ServiceAddresses
+            .Where(x => streetName.Contains(x.StreetName))
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task AddServiceAddressesAsync(List<ServiceAddress> serviceAddresses, CancellationToken cancellationToken)
     {
         await _context.ServiceAddresses.AddRangeAsync(serviceAddresses, cancellationToken).ConfigureAwait(false);

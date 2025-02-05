@@ -16,6 +16,14 @@ public interface IServiceAddressRepository
     Task<List<ServiceAddress>> GetServiceAddressesAsynс(CancellationToken cancellationToken);
 
     /// <summary>
+    /// Получить список отключений по названию улиц
+    /// </summary>
+    /// <param name="streetName"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<List<ServiceAddress>> GetServiceAddressesAsync(List<string> streetName, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Добавить список событий обслуживания адреса
     /// </summary>
     /// <param name="serviceAddresses"></param>

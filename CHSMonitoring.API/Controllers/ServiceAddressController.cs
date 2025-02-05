@@ -1,4 +1,5 @@
 ﻿using CHSMonitoring.Application.Queries.ServiceAddresses.Get;
+using CHSMonitoring.Application.Queries.ServiceAddresses.GetList;
 using CHSMonitoring.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -26,14 +27,23 @@ public class ServiceAddressController : ControllerBase
     /// <param name="streetName"></param>
     /// <param name="houseNumber"></param>
     /// <returns></returns>
-    [HttpGet]
+    [HttpGet("[action]")]
     [ProducesResponseType<List<ServiceAddress>>(200, contentType: "application/json")]
     [ProducesResponseType<List<ServiceAddress>>(400, contentType: "application/json")]
-    public async Task<IActionResult> GetServiceAddress(string streetName, string houseNumber)
+    public async Task<IActionResult> GetServiceAddress([FromQuery] string streetName, string houseNumber)
     {
         var result = await _sender.Send(new GetServiceAddressQuery(streetName, houseNumber))
             .ConfigureAwait(false);
-        
+        return Ok();
+    }
+
+    [HttpGet("[action]")]
+    [ProducesResponseType<List<ServiceAddress>>(200, contentType: "application/json")]
+    [ProducesResponseType<List<ServiceAddress>>(400, contentType: "application/json")]
+    public async Task<IActionResult> GetServiceAddresesByStreetNames([FromQuery] List<string> streetNames)
+    {
+        var result = await _sender.Send(new GetServiceAddressListQuery(streetNames))
+            .ConfigureAwait(false);
         return Ok();
     }
 }
