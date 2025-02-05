@@ -3615,7 +3615,40 @@ public enum StreetNameEnum
 	SNTOtdikh,
 	[EnumGuid("F97272AF-3096-4E41-8405-A45898FCADE4")]
 	[Description("СНТ Отдых-2")]
-	SNTOtdikh2
-
+	SNTOtdikh2э,
+	[EnumGuid("AC959BEB-9B4A-423B-A604-EF8CFCC5F8B8")]
+	[Description("СНТ Беркут")]
+	SNTBerkut,
+	[EnumGuid("737691AD-B28A-4298-B254-85E7DCFCAEC3")]
+	[Description("СНТ Учитель")]
+	SNTUchitel,
+	[EnumGuid("C1386624-ABE2-4693-9144-A72BE3900ACC")]
+	[Description("СНТ Весна")]
+	SNTVesna,
+	[EnumGuid("6D90E2BB-948C-4468-92FC-6778EA5110BD")]
+	[Description("СНТ Весна-1")]
+	SNTVesna1,
+	[EnumGuid("FC5EDCB6-4C52-4BDD-8925-8F6FB03AAE43")]
+	[Description("СНТ Землеустроитель")]
+	SNTZemleustroitel,
+	[EnumGuid("D833C29B-C45F-43DC-8BBC-993EF997B450")]
+	[Description("СНТ Бриз")]
+	SNTBriz,
+	[EnumGuid("2B88689B-95BA-4E50-B4CA-F7A6F2A14C08")]
+	[Description("СНТ Боровое")]
+	SNTBorovoe,
+	[EnumGuid("3F66DA62-8991-49D5-B3D8-25021748AE32")]
+	[Description("СНТ Солнечная поляна")]
+	SNTSolechnayaPolyana,
+	[EnumGuid("B78274A2-BB85-4A35-8E71-6C383B4624C1")]
+	[Description("СНТ Залив")]
+	SNTZaliv,
+	[EnumGuid("A7F073BA-8A08-4229-AEE3-84117D04F4A8")]
+	[Description("СНТ Заречье1")]
+	SNTZarechye1,
+	[EnumGuid("2E0BE0D2-3B04-47DC-99A0-6AF06C2EB97C")]
+	[Description("пос.Боровое")]
+	PosBorovoe
+	
     #endregion
 }
