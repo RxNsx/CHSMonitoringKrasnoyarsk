@@ -467,6 +467,9 @@ public enum StreetNameEnum
     [EnumGuid("F751A786-4F95-4B0D-9A42-9E5FE960E1A5")]
     [Description("Весёлая")]
     Veselyaya,
+    [EnumGuid("7F2E8DBC-5C3A-4F32-9169-77ACDBE65D1B")]
+    [Description("Весёлая")]
+    Veseelyaya,
     [EnumGuid("F976C36B-015F-49B2-89B4-1F943FC3C286")]
     [Description("Веселовская")]
     Veselovskaya,
@@ -485,6 +488,9 @@ public enum StreetNameEnum
     [EnumGuid("826CEEAA-42AC-4564-A424-EF82CF0AA6B0")]
     [Description("Взлётная")]
     Vzletnaya,
+    [EnumGuid("98CF2682-83E7-4FB8-B745-33AB1605BF9F")]
+    [Description("Взлеетная")]
+    Vzleetnaya,
     [EnumGuid("DC5498CD-1148-4A53-8BBA-55680B6BDD11")]
     [Description("Вильского")]
     VilSkogo,
