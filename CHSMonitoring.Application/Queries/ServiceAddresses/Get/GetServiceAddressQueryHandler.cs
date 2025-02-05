@@ -1,10 +1,12 @@
-﻿using CHSMonitoring.Domain.Entities;
+﻿using CHSMonitoring.Application.Errors.ServiceAddressErrors;
+using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Infrastructure.Interfaces;
 using MediatR;
+using VplayRequestTransmitter.Shared;
 
 namespace CHSMonitoring.Application.Queries.ServiceAddresses.Get;
 
-public class GetServiceAddressQueryHandler : IRequestHandler<GetServiceAddressQuery, ServiceAddress>
+public class GetServiceAddressQueryHandler : IRequestHandler<GetServiceAddressQuery, Result<ServiceAddress>>
 {
     private readonly IServiceAddressRepository _serviceAddressRepository;
 
@@ -24,9 +26,15 @@ public class GetServiceAddressQueryHandler : IRequestHandler<GetServiceAddressQu
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public async Task<ServiceAddress> Handle(GetServiceAddressQuery request, CancellationToken cancellationToken)
+    public async Task<Result<ServiceAddress>> Handle(GetServiceAddressQuery request, CancellationToken cancellationToken)
     {
-        return await _serviceAddressRepository.GetServiceAddressAsync(request.StreetName, request.HouseNumber, cancellationToken)
+        var serviceAddress =  await _serviceAddressRepository.GetServiceAddressAsync(request.StreetName, request.HouseNumber, cancellationToken)
             .ConfigureAwait(false);
+        if (serviceAddress is null)
+        {
+            return Result.Failure<ServiceAddress>(ServiceAddressError.NotFound());
+        }
+
+        return Result.Success(serviceAddress);
     }
 }

@@ -34,6 +34,11 @@ public class ServiceAddressController : ControllerBase
     {
         var result = await _sender.Send(new GetServiceAddressQuery(streetName, houseNumber))
             .ConfigureAwait(false);
+        if (!result.IsSuccess)
+        {
+            return BadRequest(result.Error);
+        }
+        
         return Ok();
     }
 

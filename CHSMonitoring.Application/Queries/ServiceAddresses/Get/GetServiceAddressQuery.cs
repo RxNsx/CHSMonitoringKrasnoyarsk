@@ -1,9 +1,10 @@
 ﻿using CHSMonitoring.Domain.Entities;
 using MediatR;
+using VplayRequestTransmitter.Shared;
 
 namespace CHSMonitoring.Application.Queries.ServiceAddresses.Get;
 
-public class GetServiceAddressQuery : IRequest<ServiceAddress>
+public class GetServiceAddressQuery : IRequest<Result<ServiceAddress>>
 {
     /// <summary>
     /// Название улицы

@@ -9,7 +9,6 @@
     <ItemGroup>
       <Folder Include="Abstractions\" />
       <Folder Include="Commands\" />
-      <Folder Include="Exceptions\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -20,6 +19,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CHSMonitoring.Infrastructure\CHSMonitoring.Infrastructure.csproj" />
+      <ProjectReference Include="..\Shared\Shared.csproj" />
     </ItemGroup>
 
 </Project>
