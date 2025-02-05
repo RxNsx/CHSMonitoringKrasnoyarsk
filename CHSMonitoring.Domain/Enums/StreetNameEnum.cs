@@ -116,7 +116,7 @@ public enum StreetNameEnum
     [EnumGuid("FCB4186B-BDCA-4BAB-9B44-09355693589E")]
     AlekseyaAseeva,
 
-    [Description("Алеши Тимошенкова")]
+    [Description("Алёши Тимошенкова")]
     [EnumGuid("9192D885-D480-457E-A665-9E55F65B2EE3")]
     AleshTimoshenkova,
 
@@ -184,7 +184,7 @@ public enum StreetNameEnum
     [EnumGuid("44E8F6FB-A38D-44F2-93C5-E1F24F97C81A")]
     Arskiy,
 
-    [Description("Артемовская")]
+    [Description("Артёмовская")]
     [EnumGuid("69B571B6-F9E9-49DE-A57C-0766FAD92856")]
     Artemovskaya,
 
@@ -286,7 +286,7 @@ public enum StreetNameEnum
     [Description("Березина")]
     Berezina,
     [EnumGuid("44C6E9D7-880E-48AD-A06D-4CE6B4383E79")]
-    [Description("Березовая")]
+    [Description("Берёзовая")]
     Berezovaya,
     [EnumGuid("4C5BB0B5-9BE7-415B-9104-796688E74FA3")]
     [Description("Биатлонная")]
@@ -467,9 +467,6 @@ public enum StreetNameEnum
     [EnumGuid("F751A786-4F95-4B0D-9A42-9E5FE960E1A5")]
     [Description("Весёлая")]
     Veselyaya,
-    [EnumGuid("7F2E8DBC-5C3A-4F32-9169-77ACDBE65D1B")]
-    [Description("Весёлая")]
-    Veseelyaya,
     [EnumGuid("F976C36B-015F-49B2-89B4-1F943FC3C286")]
     [Description("Веселовская")]
     Veselovskaya,
@@ -488,9 +485,6 @@ public enum StreetNameEnum
     [EnumGuid("826CEEAA-42AC-4564-A424-EF82CF0AA6B0")]
     [Description("Взлётная")]
     Vzletnaya,
-    [EnumGuid("98CF2682-83E7-4FB8-B745-33AB1605BF9F")]
-    [Description("Взлетная")]
-    Vzleetnaya,
     [EnumGuid("DC5498CD-1148-4A53-8BBA-55680B6BDD11")]
     [Description("Вильского")]
     VilSkogo,
@@ -513,7 +507,7 @@ public enum StreetNameEnum
     [Description("3-я Внутриквартальная")]
     Vnutrikvartalna_ya3,
     [EnumGuid("B443EE6B-703F-4736-93B3-C933034BB626")]
-    [Description("Водометный")]
+    [Description("Водомётный")]
     Vodometnyy,
     [EnumGuid("E02DADA7-2FB1-4F30-A6C7-4B59909355B7")]
     [Description("Водопьянова")]
@@ -1291,9 +1285,6 @@ public enum StreetNameEnum
     [EnumGuid("DDB608CE-D120-4FBF-A1F1-D204CF233EF2")]
     [Description("Космическая")]
     Kosmicheskaya,
-    [EnumGuid("30447FDC-9A1F-4759-89D9-7848D791F7DE")]
-    [Description("Космонавтов микрорайон Северный")]
-    KosmonavtovSeverniy,
     [EnumGuid("6804E765-67B2-44D5-8141-77F1463D064A")]
     [Description("Космонавтов")]
     Kosmonavtov,
@@ -1893,7 +1884,7 @@ public enum StreetNameEnum
     [Description("Односторонний")]
     Odnostoronniy,
     [EnumGuid("54FBB146-B236-4C69-9869-62D660B82618")]
-    [Description("Озерная")]
+    [Description("Озёрная")]
     Ozerennaya,
     [EnumGuid("DC8F6FCB-F875-40EE-9158-6876DE8D1D85")]
     [Description("2-я Озёрная")]
@@ -2717,7 +2708,7 @@ public enum StreetNameEnum
     #region Улицы на букву Т
 
     [EnumGuid("7B9E17D4-4151-4C91-A9EF-7486E00265B3")]
-    [Description("Таежная")]
+    [Description("Таёжная")]
     Tayezhnaya,
     [EnumGuid("07F3785E-86C5-40A9-B017-970DDEFA1364")]
     [Description("Бугачево")]
@@ -3113,7 +3104,7 @@ public enum StreetNameEnum
     [Description("Шевченко")]
     Shevchenko,
     [EnumGuid("C8755BF1-A7B6-4278-B2C9-382EFADA4E61")]
-    [Description("Шелковая")]
+    [Description("Шёлковая")]
     Shelkovaya,
     [EnumGuid("345B98BD-9CEE-4976-96C3-9D057B567606")]
     [Description("Шиверская")]
@@ -3353,11 +3344,8 @@ public enum StreetNameEnum
 	[Description("СТ Электрик")]
 	STElektrik,
 	[EnumGuid("A0D9E8FA-E6EE-49DD-9BC5-5E3797C30072")]
-	[Description("СТ Березка")]
-	STBerezka,
-	[EnumGuid("54B85B01-7142-4721-9F19-1A5B26985295")]
 	[Description("СТ Берёзка")]
-	STBereеzka,
+	STBerezka,
 	[EnumGuid("13589C81-526C-4855-BEF5-B241B7E48AD4")]
 	[Description("СТ Колос")]
 	STKolos,
@@ -3457,9 +3445,6 @@ public enum StreetNameEnum
 	[EnumGuid("DAFDFCE2-C785-4DB7-8541-C903E74C95CF")]
 	[Description("СК Берёзка-2")]
 	SKBerezka2,
-	[EnumGuid("30185623-24F4-48E5-A82A-F487577C53E4")]
-	[Description("СК Березка-2")]
-	SKBereеzka2,
 	[EnumGuid("2114D16A-6470-47C0-89A7-E51B01A8208E")]
 	[Description("СНТ Гремячий ключ")]
 	SNTGremyachiyKlyuch,
