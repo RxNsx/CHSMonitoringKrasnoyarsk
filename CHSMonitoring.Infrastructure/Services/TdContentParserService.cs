@@ -67,10 +67,15 @@ public class TdContentParserService : ITdContentParserService
         
         //TODO: Check concurrent flow
         var serviceAddressDict = new ConcurrentDictionary<string, List<ServiceMessage>>();
-        var x = 0;
-        Parallel.ForEach(tableDescriptionList, tableDescriptionItem =>
+        
+        Parallel.ForEach(tableDescriptionList, 
+            new ParallelOptions()
+            {
+                //4 Паралелльных операции
+                MaxDegreeOfParallelism = 4
+            },
+            tableDescriptionItem =>
         {
-            Console.WriteLine($"Hello {Interlocked.Increment(ref x)})");
             var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index))
                 .Key;
             var serviceAddressMessageBuilder = new ServiceMessageBuilder();
