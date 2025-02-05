@@ -62,12 +62,15 @@ public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddre
             .HasDefaultValue(true);
 
         builder.HasOne(x => x.District)
-            .WithMany(x => x.ServiceAddresses);
+            .WithMany(x => x.ServiceAddresses)
+            .IsRequired(false);
 
         builder.HasOne(x => x.Street)
-            .WithMany(x => x.ServiceAddresses);
+            .WithMany(x => x.ServiceAddresses)
+            .IsRequired(false);
 
         builder.HasOne(x => x.ServiceType)
-            .WithMany(x => x.ServiceAddresses);
+            .WithMany(x => x.ServiceAddresses)
+            .IsRequired(false);
     }
 }
