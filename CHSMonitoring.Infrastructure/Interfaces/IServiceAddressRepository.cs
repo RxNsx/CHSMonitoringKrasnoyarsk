@@ -31,12 +31,13 @@ public interface IServiceAddressRepository
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<ServiceAddress> GetServiceAddressAsync(string streetName, string houseNumber, CancellationToken cancellationToken);
-    
+
     /// <summary>
     /// Проверка существования события обслуживания в базе
     /// </summary>
-    /// <param name="serviceAddress"></param>
+    /// <param name="streetName"></param>
+    /// <param name="houseNumber"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<bool> IsExistServiceAddressAsync(ServiceAddress serviceAddress, CancellationToken cancellationToken);
+    Task<bool> IsExistServiceAddressAsync(string streetName, string houseNumber, CancellationToken cancellationToken);
 }
