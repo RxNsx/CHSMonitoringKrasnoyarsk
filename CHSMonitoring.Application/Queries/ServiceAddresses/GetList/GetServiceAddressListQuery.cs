@@ -1,9 +1,10 @@
 ﻿using CHSMonitoring.Domain.Entities;
 using MediatR;
+using VplayRequestTransmitter.Shared;
 
 namespace CHSMonitoring.Application.Queries.ServiceAddresses.GetList;
 
-public class GetServiceAddressListQuery : IRequest<List<ServiceAddress>>
+public class GetServiceAddressListQuery : IRequest<Result<List<ServiceAddress>>>
 {
     public List<string> StreetNames { get; private set; }
     

@@ -39,7 +39,7 @@ public class ServiceAddressController : ControllerBase
             return BadRequest(result.Error);
         }
         
-        return Ok();
+        return Ok(result);
     }
 
     [HttpGet("[action]")]
@@ -49,6 +49,11 @@ public class ServiceAddressController : ControllerBase
     {
         var result = await _sender.Send(new GetServiceAddressListQuery(streetNames))
             .ConfigureAwait(false);
-        return Ok();
+        if (!result.IsSuccess)
+        {
+            return BadRequest(result.Error);
+        }
+        
+        return Ok(result);
     }
 }
