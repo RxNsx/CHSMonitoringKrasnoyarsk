@@ -489,7 +489,7 @@ public enum StreetNameEnum
     [Description("Взлётная")]
     Vzletnaya,
     [EnumGuid("98CF2682-83E7-4FB8-B745-33AB1605BF9F")]
-    [Description("Взлеетная")]
+    [Description("Взлетная")]
     Vzleetnaya,
     [EnumGuid("DC5498CD-1148-4A53-8BBA-55680B6BDD11")]
     [Description("Вильского")]
