@@ -66,7 +66,18 @@ public static class AddressParser
                 .Split(",", StringSplitOptions.TrimEntries)
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .ToList();
-            addressDictionary.Add(streetNameResult, numbers);
+
+            if (!addressDictionary.ContainsKey(streetNameResult))
+            {
+                addressDictionary.Add(streetNameResult, numbers);
+            }
+            else
+            {
+                foreach (var number in numbers)
+                {
+                    addressDictionary[streetNameResult].Add(number);
+                }
+            }
         }
 
         
@@ -141,17 +152,18 @@ public static class AddressParser
     /// <returns></returns>
     private static string GetResultStreetName(List<string> streetNameOccursList, string addressItem)
     {
+        if(addressItem.Contains("ч/сектор +ВРК:", StringComparison.InvariantCultureIgnoreCase))
+        {
+            var addressSubstring = addressItem.Substring("ч/сектор +ВРК:".Length, addressItem.Length - "ч/сектор +ВРК:".Length).Trim();
+            return streetNameOccursList.FirstOrDefault(x => addressSubstring.Contains(x, StringComparison.InvariantCultureIgnoreCase));
+        }
+        
         if (addressItem.Contains("ВРК:", StringComparison.InvariantCultureIgnoreCase))
         {
-            var result = addressItem.Substring("ВРК:".Length, addressItem.Length - "ВРК:".Length).Trim();
-            var indexOfSpace = result.IndexOf(" ", StringComparison.InvariantCultureIgnoreCase);
-            if (indexOfSpace != -1)
-            {
-                result = result.Substring(0, indexOfSpace);
-            }
-            
-            return streetNameOccursList.FirstOrDefault(x => result.Equals(x, StringComparison.InvariantCultureIgnoreCase));
+            var addressSubstring = addressItem.Substring("ВРК:".Length, addressItem.Length - "ВРК:".Length).Trim();
+            return streetNameOccursList.FirstOrDefault(x => addressSubstring.Contains(x, StringComparison.InvariantCultureIgnoreCase));
         }
+        
         
         if (streetNameOccursList.Count > 1)
         {
@@ -159,9 +171,13 @@ public static class AddressParser
             foreach (var symbol in addressItem)
             {
                 sb.Append(symbol);
-                if (streetNameOccursList.Any(x => x.Equals(sb.ToString(), StringComparison.InvariantCultureIgnoreCase)))
+                var matchingStreets = streetNameOccursList.Where(x => x.Equals(sb.ToString(), StringComparison.InvariantCultureIgnoreCase) || 
+                                                                      x.StartsWith(sb.ToString(), StringComparison.InvariantCultureIgnoreCase) || 
+                                                                      sb.ToString().StartsWith(x, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                if (matchingStreets.Count > 0)
                 {
-                    return sb.ToString();
+                    var bestMatch = matchingStreets.OrderByDescending(x => x.Length).FirstOrDefault();
+                    return bestMatch;
                 }
             }
         }

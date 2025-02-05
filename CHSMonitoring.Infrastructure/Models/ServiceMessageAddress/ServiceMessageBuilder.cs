@@ -44,7 +44,6 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
             _serviceMessage.SetDescription(additionalDescriptionValue);
         }
         
-        //TODO: Отсекать полностью строку если она начинается на какой то плановый вид обслуживания
         var splittedAddressesList = addressesText
             .Split(';', StringSplitOptions.TrimEntries)
             .ToList();
