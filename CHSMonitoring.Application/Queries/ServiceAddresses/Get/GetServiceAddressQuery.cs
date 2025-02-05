@@ -18,8 +18,8 @@ public class GetServiceAddressQuery : IRequest<ServiceAddress>
     /// <summary>
     /// Конструктор
     /// </summary>
-    /// <param name="StreetName"></param>
-    /// <param name="HouseNumber"></param>
+    /// <param name="streetName"></param>
+    /// <param name="houseNumber"></param>
     public GetServiceAddressQuery(string streetName, string houseNumber)
     {
         StreetName = streetName;
