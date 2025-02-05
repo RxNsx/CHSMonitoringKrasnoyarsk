@@ -47,7 +47,7 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
         var splittedAddressesList = addressesText
             .Split(';', StringSplitOptions.TrimEntries)
             .ToList();
-                            
+        splittedAddressesList = ReplaceAddreses(splittedAddressesList);
         var addresses = splittedAddressesList
             .Where(x => streetDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
             .ToList();
@@ -90,5 +90,44 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
     internal override ServiceMessage BuildServiceAddressMessage()
     {
         return _serviceMessage;
+    }
+
+    /// <summary>
+    /// Обработка улиц с буквами Е Ё
+    /// </summary>
+    /// <param name="addresses"></param>
+    /// <returns></returns>
+    private List<string> ReplaceAddreses(List<string> addresses)
+    {
+        var replaceAddresses = new List<(string original, string replaceAddress)>()
+        {
+            new("Алеши Тимошенкова", "Алёши Тимошенкова"),
+            new("Артемовская", "Артёмовская"),
+            new("Березовая", "Берёзовая"),
+            new("Веселая", "Весёлая"),
+            new("Взлетная", "Взлётная"),
+            new("Водометный", "Водомётный"),
+            new("Зеленый", "Зелёный"),
+            new("Озерная", "Озёрная"),
+            new("Таежная", "Таёжная"),
+            new("Черемуховая", "Черёмуховая"),
+            new("Шелковая", "Шёлковая"),
+            new("СК Березка-2", "СК Берёзка-2"),
+            new("СТ Березка", "СТ Берёзка"),
+            new("СТ Дом матери и ребенка", "СТ Дом матери и ребёнка"),
+        };
+        
+        for (var i = 0; i < addresses.Count; i ++)
+        {
+            foreach (var replacement in replaceAddresses)
+            {
+                if (addresses[i].Contains(replacement.original))
+                {
+                    addresses[i] = addresses[i].Replace(replacement.original, replacement.replaceAddress);
+                }
+            }
+        }
+
+        return addresses;
     }
 }
