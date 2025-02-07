@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using CHSMonitoring.Infrastructure.Attributes;
 
 namespace CHSMonitoring.Infrastructure.Models.Enums;
@@ -7,6 +6,10 @@ namespace CHSMonitoring.Infrastructure.Models.Enums;
 public enum StreetNameEnum
 {
     #region Улицы на букву A
+    
+    [EnumGuid("90174C55-9AC5-419F-B17F-8EAA54E4021C")]
+    [Description("Аллея Героев")]
+	AlleyaGeroev,
     
     [Description("Абазинский")]
     [EnumGuid("4B92ACAA-4050-42C3-88F6-CE52FA3B604D")]
@@ -124,6 +127,10 @@ public enum StreetNameEnum
     [EnumGuid("801E4F90-8CB9-41B2-9B06-595CD9D0F42D")]
     Altayskaya,
 
+    [Description("Алыкельская")]
+    [EnumGuid("2FA58061-934C-457F-A5DB-0C50D71EBBD8")]
+	AlykelSkaya,
+    
     [Description("6-я Алыкельская")]
     [EnumGuid("BB02DA51-9C41-4D96-9EA1-E032F02F6813")]
     _6yaAlykelSkaya,
@@ -286,8 +293,11 @@ public enum StreetNameEnum
     [Description("Березина")]
     Berezina,
     [EnumGuid("44C6E9D7-880E-48AD-A06D-4CE6B4383E79")]
-    [Description("Берёзовая")]
+    [Description("Березовая")]
     Berezovaya,
+    [EnumGuid("4E568110-E3F7-4003-A09A-D0A0032168CC")]
+    [Description("Берёзовая")]
+    Bereеzovaya,
     [EnumGuid("4C5BB0B5-9BE7-415B-9104-796688E74FA3")]
     [Description("Биатлонная")]
     Biathlonnaya,
@@ -464,6 +474,9 @@ public enum StreetNameEnum
     [EnumGuid("804A3DE9-F94A-4133-A457-06ED49AAA8FA")]
     [Description("Верхотельский")]
     VerkhotelSkiy,
+    [EnumGuid("CA3F816E-AF80-4DA3-9E2A-E57DF6270DBC")]
+    [Description("Верхоянский")]
+	Verkhoyanskiy,
     [EnumGuid("F751A786-4F95-4B0D-9A42-9E5FE960E1A5")]
     [Description("Весёлая")]
     Veselyaya,
@@ -527,6 +540,9 @@ public enum StreetNameEnum
     [EnumGuid("97B77775-7221-4D87-92D0-3422E86E89B6")]
     [Description("Вокзальная")]
     Vokzalnaya,
+    [EnumGuid("F8013085-A441-4BDA-A9CA-5427061091A5")]
+    [Description("Володарского")]
+	Volodarskogo,
     [EnumGuid("A8909F83-DFDD-46F0-A3E7-DFC14B921E24")]
     [Description("Волгоградская")]
     Volgogradskaya,
@@ -685,15 +701,27 @@ public enum StreetNameEnum
     [EnumGuid("D8018E5E-F122-46F6-8F8E-BEEF3B350C73")]
     [Description("Гремячий 1-й")]
     Gremyachiy1,
+    [EnumGuid("F8581F39-3C91-43E5-ADB9-B27AFE22208E")]
+    [Description("1-й Гремячий")]
+    Gremyachiy1r,
     [EnumGuid("6C0E6192-E1AA-4037-9738-18ABF28939EF")]
     [Description("Гремячий 2-й")]
     Gremyachiy2,
+    [EnumGuid("9D43804A-3B11-4634-80AC-EB48C8468E1E")]
+    [Description("2-й Гремячий")]
+    Gremyachiy2r,
     [EnumGuid("04AFB032-B407-48AF-AE29-5D9E57D05F88")]
     [Description("Гремячий 3-й")]
     Gremyachiy3,
+    [EnumGuid("F12C3CE0-B948-4322-BA51-3F819EB00103")]
+    [Description("3-й Гремячий")]
+	Gremyachiy3r,
     [EnumGuid("7A57137E-CCDF-4049-A491-B3C7C6F3C97F")]
     [Description("Гремячий 4-й")]
     Gremyachiy4,
+    [EnumGuid("C5A0B6B8-7E39-4EDF-97DB-3BD8DFD42D4C")]
+    [Description("4-й Гремячий")]
+    Gremyachiy4r,
     [EnumGuid("A47A16A2-4E2F-4816-A4D8-F41D7F5D4E66")]
     [Description("Грибная")]
     Gribyanaya,
@@ -762,6 +790,9 @@ public enum StreetNameEnum
     [EnumGuid("F6359F94-D76F-4F17-BE55-9053191C43DE")]
     [Description("Депутатская 2-я")]
     Deputatskaya2,
+    [EnumGuid("4E553FF4-202B-4A7B-8099-4C30833C7AB4")]
+    [Description("Демьяна Бедного")]
+	DemianaBednogo,
     [EnumGuid("FB6250CC-71BC-4BF4-BA8A-9AD9E6E54BCC")]
     [Description("2-я Депутатская")]
     Deputatska_ya2,
@@ -954,6 +985,15 @@ public enum StreetNameEnum
     [EnumGuid("725BA835-46A6-4F29-9BDF-D317E347DF13")]
     [Description("Затонский 3-й")]
     Zatonskiy3,
+    [EnumGuid("15F428A7-4C0F-4D10-8586-CCD8E224A4C9")]
+    [Description("1-й Затонский")]
+    Zatonskiy1r,
+    [EnumGuid("44698C0D-E30D-4F9A-86A6-D0D99FC2DA0C")]
+    [Description("2-й Затонский")]
+    Zatonskiy2r,
+    [EnumGuid("9FF63826-0B78-4E79-BE66-6720C832C093")]
+    [Description("3-й Затонский")]
+    Zatonskiy3r,
     [EnumGuid("706B8DE0-A5A4-4045-ABBB-60BECAA4B285")]
     [Description("Защитников Ленинграда")]
     ZashchitnikovLeningrada,
@@ -1010,6 +1050,12 @@ public enum StreetNameEnum
     [EnumGuid("4DF4C315-DED2-40E6-A851-E43DAB3B8ED9")]
     [Description("Индустриальный 2-й")]
     Industrialniy2,
+    [EnumGuid("9E0A25BC-FF04-4DA0-BFBD-F934122B9687")]
+    [Description("1-й Индустриальный")]
+    Industrialniy1r,
+    [EnumGuid("33FF3A0E-D1F3-4E1C-80DA-EFB71F8D81EE")]
+    [Description("2-й Индустриальный")]
+    Industrialniy2r,
     [EnumGuid("E32A7E68-D550-44D0-B773-19BC2E4B04D8")]
     [Description("Инженерный")]
     Inzhenerniy,
@@ -1124,8 +1170,8 @@ public enum StreetNameEnum
     [Description("Карбышева")]
     Karbyshova,
     [EnumGuid("CE15BB21-623D-4873-87F2-94BE1754D3F2")]
-    [Description("Кардагчинская")]
-    Kardagchinskaya,
+    [Description("Кардачинская")]
+	Kardachinskaya,
     [EnumGuid("D1D8E18B-41FC-47ED-AD3A-5C30E5B8C77A")]
     [Description("Карла Либкнехта")]
     KarlaLibknekhta,
@@ -1163,7 +1209,7 @@ public enum StreetNameEnum
     [Description("Квадратный")]
     Kvadratniy,
     [EnumGuid("A1075693-C31F-4024-B7E4-9754313EDD8A")]
-    [Description("Квартал 52-й")]
+    [Description("52-й Квартал")]
     Kvartal52,
     [EnumGuid("06FCDC0F-7BE8-43A5-9E0D-54AE3E5313D3")]
     [Description("Квартальная")]
@@ -1785,6 +1831,9 @@ public enum StreetNameEnum
     [EnumGuid("F546DBF7-E25F-4DBD-9377-A436A3F6A136")]
     [Description("Наклонная")]
     Naklonnaya,
+    [EnumGuid("0F6EE0CD-FBCB-46C0-A5D2-F94408057CA3")]
+    [Description("Набережная Качи")]
+	NaberezhnayaKachi,
     [EnumGuid("E5D91DFB-F488-4F79-B15E-FD4F894AF9ED")]
     [Description("Нанжульская")]
     Nanzhulskaya,
@@ -2201,7 +2250,7 @@ public enum StreetNameEnum
     [Description("Приусадебный")]
     Priusadebny,
     [EnumGuid("46ABD1E3-4FFA-4AA5-AE50-E490D46EF07D")]
-    [Description("Причальная 5-я")]
+    [Description("5-я Причальная")]
     Prichalnaya5,
     [EnumGuid("66C0C3EE-9EA4-45CA-8D44-C99034880F4E")]
     [Description("Прогулочная")]
@@ -2355,6 +2404,9 @@ public enum StreetNameEnum
     [EnumGuid("7F424E30-79AA-4202-9CE8-80B64CA27BA2")]
     [Description("Ремесленная")]
     Remeslennaya,
+    [EnumGuid("4C84DF46-0BCB-42D5-BEF1-BC348D3F2DD8")]
+    [Description("Ремезовская")]
+	Remezovskaya,
     [EnumGuid("5636F465-6A3B-4312-9EAE-323CC7E570F4")]
     [Description("Республика")]
     Respublika,
@@ -2379,15 +2431,15 @@ public enum StreetNameEnum
     [EnumGuid("2519EB75-C93D-4193-8F5B-7A8E86F47B44")]
     [Description("Рождественская")]
     Rozhdestvenskaya,
-    [EnumGuid("DCE21F81-D88C-4CF0-959A-445624539730")]
-    [Description("Рождественская")]
-    Rozhdestvenskaya2,
     [EnumGuid("FE8E3C0A-3D35-42B6-8ED3-BB71C2C84C76")]
     [Description("Розы Люксембург")]
     RozyLuksemburg,
     [EnumGuid("AEEA391C-6D24-4E09-AB9C-7C1BFBE35D9C")]
     [Description("Рокоссовского")]
     Rozhdonskogo,
+    [EnumGuid("F4CD6AF8-32EB-47BD-B537-2929B62B5494")]
+    [Description("Ромашковый")]
+	Romashkovyy,
     [EnumGuid("5CC17E89-9D03-4E1C-A0E4-4F8461BBD4E3")]
     [Description("Российская")]
     Rossiyskaya,
@@ -2445,7 +2497,7 @@ public enum StreetNameEnum
     [Description("Свердловская")]
     Sverdlovskaya,
     [EnumGuid("5F6F9D87-4C06-489A-AFB6-87B18B5623E0")]
-    [Description("Светлая Элита")]
+    [Description("Светлая")]
     SvetlayaElita,
     [EnumGuid("19874D33-8C26-48C6-B41B-CA9393DF71A2")]
     [Description("Светлова")]
@@ -2456,9 +2508,6 @@ public enum StreetNameEnum
     [EnumGuid("83880821-3B54-4BB2-AB24-934A10929F6E")]
     [Description("Светлогорский")]
     Svetlogorskiy,
-    [EnumGuid("00873C50-91BF-4F5C-A57E-BBD126A78EC2")]
-    [Description("Светлогорский")]
-    Svetlogorskiy2,
     [EnumGuid("9E266437-B441-415E-8F1F-528E185FE0F5")]
     [Description("Светлый")]
     Svetliy,
@@ -2571,13 +2620,13 @@ public enum StreetNameEnum
     [Description("Смоленская 3-я")]
     Smolenskaya3,
     [EnumGuid("BEEA32AD-EC62-4C24-A39A-752B3F14BD4C")]
-    [Description("1-я Смоленская ")]
+    [Description("1-я Смоленская")]
     Smolenskaya1r,
     [EnumGuid("BA0B9C9D-A155-4BD0-B926-365A81F4EF0E")]
-    [Description("2-я Смоленская ")]
+    [Description("2-я Смоленская")]
     Smolenskaya2r,
     [EnumGuid("A9C384F7-12F0-4104-B093-3A002BE78108")]
-    [Description("3-я Смоленская ")]
+    [Description("3-я Смоленская")]
     Smolenskaya3r,
     [EnumGuid("0976C806-7D20-4BC2-8D20-171F7704BF0D")]
     [Description("Снежная")]
@@ -2932,7 +2981,7 @@ public enum StreetNameEnum
     [Description("Ухоженный")]
     Ukhozhenniy,
     [EnumGuid("F7BEE84B-BE55-483C-A3FE-5432B7F57BE5")]
-    [Description("Участок 5-й")]
+    [Description("5-й Участок")]
     Uchastok5,
     [EnumGuid("56168172-D0F3-4195-900F-080FC7325E0E")]
     [Description("Учумская")]
@@ -3110,7 +3159,7 @@ public enum StreetNameEnum
     [Description("Шиверская")]
     Shiverskaya,
     [EnumGuid("C11816D5-BAED-451D-B3B5-0C67702C0893")]
-    [Description("Шиндандская улица")]
+    [Description("Шиндандская")]
     Shindandskaya,
     [EnumGuid("CD4C43C5-1372-47CF-A4FF-245381B66CBF")]
     [Description("Шинная 1-я")]
@@ -3128,7 +3177,7 @@ public enum StreetNameEnum
     [Description("1-я Шинная")]
     Shinnaya1r,
     [EnumGuid("01C4F04A-8878-4A76-AEC8-ED4443326BC7")]
-    [Description("1-я Шинная")]
+    [Description("2-я Шинная")]
     Shinnaya2r,
     [EnumGuid("35C4C5BA-F113-4206-AE52-3D76A84FDFC8")]
     [Description("3-я Шинная")]
@@ -3287,6 +3336,9 @@ public enum StreetNameEnum
 
     #region Улицы на цифру
 
+    [EnumGuid("F1C64C8D-5AB5-4292-A0DE-513B03B388D6")]
+    [Description("1905 года")]
+	Year1905,
     [EnumGuid("CA7F0141-102E-4AB3-A2A4-23C5A62E3B8B")]
     [Description("3 Августа")]
     ThirdOfAugust,
