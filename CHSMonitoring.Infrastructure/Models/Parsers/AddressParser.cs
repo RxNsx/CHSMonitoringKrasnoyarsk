@@ -84,6 +84,7 @@ public static class AddressParser
         HashSet<(string streetNames, string number)> uniqueAddresses = new();
         var regexAddressWithSlash = new Regex(@"\b\d+[а-яА-Я]?\d*/\d+\b", RegexOptions.Compiled);
         var regexRegularAddress = new Regex(@"^[а-яА-Я]", RegexOptions.Compiled);
+        var regexAddressStartWithNumbers = new Regex(@"^\d", RegexOptions.Compiled);
         foreach (var item in addressDictionary)
         {
             if (item.Value.Any())
@@ -121,8 +122,11 @@ public static class AddressParser
                     }
                 
                     var splitNumber = number.Split("-", StringSplitOptions.TrimEntries);
-                    if (splitNumber.Length == 2 && Regex.IsMatch(splitNumber[0], @"^\d") && Regex.IsMatch(splitNumber[1], @"\d"))
+                    if (splitNumber.Length == 2 
+                        && regexAddressStartWithNumbers.IsMatch(splitNumber[0]) && regexAddressStartWithNumbers.IsMatch(splitNumber[1]))
                     {
+                        //TODO: Решить вопрос с парсингом адресов тут формата 13a 13ст1 32а ст1
+                        
                         var normalizedNumber = int.Parse(splitNumber[0].NormalizedSplitNumber());
                         var normalizedNumber2 = int.Parse(splitNumber[1].NormalizedSplitNumber());
                         for (var initialNumber = Math.Min(normalizedNumber, normalizedNumber2); initialNumber <= Math.Max(normalizedNumber,normalizedNumber2); initialNumber++)
@@ -163,7 +167,6 @@ public static class AddressParser
             var addressSubstring = addressItem.Substring("ВРК:".Length, addressItem.Length - "ВРК:".Length).Trim();
             return streetNameOccursList.FirstOrDefault(x => addressSubstring.Contains(x, StringComparison.InvariantCultureIgnoreCase));
         }
-        
         
         if (streetNameOccursList.Count > 1)
         {

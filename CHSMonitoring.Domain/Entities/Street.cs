@@ -13,10 +13,12 @@ public class Street : Entity
     /// Описание улицы
     /// </summary>
     public string Description { get; set; }
+    
     /// <summary>
     /// Номера домов
     /// </summary>
     public string HouseNumbers { get; set; }
+    
     /// <summary>
     /// Признак только для чтения 
     /// </summary>

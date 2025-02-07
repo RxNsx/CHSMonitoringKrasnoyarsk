@@ -21,6 +21,9 @@ public class StreetConfiguration : IEntityTypeConfiguration<Street>
             .HasMaxLength(150)
             .HasDefaultValue(string.Empty);
 
+        builder.Property(x => x.HouseNumbers)
+            .HasDefaultValue(string.Empty);
+
         builder.Property(x => x.IsReadonly)
             .HasDefaultValue(true);
         
@@ -31,11 +34,14 @@ public class StreetConfiguration : IEntityTypeConfiguration<Street>
     {
         var streetEnums = Enum.GetValues(typeof(StreetNameEnum))
             .Cast<StreetNameEnum>()
-            .Select(x => new Street
+            .Select(x =>
             {
-                Id = x.GetGuidValue(),
-                Name = x.GetDescriptionValue(),
-                HouseNumbers = string.Join(',', x.GetHouseNumbersCollection()) 
+                return new Street()
+                {
+                    Id = x.GetGuidValue(),
+                    Name = x.GetDescriptionValue(),
+                    HouseNumbers = string.Join(", ", x.GetHouseNumbersCollection())
+                };
             })
             .ToList();
         

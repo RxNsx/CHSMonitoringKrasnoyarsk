@@ -2,10 +2,10 @@
 
 public class HouseNumbersAttribute : Attribute
 {
-    public string[] Value { get; private set; }
+    public List<string> Value { get; private set; }
 
-    public HouseNumbersAttribute(string[] value)
+    public HouseNumbersAttribute(params string[] value)
     {
-        Value = value;
+        Value = new List<string>(value);
     }
 }

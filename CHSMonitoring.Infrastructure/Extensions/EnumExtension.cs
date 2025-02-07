@@ -39,10 +39,16 @@ public static class EnumExtension
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string[] GetHouseNumbersCollection(this Enum value)
+    public static List<string> GetHouseNumbersCollection(this Enum value)
     {
         var field = value.GetType().GetField(value.ToString());
         var attribute = field.GetCustomAttribute(typeof(HouseNumbersAttribute), false);
+
+        if (attribute is null)
+        {
+            return new List<string>();
+        }
+
         return ((HouseNumbersAttribute)attribute).Value;
     }
 }
