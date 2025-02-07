@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using CHSMonitoring.Infrastructure.Models.Enums;
 
 namespace CHSMonitoring.Infrastructure.Extensions;
 
@@ -46,26 +47,6 @@ public static class TextExtensions
         return Regex.Replace(text, @"\s+", " ");
     }
 
-    /// <summary>
-    /// Форматирование строки без наличия символом каретки \r
-    /// </summary>
-    /// <param name="text"></param>
-    /// <returns></returns>
-    public static string NormalizeTextWithNewLine(this string text)
-    {
-        text = text.Trim();
-            
-        var newLineSymbolsCount = Regex.Matches(text, "\n").Count;
-        var carriageSymbolsCount = Regex.Matches(text, "\r").Count;
-
-        if (newLineSymbolsCount > 0 && carriageSymbolsCount == 0)
-        {
-            return Regex.Replace(text, "\n", "\r\n");
-        }
-        
-        return text;
-    }
-
     public static string NormalizedSplitNumber(this string text)
     {
         text = text.Trim();
@@ -76,5 +57,101 @@ public static class TextExtensions
         }
         
         return text.Substring(0, indexOfSpace);
+    }
+
+    /// <summary>
+    /// Преобразование адресов при парсинге с сайта с информацией улиц города
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    public static string NormalizeActualDataText(this string text)
+    {
+        return text
+            //Специфика сайта и строки
+            .Replace("на карте красноярска", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("в красноярске", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("- Красноярск", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("логовой", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("березовка", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("садовое товарищество химик", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("микрорайон cеверный", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("ст химик", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("микрорайон удачный", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("бугачево", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("деревня Минино", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("элита", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            //cкобки
+            .Replace("(", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace(")", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            //район
+            .Replace(DistrictEnum.Okt.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace(DistrictEnum.Jlz.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace(DistrictEnum.Cen.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace(DistrictEnum.Sov.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace(DistrictEnum.Kir.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace(DistrictEnum.Len.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace(DistrictEnum.Sve.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            //приставка перед названием улицы
+            .Replace("улица", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("площадь", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("переулок", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("сквер", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("бульвар", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("проезд", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("проспект", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("микрорайон", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("шоссе", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("набережная", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            //Улицы двойного названия
+            .Replace("Академика Павлова", "Павлова", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Академика Вавилова", "Вавилова", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Анатолия Гладкова", "Гладкова", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Академика Киренского", "Киренского", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Александра Матросова", "Матросова", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Проспект имени Газеты Красноярский Рабочий", "Красноярский рабочий", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("имени Газеты Красноярский Рабочий", "Красноярский рабочий", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("имени Газеты Пионерская Правда", "Пионерская Правда", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("имени Я.М. Свердлова", "Я.М. Свердлова", StringComparison.InvariantCultureIgnoreCase)
+            //Е - Ё
+            .Replace("Алеши Тимошенкова", "Алёши Тимошенкова", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Артемовская", "Артёмовская", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Березовая", "Берёзовая", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Веселая", "Весёлая", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Взлетная", "Взлётная", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Водометный", "Водомётный", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Зеленый", "Зелёный", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Озерная", "Озёрная", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Таежная", "Таёжная", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Черемуховая", "Черёмуховая", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Шелковая", "Шёлковая", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("СК Березка-2", "СК Берёзка-2", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("СТ Березка", "СТ Берёзка", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("СТ Дом матери и ребенка", "СТ Дом матери и ребёнка", StringComparison.InvariantCultureIgnoreCase)
+            //Удаляет слово Остров
+            .ReplaceIslandWord()
+            //Сокращает лишние пробелы
+            .NormalizeSpaces()
+            .Trim();
+    }
+
+    private static string ReplaceIslandWord(this string outputText)
+    {
+        if (outputText.Contains("остров", StringComparison.InvariantCultureIgnoreCase))
+        {
+            var words = outputText.Split(" ").ToList();
+            var islandWord = words.FirstOrDefault(x => x.Equals("остров", StringComparison.InvariantCultureIgnoreCase));
+            if (islandWord is not null)
+            {
+                words.Remove(islandWord!);
+                return string.Join(' ', words);
+            }
+        }
+
+        return outputText;
+    }
+
+    private static string NormalizeSpaces(this string outputText)
+    {
+        return Regex.Replace(outputText, @"\s+", " ", RegexOptions.Compiled);
     }
 }

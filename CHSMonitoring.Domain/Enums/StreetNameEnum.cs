@@ -71,21 +71,13 @@ public enum StreetNameEnum
     [EnumGuid("877FE754-DBE1-4BFB-A139-4CA78C88EE2B")]
     Akademgorodok,
 
-    [Description("Академика Вавилова")]
+    [Description("Вавилова")]
     [EnumGuid("C3C9289F-F743-45D2-98DA-2168F7FD4177")]
     AkademikaVavilova,
-
-    [Description("Академика Киренского")]
-    [EnumGuid("D1634B26-4043-452F-924A-61E8BB1EDDAD")]
-    AkademikaKirenskogo,
 
     [Description("Киренского")]
     [EnumGuid("ED8B6C97-9793-40E0-9C32-2029D89F46DA")]
     Kirenskogo,
-
-    [Description("Академика Павлова")]
-    [EnumGuid("C385DAD2-CB71-4045-B62D-AEF9F2652E7B")]
-    AkademikaPavlova,
 
     [Description("Павлова")]
     [EnumGuid("2D429E79-1A28-4626-B987-F42EF2133D00")]
@@ -98,10 +90,6 @@ public enum StreetNameEnum
     [Description("Акционерная")]
     [EnumGuid("9666F17C-CEBC-4369-AFF6-26C99A115D38")]
     Aktsionernaya,
-
-    [Description("Александра Матросова")]
-    [EnumGuid("677A92AD-E011-47A7-A7F0-E20E4E9C2690")]
-    AleksandraMatrosova,
 
     [Description("Матросова")]
     [EnumGuid("367A6589-A7F5-4D23-9212-03094C70CE5F")]
@@ -126,6 +114,10 @@ public enum StreetNameEnum
     [Description("Алтайская")]
     [EnumGuid("801E4F90-8CB9-41B2-9B06-595CD9D0F42D")]
     Altayskaya,
+    
+    [Description("6-я Алтайская")]
+    [EnumGuid("C9DCDC73-1F7E-4278-89AA-766DD5FCC8D3")]
+    Altayskaya6,
 
     [Description("Алыкельская")]
     [EnumGuid("2FA58061-934C-457F-A5DB-0C50D71EBBD8")]
@@ -155,7 +147,7 @@ public enum StreetNameEnum
     [EnumGuid("297766AA-5551-4418-B824-930CCD040EA5")]
     Anabarskaya,
 
-    [Description("Анатолия Гладкова")]
+    [Description("Гладкова")]
     [EnumGuid("0786249C-7911-423E-9DEC-647953EB64F3")]
     AnatoliyaGladkova,
 
@@ -334,6 +326,9 @@ public enum StreetNameEnum
     [EnumGuid("66730A61-F9C0-40A0-8BD9-872FF6193536")]
     [Description("Боготольский")]
     BogotolSkiy,
+    [EnumGuid("1237562F-07CB-45C1-ADA9-5D83583817F4")]
+    [Description("Большой")]
+    Bolshoy,
     [EnumGuid("5AD1B114-F218-419A-98F5-A839E6721B0C")]
     [Description("Бограда")]
     Bograda,
@@ -1839,7 +1834,7 @@ public enum StreetNameEnum
     [Description("Наклонная")]
     Naklonnaya,
     [EnumGuid("0F6EE0CD-FBCB-46C0-A5D2-F94408057CA3")]
-    [Description("Набережная Качи")]
+    [Description("Качи")]
 	NaberezhnayaKachi,
     [EnumGuid("E5D91DFB-F488-4F79-B15E-FD4F894AF9ED")]
     [Description("Нанжульская")]
@@ -2396,6 +2391,9 @@ public enum StreetNameEnum
     [EnumGuid("399270A4-4F3B-417A-B366-E56474D53D64")]
     [Description("Раскатная")]
     Raskatnaya,
+    [EnumGuid("383AA960-1CFD-405B-8A8E-9FE77EB37822")]
+    [Description("Республики")]
+    Respubliki,
     [EnumGuid("9978B431-DC84-4F32-B69D-BB4DEBA8C843")]
     [Description("Рассветная")]
     Rossvetnaya,
@@ -3344,7 +3342,7 @@ public enum StreetNameEnum
     [Description("Якутская")]
     Yakutskaya,
     [EnumGuid("7087001E-D069-411F-B5EF-455D9F17F442")]
-    [Description("Якутская 1-я")]
+    [Description("1-я Якутская")]
     Yakutskaya1,
     [EnumGuid("D752869D-10F3-47A0-B45F-7D828BD5284E")]
     [Description("Ялтинский")]

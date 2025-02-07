@@ -1,6 +1,7 @@
 ﻿using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Repositories;
+using CHSMonitoring.Infrastructure.Services;
 using CHSMonitoring.Infrastructure.Workers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,12 +20,16 @@ public static class AddInfrastructureDependencies
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfigurationManager configurationManager)
     {
         services.AddScoped<IServiceAddressRepository, ServiceAddressRepository>();
+        services.AddScoped<IStreetRepository, StreetRepository>();
+        services.AddScoped<IStreetNameService, StreetNameService>();
+        
         services.AddDbContext<MonitoringDbContext>(options =>
         {
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
         });
 
         // services.AddHostedService<ServiceMessageWorker>();
+        services.AddHostedService<ActualDataWorker>();
         
         return services;
     }
