@@ -8,7 +8,7 @@ public enum StreetNameEnum
     #region Улицы на букву A
     
     [EnumGuid("90174C55-9AC5-419F-B17F-8EAA54E4021C")]
-    [Description("Аллея Героев")]
+    [Description("Аллея Героев Чернобыля")]
 	AlleyaGeroev,
     
     [Description("Абазинский")]
@@ -484,6 +484,7 @@ public enum StreetNameEnum
     [Description("Веселовская")]
     Veselovskaya,
     [EnumGuid("581C04DD-2F77-49EE-9B27-F05E16196560")]
+    [HouseNumbers([ "1", "2", "3", "4", "5", "6", "8", "12", "13", "15", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26" ])]
     [Description("Весенняя")]
     VesenNaya,
     [EnumGuid("251AC25F-A1D4-4D2F-AEE7-9495BC00C3D7")]
@@ -556,6 +557,7 @@ public enum StreetNameEnum
     [Description("Волочаевская")]
     Volochayevskaya,
     [EnumGuid("E0B03896-498A-44BD-96C0-B4194F14E57D")]
+    [HouseNumbers(["4", "8", "10"])]
     [Description("Волочанская")]
     Volochanskaya,
     [EnumGuid("524A9233-0ACE-4783-80EF-8F8C5431502E")]
@@ -621,6 +623,7 @@ public enum StreetNameEnum
     [Description("Гастелло")]
     Gastello,
     [EnumGuid("2036B070-16A2-4E11-85CE-90F22848295C")]
+    [HouseNumbers(["5"])]
     [Description("Геодезическая")]
     Geodezicheskaya,
     [EnumGuid("8088B005-3CCC-4DB3-ADE6-38DBAF22A953")]
@@ -998,6 +1001,7 @@ public enum StreetNameEnum
     [Description("Защитников Ленинграда")]
     ZashchitnikovLeningrada,
     [EnumGuid("A9FC31EE-D7E1-4233-979F-87D4B6426147")]
+    [HouseNumbers(["4"])]
     [Description("Зелёный")]
     Zelyoniy,
     [EnumGuid("83DB9744-AFD9-4BB8-81FA-1D95FF3F8291")]
@@ -1018,6 +1022,7 @@ public enum StreetNameEnum
     [Description("Игарская")]
     Igarskaya,
     [EnumGuid("E66C9927-EFF9-4B63-8E2A-EFD11C31C671")]
+    [HouseNumbers(["2", "5", "8", "13", "15"])]
     [Description("Извилистая")]
     Izvilistaya,
     [EnumGuid("C0C35655-3166-4928-905F-4CC93F3C59FE")]
@@ -1332,6 +1337,7 @@ public enum StreetNameEnum
     [Description("Космическая")]
     Kosmicheskaya,
     [EnumGuid("6804E765-67B2-44D5-8141-77F1463D064A")]
+    [HouseNumbers(["6", "8", "16", "25", "27"])]
     [Description("Космонавтов")]
     Kosmonavtov,
     [EnumGuid("DD03C61A-3C85-4BB6-AAAF-8F25EB5DB98B")]
@@ -1728,6 +1734,7 @@ public enum StreetNameEnum
     [Description("2-я Мелькомбинатская")]
     Melkombinatska_ya2,
     [EnumGuid("830771D8-B277-41D0-B30B-F917A3141E8F")]
+    [HouseNumbers(["5г"])]
     [Description("Менделеева")]
     Mendeleeva,
     [EnumGuid("529B39CC-9BEA-4E20-8160-0AEDF15C72C4")]
@@ -1856,6 +1863,7 @@ public enum StreetNameEnum
     [Description("Нестерова")]
     Nesterova,
     [EnumGuid("8150236D-6179-4677-AD81-4BADF5AFB56B")]
+    [HouseNumbers(["11", "11/1"])]
     [Description("Нефтяной")]
     Neftyanoy,
     [EnumGuid("424BDEA0-395A-4C9E-B7EA-075BC5DE0610")]
@@ -1912,6 +1920,7 @@ public enum StreetNameEnum
     [Description("Облачная")]
     Oblachnaya,
     [EnumGuid("01C087A9-B6A1-4BA2-9D72-DFC7DDD0A22E")]
+    [HouseNumbers(["1","3","5","7","9","11","13","14","16","18","20","21","23","24","25","26","28","29","31","32","33","34","37","38","40","41","43","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67"])]
     [Description("Облепиховая")]
     Oblepikhovaya,
     [EnumGuid("37E1B7E2-0455-488E-B36E-E1B68F63FEE9")]
@@ -1972,6 +1981,7 @@ public enum StreetNameEnum
     [Description("Орловская")]
     Orlovskaya,
     [EnumGuid("56A96858-9D86-4024-B42C-2AD73E1EF2B9")]
+    [HouseNumbers(["3","5","6","9","11"])]
     [Description("Осенняя")]
     Osennaya,
     [EnumGuid("7A3DFC55-2BFF-4FA9-8844-C616F75FBCC0")]
@@ -2402,6 +2412,7 @@ public enum StreetNameEnum
     [Description("Ремесловская")]
     Remeslovskaya,
     [EnumGuid("7F424E30-79AA-4202-9CE8-80B64CA27BA2")]
+    [HouseNumbers(["17", "17/2", "17/7", "19", "19/1", "19/2", "19/3", "19/4", "19/5", "19/6", "25", "25/1", "45/18", "45/19", "45/20", "45/21", "45/22"])]
     [Description("Ремесленная")]
     Remeslennaya,
     [EnumGuid("4C84DF46-0BCB-42D5-BEF1-BC348D3F2DD8")]
@@ -2429,6 +2440,7 @@ public enum StreetNameEnum
     [Description("Родниковая")]
     Rodnikovaya,
     [EnumGuid("2519EB75-C93D-4193-8F5B-7A8E86F47B44")]
+    [HouseNumbers(["1","2","3","4","5"])]
     [Description("Рождественская")]
     Rozhdestvenskaya,
     [EnumGuid("FE8E3C0A-3D35-42B6-8ED3-BB71C2C84C76")]
@@ -2590,6 +2602,7 @@ public enum StreetNameEnum
     [Description("Сиреневая")]
     Sirennevaya,
     [EnumGuid("4510662F-43F5-4035-BEF0-7E732B19295C")]
+    [HouseNumbers(["4"])]
     [Description("Сисимский")]
     Sisimskiy,
     [EnumGuid("1D3B08B4-9AB5-45CA-AD10-153422A99FB5")]
@@ -2608,6 +2621,7 @@ public enum StreetNameEnum
     [Description("Славянская")]
     Slavyanskaya,
     [EnumGuid("0E2ABED1-ED64-43E4-8F54-91A207FA2D5A")]
+    [HouseNumbers(["2","6"])]
     [Description("Слободская")]
     Slobodskaya,
     [EnumGuid("D3ED33EF-E0D5-40A3-93CB-4C91FB49B23D")]
@@ -2889,6 +2903,7 @@ public enum StreetNameEnum
     [Description("Туманный")]
     Tumanniy,
     [EnumGuid("BAB097FD-8126-401B-9EBF-9C60D264FA6A")]
+    [HouseNumbers(["5"])]
     [Description("Тупиковый")]
     Tupikoviy,
     [EnumGuid("0608E7BC-5B11-4795-8C53-73D2681B8B4A")]
@@ -3071,6 +3086,19 @@ public enum StreetNameEnum
     [Description("Цветочная")]
     Tsvetochnaya,
     [EnumGuid("3CCECF9B-26C7-46BC-AAB8-69ADC98A6681")]
+    [HouseNumbers([
+	    "1","2","5","6","7","8",
+	    "10","12","14","16","17",
+	    "26","29","30","31","32","34","36","37","38","39","39а",
+	    "43","44","45","47","49",
+	    "84","85","86","87","88","89",
+	    "90","91","92","93","94","94а","95","96","97","98","99",
+	    "100","101","102","103","104","105",
+	    "112",
+	    "319",
+	    "320","326",
+	    "331","332","335"
+    ])]
     [Description("Цветущая")]
     Tsvetusshaya,
     [EnumGuid("ABE34199-D3EE-46DD-BBB4-9CCB07E9E3AA")]
@@ -3284,9 +3312,26 @@ public enum StreetNameEnum
     [Description("Ягельный")]
     Yagelniy,
     [EnumGuid("6742EC20-B322-44E9-838D-ABA385E07868")]
+    [HouseNumbers([
+	    "49",
+	    "50", "51", "52", "53", "54", "55", "56", "57", "58", "59",
+	    "60", "61", "62", "63", "64", "65", "66", "67", "68", "69",
+	    "70", "71",
+	    "125",
+	    "286",
+	    "290",
+	    "329",
+	    "330", "335", "337", "338", "339",
+	    "340", "340а", "341", "342", "343", "344", "345", "346",
+	    "351", "353", "355", "356", "357", "358",
+	    "360", "361", "363", "365", "366", "367", "368", "369",
+	    "370", "371", "372", "375", "376", "379",
+	    "381", "382", "383" 
+    ])]
     [Description("Ягодная")]
     Yagodnaya,
     [EnumGuid("7E048420-86AB-4480-8092-70B30A97DD10")]
+    [HouseNumbers(["6","8"])]
     [Description("Ягодный")]
     Yagodniy,
     [EnumGuid("9DDDB5FE-F429-49F4-BAC3-E9940AD27813")]

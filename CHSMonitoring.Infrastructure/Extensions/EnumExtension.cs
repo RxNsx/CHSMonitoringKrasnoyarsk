@@ -33,4 +33,16 @@ public static class EnumExtension
         return ((EnumGuidAttribute)attribute).GuidValue;
 
     }
+
+    /// <summary>
+    /// Получить колелкцию значений из аттрибутов
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string[] GetHouseNumbersCollection(this Enum value)
+    {
+        var field = value.GetType().GetField(value.ToString());
+        var attribute = field.GetCustomAttribute(typeof(HouseNumbersAttribute), false);
+        return ((HouseNumbersAttribute)attribute).Value;
+    }
 }

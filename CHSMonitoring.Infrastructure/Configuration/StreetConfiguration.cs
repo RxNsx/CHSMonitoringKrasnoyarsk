@@ -35,6 +35,7 @@ public class StreetConfiguration : IEntityTypeConfiguration<Street>
             {
                 Id = x.GetGuidValue(),
                 Name = x.GetDescriptionValue(),
+                HouseNumbers = string.Join(',', x.GetHouseNumbersCollection()) 
             })
             .ToList();
         
