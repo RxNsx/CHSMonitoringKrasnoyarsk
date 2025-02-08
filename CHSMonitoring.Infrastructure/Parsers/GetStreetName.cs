@@ -9,7 +9,7 @@ namespace CHSMonitoring.Infrastructure.Models.Parsers;
 /// <summary>
 /// Парсер адресов
 /// </summary>
-public static class AddressParser
+public static class GetStreetName
 {
     /// <summary>
     /// Получить адреса из строки

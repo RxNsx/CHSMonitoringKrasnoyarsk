@@ -15,6 +15,13 @@ public interface IAddressParserService
     Dictionary<string, List<string>> GetAddressDictFromAddressText(string addressText);
 
     /// <summary>
+    /// Распарсить номера домов в список адресов отключений
+    /// </summary>
+    /// <param name="addressDict"></param>
+    /// <returns></returns>
+    Task<List<Address>> ParseAddressNumbers(Dictionary<string, List<string>> addressDict);
+    
+    /// <summary>
     /// Получить доп описание отключения, чистый текст без доп описания
     /// </summary>
     /// <param name="plannedDescriptionText"></param>

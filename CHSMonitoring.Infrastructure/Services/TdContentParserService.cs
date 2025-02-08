@@ -90,7 +90,9 @@ public class TdContentParserService : ITdContentParserService
             serviceAddressMessageBuilder.BuildOrganization(organizationText);
             
             var plannedDescriptionMessage = _addressParserService.GetPlannedDescriptionMessage(addressesText);
-            var addressDict = _addressParserService.GetAddressDictFromAddressText(plannedDescriptionMessage.outputText);
+            //TODO: Set Description
+            var addressDictionary = _addressParserService.GetAddressDictFromAddressText(plannedDescriptionMessage.outputText);
+            var qwe = _addressParserService.ParseAddressNumbers(addressDictionary);
             
             
             // serviceAddressMessageBuilder.AddAddressesList(addressesText);
@@ -103,36 +105,36 @@ public class TdContentParserService : ITdContentParserService
         }
         
         
-        Parallel.ForEach(tableDescriptionList, 
-            new ParallelOptions()
-            {
-                //4 Паралелльных операции
-                MaxDegreeOfParallelism = 4
-            },
-            tableDescriptionItem =>
-        {
-            var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index))
-                .Key;
-            var serviceAddressMessageBuilder = new ServiceMessageBuilder();
-            var organizationText = tableDescriptionItem[0].InnerText.NormalizeText();
-            var addressesText = tableDescriptionItem[1].InnerText.NormalizeText();
-            var dateInfoText = tableDescriptionItem[2].InnerText.NormalizeText();
-
-            serviceAddressMessageBuilder.BuildOrganization(organizationText);
-
-
-
-            var plannedDescriptionMessage = _addressParserService.GetPlannedDescriptionMessage(addressesText);
-            var addressList = _addressParserService.GetAddressDictFromAddressText(addressesText);
-            
-            serviceAddressMessageBuilder.AddAddressesList(addressesText);
-            serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
-            serviceAddressMessageBuilder.AddDistrictName(districtKey);
-            var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
-
-            serviceAddressDict.GetOrAdd(districtKey, key => new List<ServiceMessage>())
-                .Add(supplyMessageDescription);
-        });
+        // Parallel.ForEach(tableDescriptionList, 
+        //     new ParallelOptions()
+        //     {
+        //         //4 Паралелльных операции
+        //         MaxDegreeOfParallelism = 4
+        //     },
+        //     tableDescriptionItem =>
+        // {
+        //     var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index))
+        //         .Key;
+        //     var serviceAddressMessageBuilder = new ServiceMessageBuilder();
+        //     var organizationText = tableDescriptionItem[0].InnerText.NormalizeText();
+        //     var addressesText = tableDescriptionItem[1].InnerText.NormalizeText();
+        //     var dateInfoText = tableDescriptionItem[2].InnerText.NormalizeText();
+        //
+        //     serviceAddressMessageBuilder.BuildOrganization(organizationText);
+        //
+        //
+        //
+        //     var plannedDescriptionMessage = _addressParserService.GetPlannedDescriptionMessage(addressesText);
+        //     var addressList = _addressParserService.GetAddressDictFromAddressText(addressesText);
+        //     
+        //     serviceAddressMessageBuilder.AddAddressesList(addressesText);
+        //     serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
+        //     serviceAddressMessageBuilder.AddDistrictName(districtKey);
+        //     var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
+        //
+        //     serviceAddressDict.GetOrAdd(districtKey, key => new List<ServiceMessage>())
+        //         .Add(supplyMessageDescription);
+        // });
 
         return GetServiceAddressList(serviceAddressDict.ToDictionary());
     }

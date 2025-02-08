@@ -16,5 +16,13 @@ public static class CommonData
             .Cast<StreetNameEnum>()
             .Select(x => (Id: x.GetGuidValue(), StreetName: x.GetDescriptionValue()))
             .ToList();
-        
+    
+    /// <summary>
+    /// Словарь сообщений отключений
+    /// </summary>
+    public static List<string> PlannedData
+        => Enum.GetValues(typeof(PlannedSupplyTypeEnum))
+            .Cast<PlannedSupplyTypeEnum>()
+            .Select(x => x.GetDescriptionValue())
+            .ToList();
 }

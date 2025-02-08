@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.Domain.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -51,6 +52,13 @@ public class StreetRepository : IStreetRepository
     {
         return await _context.Streets
             .FirstOrDefaultAsync(x => x.Id == streetId, cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<Street> GetStreetAsync(string streetName, CancellationToken cancellationToken)
+    {
+        return await _context.Streets
+            .FirstOrDefaultAsync(x => x.Name.Equals(streetName, StringComparison.InvariantCultureIgnoreCase), cancellationToken)
             .ConfigureAwait(false);
     }
 }
