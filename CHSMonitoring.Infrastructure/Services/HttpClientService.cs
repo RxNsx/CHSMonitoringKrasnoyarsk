@@ -17,7 +17,7 @@ public class HttpClientService : IHttpClientService
         _httpClient = httpClientFactory.CreateClient("client");
     }
 
-    public async Task<HtmlDocument> GetHtmlDocumentByUrlAsync(string url, CancellationToken stoppingToken)
+    public async Task<HtmlDocument> GetChsHtmlDocumentByUrlAsync(string url, CancellationToken stoppingToken)
     {
         var reply = await _httpClient.GetByteArrayAsync("http://93.92.65.26/aspx/GorodM.htm", stoppingToken)
             .ConfigureAwait(false);
@@ -30,6 +30,17 @@ public class HttpClientService : IHttpClientService
         var htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(result);
 
+        return htmlDocument;
+    }
+
+    public async Task<HtmlDocument> GetGInfoHtmlDocumentByUrlAsync(string url, CancellationToken stoppingToken)
+    {
+        using var client = new HttpClient();
+        var response = await client.GetAsync(url).ConfigureAwait(false);
+        var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+        var htmlDocument = new HtmlDocument();
+        htmlDocument.LoadHtml(responseContent);
         return htmlDocument;
     }
 }

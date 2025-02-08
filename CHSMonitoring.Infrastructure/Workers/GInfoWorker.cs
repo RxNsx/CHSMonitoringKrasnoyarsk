@@ -1,7 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using CHSMonitoring.Infrastructure.Extensions;
+﻿using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
+using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using HtmlAgilityPack;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -13,28 +14,30 @@ public class GInfoWorker : BackgroundService
     private readonly IServiceScope _serviceScope;
     private readonly IStreetRepository _streetRepository;
     private readonly IStreetNameService _streetNameService;
+    private readonly IHttpClientService _httpClientService;
     private readonly ILogger<GInfoWorker> _logger;
+    private readonly string _url;
     
-    public GInfoWorker(IServiceScopeFactory serviceScopeFactory, ILoggerFactory loggerFactory)
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="serviceScopeFactory"></param>
+    /// <param name="loggerFactory"></param>
+    public GInfoWorker(IServiceScopeFactory serviceScopeFactory, ILoggerFactory loggerFactory, IConfiguration configuration)
     {
         _serviceScope = serviceScopeFactory.CreateScope();
         _streetRepository = _serviceScope.ServiceProvider.GetRequiredService<IStreetRepository>();
         _streetNameService = _serviceScope.ServiceProvider.GetRequiredService<IStreetNameService>();
+        _httpClientService = _serviceScope.ServiceProvider.GetRequiredService<IHttpClientService>();
         _logger = loggerFactory.CreateLogger<GInfoWorker>();
+        _url = configuration.GetSection("GInfo:Url").Value;
     }
     
-    [SuppressMessage("ReSharper.DPA", "DPA0006: Large number of DB commands", MessageId = "count: 791")]
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await Task.Delay(TimeSpan.FromSeconds(5));
-        
-        var url = "https://krasnoyarsk.ginfo.ru/ulicy/";
-        using var client = new HttpClient();
-        var response = await client.GetAsync(url).ConfigureAwait(false);
-        var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-        var htmlDocument = new HtmlDocument();
-        htmlDocument.LoadHtml(responseContent);
+        var htmlDocument = await _httpClientService.GetGInfoHtmlDocumentByUrlAsync(_url, stoppingToken).ConfigureAwait(false);
         var links = htmlDocument.DocumentNode.SelectNodes("//a[@class='ulica_link']")
             .Select(x => new
             {
@@ -71,10 +74,10 @@ public class GInfoWorker : BackgroundService
                 await _streetRepository.UpdateStreetHouseNumbersAsync(streetId!.Value, innerTexts, stoppingToken).ConfigureAwait(false);
             }
             
-            Console.WriteLine("Reading data...");
-            await Task.Delay(TimeSpan.FromMilliseconds(250));
+            _logger.LogInformation("Reading data from GInfo...");
+            await Task.Delay(TimeSpan.FromMilliseconds(1));
         }
 
-        await Task.Delay(TimeSpan.FromSeconds(15));
+        await Task.Delay(TimeSpan.FromHours(12), stoppingToken);
     }
 }

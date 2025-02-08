@@ -8,10 +8,18 @@ namespace CHSMonitoring.Infrastructure.Interfaces.Workers;
 public interface IHttpClientService
 {
     /// <summary>
-    /// Получение html документа по url
+    /// Получение html документа по url c сайта 005красноярск.рф
     /// </summary>
     /// <param name="url"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public Task<HtmlDocument> GetHtmlDocumentByUrlAsync(string url, CancellationToken cancellationToken);
+    Task<HtmlDocument> GetChsHtmlDocumentByUrlAsync(string url, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Получить html документа по url с сайта ginfo
+    /// </summary>
+    /// <param name="url"></param>
+    /// <param name="stoppingToken"></param>
+    /// <returns></returns>
+    Task<HtmlDocument> GetGInfoHtmlDocumentByUrlAsync(string url, CancellationToken stoppingToken);
 }
