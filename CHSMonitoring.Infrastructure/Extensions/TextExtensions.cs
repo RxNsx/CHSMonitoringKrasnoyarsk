@@ -74,7 +74,7 @@ public static class TextExtensions
             .Replace("логовой", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             .Replace("березовка", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             .Replace("садовое товарищество химик", string.Empty, StringComparison.InvariantCultureIgnoreCase)
-            .Replace("микрорайон cеверный", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("микрорайон северный", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             .Replace("ст химик", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             .Replace("микрорайон удачный", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             .Replace("бугачево", string.Empty, StringComparison.InvariantCultureIgnoreCase)
@@ -83,6 +83,8 @@ public static class TextExtensions
             //cкобки
             .Replace("(", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             .Replace(")", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("[", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .Replace("]", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             //район
             .Replace(DistrictEnum.Okt.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)
             .Replace(DistrictEnum.Jlz.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)

@@ -8,16 +8,18 @@ namespace CHSMonitoring.Infrastructure.Interfaces;
 public interface IStreetRepository
 {
     /// <summary>
-    /// Обновление 
+    /// Обновление информации по конкретной улице
     /// </summary>
+    /// <param name="streetId">Ид улицы</param>
+    /// <param name="houseNumbers">Список домов улицы</param>
     /// <param name="cancellationTokenn"></param>
     /// <returns></returns>
-    Task UpdateStreetHouseNumbersAsync(CancellationToken cancellationTokenn);
+    Task UpdateStreetHouseNumbersAsync(Guid streetId, List<string> houseNumbers, CancellationToken cancellationTokenn);
 
     /// <summary>
     /// Получить улицу по Id
     /// </summary>
-    /// <param name="streetId"></param>
+    /// <param name="streetId">Ид улицы</param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<Street> GetStreetAsync(Guid streetId, CancellationToken cancellationToken);

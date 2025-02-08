@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection.Metadata;
 using System.Text;
 using CHSMonitoring.Infrastructure.Common;
 using CHSMonitoring.Infrastructure.Context;
@@ -27,6 +28,7 @@ public class ActualDataWorker : BackgroundService
         _logger = loggerFactory.CreateLogger<ActualDataWorker>();
     }
     
+    [SuppressMessage("ReSharper.DPA", "DPA0006: Large number of DB commands", MessageId = "count: 791")]
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await Task.Delay(TimeSpan.FromSeconds(5));
@@ -44,7 +46,7 @@ public class ActualDataWorker : BackgroundService
                 Value = string.Concat("https://krasnoyarsk.ginfo.ru", x.Attributes["href"].Value)
             })
             .ToList();
-        
+
         foreach (var link in links)
         {
             using var linkClient = new HttpClient();
@@ -56,13 +58,13 @@ public class ActualDataWorker : BackgroundService
             var htmlStreetName = htmlDocumentHouseNumbers.DocumentNode.SelectSingleNode("//title")
                 .InnerText
                 .NormalizeActualDataText();
-            var streetName = _streetNameService.GetStreetNameFromHtmlDocument(htmlStreetName);
-            if (string.IsNullOrEmpty(streetName))
+            var streetId = _streetNameService.GetStreetNameFromHtmlDocument(htmlStreetName);
+            if (!streetId.HasValue || streetId.Value == Guid.Empty)
             {
                 _logger.LogCritical($"Error, cannot get streetName from html street {htmlStreetName}");
             }
-            _logger.LogInformation($"Success get streetName from html street Input:{htmlStreetName}-Output:{streetName}");
-            
+            _logger.LogInformation($"Success get streetName from html street {htmlStreetName}");
+
             var houseNumbersNodes = htmlDocumentHouseNumbers.DocumentNode.SelectNodes("//a[@class='dom_link']");
             if (houseNumbersNodes is not null)
             {
@@ -70,9 +72,9 @@ public class ActualDataWorker : BackgroundService
                 var innerTexts = houseNumbersNodes
                     .Select(x => x.InnerText)
                     .ToList();
+                _logger.LogInformation($"Updating street house numbers {string.Join(",", innerTexts)}");
+                await _streetRepository.UpdateStreetHouseNumbersAsync(streetId!.Value, innerTexts, stoppingToken).ConfigureAwait(false);
             }
-            
-            // var street = _streetRepository.GetStreetAsync(streetNameEnum)
             
             Console.WriteLine("Reading data...");
             await Task.Delay(TimeSpan.FromMilliseconds(250));

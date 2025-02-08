@@ -5,5 +5,5 @@
 /// </summary>
 public interface IStreetNameService
 {
-    string GetStreetNameFromHtmlDocument(string streetName);
+    Guid? GetStreetNameFromHtmlDocument(string streetName);
 }

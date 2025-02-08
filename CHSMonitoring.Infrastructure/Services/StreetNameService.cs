@@ -10,7 +10,7 @@ namespace CHSMonitoring.Infrastructure.Services;
 /// </summary>
 public class StreetNameService : IStreetNameService
 {
-    public string GetStreetNameFromHtmlDocument(string htmlStreetName)
+    public Guid? GetStreetNameFromHtmlDocument(string htmlStreetName)
     {
         var enumStreetNames = Enum.GetValues(typeof(StreetNameEnum))
             .Cast<StreetNameEnum>()
@@ -28,11 +28,8 @@ public class StreetNameService : IStreetNameService
 
         if (enumStreetCount.Count == 1)
         {
-            var equals = enumStreetCount
-                .Where(x => x.Description.Equals(htmlStreetName, StringComparison.InvariantCultureIgnoreCase))
-                .ToList();
-
-            return equals.FirstOrDefault().Description;
+            var value = enumStreetCount.FirstOrDefault(x => x.Description.Equals(htmlStreetName, StringComparison.InvariantCultureIgnoreCase))?.Id ?? Guid.Empty;
+            return value;
         }
         else if (enumStreetCount.Count > 1)
         {
@@ -49,12 +46,12 @@ public class StreetNameService : IStreetNameService
                         enumStreetCount.Remove(matchStreet);
                         continue;
                     }
-                    
-                    return matchStreet.Description;
+
+                    return matchStreet.Id;
                 }
             }
         }
 
-        return string.Empty;
+        return Guid.Empty;
     }
 }
