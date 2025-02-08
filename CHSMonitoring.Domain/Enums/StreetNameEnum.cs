@@ -3420,6 +3420,9 @@ public enum StreetNameEnum
 
     #region СНТ и СТ
 
+    [EnumGuid("FA50004A-E8AF-4D4F-AEB5-CC6465C618E2")]
+    [Description("СНТ Локомотив")]
+	SNTLokomotiv,
     [EnumGuid("37623FF5-4312-4E91-B37F-B2ECC776D7C2")]
     [Description("ТСН Заимка")]
     SNTZaimka,
@@ -3438,6 +3441,9 @@ public enum StreetNameEnum
 	[EnumGuid("69F03113-E7F9-4178-8AB8-AA18B6B74142")]
 	[Description("СТ Электрик")]
 	STElektrik,
+	[EnumGuid("AC6B9B11-9B34-481E-A9C8-488111A9D5A6")]
+	[Description("СНТ Электрик")]
+	SNTElektrik,
 	[EnumGuid("A0D9E8FA-E6EE-49DD-9BC5-5E3797C30072")]
 	[Description("СТ Берёзка")]
 	STBerezka,
