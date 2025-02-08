@@ -29,7 +29,7 @@ public static class AddInfrastructureDependencies
         });
 
         // services.AddHostedService<ServiceMessageWorker>();
-        services.AddHostedService<ActualDataWorker>();
+        services.AddHostedService<GInfoWorker>();
         
         return services;
     }

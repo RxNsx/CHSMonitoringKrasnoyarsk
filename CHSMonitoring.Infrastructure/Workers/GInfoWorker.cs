@@ -1,11 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Reflection.Metadata;
-using System.Text;
-using CHSMonitoring.Infrastructure.Common;
-using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
-using CHSMonitoring.Infrastructure.Models.Enums;
 using HtmlAgilityPack;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,19 +8,19 @@ using Microsoft.Extensions.Logging;
 
 namespace CHSMonitoring.Infrastructure.Workers;
 
-public class ActualDataWorker : BackgroundService
+public class GInfoWorker : BackgroundService
 {
     private readonly IServiceScope _serviceScope;
     private readonly IStreetRepository _streetRepository;
     private readonly IStreetNameService _streetNameService;
-    private readonly ILogger<ActualDataWorker> _logger;
+    private readonly ILogger<GInfoWorker> _logger;
     
-    public ActualDataWorker(IServiceScopeFactory serviceScopeFactory, ILoggerFactory loggerFactory)
+    public GInfoWorker(IServiceScopeFactory serviceScopeFactory, ILoggerFactory loggerFactory)
     {
         _serviceScope = serviceScopeFactory.CreateScope();
         _streetRepository = _serviceScope.ServiceProvider.GetRequiredService<IStreetRepository>();
         _streetNameService = _serviceScope.ServiceProvider.GetRequiredService<IStreetNameService>();
-        _logger = loggerFactory.CreateLogger<ActualDataWorker>();
+        _logger = loggerFactory.CreateLogger<GInfoWorker>();
     }
     
     [SuppressMessage("ReSharper.DPA", "DPA0006: Large number of DB commands", MessageId = "count: 791")]
