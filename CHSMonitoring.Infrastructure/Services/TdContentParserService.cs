@@ -1,12 +1,15 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Net;
 using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Domain.Enums;
 using CHSMonitoring.Infrastructure.Extensions;
+using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Models;
 using CHSMonitoring.Infrastructure.Models.Enums;
 using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CHSMonitoring.Infrastructure.Services;
 
@@ -15,12 +18,19 @@ namespace CHSMonitoring.Infrastructure.Services;
 /// </summary>
 public class TdContentParserService : ITdContentParserService
 {
+    private readonly IAddressParserService _addressParserService;
+    private readonly IOrganizationParserService _organizationParserService;
+    private readonly IDateParserService _dateParserService;
+    
     /// <summary>
     /// Конструктор
     /// </summary>
-    public TdContentParserService()
+    public TdContentParserService(IServiceScopeFactory serviceScopeFactory)
     {
-        
+        var scope = serviceScopeFactory.CreateScope();
+        _addressParserService = scope.ServiceProvider.GetRequiredService<IAddressParserService>();
+        _organizationParserService = scope.ServiceProvider.GetRequiredService<IOrganizationParserService>();
+        _dateParserService = scope.ServiceProvider.GetRequiredService<IDateParserService>();
     }
 
     /// <summary>
@@ -67,6 +77,31 @@ public class TdContentParserService : ITdContentParserService
         
         //TODO: Check concurrent flow
         var serviceAddressDict = new ConcurrentDictionary<string, List<ServiceMessage>>();
+
+        foreach (var tableDescriptionItem in tableDescriptionList)
+        {
+            var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index))
+                .Key;
+            var serviceAddressMessageBuilder = new ServiceMessageBuilder();
+            var organizationText = tableDescriptionItem[0].InnerText.NormalizeText();
+            var addressesText = tableDescriptionItem[1].InnerText.NormalizeText();
+            var dateInfoText = tableDescriptionItem[2].InnerText.NormalizeText();
+
+            serviceAddressMessageBuilder.BuildOrganization(organizationText);
+            
+            var plannedDescriptionMessage = _addressParserService.GetPlannedDescriptionMessage(addressesText);
+            var addressDict = _addressParserService.GetAddressDictFromAddressText(plannedDescriptionMessage.outputText);
+            
+            
+            // serviceAddressMessageBuilder.AddAddressesList(addressesText);
+            serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
+            serviceAddressMessageBuilder.AddDistrictName(districtKey);
+            var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
+
+            serviceAddressDict.GetOrAdd(districtKey, key => new List<ServiceMessage>())
+                .Add(supplyMessageDescription);
+        }
+        
         
         Parallel.ForEach(tableDescriptionList, 
             new ParallelOptions()
@@ -84,6 +119,12 @@ public class TdContentParserService : ITdContentParserService
             var dateInfoText = tableDescriptionItem[2].InnerText.NormalizeText();
 
             serviceAddressMessageBuilder.BuildOrganization(organizationText);
+
+
+
+            var plannedDescriptionMessage = _addressParserService.GetPlannedDescriptionMessage(addressesText);
+            var addressList = _addressParserService.GetAddressDictFromAddressText(addressesText);
+            
             serviceAddressMessageBuilder.AddAddressesList(addressesText);
             serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
             serviceAddressMessageBuilder.AddDistrictName(districtKey);

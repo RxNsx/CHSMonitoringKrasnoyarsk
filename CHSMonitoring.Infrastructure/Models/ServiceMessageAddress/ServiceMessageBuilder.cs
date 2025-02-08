@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using CHSMonitoring.Infrastructure.Abstractions;
+using CHSMonitoring.Infrastructure.Common;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Models.Enums;
 using CHSMonitoring.Infrastructure.Models.Parsers;
@@ -21,17 +22,12 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
 
     internal override void AddAddressesList(string addressesText)
     {
-        var streetDescriptionEnums = Enum.GetValues(typeof(StreetNameEnum))
-            .Cast<StreetNameEnum>()
-            .Select(x => x.GetDescriptionValue())
-            .ToList();
-
         var plannedDescriptionEnums = Enum.GetValues(typeof(PlannedSupplyTypeEnum))
             .Cast<PlannedSupplyTypeEnum>()
             .Select(x => x.GetDescriptionValue())
             .ToList();
 
-        ///Получение минимального индекса
+        ///Получение минимального индекса запланированного сообщения
         var plannedIndexOfText = plannedDescriptionEnums
             .DefaultIfEmpty()
             .Select(x => addressesText.IndexOf(x, StringComparison.InvariantCultureIgnoreCase))
@@ -49,7 +45,7 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
             .ToList();
         splittedAddressesList = ReplaceAddreses(splittedAddressesList);
         var addresses = splittedAddressesList
-            .Where(x => streetDescriptionEnums.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase)))
+            .Where(x => CommonData.StreetsData.Any(t => x.Contains(t.StreetName, StringComparison.InvariantCultureIgnoreCase)))
             .ToList();
         
         var addressList = new List<Address>();

@@ -22,14 +22,17 @@ public static class AddInfrastructureDependencies
         services.AddScoped<IServiceAddressRepository, ServiceAddressRepository>();
         services.AddScoped<IStreetRepository, StreetRepository>();
         services.AddScoped<IStreetNameService, StreetNameService>();
+        services.AddScoped<IOrganizationParserService, OrganizationParserService>();
+        services.AddScoped<IAddressParserService, AddressParserService>();
+        services.AddScoped<IDateParserService, DateParserService>();
         
         services.AddDbContext<MonitoringDbContext>(options =>
         {
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
         });
 
-        // services.AddHostedService<ServiceMessageWorker>();
-        services.AddHostedService<GInfoWorker>();
+        services.AddHostedService<ServiceMessageWorker>();
+        // services.AddHostedService<GInfoWorker>();
         
         return services;
     }

@@ -23,8 +23,6 @@ public class ServiceMessageWorker : BackgroundService
     private readonly IServiceScopeFactory _serviceScopeFactory;
 
     private readonly string? _url;
-
-    private MonitoringDbContext _context;
     private IServiceAddressRepository _serviceAddressRepository;
 
     /// <summary>
@@ -52,7 +50,6 @@ public class ServiceMessageWorker : BackgroundService
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var scope = _serviceScopeFactory.CreateScope();
-        _context = scope.ServiceProvider.GetRequiredService<MonitoringDbContext>();
         _serviceAddressRepository = scope.ServiceProvider.GetRequiredService<IServiceAddressRepository>();
         
         while (!stoppingToken.IsCancellationRequested)
