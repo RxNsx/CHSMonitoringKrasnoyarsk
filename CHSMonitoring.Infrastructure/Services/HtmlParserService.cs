@@ -28,7 +28,7 @@ public class HtmlParserService : IHtmlParserService
     /// </summary>
     /// <param name="htmlDocument"></param>
     /// <returns></returns>
-    public List<ServiceAddress> GetServiceMessages(HtmlDocument htmlDocument)
+    public async Task<List<ServiceAddress>> GetServiceMessages(HtmlDocument htmlDocument)
     {
         var tdContents = htmlDocument.DocumentNode.SelectNodes("//td")
             .Where(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty)
@@ -39,6 +39,6 @@ public class HtmlParserService : IHtmlParserService
             })
             .ToList();
             
-        return _tdContentParserService.GetServiceMessages(tdContents);
+        return await _tdContentParserService.GetServiceMessages(tdContents).ConfigureAwait(false);
     }
 }

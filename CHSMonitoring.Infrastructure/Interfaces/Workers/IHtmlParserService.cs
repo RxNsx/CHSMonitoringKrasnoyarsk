@@ -10,5 +10,5 @@ namespace CHSMonitoring.Infrastructure.Interfaces.Workers;
 /// </summary>
 public interface IHtmlParserService
 {
-    public List<ServiceAddress> GetServiceMessages(HtmlDocument htmlDocument);
+    public Task<List<ServiceAddress>> GetServiceMessages(HtmlDocument htmlDocument);
 }

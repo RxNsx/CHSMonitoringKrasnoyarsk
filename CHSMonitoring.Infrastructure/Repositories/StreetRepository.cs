@@ -58,7 +58,7 @@ public class StreetRepository : IStreetRepository
     public async Task<Street> GetStreetAsync(string streetName, CancellationToken cancellationToken)
     {
         return await _context.Streets
-            .FirstOrDefaultAsync(x => x.Name.Equals(streetName, StringComparison.InvariantCultureIgnoreCase), cancellationToken)
+            .FirstOrDefaultAsync(x => x.Name.Equals(streetName), cancellationToken)
             .ConfigureAwait(false);
     }
 }

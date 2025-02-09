@@ -15,5 +15,5 @@ public interface ITdContentParserService
     /// </summary>
     /// <param name="tableDescriptions">Данные таблицы с отключениями</param>
     /// <returns></returns>
-    List<ServiceAddress> GetServiceMessages(List<TableDescription> tableDescriptions);
+    Task<List<ServiceAddress>> GetServiceMessages(List<TableDescription> tableDescriptions);
 }

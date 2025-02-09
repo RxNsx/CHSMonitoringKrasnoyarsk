@@ -63,7 +63,7 @@ public class ServiceMessageWorker : BackgroundService
                 var htmlDocument = await _httpClientService.GetChsHtmlDocumentByUrlAsync(_url, stoppingToken)
                     .ConfigureAwait(false);
 
-                var serviceAddresses = _htmlParserService.GetServiceMessages(htmlDocument);
+                var serviceAddresses = await _htmlParserService.GetServiceMessages(htmlDocument).ConfigureAwait(false);
                 await _serviceAddressRepository.AddServiceAddressesAsync(serviceAddresses, stoppingToken);
 
                 CheckMissedAddreses(serviceAddresses);

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 using System.Text.RegularExpressions;
 using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Infrastructure.Common;
@@ -77,52 +78,57 @@ public sealed class AddressParserService : IAddressParserService
          HashSet<(string streetNames, string number)> uniqueAddresses = new();
          var addressList = new List<Address>();
          
-         foreach (var item in addressDictionary)
+         foreach (var addressDictItem in addressDictionary)
          {
-             if (!item.Value.Any())
+             if (!addressDictItem.Value.Any())
              {
-                 addressList.Add(Address.Create(item.Key, string.Empty));
+                 addressList.Add(Address.Create(addressDictItem.Key, string.Empty));
                  continue;
              }
 
-             var numbersList = item.Value
+             var numbersList = addressDictItem.Value
                  .RemoveInBracketValues()
                  .ReplaceStSymbolsInNumbers();
              foreach (var number in numbersList)
              {
                  try
                  {
-                     var street = await _streetRepository.GetStreetAsync(item.Key, default).ConfigureAwait(false);
+                     var street = await _streetRepository.GetStreetAsync(addressDictItem.Key, default).ConfigureAwait(false);
                      ArgumentNullException.ThrowIfNull(street);
                      
-                     var isHouseNumberContainsInStreet = street.HouseNumbers.Split(",")
-                         .Any(x => x.Contains(number, StringComparison.InvariantCultureIgnoreCase));
-                     
-                     //TODO: Проверить все варианты улиц до момента встречи символа - (диапазона улиц)
-                     //TODO: Подходят все варианты (тестировать)
                      if (!number.Contains("-", StringComparison.InvariantCultureIgnoreCase))
                      {
-                         if (uniqueAddresses.Add((item.Key, number)))
+                         if (uniqueAddresses.Add((street.Name, number)))
                          {
-                             addressList.Add(Address.Create(item.Key, number));
+                             addressList.Add(Address.Create(street.Name, number));
                          }
                      }
                      else
                      {
                          //Выбрать диапазон
                          var houseNumbersFromRange = GetStreetNumberRange(street, number);
-                         await _streetRepository.UpdateStreetHouseNumbersAsync(street.Id, houseNumbersFromRange.Select(x => x.houseNumber).ToList(), default);
+                         //Вытащить и преобразовать все варианты, без дубликатов
+                         foreach (var houseNumuber in houseNumbersFromRange)
+                         {
+                             if (uniqueAddresses.Add((street.Name, houseNumuber.houseNumber)))
+                             {
+                                addressList.Add(Address.Create(street.Name, houseNumuber.houseNumber));
+                             }
+                         }
                      }
+                     
+                     //Сохранить информацию по домам из полученного списка
+                     await _streetRepository.UpdateStreetHouseNumbersAsync(street.Id, addressList.Select(x => x.Number).ToList(), default);
                  }
                  catch (Exception exception)
                  {
                      _logger.LogError($"");
                      Console.WriteLine(exception);
-                     throw;
                  }
              }
          }
 
+         //Вернуть список чтобы преобразовать в ServiceAddress
          return addressList;
     }
 
@@ -278,10 +284,7 @@ public sealed class AddressParserService : IAddressParserService
                 houseNumbersList.Add(endNumber);
                 resultEndNumber = endNumber;
             }
-            
-            var indexStartNumber = houseNumbersList.OrderBy(x => x).ToList().IndexOf(resultStartNumber);
-            var indexEndNumber = houseNumbersList.OrderBy(x => x).ToList().IndexOf(resultEndNumber);
-        
+
             //TODO: Если стартового числа нет, взять ближайшее число из любого полученного адреса
             //Проверить порядок символов (индексы чисел идущих друг за другом, после чего выбрать самую длинную последовательность чисел)
             //и от неё оттолкнуться и забрать диапазоном ОТ и ДО
@@ -290,6 +293,14 @@ public sealed class AddressParserService : IAddressParserService
             //Не обновлять тут, отдать конечный вариант наружу для сохранности консистентности?
             // await _streetRepository.UpdateStreetHouseNumbersAsync(street.Id, new List<string>() { resultStartNumber, resultEndNumber }, default)
             //     .ConfigureAwait(false);
+
+
+
+            houseNumbersList.ToList().Sort();
+            var indexStartNumber = houseNumbersList.IndexOf(resultStartNumber);
+            var indexEndNumber = houseNumbersList.IndexOf(resultEndNumber);
+        
+
         
             //TODO: Выбрать вариант который парсится
             var initialNumber = Math.Min(indexStartNumber, indexEndNumber);

@@ -37,7 +37,7 @@ public class TdContentParserService : ITdContentParserService
     /// Получение сообщений об отключениях из данных парсинга
     /// </summary>
     /// <param name="tableDescriptions"></param>
-    public List<ServiceAddress> GetServiceMessages(List<TableDescription> tableDescriptions)
+    public async Task<List<ServiceAddress>> GetServiceMessages(List<TableDescription> tableDescriptions)
     {
         var districtDataDict = GetDistrictsDataFromTableDescriptions(tableDescriptions);
         
@@ -83,25 +83,31 @@ public class TdContentParserService : ITdContentParserService
             var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index))
                 .Key;
             var serviceAddressMessageBuilder = new ServiceMessageBuilder();
-            var organizationText = tableDescriptionItem[0].InnerText.NormalizeText();
-            var addressesText = tableDescriptionItem[1].InnerText.NormalizeText();
-            var dateInfoText = tableDescriptionItem[2].InnerText.NormalizeText();
 
-            serviceAddressMessageBuilder.BuildOrganization(organizationText);
-            
-            var plannedDescriptionMessage = _addressParserService.GetPlannedDescriptionMessage(addressesText);
-            //TODO: Set Description
-            var addressDictionary = _addressParserService.GetAddressDictFromAddressText(plannedDescriptionMessage.outputText);
-            var qwe = _addressParserService.ParseAddressNumbers(addressDictionary);
-            
-            
-            // serviceAddressMessageBuilder.AddAddressesList(addressesText);
-            serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
-            serviceAddressMessageBuilder.AddDistrictName(districtKey);
-            var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
+            for (var i = 0; i < tableDescriptionItem.Count; i = i + 3)
+            {
+                var organizationText = tableDescriptionItem[i].InnerText.NormalizeText();
+                var addressesText = tableDescriptionItem[i + 1].InnerText.NormalizeText();
+                var dateInfoText = tableDescriptionItem[i + 2].InnerText.NormalizeText();
 
-            serviceAddressDict.GetOrAdd(districtKey, key => new List<ServiceMessage>())
-                .Add(supplyMessageDescription);
+                serviceAddressMessageBuilder.BuildOrganization(organizationText);
+            
+                var plannedDescriptionMessage = _addressParserService.GetPlannedDescriptionMessage(addressesText);
+                //TODO: Set Description
+                var addressDictionary = _addressParserService.GetAddressDictFromAddressText(plannedDescriptionMessage.outputText);
+                var qwe = await _addressParserService.ParseAddressNumbers(addressDictionary).ConfigureAwait(false);
+            
+            
+                // serviceAddressMessageBuilder.AddAddressesList(addressesText);
+                serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
+                serviceAddressMessageBuilder.AddDistrictName(districtKey);
+                var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
+            
+
+
+                serviceAddressDict.GetOrAdd(districtKey, key => new List<ServiceMessage>())
+                    .Add(supplyMessageDescription);
+            }
         }
         
         
