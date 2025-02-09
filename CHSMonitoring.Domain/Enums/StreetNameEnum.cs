@@ -1002,9 +1002,9 @@ public enum StreetNameEnum
     [EnumGuid("83DB9744-AFD9-4BB8-81FA-1D95FF3F8291")]
     [Description("Знаменская")]
     Znamenskaya,
-    [EnumGuid("2961E17C-2326-481D-9A2F-35F9C15CCDC0")]
-    [Description("Зои Космодемьянской")]
-    ZoiKosmodemyanskoy,
+    [EnumGuid("95C34AF5-8F24-492E-93C9-FB16FD39FC3D")]
+    [Description("Космодемьянской")]
+    ZoiKosmodemyanskoyR,
     
     #endregion
     
@@ -3289,6 +3289,9 @@ public enum StreetNameEnum
     [EnumGuid("FF51506A-B8B0-4B23-B7F9-ACB5A207686D")]
     [Description("Юрия Гагарина")]
     YuriyaGagarina,
+    [EnumGuid("9F355575-EE90-4B0B-B361-082232649E14")]
+    [Description("Гагарина")]
+    YuriyaGagarinaR,
     [EnumGuid("3F025014-89C5-4B3B-B19C-07B2385CE851")]
     [Description("Юрия Смирнова")]
     YuriyaSmirnova,
