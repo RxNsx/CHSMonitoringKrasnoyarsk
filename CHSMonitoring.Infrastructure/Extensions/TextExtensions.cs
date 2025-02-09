@@ -105,6 +105,8 @@ public static class TextExtensions
             .Replace("шоссе", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             .Replace("набережная", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             //Улицы двойного названия
+            .Replace("Зои Космодемьянской", "Космодемьянской", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Юрия Гагарина", "Гагарина", StringComparison.InvariantCultureIgnoreCase)
             .Replace("Академика Павлова", "Павлова", StringComparison.InvariantCultureIgnoreCase)
             .Replace("Академика Вавилова", "Вавилова", StringComparison.InvariantCultureIgnoreCase)
             .Replace("Анатолия Гладкова", "Гладкова", StringComparison.InvariantCultureIgnoreCase)
