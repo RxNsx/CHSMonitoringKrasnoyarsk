@@ -3,7 +3,7 @@ using CHSMonitoring.Infrastructure.Common;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
 
-namespace CHSMonitoring.Infrastructure.Models.Parsers;
+namespace CHSMonitoring.Infrastructure.Parsers;
 
 /// <summary>
 /// Парсер организации

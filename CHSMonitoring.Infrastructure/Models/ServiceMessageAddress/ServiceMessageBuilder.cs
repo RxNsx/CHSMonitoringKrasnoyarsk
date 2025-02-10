@@ -1,9 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using CHSMonitoring.Infrastructure.Abstractions;
-using CHSMonitoring.Infrastructure.Common;
-using CHSMonitoring.Infrastructure.Extensions;
-using CHSMonitoring.Infrastructure.Models.Enums;
 using CHSMonitoring.Infrastructure.Models.Parsers;
+using CHSMonitoring.Infrastructure.Parsers;
 
 namespace CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
 
