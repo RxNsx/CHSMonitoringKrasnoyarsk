@@ -40,11 +40,10 @@ public class ServiceMessageWorker : BackgroundService
         _httpClientService = httpClientService;
         _htmlParserService = htmlParserService;
         
-        if(string.IsNullOrEmpty(configuration.GetSection("CHSMonitoring.API:Url").Value))
+        if(!string.IsNullOrEmpty(configuration.GetSection("CHSMonitoringKrasnoyarsk:Url").Value))
         {
             _url = "http://93.92.65.26/aspx/GorodM.htm";
         }
-        _url = configuration.GetSection("CHSMonitoring.API:Url").Value;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -55,7 +54,6 @@ public class ServiceMessageWorker : BackgroundService
         while (!stoppingToken.IsCancellationRequested)
         {
             await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
-
             var stopwatch = Stopwatch.StartNew();
             
             try

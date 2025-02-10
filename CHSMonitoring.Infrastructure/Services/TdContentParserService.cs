@@ -1,8 +1,7 @@
 ﻿using System.Collections.Concurrent;
-using System.Diagnostics;
-using System.Net;
 using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Domain.Enums;
+using CHSMonitoring.Infrastructure.Common;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
@@ -61,7 +60,6 @@ public class TdContentParserService : ITdContentParserService
         }
         
         supplyTypeIndexes = AddTheEndOfSupplyInfo(supplyTypeIndexes);
-
         var tableDescriptionList = new List<List<TableDescription>>();
         foreach (var item in supplyTypeIndexes)
         {
@@ -80,8 +78,7 @@ public class TdContentParserService : ITdContentParserService
 
         foreach (var tableDescriptionItem in tableDescriptionList)
         {
-            var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index))
-                .Key;
+            var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index)).Key;
             var serviceAddressMessageBuilder = new ServiceMessageBuilder();
 
             for (var i = 0; i < tableDescriptionItem.Count; i = i + 3)
@@ -93,54 +90,20 @@ public class TdContentParserService : ITdContentParserService
                 serviceAddressMessageBuilder.BuildOrganization(organizationText);
             
                 var plannedDescriptionMessage = _addressParserService.GetPlannedDescriptionMessage(addressesText);
-                //TODO: Set Description
+                serviceAddressMessageBuilder.AddDescription(plannedDescriptionMessage.description);
+                
                 var addressDictionary = _addressParserService.GetAddressDictFromAddressText(plannedDescriptionMessage.outputText);
-                var qwe = await _addressParserService.ParseAddressNumbers(addressDictionary).ConfigureAwait(false);
+                var addressList = await _addressParserService.ParseAddressNumbers(addressDictionary).ConfigureAwait(false);
+                serviceAddressMessageBuilder.AddAddressesList(addressList);
             
-            
-                // serviceAddressMessageBuilder.AddAddressesList(addressesText);
                 serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
                 serviceAddressMessageBuilder.AddDistrictName(districtKey);
                 var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
             
-
-
                 serviceAddressDict.GetOrAdd(districtKey, key => new List<ServiceMessage>())
                     .Add(supplyMessageDescription);
             }
         }
-        
-        
-        // Parallel.ForEach(tableDescriptionList, 
-        //     new ParallelOptions()
-        //     {
-        //         //4 Паралелльных операции
-        //         MaxDegreeOfParallelism = 4
-        //     },
-        //     tableDescriptionItem =>
-        // {
-        //     var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index))
-        //         .Key;
-        //     var serviceAddressMessageBuilder = new ServiceMessageBuilder();
-        //     var organizationText = tableDescriptionItem[0].InnerText.NormalizeText();
-        //     var addressesText = tableDescriptionItem[1].InnerText.NormalizeText();
-        //     var dateInfoText = tableDescriptionItem[2].InnerText.NormalizeText();
-        //
-        //     serviceAddressMessageBuilder.BuildOrganization(organizationText);
-        //
-        //
-        //
-        //     var plannedDescriptionMessage = _addressParserService.GetPlannedDescriptionMessage(addressesText);
-        //     var addressList = _addressParserService.GetAddressDictFromAddressText(addressesText);
-        //     
-        //     serviceAddressMessageBuilder.AddAddressesList(addressesText);
-        //     serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
-        //     serviceAddressMessageBuilder.AddDistrictName(districtKey);
-        //     var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
-        //
-        //     serviceAddressDict.GetOrAdd(districtKey, key => new List<ServiceMessage>())
-        //         .Add(supplyMessageDescription);
-        // });
 
         return GetServiceAddressList(serviceAddressDict.ToDictionary());
     }
@@ -244,12 +207,25 @@ public class TdContentParserService : ITdContentParserService
     /// <returns></returns>
     private List<List<TableDescription>> RemovePlannedTableDescription(List<List<TableDescription>> tableDescriptions)
     {
+        List<string> plannedCollection = new()
+        {
+            PlannedSupplyTypeEnum.Planned.GetDescriptionValue(),
+            PlannedSupplyTypeEnum.Planned2.GetDescriptionValue(),
+
+        };
+        
         foreach (var item in tableDescriptions)
         {
-            var removePlanned = item.FirstOrDefault(x => x.InnerText.Contains(PlannedSupplyTypeEnum.Planned.GetDescriptionValue()));
-            if (removePlanned != null)
+            var removePlannedItems = item
+                .Select(x => x.InnerText.NormalizeText())
+                .Where(x => plannedCollection.Any(t => x.Contains(t, StringComparison.InvariantCultureIgnoreCase))).ToList();
+            if (removePlannedItems.Any())
             {
-                item.Remove(removePlanned);
+                foreach (var removeItem in removePlannedItems)
+                {
+                    var item1 = item.FirstOrDefault(x => x.InnerText.NormalizeText().Contains(removeItem, StringComparison.InvariantCultureIgnoreCase));
+                    item.Remove(item1!);
+                }
             }
         }
 
@@ -264,33 +240,6 @@ public class TdContentParserService : ITdContentParserService
     public List<ServiceAddress> GetServiceAddressList(Dictionary<string, List<ServiceMessage>> serviceMessages)
     {
         List<ServiceAddress> serviceAddressList = [];
-        var districts = Enum.GetValues(typeof(DistrictEnum))
-            .Cast<DistrictEnum>()
-            .Select(x => new
-            {
-                Id = x.GetGuidValue(),
-                DistrictName = x.GetDescriptionValue()
-            })
-            .ToList();
-        
-        var streets = Enum.GetValues(typeof(StreetNameEnum))
-            .Cast<StreetNameEnum>()
-            .Select(x => new
-            {
-                Id = x.GetGuidValue(),
-                StreetName = x.GetDescriptionValue()
-            })
-            .ToList();
-        
-        var serviceTypes = Enum.GetValues(typeof(ServiceTypeEnum))
-            .Cast<ServiceTypeEnum>()
-            .Select(x => new
-            {
-                Id = x.GetGuidValue(),
-                ServiceTypeName = x.GetDescriptionValue()
-            })
-            .ToList();;
-        
         foreach (var serviceMessage in serviceMessages.SelectMany(x => x.Value).ToList())
         {
             var addressList = serviceMessage.AddressList;
@@ -298,10 +247,10 @@ public class TdContentParserService : ITdContentParserService
             {
                 serviceAddressList.Add(new ServiceAddress()
                 {
-                    DistrictId = districts.FirstOrDefault(x => x.DistrictName.Equals(serviceMessage.DistrictName, StringComparison.InvariantCultureIgnoreCase)).Id,
-                    StreetId = streets.FirstOrDefault(x => x.StreetName.Equals(address.StreetName,StringComparison.InvariantCultureIgnoreCase)).Id,
+                    DistrictId = CommonData.DistrictsData.FirstOrDefault(x => x.DistrictName.Equals(serviceMessage.DistrictName, StringComparison.InvariantCultureIgnoreCase)).Id,
+                    StreetId = CommonData.StreetsData.FirstOrDefault(x => x.StreetName.Equals(address.StreetName,StringComparison.InvariantCultureIgnoreCase)).Id,
                     StreetName = address.StreetName,
-                    ServiceTypeId = serviceTypes.FirstOrDefault(x => x.ServiceTypeName.Equals(serviceMessage.Organization.SupplyTypeName, StringComparison.InvariantCultureIgnoreCase)).Id,
+                    ServiceTypeId = CommonData.ServiceTypesData.FirstOrDefault(x => x.ServiceTypeName.Equals(serviceMessage.Organization.SupplyTypeName, StringComparison.InvariantCultureIgnoreCase)).Id,
                     HouseNumber = address.Number,
                     Description = serviceMessage.Description,
                     DateTimeFromString = serviceMessage.DateInfo.DateFromString,

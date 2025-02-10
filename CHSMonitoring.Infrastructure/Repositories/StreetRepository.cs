@@ -27,21 +27,14 @@ public class StreetRepository : IStreetRepository
         var street = await GetStreetAsync(streetId, cancellationToken).ConfigureAwait(false);
         if (houseNumbers.Any())
         {
-            if (street.HouseNumbers.Length == 0)
+            var currentHouseNumbers = street.HouseNumbers.Split(",")
+                .Select(x => x)
+                .ToHashSet();
+            foreach (var houseNumber in houseNumbers)
             {
-                street.HouseNumbers = string.Join(",", houseNumbers);
+                currentHouseNumbers.Add(houseNumber.Trim());
             }
-            else
-            {
-                var currentHouseNumbers = street.HouseNumbers.Split(",").ToList();
-                var notObtainedHouseNumbers = currentHouseNumbers
-                    .Where(x => !houseNumbers.Any(t => x.Equals(t, StringComparison.InvariantCultureIgnoreCase)))
-                    .ToList();
-                if (notObtainedHouseNumbers.Any())
-                {
-                    street.HouseNumbers = string.Concat(street.HouseNumbers, ",", string.Join(",", houseNumbers));
-                }
-            }
+            street.HouseNumbers = string.Join(",", currentHouseNumbers.ToList());
         }
 
         _context.Update(street);

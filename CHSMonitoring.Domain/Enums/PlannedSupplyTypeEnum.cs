@@ -7,11 +7,11 @@ namespace CHSMonitoring.Infrastructure.Models.Enums;
 /// </summary>
 public enum PlannedSupplyTypeEnum
 {
-    [Description("Запланированные")]
+    [Description("Запланированные отключения на завтра")]
     Planned,
-    [Description("Плановое")]
-    Planned2,
     [Description("Информация о плановых отключениях")]
+    Planned2,
+    [Description("Плановое")]
     Planned3,
     [Description("Аварийное")]
     Emergency,

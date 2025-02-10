@@ -30,6 +30,17 @@ public class HttpClientService : IHttpClientService
         var htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(result);
 
+
+        var count = htmlDocument.DocumentNode.SelectNodes("//td")
+            .Where(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty)
+            .Count();
+
+
+        if (count > 50)
+        {
+            await HtmlTestBackupsSave(result).ConfigureAwait(false);
+        }
+
         return htmlDocument;
     }
 
@@ -42,5 +53,20 @@ public class HttpClientService : IHttpClientService
         var htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(responseContent);
         return htmlDocument;
+    }
+
+    /// <summary>
+    /// Сохранить хороший вариант html страницы для последующего парсинга и анализа
+    /// </summary>
+    /// <param name="htmlString"></param>
+    private async Task HtmlTestBackupsSave(string htmlString)
+    {
+        var currentDate = DateTime.UtcNow;
+        var dateString = currentDate.ToShortDateString().Replace(".", string.Empty);
+        var timeString = currentDate.ToShortTimeString().Replace(":", string.Empty);
+        
+        //Кодировка для кириллицы
+        var encoding = Encoding.GetEncoding("windows-1251");
+        await File.WriteAllBytesAsync($"E:\\Учёба 5 курс\\Diplom\\Files\\chsmonitoring_testcase_{dateString}_{timeString}.html", encoding.GetBytes(htmlString)).ConfigureAwait(false);
     }
 }

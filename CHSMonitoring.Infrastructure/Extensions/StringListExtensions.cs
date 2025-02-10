@@ -26,6 +26,22 @@ public static class StringListExtensions
 
         return numbers;
     }
+
+    /// <summary>
+    /// Удаляет пробелы в номерах домов
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
+    public static List<string> RemoveWhiteSpaces(this List<string> numbers)
+    {
+        for(var i = 0; i < numbers.Count; i++)
+        {
+            numbers[i] = numbers[i].Trim();
+            numbers[i] = numbers[i].Replace(" ", string.Empty, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        return numbers; 
+    }
     
     /// <summary>
     /// Заменяет символы в строке c (ст, ст.) на (с)
@@ -48,6 +64,33 @@ public static class StringListExtensions
             if(numbers[i].Contains("с.", StringComparison.InvariantCultureIgnoreCase))
             {
                 numbers[i] = numbers[i].Replace("с.", "с", StringComparison.InvariantCultureIgnoreCase);
+            }
+        }
+
+        return numbers;
+    }
+    
+    /// <summary>
+    /// Заменяет символы в строке c (к.1, к. 1) на (к)
+    /// Для того чтобы корректно сохранять адрес для парсинга на яндекс картах
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
+    public static List<string> ReplaceKSymbolsInNumbers(this List<string> numbers)
+    {
+        for (var i = 0; i < numbers.Count; i++)
+        {
+            if (numbers[i].Contains("к ", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numbers[i] = numbers[i].Replace("к ", "к", StringComparison.InvariantCultureIgnoreCase);
+            }
+            if (numbers[i].Contains("к.", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numbers[i] = numbers[i].Replace("к.", "к", StringComparison.InvariantCultureIgnoreCase);
+            }
+            if(numbers[i].Contains("к. ", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numbers[i] = numbers[i].Replace("к. ", "к", StringComparison.InvariantCultureIgnoreCase);
             }
         }
 

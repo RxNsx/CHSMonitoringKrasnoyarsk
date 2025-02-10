@@ -75,57 +75,55 @@ public sealed class AddressParserService : IAddressParserService
     public async Task<List<Address>> ParseAddressNumbers(Dictionary<string, List<string>> addressDictionary)
     {
          // TODO: Распарсить номера домов строения итп в другом месте
-         HashSet<(string streetNames, string number)> uniqueAddresses = new();
          var addressList = new List<Address>();
          
          foreach (var addressDictItem in addressDictionary)
          {
+             var street = await _streetRepository.GetStreetAsync(addressDictItem.Key, default).ConfigureAwait(false);
+             ArgumentNullException.ThrowIfNull(street);
+             
              if (!addressDictItem.Value.Any())
              {
-                 addressList.Add(Address.Create(addressDictItem.Key, string.Empty));
+                 addressList.Add(Address.Create(street.Name, string.Empty));
                  continue;
              }
 
              var numbersList = addressDictItem.Value
+                 .RemoveWhiteSpaces()
                  .RemoveInBracketValues()
-                 .ReplaceStSymbolsInNumbers();
+                 .ReplaceStSymbolsInNumbers()
+                 .ReplaceKSymbolsInNumbers();
+             HashSet<(string streetNames, string number)> uniqueAddresses = new();
              foreach (var number in numbersList)
              {
-                 try
+                 if (!number.Contains("-", StringComparison.InvariantCultureIgnoreCase))
                  {
-                     var street = await _streetRepository.GetStreetAsync(addressDictItem.Key, default).ConfigureAwait(false);
-                     ArgumentNullException.ThrowIfNull(street);
-                     
-                     if (!number.Contains("-", StringComparison.InvariantCultureIgnoreCase))
+                     if (uniqueAddresses.Add((street.Name, number)))
                      {
-                         if (uniqueAddresses.Add((street.Name, number)))
-                         {
-                             addressList.Add(Address.Create(street.Name, number));
-                         }
+                         addressList.Add(Address.Create(street.Name, number));
                      }
-                     else
+                 }
+                 else
+                 {
+                     //Выбрать диапазон
+                     var houseNumbersFromRange = GetStreetNumberRange(street, number);
+                     //Вытащить и преобразовать все варианты, без дубликатов
+                     if (houseNumbersFromRange.Any())
                      {
-                         //Выбрать диапазон
-                         var houseNumbersFromRange = GetStreetNumberRange(street, number);
-                         //Вытащить и преобразовать все варианты, без дубликатов
                          foreach (var houseNumuber in houseNumbersFromRange)
                          {
                              if (uniqueAddresses.Add((street.Name, houseNumuber.houseNumber)))
                              {
-                                addressList.Add(Address.Create(street.Name, houseNumuber.houseNumber));
+                                 addressList.Add(Address.Create(street.Name, houseNumuber.houseNumber));
                              }
                          }
                      }
-                     
-                     //Сохранить информацию по домам из полученного списка
-                     await _streetRepository.UpdateStreetHouseNumbersAsync(street.Id, addressList.Select(x => x.Number).ToList(), default);
-                 }
-                 catch (Exception exception)
-                 {
-                     _logger.LogError($"");
-                     Console.WriteLine(exception);
                  }
              }
+             
+             //Сохранить информацию по домам из полученного списка
+             await _streetRepository.UpdateStreetHouseNumbersAsync(street.Id, uniqueAddresses.Select(x => x.number).ToList(), default);
+             uniqueAddresses.Clear();
          }
 
          //Вернуть список чтобы преобразовать в ServiceAddress
@@ -134,7 +132,7 @@ public sealed class AddressParserService : IAddressParserService
 
     public (string description, string outputText) GetPlannedDescriptionMessage(string addressesText)
     {
-        var plannedIndexOfText = CommonData.PlannedData
+        var plannedIndexOfText = CommonData.PlannedOffData
             .DefaultIfEmpty()
             .Select(x => addressesText.IndexOf(x, StringComparison.InvariantCultureIgnoreCase))
             .Where(x => x != -1)
@@ -157,6 +155,11 @@ public sealed class AddressParserService : IAddressParserService
     /// <returns></returns>
     public string GetStreetName(string addressItem)
     {
+        if (string.IsNullOrEmpty(addressItem))
+        {
+            return string.Empty;
+        }
+        
         ///Получаем улицу из общего словаря
         var matchStreetCount = CommonData.StreetsData
             .Where(x => addressItem.Contains(x.StreetName, StringComparison.InvariantCultureIgnoreCase))
@@ -185,8 +188,6 @@ public sealed class AddressParserService : IAddressParserService
                     if (matchStreet.Id != Guid.Empty)
                     {
                         var subString = strictedAddressItem.Substring(sb.ToString().Length, strictedAddressItem.Length - sb.ToString().Length);
-                        var check = string.IsNullOrEmpty(subString);
-                        
                         if ((matchStreet.StreetName.Equals(sb.ToString(), StringComparison.InvariantCultureIgnoreCase) && string.IsNullOrEmpty(subString))
                             || (matchStreet.StreetName.Equals(sb.ToString(), StringComparison.InvariantCultureIgnoreCase) && string.IsNullOrWhiteSpace(subString[0].ToString())))
                         {

@@ -12,12 +12,18 @@ public abstract class ServiceBuilder
     /// </summary>
     /// <param name="organizationText"></param>
     internal abstract void BuildOrganization(string organizationText);
-    
+
     /// <summary>
     /// Добавление списка адресов
     /// </summary>
-    /// <param name="addressesText"></param>
-    internal abstract void AddAddressesList(string addressesText);
+    /// <param name="addressList"></param>
+    internal abstract void AddAddressesList(List<Address> addressList);
+
+    /// <summary>
+    /// Добавляет описание к сообщениям отключения
+    /// </summary>
+    /// <param name="description"></param>
+    internal abstract void AddDescription(string description);
     
     /// <summary>
     /// Добавление временных интвервалов работ

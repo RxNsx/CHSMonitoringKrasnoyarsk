@@ -20,9 +20,14 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
         _serviceMessage.SetOrganization(organization);
     }
 
-    internal override void AddAddressesList(string addressesText)
+    internal override void AddAddressesList(List<Address> addressList)
     {
-        // _serviceMessage.SetAddressList(addressList);
+        _serviceMessage.SetAddressList(addressList);
+    }
+
+    internal override void AddDescription(string description)
+    {
+        _serviceMessage.SetDescription(description);
     }
 
     internal override void AddDateInfo(string dateInfoText)

@@ -37,7 +37,12 @@ public class GInfoWorker : BackgroundService
     {
         await Task.Delay(TimeSpan.FromSeconds(5));
 
-        var htmlDocument = await _httpClientService.GetGInfoHtmlDocumentByUrlAsync(_url, stoppingToken).ConfigureAwait(false);
+        using var client = new HttpClient();
+        var response = await client.GetAsync(_url).ConfigureAwait(false);
+        var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+        var htmlDocument = new HtmlDocument();
+        htmlDocument.LoadHtml(responseContent);
         var links = htmlDocument.DocumentNode.SelectNodes("//a[@class='ulica_link']")
             .Select(x => new
             {
@@ -48,7 +53,7 @@ public class GInfoWorker : BackgroundService
         foreach (var link in links)
         {
             using var linkClient = new HttpClient();
-            var streetTitleHouseNumbers = await linkClient.GetAsync(link.Value).ConfigureAwait(false);
+            var streetTitleHouseNumbers = await client.GetAsync(link.Value).ConfigureAwait(false);
             var houseNumbersContent = await streetTitleHouseNumbers.Content.ReadAsStringAsync().ConfigureAwait(false);
             var htmlDocumentHouseNumbers = new HtmlDocument();
             htmlDocumentHouseNumbers.LoadHtml(houseNumbersContent);
