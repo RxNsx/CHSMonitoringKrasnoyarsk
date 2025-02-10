@@ -19,7 +19,7 @@ public static class OrganizationParser
     {
         var supplyTextDescription = CommonData.ServiceTypesData
             .FirstOrDefault(x => organizationText.Contains(x.ServiceTypeName, StringComparison.InvariantCultureIgnoreCase));
-        if (supplyTextDescription.Id == Guid.Empty)
+        if (supplyTextDescription.Id != Guid.Empty)
         {
             throw new ArgumentNullException(nameof(supplyTextDescription), "supplyTypeDescription");
         }
