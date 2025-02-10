@@ -1,4 +1,5 @@
 ﻿using CHSMonitoring.Domain.Enums;
+using CHSMonitoring.Infrastructure.Common;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
 
@@ -16,18 +17,14 @@ public static class OrganizationParser
     /// <returns></returns>
     public static Organization ParseOrganization(string organizationText)
     {
-        var serviceTypeEnums = Enum.GetValues(typeof(ServiceTypeEnum))
-            .Cast<ServiceTypeEnum>()
-            .Select(x => x.GetDescriptionValue())
-            .ToList();
-        
-        var supplyTextDescription = serviceTypeEnums.FirstOrDefault(x => organizationText.Contains(x));
-        if (supplyTextDescription is null)
+        var supplyTextDescription = CommonData.ServiceTypesData
+            .FirstOrDefault(x => organizationText.Contains(x.ServiceTypeName, StringComparison.InvariantCultureIgnoreCase));
+        if (supplyTextDescription.Id == Guid.Empty)
         {
             throw new ArgumentNullException(nameof(supplyTextDescription), "supplyTypeDescription");
         }
 
-        var serviceTypeName = string.Empty;
+        string serviceTypeName;
         var telephoneText = string.Empty;
         var organizationName = string.Empty;
         var serviceTypeEnum = ServiceTypeEnum.None;
@@ -35,13 +32,12 @@ public static class OrganizationParser
         try
         {
             //Название типа обеспечения
-            var indexOfSupplyEnumItem = organizationText.IndexOf(supplyTextDescription, StringComparison.InvariantCultureIgnoreCase);
-            serviceTypeName = organizationText.Substring(indexOfSupplyEnumItem, supplyTextDescription.Length);
-            var lastTextWithoutSupplyName = organizationText.Remove(indexOfSupplyEnumItem, supplyTextDescription.Length).Trim();
+            var indexOfSupplyEnumItem = organizationText.IndexOf(supplyTextDescription.ServiceTypeName, StringComparison.InvariantCultureIgnoreCase);
+            serviceTypeName = organizationText.Substring(indexOfSupplyEnumItem, supplyTextDescription.ServiceTypeName.Length);
+            var lastTextWithoutSupplyName = organizationText.Remove(indexOfSupplyEnumItem, supplyTextDescription.ServiceTypeName.Length).Trim();
 
             //Номер телефона
             var telephoneTextIndex = lastTextWithoutSupplyName.IndexOf("т.", StringComparison.InvariantCultureIgnoreCase);
-
             if (telephoneTextIndex != -1)
             {
                 telephoneText = lastTextWithoutSupplyName.Substring(telephoneTextIndex, lastTextWithoutSupplyName.Length - telephoneTextIndex);
@@ -49,7 +45,7 @@ public static class OrganizationParser
             }
             
             //Получение названия типа обслуживания
-            serviceTypeName = serviceTypeEnums.FirstOrDefault(x => serviceTypeName.Contains(x, StringComparison.InvariantCultureIgnoreCase));
+            serviceTypeName = CommonData.ServiceTypesData.FirstOrDefault(x => serviceTypeName.Contains(x.ServiceTypeName, StringComparison.InvariantCultureIgnoreCase)).ServiceTypeName;
             //Получение названия типа обслуживания как Enum
             serviceTypeEnum = Enum.GetValues(typeof(ServiceTypeEnum))
                 .Cast<ServiceTypeEnum>()
