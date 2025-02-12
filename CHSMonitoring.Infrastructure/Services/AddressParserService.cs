@@ -69,7 +69,9 @@ public sealed class AddressParserService : IAddressParserService
                 }
             }
         }
-        return addressDictionary;
+        return addressDictionary
+            .Where(x => !string.IsNullOrEmpty(x.Key))
+            .ToDictionary();
     }
 
     public async Task<List<Address>> ParseAddressNumbers(Dictionary<string, List<string>> addressDictionary)
