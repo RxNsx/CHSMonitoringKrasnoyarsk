@@ -15,6 +15,8 @@ public enum PlannedSupplyTypeEnum
     Planned3,
     [Description("Аварийное")]
     Emergency,
+    [Description("Аваририйное")]
+    Emergency2,
     [Description("Подвоз")]
     Subway,
     // [Description("Городских отключений не зарегистрировано")]
