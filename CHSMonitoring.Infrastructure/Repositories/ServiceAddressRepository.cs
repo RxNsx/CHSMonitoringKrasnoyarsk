@@ -21,7 +21,16 @@ public class ServiceAddressRepository : IServiceAddressRepository
     {
         _context = context;
     }
-    
+
+    public async Task<List<ServiceAddress>> GetLatestServiceAddressAsync(CancellationToken cancellationToken)
+    {
+        return await _context.ServiceAddresses
+            .GroupBy(x => x.StreetId)
+            .Select(g => g.OrderByDescending(x => x.CreatedDate).First())
+            .ToListAsync(cancellationToken)
+            .ConfigureAwait(false);
+    }
+
     public async Task<List<ServiceAddress>> GetServiceAddressesAsynс(CancellationToken cancellationToken)
     {
         return await _context.ServiceAddresses.ToListAsync(cancellationToken)
@@ -41,7 +50,7 @@ public class ServiceAddressRepository : IServiceAddressRepository
         await _context.SaveChangesAsync().ConfigureAwait(false);
     }
 
-    public async Task<ServiceAddress> GetServiceAddressAsync(string streetName, string houseNumber, CancellationToken cancellationToken)
+    public async Task<ServiceAddress?> GetServiceAddressAsync(string streetName, string houseNumber, CancellationToken cancellationToken)
     {
         if (!await IsExistServiceAddressAsync(streetName, houseNumber, cancellationToken).ConfigureAwait(false))
         {
