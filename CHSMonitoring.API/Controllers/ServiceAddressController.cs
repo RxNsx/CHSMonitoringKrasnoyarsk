@@ -1,4 +1,6 @@
-﻿using CHSMonitoring.Application.Queries.ServiceAddresses.Get;
+﻿using System.Net.Mime;
+using CHSMonitoring.Application.Queries.ServiceAddresses.Get;
+using CHSMonitoring.Application.Queries.ServiceAddresses.GetLatestList;
 using CHSMonitoring.Application.Queries.ServiceAddresses.GetList;
 using CHSMonitoring.Domain.Entities;
 using MediatR;
@@ -27,33 +29,53 @@ public class ServiceAddressController : ControllerBase
     /// <param name="streetName"></param>
     /// <param name="houseNumber"></param>
     /// <returns></returns>
-    [HttpGet("[action]")]
-    [ProducesResponseType<List<ServiceAddress>>(200, contentType: "application/json")]
-    [ProducesResponseType<List<ServiceAddress>>(400, contentType: "application/json")]
-    public async Task<IActionResult> GetServiceAddress([FromQuery] string streetName, string houseNumber)
+    [HttpGet]
+    [Route("[action]")]
+    [ProducesResponseType<List<ServiceAddress>>(200, contentType: MediaTypeNames.Application.Json)]
+    public async Task<IActionResult> GetServiceAddressAsync([FromQuery] string streetName, string houseNumber)
     {
-        var result = await _sender.Send(new GetServiceAddressQuery(streetName, houseNumber))
+        var resultServiceAddress = await _sender.Send(new GetServiceAddressQuery(streetName, houseNumber))
             .ConfigureAwait(false);
-        if (!result.IsSuccess)
+        if (!resultServiceAddress.IsSuccess)
         {
-            return BadRequest(result.Error);
+            return BadRequest(resultServiceAddress.Error.Text);
         }
         
-        return Ok(result);
+        return Ok(resultServiceAddress.Value);
     }
 
-    [HttpGet("[action]")]
-    [ProducesResponseType<List<ServiceAddress>>(200, contentType: "application/json")]
-    [ProducesResponseType<List<ServiceAddress>>(400, contentType: "application/json")]
-    public async Task<IActionResult> GetServiceAddresesByStreetNames([FromQuery] List<string> streetNames)
+    /// <summary>
+    /// Получить информацию по списку названий улиц
+    /// </summary>
+    /// <param name="streetNames"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("[action]")]
+    [ProducesResponseType<List<ServiceAddress>>(200, MediaTypeNames.Application.Json)]
+    public async Task<IActionResult> GetServiceAddresesByStreetNamesAsync([FromQuery] List<string> streetNames)
     {
-        var result = await _sender.Send(new GetServiceAddressListQuery(streetNames))
+        var resultServiceAddress = await _sender.Send(new GetServiceAddressListQuery(streetNames))
             .ConfigureAwait(false);
-        if (!result.IsSuccess)
+        if (!resultServiceAddress.IsSuccess)
         {
-            return BadRequest(result.Error);
+            return BadRequest(resultServiceAddress.Error.Text);
         }
         
-        return Ok(result);
+        return Ok(resultServiceAddress.Value);
+    }
+    
+    [HttpGet]
+    [Route("[action]")]
+    [ProducesResponseType<List<ServiceAddress>>(200, MediaTypeNames.Application.Json)]
+    public async Task<IActionResult> GetLatestServiceAddressAsync(CancellationToken cancellationToken)
+    {
+        var resultServicesAddresses = await _sender.Send(new GetLatestListServiceAddressQuery())
+            .ConfigureAwait(false);
+        if (resultServicesAddresses.IsSuccess)
+        {
+            return BadRequest(resultServicesAddresses.Error.Text);
+        }
+
+        return Ok(resultServicesAddresses.Value);
     }
 }

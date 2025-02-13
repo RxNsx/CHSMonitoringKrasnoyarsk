@@ -9,6 +9,13 @@ namespace CHSMonitoring.Infrastructure.Interfaces;
 public interface IServiceAddressRepository
 {
     /// <summary>
+    /// Получить последние события обслуживания
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<List<ServiceAddress>> GetLatestServiceAddressAsync(CancellationToken cancellationToken);
+    
+    /// <summary>
     /// Получить список событий обслуживания адреса
     /// </summary>
     /// <param name="cancellationToken"></param>
@@ -38,7 +45,7 @@ public interface IServiceAddressRepository
     /// <param name="houseNumber"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<ServiceAddress> GetServiceAddressAsync(string streetName, string houseNumber, CancellationToken cancellationToken);
+    Task<ServiceAddress?> GetServiceAddressAsync(string streetName, string houseNumber, CancellationToken cancellationToken);
 
     /// <summary>
     /// Проверка существования события обслуживания в базе
