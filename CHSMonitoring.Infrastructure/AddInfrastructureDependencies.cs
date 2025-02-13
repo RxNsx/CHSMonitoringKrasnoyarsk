@@ -25,13 +25,17 @@ public static class AddInfrastructureDependencies
         services.AddScoped<IOrganizationParserService, OrganizationParserService>();
         services.AddScoped<IAddressParserService, AddressParserService>();
         services.AddScoped<IDateParserService, DateParserService>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IHashPasswordService, HashPasswordService>();
+        services.AddScoped<ITokenService, TokenService>();
+        
         
         services.AddDbContext<MonitoringDbContext>(options =>
         {
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
         });
 
-        services.AddHostedService<ServiceMessageWorker>();
+        // services.AddHostedService<ServiceMessageWorker>();
         // services.AddHostedService<GInfoWorker>();
         
         return services;

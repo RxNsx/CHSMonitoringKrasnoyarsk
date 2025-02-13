@@ -6,12 +6,22 @@
 public class User : Entity
 {
     /// <summary>
-    /// Имя
+    /// Имя пользователя
     /// </summary>
-    public string Name { get; set; }
+    public string UserName { get; set; }
+
+    /// <summary>
+    /// Адрес почты
+    /// </summary>
+    public string EmailAddress { get; set; }
     
     /// <summary>
-    /// Пароль
+    /// Имя логина
+    /// </summary>
+    public string LoginName { get; set; }
+    
+    /// <summary>
+    /// Пароль (хэш)
     /// </summary>
     public string Password { get; set; }
     

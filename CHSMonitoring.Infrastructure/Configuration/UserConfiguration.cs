@@ -13,18 +13,23 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     {
         builder.ToTable("users", "admin");
 
-        builder.Property(x => x.Name);
-        
         builder.HasKey(x => x.Id);
         
-        builder.Property(x => x.Name)
+        builder.Property(x => x.UserName)
+            .IsRequired();
+        
+        builder.Property(x => x.LoginName)
             .IsRequired();
 
         builder.Property(x => x.Password)
             .IsRequired();
-        
+
+        builder.Property(x => x.EmailAddress)
+            .IsRequired();
+
         builder.Property(x => x.Description)
-            .HasMaxLength(150);
+            .HasMaxLength(150)
+            .IsRequired(false);
 
         builder.HasMany(x => x.Profiles)
             .WithOne(x => x.User)
