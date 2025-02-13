@@ -64,11 +64,6 @@ public class ServiceAddressController : ControllerBase
         return Ok(resultServiceAddress.Value);
     }
     
-    /// <summary>
-    /// Получение последних данных по отключениям
-    /// </summary>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
     [HttpGet]
     [Route("[action]")]
     [ProducesResponseType<List<ServiceAddress>>(200, MediaTypeNames.Application.Json)]
