@@ -23,7 +23,7 @@ public class ServiceMessageWorker : BackgroundService
     private readonly IServiceScopeFactory _serviceScopeFactory;
 
     private readonly string? _url;
-    private IServiceAddressRepository _serviceAddressRepository;
+    private readonly IServiceAddressRepository _serviceAddressRepository;
 
     /// <summary>
     /// Конструктор
@@ -35,22 +35,21 @@ public class ServiceMessageWorker : BackgroundService
     /// <param name="htmlParserService"></param>
     public ServiceMessageWorker(ILoggerFactory loggerFactory, IServiceScopeFactory serviceScopeFactory, IHttpClientService httpClientService, IConfiguration configuration, IHtmlParserService htmlParserService)
     {
+        var scope = serviceScopeFactory.CreateScope();
         _logger = loggerFactory.CreateLogger<ServiceMessageWorker>();
         _serviceScopeFactory = serviceScopeFactory;
         _httpClientService = httpClientService;
         _htmlParserService = htmlParserService;
+        _serviceAddressRepository = scope.ServiceProvider.GetRequiredService<IServiceAddressRepository>();
         
         if(!string.IsNullOrEmpty(configuration.GetSection("CHSMonitoringKrasnoyarsk:Url").Value))
         {
             _url = "http://93.92.65.26/aspx/GorodM.htm";
         }
     }
-
+    
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var scope = _serviceScopeFactory.CreateScope();
-        _serviceAddressRepository = scope.ServiceProvider.GetRequiredService<IServiceAddressRepository>();
-        
         while (!stoppingToken.IsCancellationRequested)
         {
             await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
@@ -72,7 +71,7 @@ public class ServiceMessageWorker : BackgroundService
             {
                 Console.WriteLine(ex.Message);
             }
-
+            
             await Task.Delay(TimeSpan.FromMinutes(3), stoppingToken);
         }
     }

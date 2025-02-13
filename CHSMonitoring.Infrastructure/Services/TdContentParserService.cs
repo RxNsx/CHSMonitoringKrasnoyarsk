@@ -1,5 +1,4 @@
-﻿using System.Collections.Concurrent;
-using CHSMonitoring.Domain.Entities;
+﻿using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Domain.Enums;
 using CHSMonitoring.Infrastructure.Common;
 using CHSMonitoring.Infrastructure.Extensions;
