@@ -32,6 +32,7 @@ public sealed class AddressParserService : IAddressParserService
     
     public Dictionary<string, List<string>> GetAddressDictFromAddressText(string addressesText)
     {
+        addressesText = addressesText.NormalizeActualDataText();
         var splittedAddressesList = addressesText
             .Split(';', StringSplitOptions.TrimEntries)
             .ToList();

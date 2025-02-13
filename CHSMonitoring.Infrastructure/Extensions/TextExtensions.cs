@@ -116,6 +116,7 @@ public static class TextExtensions
             .Replace("имени Газеты Красноярский Рабочий", "Красноярский рабочий", StringComparison.InvariantCultureIgnoreCase)
             .Replace("имени Газеты Пионерская Правда", "Пионерская Правда", StringComparison.InvariantCultureIgnoreCase)
             .Replace("имени Я.М. Свердлова", "Я.М. Свердлова", StringComparison.InvariantCultureIgnoreCase)
+            .Replace("Е. Стасовой", "Елены Стасовой", StringComparison.InvariantCultureIgnoreCase)
             //Е - Ё
             .Replace("Алеши Тимошенкова", "Алёши Тимошенкова", StringComparison.InvariantCultureIgnoreCase)
             .Replace("Артемовская", "Артёмовская", StringComparison.InvariantCultureIgnoreCase)

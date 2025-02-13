@@ -49,7 +49,7 @@ public class TdContentParserService : ITdContentParserService
         foreach (var item in districtDataDict)
         {
             var indexesOfSupplies = item.Value
-                .Where(x => supplyTypesEnums.Any(t => x.InnerText.Contains(t)))
+                .Where(x => supplyTypesEnums.Any(t => x.InnerText.NormalizeText().Contains(t, StringComparison.InvariantCultureIgnoreCase)))
                 .Select(x => x.Index)
                 .ToList();
 
@@ -74,7 +74,7 @@ public class TdContentParserService : ITdContentParserService
         }
         
         //TODO: Check concurrent flow
-        var serviceAddressDict = new ConcurrentDictionary<string, List<ServiceMessage>>();
+        var serviceAddressDict = new Dictionary<string, List<ServiceMessage>>();
 
         foreach (var tableDescriptionItem in tableDescriptionList)
         {
@@ -98,14 +98,21 @@ public class TdContentParserService : ITdContentParserService
             
                 serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
                 serviceAddressMessageBuilder.AddDistrictName(districtKey);
-                var supplyMessageDescription = serviceAddressMessageBuilder.BuildServiceAddressMessage();
+                var serviceMessage = serviceAddressMessageBuilder.BuildServiceAddressMessage();
             
-                serviceAddressDict.GetOrAdd(districtKey, key => new List<ServiceMessage>())
-                    .Add(supplyMessageDescription);
+                
+                if(serviceAddressDict.ContainsKey(districtKey))
+                {
+                    serviceAddressDict[districtKey].Add(serviceMessage);
+                }
+                else
+                {
+                    serviceAddressDict.Add(districtKey, new List<ServiceMessage>() {serviceMessage});
+                }
             }
         }
 
-        return GetServiceAddressList(serviceAddressDict.ToDictionary());
+        return GetServiceAddressList(serviceAddressDict);
     }
 
     /// <summary>
@@ -186,7 +193,7 @@ public class TdContentParserService : ITdContentParserService
             {
                 if (districtNames.Any(x => districtNames.Contains(tableDescription.InnerText)))
                 {
-                    var districtNameKey = tableDescription.InnerText;
+                    var districtNameKey = tableDescription.InnerText.NormalizeText();
                     tableDescriptionList.Remove(tableDescription);
                     
                     if (!dict.TryAdd(districtNameKey, tableDescriptionList))

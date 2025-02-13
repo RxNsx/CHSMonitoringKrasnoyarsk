@@ -35,7 +35,7 @@ public static class AddInfrastructureDependencies
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
         });
 
-        // services.AddHostedService<ServiceMessageWorker>();
+        services.AddHostedService<ServiceMessageWorker>();
         // services.AddHostedService<GInfoWorker>();
         
         return services;

@@ -73,7 +73,7 @@ public class ServiceMessageWorker : BackgroundService
                 Console.WriteLine(ex.Message);
             }
 
-            await Task.Delay(TimeSpan.FromSeconds(15), stoppingToken);
+            await Task.Delay(TimeSpan.FromMinutes(3), stoppingToken);
         }
     }
 
