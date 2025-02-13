@@ -75,7 +75,8 @@ public class TdContentParserService : ITdContentParserService
         
         //TODO: Check concurrent flow
         var serviceAddressDict = new Dictionary<string, List<ServiceMessage>>();
-
+        var createMessageDate = DateTime.UtcNow;
+        
         foreach (var tableDescriptionItem in tableDescriptionList)
         {
             var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index)).Key;
@@ -96,7 +97,7 @@ public class TdContentParserService : ITdContentParserService
                 var addressList = await _addressParserService.ParseAddressNumbers(addressDictionary).ConfigureAwait(false);
                 serviceAddressMessageBuilder.AddAddressesList(addressList);
             
-                serviceAddressMessageBuilder.AddDateInfo(dateInfoText);
+                serviceAddressMessageBuilder.AddDateInfo(dateInfoText, createMessageDate);
                 serviceAddressMessageBuilder.AddDistrictName(districtKey);
                 var serviceMessage = serviceAddressMessageBuilder.BuildServiceAddressMessage();
             

@@ -71,7 +71,7 @@ public class ServiceAddressController : ControllerBase
     {
         var resultServicesAddresses = await _sender.Send(new GetLatestListServiceAddressQuery())
             .ConfigureAwait(false);
-        if (resultServicesAddresses.IsSuccess)
+        if (!resultServicesAddresses.IsSuccess)
         {
             return BadRequest(resultServicesAddresses.Error.Text);
         }

@@ -36,7 +36,6 @@ public sealed class ServiceMessage
     /// </summary>
     public ServiceMessage()
     {
-        CreatedDate = DateTime.UtcNow;
     }
 
     /// <summary>

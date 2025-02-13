@@ -28,7 +28,7 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
         _serviceMessage.SetDescription(description);
     }
 
-    internal override void AddDateInfo(string dateInfoText)
+    internal override void AddDateInfo(string dateInfoText, DateTime createdDate)
     {
         var pattern = @"(\d{1,2} [а-я]+ \d{1,2}-\d{1,2})";
         var splitted = Regex.Split(dateInfoText, pattern);
@@ -38,6 +38,8 @@ public sealed class ServiceMessageBuilder : ServiceBuilder
             .ToList();
 
         var dateInfo = DateParser.ParseDatesFromTo(messagesToParse);
+
+        _serviceMessage.CreatedDate = createdDate;
         _serviceMessage.SetDateInfo(dateInfo);
     }
 

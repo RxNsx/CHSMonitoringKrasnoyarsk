@@ -24,12 +24,13 @@ public abstract class ServiceBuilder
     /// </summary>
     /// <param name="description"></param>
     internal abstract void AddDescription(string description);
-    
+
     /// <summary>
     /// Добавление временных интвервалов работ
     /// </summary>
     /// <param name="dateInfoText"></param>
-    internal abstract void AddDateInfo(string dateInfoText);
+    /// <param name="createdDate"></param>
+    internal abstract void AddDateInfo(string dateInfoText, DateTime createdDate);
     
     /// <summary>
     /// Добавление значения имени района

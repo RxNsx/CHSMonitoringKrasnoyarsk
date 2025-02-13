@@ -24,9 +24,12 @@ public class ServiceAddressRepository : IServiceAddressRepository
 
     public async Task<List<ServiceAddress>> GetLatestServiceAddressAsync(CancellationToken cancellationToken)
     {
+        var latestTime = await _context.ServiceAddresses
+            .MaxAsync(x => x.CreatedDate)
+            .ConfigureAwait(false);
+        
         return await _context.ServiceAddresses
-            .GroupBy(x => x.StreetId)
-            .Select(g => g.OrderByDescending(x => x.CreatedDate).First())
+            .Where(x => x.CreatedDate == latestTime)
             .ToListAsync(cancellationToken)
             .ConfigureAwait(false);
     }
