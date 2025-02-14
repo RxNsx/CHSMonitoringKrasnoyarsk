@@ -1,7 +1,9 @@
 ﻿using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Interfaces;
+using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Repositories;
 using CHSMonitoring.Infrastructure.Services;
+using CHSMonitoring.Infrastructure.Telegram;
 using CHSMonitoring.Infrastructure.Workers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +30,11 @@ public static class AddInfrastructureDependencies
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IHashPasswordService, HashPasswordService>();
         services.AddScoped<ITokenService, TokenService>();
-        
+
+        services.AddSingleton<IHttpClientService, HttpClientService>();
+        services.AddSingleton<IHtmlParserService, HtmlParserService>();
+        services.AddSingleton<ITdContentParserService, TdContentParserService>();
+        services.AddSingleton<TelegramBot>();
         
         services.AddDbContext<MonitoringDbContext>(options =>
         {
@@ -36,7 +42,7 @@ public static class AddInfrastructureDependencies
         });
 
         services.AddHostedService<ServiceMessageWorker>();
-        // services.AddHostedService<GInfoWorker>();
+        services.AddHostedService<GInfoWorker>();
         
         return services;
     }

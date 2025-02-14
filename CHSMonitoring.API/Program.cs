@@ -3,25 +3,19 @@ using CHSMonitoring.Infrastructure;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Services;
 using CHSMonitoring.Infrastructure.Settings;
-using CHSMonitoring.Infrastructure.Workers;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson();
+builder.Services.ConfigureTelegramBotMvc();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-//Scoped Services
-
-//Singleton Services
-builder.Services.AddSingleton<IHttpClientService, HttpClientService>();
-builder.Services.AddSingleton<IHtmlParserService, HtmlParserService>();
-builder.Services.AddSingleton<ITdContentParserService, TdContentParserService>();
 
 builder.Services
     .AddInfrastructureServices(builder.Configuration)
@@ -63,7 +57,7 @@ app.UseCookiePolicy(new CookiePolicyOptions()
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
