@@ -24,16 +24,15 @@ public class MonitoringDbContext : DbContext
     public virtual DbSet<Permission> Permissions { get; set; }
     
     public virtual DbSet<PlannedServiceType> PlannedServiceTypes { get; set; }
-    
     public virtual DbSet<Profile> Profiles { get; set; }
+    
+    public virtual DbSet<ProfileType> ProfileTypes { get; set; }
     
     public virtual DbSet<Role> Roles { get; set; }
     public virtual DbSet<ServiceAddress> ServiceAddresses { get; set; }
     
     public virtual DbSet<ServiceType> ServiceTypes { get; set; }
-    
     public virtual DbSet<User> Users { get; set; }
-    
     public virtual DbSet<Street> Streets { get; set; }
 
     /// <summary>

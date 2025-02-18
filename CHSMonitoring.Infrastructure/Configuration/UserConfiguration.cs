@@ -9,6 +9,10 @@ namespace CHSMonitoring.Infrastructure.Configuration;
 /// </summary>
 public class UserConfiguration : IEntityTypeConfiguration<User>
 {
+    /// <summary>
+    /// Конфигурация аттрибутов пользователя
+    /// </summary>
+    /// <param name="builder"></param>
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.ToTable("users", "admin");
@@ -17,15 +21,12 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         
         builder.Property(x => x.UserName)
             .IsRequired();
-        
-        builder.Property(x => x.LoginName)
-            .IsRequired();
-
-        builder.Property(x => x.Password)
-            .IsRequired();
 
         builder.Property(x => x.EmailAddress)
             .IsRequired();
+        
+        builder.HasIndex(x => x.EmailAddress)
+            .IsUnique();
 
         builder.Property(x => x.Description)
             .HasMaxLength(150)
@@ -38,5 +39,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasMany(x => x.Roles)
             .WithOne(x => x.User)
             .HasForeignKey(x => x.UserId);
+        
+
     }
 }

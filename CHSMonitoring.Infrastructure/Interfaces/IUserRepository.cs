@@ -24,6 +24,14 @@ public interface IUserRepository
     Task<User?> GetUserByUserIdAsync(Guid userId, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Получить пользователя по почтовому адресу
+    /// </summary>
+    /// <param name="emailAddress"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<User?> GetUserByUserEmailAddressAsync(string emailAddress, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Добавить пользователя
     /// </summary>
     /// <param name="email"></param>
@@ -32,13 +40,13 @@ public interface IUserRepository
     /// <param name="loginName"></param>
     /// <param name="hashPassword"></param>
     /// <returns></returns>
-    Task<User> CreateUserAsync(string userName, string loginName, string hashPassword, string email, CancellationToken cancellationToken);
+    Task<User> CreateWebApplicationUserAsync(string userName, string loginName, string hashPassword, string email, CancellationToken cancellationToken);
 
     /// <summary>
     /// Проверка существует ли указанный пользователь с таким логином
     /// </summary>
-    /// <param name="loginName"></param>
+    /// <param name="emailAddress"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<bool> IsUserExists(string loginName, CancellationToken cancellationToken);
+    Task<bool> IsUserExists(string emailAddress, CancellationToken cancellationToken);
 }

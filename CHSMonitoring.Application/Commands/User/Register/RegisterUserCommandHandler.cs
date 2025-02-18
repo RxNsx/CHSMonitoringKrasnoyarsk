@@ -1,5 +1,7 @@
 ﻿using CHSMonitoring.Application.Dtos.User;
 using CHSMonitoring.Application.Errors.RegisterUserErrors;
+using CHSMonitoring.Domain.Enums;
+using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using MediatR;
 using VplayRequestTransmitter.Shared;
@@ -24,7 +26,7 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, R
     
     public async Task<Result<RegisterUserDto>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
-        var isUserExists = await _userRepository.IsUserExists(request.LoginName, cancellationToken)
+        var isUserExists = await _userRepository.IsUserExists(request.Email, cancellationToken)
             .ConfigureAwait(false);
         if (isUserExists)
         {
@@ -32,11 +34,11 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, R
         }
         
         var hashPassword = _hashPasswordService.HashPassword(request.Password);
-        var createdUser = await _userRepository.CreateUserAsync(request.UserName, request.LoginName, hashPassword, request.Email, cancellationToken).ConfigureAwait(false);
+        var createdUser = await _userRepository.CreateWebApplicationUserAsync(request.UserName, request.LoginName, hashPassword, request.Email, cancellationToken).ConfigureAwait(false);
         
         return Result.Success(new RegisterUserDto()
         {
-            LoginName = createdUser.LoginName,
+            LoginName = createdUser.Profiles.FirstOrDefault(x => x.ProfileTypeId == ProfileTypeEnum.WebApplication.GetGuidValue())!.LoginName,
             UserName = createdUser.UserName,
             Email = createdUser.EmailAddress
         });

@@ -1,6 +1,8 @@
 ﻿using CHSMonitoring.Application.Dtos;
 using CHSMonitoring.Application.Dtos.Login;
 using CHSMonitoring.Application.Errors.LoginUserErrors;
+using CHSMonitoring.Domain.Enums;
+using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using MediatR;
 using VplayRequestTransmitter.Shared;
@@ -35,7 +37,8 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, Result<
             return Result.Failure<LoginUserDto>(LoginUserError.NotFound());
         }
 
-        var isPasswordCorrect = _hashPasswordService.VerifyPassword(request.Password, user.Password);
+        var userWebProfile = user.Profiles.FirstOrDefault(x => x.ProfileTypeId == ProfileTypeEnum.WebApplication.GetGuidValue());
+        var isPasswordCorrect = _hashPasswordService.VerifyPassword(request.Password, userWebProfile!.Password);
         if (!isPasswordCorrect)
         {
             return Result.Failure<LoginUserDto>(LoginUserError.IncorrectPassword());
@@ -44,7 +47,7 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, Result<
         var token = _tokenService.GenerateToken(user);
         var userDto = new LoginUserDto()
         {
-            LoginName = user.LoginName,
+            LoginName = userWebProfile.LoginName,
             TokenData = token
         };
 

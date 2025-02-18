@@ -16,16 +16,6 @@ public class User : Entity
     public string EmailAddress { get; set; }
     
     /// <summary>
-    /// Имя логина
-    /// </summary>
-    public string LoginName { get; set; }
-    
-    /// <summary>
-    /// Пароль (хэш)
-    /// </summary>
-    public string Password { get; set; }
-    
-    /// <summary>
     /// Описание пользователя
     /// </summary>
     public string Description { get; set; }
