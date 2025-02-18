@@ -22,10 +22,12 @@ public class ProfileConfiguration : IEntityTypeConfiguration<Profile>
             .IsRequired(false);
 
         builder.Property(x => x.Street)
-            .HasMaxLength(150);
+            .HasMaxLength(150)
+            .IsRequired(false);
 
         builder.Property(x => x.HouseNumber)
-            .HasMaxLength(30);
+            .HasMaxLength(30)
+            .IsRequired(false);
         
         builder.Property(x => x.UserId)
             .IsRequired();
