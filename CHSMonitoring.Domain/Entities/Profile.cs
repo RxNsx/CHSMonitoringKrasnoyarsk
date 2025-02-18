@@ -8,7 +8,7 @@ public class Profile : Entity
     /// <summary>
     /// Айди пользователя системы (телеграм чат ид итд)
     /// </summary>
-    public Guid ProviderId { get; set; }
+    public long ProviderId { get; set; }
 
     /// <summary>
     /// Логин пользователя в системе

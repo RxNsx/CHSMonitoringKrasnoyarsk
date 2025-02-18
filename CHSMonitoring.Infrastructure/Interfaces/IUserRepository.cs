@@ -32,15 +32,28 @@ public interface IUserRepository
     Task<User?> GetUserByUserEmailAddressAsync(string emailAddress, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Добавить пользователя
+    /// Добавить пользователя 
     /// </summary>
-    /// <param name="email"></param>
+    /// <param name="emailAddress"></param>
     /// <param name="cancellationToken"></param>
     /// <param name="userName"></param>
     /// <param name="loginName"></param>
     /// <param name="hashPassword"></param>
     /// <returns></returns>
-    Task<User> CreateWebApplicationUserAsync(string userName, string loginName, string hashPassword, string email, CancellationToken cancellationToken);
+    Task<User> CreateWebApplicationUserAsync(string userName, string loginName, string hashPassword, string emailAddress, CancellationToken cancellationToken);
+
+
+    /// <summary>
+    /// Создать телеграм профиль пользователя
+    /// </summary>
+    /// <param name="chatId"></param>
+    /// <param name="userName"></param>
+    /// <param name="telegramName"></param>
+    /// <param name="emailAddress"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<User> CreateTelegramUserAsync(long chatId, string userName, string telegramName, string emailAddress,
+        CancellationToken cancellationToken);
 
     /// <summary>
     /// Проверка существует ли указанный пользователь с таким логином

@@ -3,6 +3,7 @@ using CHSMonitoring.Domain.Enums;
 using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace CHSMonitoring.Infrastructure.Repositories;
 
@@ -22,10 +23,20 @@ public class ProfileRepository : IProfileRepository
         _context = context;
     }
 
-
-    public Task CreateTelegramProfileAsync(Guid userId, CancellationToken cancellationToken)
+    public async Task<Profile> CreateTelegramProfileAsync(Guid userId, long chatId, string telegramName, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var profile = new Profile()
+        {
+            ProfileTypeId = ProfileTypeEnum.Telegram.GetGuidValue(),
+            ProviderId = chatId,
+            LoginName = telegramName,
+            UserId = userId
+        };
+        
+        await _context.Profiles.AddAsync(profile, cancellationToken).ConfigureAwait(false);
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+
+        return profile;
     }
 
     public async Task<Profile> CreateWebProfileAsync(Guid userId, string loginName, string password, CancellationToken cancellationToken)
@@ -42,5 +53,21 @@ public class ProfileRepository : IProfileRepository
         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
         return profile;
+    }
+
+    public async Task<bool> IsExistProfileAsync(Guid userId, ProfileTypeEnum profileTypeEnum)
+    {
+        return await _context.Users
+            .Include(x => x.Profiles)
+            .AnyAsync(x => x.Profiles.Any(t => t.Id == profileTypeEnum.GetGuidValue()))
+            .ConfigureAwait(false);
+    }
+
+    public async Task<bool> IsTelegramProfileAsync(long chatId)
+    {
+        return await _context.Users
+            .Include(x => x.Profiles)
+            .AnyAsync(x => x.Profiles.Any(t => t.ProviderId == chatId))
+            .ConfigureAwait(false);
     }
 }

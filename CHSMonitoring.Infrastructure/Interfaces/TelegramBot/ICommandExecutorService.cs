@@ -7,5 +7,10 @@ namespace CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
 /// </summary>
 public interface ICommandExecutorService
 {
+    /// <summary>
+    /// Выполнить команду
+    /// </summary>
+    /// <param name="update"></param>
+    /// <returns></returns>
     Task Execute(Update update);
 }

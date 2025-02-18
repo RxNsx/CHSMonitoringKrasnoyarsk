@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Nodes;
+using CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
 using CHSMonitoring.Infrastructure.Telegram;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -16,36 +17,22 @@ namespace CHSMonitoring.API.Controllers;
 [ApiController]
 public class TelegramBotController : ControllerBase
 {
-    private readonly TelegramBotClient _telegramBotClient;
+    private readonly ICommandExecutorService _commandExecutorService;
 
-    public TelegramBotController(TelegramBot telegramBot)
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="commandExecutorService"></param>
+    public TelegramBotController(ICommandExecutorService commandExecutorService)
     {
-        _telegramBotClient = telegramBot.GetTelegramBotClient().Result;
+        _commandExecutorService = commandExecutorService;
     }
 
-    
     [HttpPost]
     [Route("[action]")]
     public async Task<IActionResult> UpdateAsync([FromBody] Update update)
     {
-        if (update.Message is null || update.Message.Text is null || update?.Message.Chat is null)
-        {
-            return Ok();
-        }
-        
-        var text = update.Message.Text;
-        var chat = update.Message?.Chat;
-        if (text.Equals("/start", StringComparison.InvariantCultureIgnoreCase))
-        {
-            await _telegramBotClient.SendMessage(chat.Id, "Start", ParseMode.Markdown)
-                .ConfigureAwait(false);
-        }
-        if (text.Equals("hello", StringComparison.InvariantCultureIgnoreCase))
-        {
-            await _telegramBotClient.SendMessage(chat.Id, "Booba", ParseMode.Markdown)
-                .ConfigureAwait(false);
-        }
-
+        await _commandExecutorService.Execute(update).ConfigureAwait(false);
         return Ok();
     }
 }

@@ -96,7 +96,7 @@ public static class StringListExtensions
 
         return numbers;
     }
-    
+
     /// <summary>
     /// Заменяет вхождения где буква Е должна быть буквой Ё
     /// </summary>
@@ -121,8 +121,8 @@ public static class StringListExtensions
             new("СТ Березка", "СТ Берёзка"),
             new("СТ Дом матери и ребенка", "СТ Дом матери и ребёнка"),
         };
-        
-        for (var i = 0; i < addresses.Count; i ++)
+
+        for (var i = 0; i < addresses.Count; i++)
         {
             foreach (var replacement in replaceAddresses)
             {

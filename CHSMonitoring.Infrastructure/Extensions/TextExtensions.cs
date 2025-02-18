@@ -139,6 +139,11 @@ public static class TextExtensions
             .Trim();
     }
 
+    /// <summary>
+    /// Заменяет слово остров в многословных улицах на пустую строку
+    /// </summary>
+    /// <param name="outputText"></param>
+    /// <returns></returns>
     private static string ReplaceIslandWord(this string outputText)
     {
         if (outputText.Contains("остров", StringComparison.InvariantCultureIgnoreCase))
@@ -155,8 +160,25 @@ public static class TextExtensions
         return outputText;
     }
 
+    /// <summary>
+    /// Выставляет количество пробелом равное 1, если пробелов много
+    /// </summary>
+    /// <param name="outputText"></param>
+    /// <returns></returns>
     private static string NormalizeSpaces(this string outputText)
     {
         return Regex.Replace(outputText, @"\s+", " ", RegexOptions.Compiled);
+    }
+
+
+    /// <summary>
+    /// Проверяет валидность почтового адреса
+    /// </summary>
+    /// <param name="emailString"></param>
+    /// <returns></returns>
+    public static bool IsEmailValid(this string emailString)
+    {
+        var emailRegex = new Regex(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", RegexOptions.Compiled);
+        return emailRegex.IsMatch(emailString);
     }
 }

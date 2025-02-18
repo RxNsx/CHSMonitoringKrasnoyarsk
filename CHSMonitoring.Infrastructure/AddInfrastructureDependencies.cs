@@ -1,8 +1,12 @@
 ﻿using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Interfaces;
+using CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
+using CHSMonitoring.Infrastructure.Models.TelegramBot;
+using CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
 using CHSMonitoring.Infrastructure.Repositories;
 using CHSMonitoring.Infrastructure.Services;
+using CHSMonitoring.Infrastructure.Services.TelegramBot;
 using CHSMonitoring.Infrastructure.Telegram;
 using CHSMonitoring.Infrastructure.Workers;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +39,16 @@ public static class AddInfrastructureDependencies
         services.AddSingleton<IHttpClientService, HttpClientService>();
         services.AddSingleton<IHtmlParserService, HtmlParserService>();
         services.AddSingleton<ITdContentParserService, TdContentParserService>();
+        
+        //Telegram Services
         services.AddSingleton<TelegramBot>();
+        services.AddSingleton<ICommandExecutorService, CommandExecutorService>();
+        services.AddSingleton<BaseCommand, StartCommand>();
+        services.AddSingleton<BaseCommand, SetUserNameCommand>();
+        services.AddSingleton<BaseCommand, SetEmailAddressCommand>();
+        services.AddSingleton<BaseCommand, ResentEmailAddressCommand>();
+        services.AddSingleton<BaseCommand, SuccessAuthorizationCommand>();
+        
         
         services.AddDbContext<MonitoringDbContext>(options =>
         {
