@@ -50,7 +50,7 @@ public static class AddInfrastructureDependencies
         services.AddSingleton<BaseCommand, ResentEmailAddressCommand>();
         services.AddSingleton<BaseCommand, SuccessAuthorizationCommand>();
         services.AddSingleton<BaseCommand, UserEmailAlreadyExistsCommand>();
-        services.AddSingleton<BaseCommand, GetServiceAddressInfoCommand>();
+        services.AddSingleton<BaseCommand, ShowServiceAddressInfoCommand>();
         services.AddSingleton<BaseCommand, ShowDistrictButtonCommand>();
         services.AddSingleton<ErrorBaseCommand, SendErrorInfoCommand>();
         

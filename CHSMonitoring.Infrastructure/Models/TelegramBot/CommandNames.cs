@@ -50,7 +50,7 @@ public static class CommandNames
     /// <summary>
     /// Получение последней актуальной информации по отключениям
     /// </summary>
-    public const string GetServiceAddressInfo = "/get_service_address_info";
+    public const string ShowDistrictServiceAddressDataCommand = "all-district";
     /// <summary>
     /// Поиощь
     /// </summary>

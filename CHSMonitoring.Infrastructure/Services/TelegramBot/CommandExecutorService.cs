@@ -77,11 +77,6 @@ public class CommandExecutorService : ICommandExecutorService
                             await ExecuteCommand(CommandNames.ShowDistrictButtons, update).ConfigureAwait(false);
                             break;
                         }
-                        case CommandNames.GetServiceAddressInfo:
-                        {
-                            await ExecuteCommand(CommandNames.GetServiceAddressInfo, update).ConfigureAwait(false);
-                            break;
-                        }
                     }
                     
                     break;
@@ -147,6 +142,11 @@ public class CommandExecutorService : ICommandExecutorService
                         {
                             _commandState = CommandState.AuthrorizeStart;
                             await ExecuteCommand(CommandNames.SetUserNameCommand, update);
+                            break;
+                        }
+                        case var commandName when update.CallbackQuery.Data.Contains("-district"):
+                        {
+                            await ExecuteCommand(CommandNames.ShowDistrictServiceAddressDataCommand, update).ConfigureAwait(false);
                             break;
                         }
                     }

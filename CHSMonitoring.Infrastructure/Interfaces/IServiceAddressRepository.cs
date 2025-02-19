@@ -14,6 +14,14 @@ public interface IServiceAddressRepository
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<List<ServiceAddress>> GetLatestServiceAddressAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Получить последние события отключения по району
+    /// </summary>
+    /// <param name="districtId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<List<ServiceAddress>> GetLatestServiceAddressByDistrictAsync(Guid districtId, CancellationToken cancellationToken);
     
     /// <summary>
     /// Получить список событий обслуживания адреса
