@@ -1,4 +1,5 @@
 ﻿using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 
 namespace CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
 
@@ -13,4 +14,18 @@ public interface ICommandExecutorService
     /// <param name="update"></param>
     /// <returns></returns>
     Task Execute(Update update);
+
+    /// <summary>
+    /// Обработка команд в виде сообщения
+    /// </summary>
+    /// <param name="update"></param>
+    /// <returns></returns>
+    Task HandleExecuteUpdateMessage(Update update);
+
+    /// <summary>
+    /// Обработка команд CallbackQuery
+    /// </summary>
+    /// <param name="update"></param>
+    /// <returns></returns>
+    Task HandleExecuteUpdateCallbackQuery(Update update);
 }

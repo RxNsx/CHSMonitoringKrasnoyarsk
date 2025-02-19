@@ -34,7 +34,6 @@ public class CommandExecutorService : ICommandExecutorService
         _profileRepository = scope.ServiceProvider.GetRequiredService<IProfileRepository>();
         _commands = serviceProvider.GetServices<BaseCommand>().ToList();
         _errorCommands = serviceProvider.GetServices<ErrorBaseCommand>().ToList();
-        
         _registerUser = new RegisterTelegramUserDto();
     }
     
@@ -46,113 +45,140 @@ public class CommandExecutorService : ICommandExecutorService
     /// <exception cref="NotImplementedException"></exception>
     public async Task Execute(Update update)
     {
-        if (update.Type == UpdateType.Message)
+        try
         {
-            if (update?.Message is null)
+            if (update.Type == UpdateType.Message)
             {
-                return;
+                if (update?.Message is null)
+                {
+                    return;
+                }
+
+                await HandleExecuteUpdateMessage(update).ConfigureAwait(false);
             }
-
-            switch (_commandState)
+            if (update.Type == UpdateType.CallbackQuery)
             {
-                case CommandState.NotActive:
+                if (update?.CallbackQuery is null)
                 {
-                    switch (update!.Message?.Text)
-                    {
-                        case CommandNames.StartCommand:
-                        {
-                            var isProfileExists = await _profileRepository.IsTelegramProfileAsync(update.Message.From.Id);
-                            if (!isProfileExists)
-                            {
-                                await ExecuteCommand(CommandNames.StartCommand, update).ConfigureAwait(false);
-                            }
-                            else
-                            {
-                                await ExecuteCommand(CommandNames.ShowDistrictButtons, update).ConfigureAwait(false);
-                            }
-                            break;
-                        }
-                        case CommandNames.ShowDistrictButtons:
-                        {
-                            await ExecuteCommand(CommandNames.ShowDistrictButtons, update).ConfigureAwait(false);
-                            break;
-                        }
-                    }
-                    
-                    break;
+                    return;
                 }
-                case CommandState.AuthrorizeStart:
-                {
-                    await ExecuteCommand(CommandNames.SetEmailAddressCommand, update).ConfigureAwait(false);
-                    _registerUser.Name = update.Message.Text;
-                    _commandState = CommandState.AuthorizeUserNameSet;
-                    break;
-                }
-                case CommandState.AuthorizeUserNameSet:
-                {
-                    _registerUser.EmailAddress = update.Message.Text;
-                    if (!update.Message!.Text.IsEmailValid())
-                    {
-                        await ExecuteCommand(CommandNames.ResentEmailAddress, update).ConfigureAwait(false);
-                    }
-                    else
-                    {
-                        try
-                        {
-                            var isUserEmailExists = await _userRepository.GetUserByUserEmailAddressAsync(_registerUser.EmailAddress, default);
-                            if (isUserEmailExists is not null)
-                            {
-                                await ExecuteCommand(CommandNames.UserEmailAlreadyExists, update).ConfigureAwait(false);
-                                _registerUser.EmailAddress = string.Empty;
-                                break;
-                            }
-                            
-                            await _userRepository
-                                .CreateTelegramUserAsync(update.Message.From.Id, _registerUser.Name, update.Message.From.Username, _registerUser.EmailAddress, default)
-                                .ConfigureAwait(false);
-                            await ExecuteCommand(CommandNames.SuccessAuthorization, update);
-                            _commandState = CommandState.NotActive;
-                        }
-                        catch (Exception ex)
-                        {
-                            await ExecuteErrorCommand(CommandNames.SendErrorCommand, ex.Message, update)
-                                .ConfigureAwait(false);
-                        }
-                    }
 
-                    break;
-                }
+                await HandleExecuteUpdateCallbackQuery(update).ConfigureAwait(false);
             }
         }
-
-        if (update.Type == UpdateType.CallbackQuery)
+        catch (Exception ex)
         {
-            if (update?.CallbackQuery?.Data is null)
-            {
-                return;
-            }
+            Console.WriteLine(ex.Message);
+        }
+    }
 
-            switch (_commandState)
+    public async Task HandleExecuteUpdateMessage(Update update)
+    {
+        switch (_commandState)
+        {
+            case CommandState.NotActive:
             {
-                case CommandState.NotActive:
+                switch (update!.Message?.Text)
                 {
-                    switch (update.CallbackQuery.Data)
+                    case CommandNames.StartCommand:
                     {
-                        case CommandNames.StartAuthorizeProcess:
+                        var isProfileExists =
+                            await _profileRepository.IsTelegramProfileAsync(update.Message.From.Id);
+                        if (!isProfileExists)
                         {
-                            _commandState = CommandState.AuthrorizeStart;
-                            await ExecuteCommand(CommandNames.SetUserNameCommand, update);
-                            break;
+                            await ExecuteCommand(CommandNames.StartCommand, update).ConfigureAwait(false);
                         }
-                        case var commandName when update.CallbackQuery.Data.Contains("-district"):
+                        else
                         {
-                            await ExecuteCommand(CommandNames.ShowDistrictServiceAddressDataCommand, update).ConfigureAwait(false);
-                            break;
+                            await ExecuteCommand(CommandNames.ShowDistrictButtons, update)
+                                .ConfigureAwait(false);
                         }
+
+                        break;
                     }
-                    
-                    break;
+                    case CommandNames.ShowDistrictButtons:
+                    {
+                        await ExecuteCommand(CommandNames.ShowDistrictButtons, update).ConfigureAwait(false);
+                        break;
+                    }
                 }
+
+                break;
+            }
+            case CommandState.AuthrorizeStart:
+            {
+                await ExecuteCommand(CommandNames.SetEmailAddressCommand, update).ConfigureAwait(false);
+                _registerUser.Name = update.Message.Text;
+                _commandState = CommandState.AuthorizeUserNameSet;
+                break;
+            }
+            case CommandState.AuthorizeUserNameSet:
+            {
+                _registerUser.EmailAddress = update.Message.Text;
+                if (!update.Message!.Text.IsEmailValid())
+                {
+                    await ExecuteCommand(CommandNames.ResentEmailAddress, update).ConfigureAwait(false);
+                }
+                else
+                {
+                    try
+                    {
+                        var isUserEmailExists =
+                            await _userRepository.GetUserByUserEmailAddressAsync(_registerUser.EmailAddress,
+                                default);
+                        if (isUserEmailExists is not null)
+                        {
+                            await ExecuteCommand(CommandNames.UserEmailAlreadyExists, update)
+                                .ConfigureAwait(false);
+                            _registerUser.EmailAddress = string.Empty;
+                            break;
+                        }
+
+                        await _userRepository
+                            .CreateTelegramUserAsync(update.Message.From.Id, _registerUser.Name,
+                                update.Message.From.Username, _registerUser.EmailAddress, default)
+                            .ConfigureAwait(false);
+                        await ExecuteCommand(CommandNames.SuccessAuthorization, update);
+                        await ExecuteCommand(CommandNames.ShowDistrictButtons, update);
+                        _commandState = CommandState.NotActive;
+                    }
+                    catch (Exception ex)
+                    {
+                        await ExecuteErrorCommand(CommandNames.SendErrorCommand, ex.Message, update)
+                            .ConfigureAwait(false);
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    public async Task HandleExecuteUpdateCallbackQuery(Update update)
+    {
+        switch (_commandState)
+        {
+            case CommandState.NotActive:
+            {
+                switch (update.CallbackQuery.Data)
+                {
+                    case CommandNames.StartAuthorizeProcess:
+                    {
+                        _commandState = CommandState.AuthrorizeStart;
+                        await ExecuteCommand(CommandNames.SetUserNameCommand, update);
+                        break;
+                    }
+                    case var commandName when update.CallbackQuery.Data.Contains("-district"):
+                    {
+                        await ExecuteCommand(CommandNames.ShowDistrictServiceAddressDataCommand, update)
+                            .ConfigureAwait(false);
+
+                        update.Message = update.CallbackQuery.Message;
+                        await ExecuteCommand(CommandNames.ShowDistrictButtons, update)
+                            .ConfigureAwait(false);
+                        break;
+                    }
+                }
+                break;
             }
         }
     }
