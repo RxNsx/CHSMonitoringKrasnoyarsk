@@ -16,6 +16,10 @@ public static class CommandNames
     /// </summary>
     public const string ResentEmailAddress = "resent_email_address";
     /// <summary>
+    /// Пользователь с таким почтовым адресом уже существует
+    /// </summary>
+    public const string UserEmailAlreadyExists = "user_email_already_exists";
+    /// <summary>
     /// Успешная авторизация
     /// </summary>
     public const string SuccessAuthorization = "success_authorization";
@@ -27,6 +31,10 @@ public static class CommandNames
     /// Команда установки почты
     /// </summary>
     public const string SetEmailAddressCommand = "set_email_address";
+    /// <summary>
+    /// Команда отправки ошибки
+    /// </summary>
+    public const string SendErrorCommand = "send_error_command";
     /// <summary>
     /// Команда установки имени
     /// </summary>

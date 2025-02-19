@@ -2,6 +2,7 @@
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
 using CHSMonitoring.Infrastructure.Models.TelegramBot;
+using CHSMonitoring.Infrastructure.Models.TelegramBot.Abstractions;
 using CHSMonitoring.Infrastructure.Models.TelegramBot.Dtos;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
@@ -18,6 +19,7 @@ public class CommandExecutorService : ICommandExecutorService
     private readonly IProfileRepository _profileRepository;
     private readonly IUserRepository _userRepository;
     private readonly List<BaseCommand> _commands;
+    private readonly List<ErrorBaseCommand> _errorCommands;
     private CommandState _commandState;
     private BaseCommand _lastExecutedCommand;
     private RegisterTelegramUserDto _registerUser;
@@ -31,6 +33,8 @@ public class CommandExecutorService : ICommandExecutorService
         _userRepository = scope.ServiceProvider.GetRequiredService<IUserRepository>();
         _profileRepository = scope.ServiceProvider.GetRequiredService<IProfileRepository>();
         _commands = serviceProvider.GetServices<BaseCommand>().ToList();
+        _errorCommands = serviceProvider.GetServices<ErrorBaseCommand>().ToList();
+        
         _registerUser = new RegisterTelegramUserDto();
     }
     
@@ -81,12 +85,19 @@ public class CommandExecutorService : ICommandExecutorService
                     if (!update.Message!.Text.IsEmailValid())
                     {
                         await ExecuteCommand(CommandNames.ResentEmailAddress, update).ConfigureAwait(false);
-                        break;
                     }
                     else
                     {
                         try
                         {
+                            var isUserEmailExists = await _userRepository.GetUserByUserEmailAddressAsync(_registerUser.EmailAddress, default);
+                            if (isUserEmailExists is not null)
+                            {
+                                await ExecuteCommand(CommandNames.UserEmailAlreadyExists, update).ConfigureAwait(false);
+                                _registerUser.EmailAddress = string.Empty;
+                                break;
+                            }
+                            
                             await _userRepository
                                 .CreateTelegramUserAsync(update.Message.From.Id, _registerUser.Name, update.Message.From.Username, _registerUser.EmailAddress, default)
                                 .ConfigureAwait(false);
@@ -95,11 +106,12 @@ public class CommandExecutorService : ICommandExecutorService
                         }
                         catch (Exception ex)
                         {
-                            
+                            await ExecuteErrorCommand(CommandNames.SendErrorCommand, ex.Message, update)
+                                .ConfigureAwait(false);
                         }
-
-                        break;
                     }
+
+                    break;
                 }
             }
         }
@@ -135,5 +147,11 @@ public class CommandExecutorService : ICommandExecutorService
     {
         _lastExecutedCommand = _commands.First(x => x.Name == commandName);
         await _lastExecutedCommand.ExecuteAsync(update);
+    }
+
+    private async Task ExecuteErrorCommand(string commandName, string errorMessage, Update update)
+    {
+        var errorCommand = _errorCommands.First(x => x.Name == commandName);
+        await errorCommand.ExecuteAsync(errorMessage, update);
     }
 }

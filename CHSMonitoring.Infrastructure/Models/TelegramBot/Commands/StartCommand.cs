@@ -1,4 +1,5 @@
 ﻿using CHSMonitoring.Infrastructure.Interfaces;
+using CHSMonitoring.Infrastructure.Models.TelegramBot.Abstractions;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;

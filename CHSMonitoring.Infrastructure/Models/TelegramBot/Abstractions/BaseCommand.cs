@@ -1,6 +1,6 @@
 ﻿using Telegram.Bot.Types;
 
-namespace CHSMonitoring.Infrastructure.Models.TelegramBot;
+namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Abstractions;
 
 /// <summary>
 /// Базовая команда

@@ -5,22 +5,23 @@ using Telegram.Bot.Types.Enums;
 
 namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
 
-public class SuccessAuthorizationCommand : BaseCommand
+public class SendErrorInfoCommand : ErrorBaseCommand
 {
     private readonly TelegramBotClient _telegramBotClient;
 
     /// <summary>
     /// Конструктор
     /// </summary>
-    public SuccessAuthorizationCommand(Telegram.TelegramBot telegramBot)
+    public SendErrorInfoCommand(Telegram.TelegramBot telegramBot)
     {
         _telegramBotClient = telegramBot.GetTelegramBotClient().Result;
     }
 
-    public override string Name => CommandNames.SuccessAuthorization;
-    public override async Task ExecuteAsync(Update update)
+    public override string Name => CommandNames.SendErrorCommand;
+    
+    public override async Task ExecuteAsync(string errorMessage, Update update)
     {
-        await _telegramBotClient.SendMessage(update.Message.Chat.Id, "Вы успешно авторизовались", ParseMode.Markdown)
-            .ConfigureAwait(false); 
+        await _telegramBotClient.SendMessage(update.Message.Chat.Id, "Серверная ошибка, попробуйте еще раз", ParseMode.Markdown);
     }
+    
 }

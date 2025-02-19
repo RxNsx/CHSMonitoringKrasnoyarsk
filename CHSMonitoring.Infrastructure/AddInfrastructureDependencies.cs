@@ -3,6 +3,7 @@ using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Models.TelegramBot;
+using CHSMonitoring.Infrastructure.Models.TelegramBot.Abstractions;
 using CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
 using CHSMonitoring.Infrastructure.Repositories;
 using CHSMonitoring.Infrastructure.Services;
@@ -48,6 +49,8 @@ public static class AddInfrastructureDependencies
         services.AddSingleton<BaseCommand, SetEmailAddressCommand>();
         services.AddSingleton<BaseCommand, ResentEmailAddressCommand>();
         services.AddSingleton<BaseCommand, SuccessAuthorizationCommand>();
+        services.AddSingleton<BaseCommand, UserEmailAlreadyExistsCommand>();
+        services.AddSingleton<ErrorBaseCommand, SendErrorInfoCommand>();
         
         
         services.AddDbContext<MonitoringDbContext>(options =>
