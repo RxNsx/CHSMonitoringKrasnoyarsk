@@ -66,6 +66,20 @@ public class CommandExecutorService : ICommandExecutorService
                             {
                                 await ExecuteCommand(CommandNames.StartCommand, update).ConfigureAwait(false);
                             }
+                            else
+                            {
+                                await ExecuteCommand(CommandNames.ShowDistrictButtons, update).ConfigureAwait(false);
+                            }
+                            break;
+                        }
+                        case CommandNames.ShowDistrictButtons:
+                        {
+                            await ExecuteCommand(CommandNames.ShowDistrictButtons, update).ConfigureAwait(false);
+                            break;
+                        }
+                        case CommandNames.GetServiceAddressInfo:
+                        {
+                            await ExecuteCommand(CommandNames.GetServiceAddressInfo, update).ConfigureAwait(false);
                             break;
                         }
                     }

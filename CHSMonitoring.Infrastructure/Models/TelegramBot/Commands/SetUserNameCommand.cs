@@ -8,7 +8,7 @@ namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
 /// <summary>
 /// Команда установки имени
 /// </summary>
-public class SetUserNameCommand : BaseCommand
+public sealed class SetUserNameCommand : BaseCommand
 {
     private readonly TelegramBotClient _telegramBotClient;
 

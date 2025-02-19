@@ -42,13 +42,21 @@ public static class CommandNames
     /// <summary>
     /// Получение информации по району
     /// </summary>
-    public const string GetDistrictInfo = "/get_district_info";
+    public const string GetDistrictInfo = "get_district_info";
     /// <summary>
     /// Получение информации по улице
     /// </summary>
-    public const string GetStreetInfo = "/get_street_info";
+    public const string GetStreetInfo = "get_street_info";
+    /// <summary>
+    /// Получение последней актуальной информации по отключениям
+    /// </summary>
+    public const string GetServiceAddressInfo = "/get_service_address_info";
     /// <summary>
     /// Поиощь
     /// </summary>
     public const string HelpCommand = "/help";
+    /// <summary>
+    /// Получить клавиатуру с выбором района
+    /// </summary>
+    public const string ShowDistrictButtons = "show_district_buttons";
 }

@@ -5,7 +5,7 @@ using Telegram.Bot.Types.Enums;
 
 namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
 
-public class ResentEmailAddressCommand : BaseCommand
+public sealed class ResentEmailAddressCommand : BaseCommand
 {
     private readonly TelegramBotClient _telegramBotClient;
 

@@ -5,7 +5,7 @@ using Telegram.Bot.Types.Enums;
 
 namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
 
-public class UserEmailAlreadyExistsCommand : BaseCommand
+public sealed class UserEmailAlreadyExistsCommand : BaseCommand
 {
     private TelegramBotClient _telegramBotClient;
 

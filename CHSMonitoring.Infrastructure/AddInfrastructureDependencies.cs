@@ -50,16 +50,17 @@ public static class AddInfrastructureDependencies
         services.AddSingleton<BaseCommand, ResentEmailAddressCommand>();
         services.AddSingleton<BaseCommand, SuccessAuthorizationCommand>();
         services.AddSingleton<BaseCommand, UserEmailAlreadyExistsCommand>();
+        services.AddSingleton<BaseCommand, GetServiceAddressInfoCommand>();
+        services.AddSingleton<BaseCommand, ShowDistrictButtonCommand>();
         services.AddSingleton<ErrorBaseCommand, SendErrorInfoCommand>();
-        
         
         services.AddDbContext<MonitoringDbContext>(options =>
         {
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
         });
 
-        // services.AddHostedService<ServiceMessageWorker>();
-        // services.AddHostedService<GInfoWorker>();
+        services.AddHostedService<ServiceMessageWorker>();
+        services.AddHostedService<GInfoWorker>();
         
         return services;
     }

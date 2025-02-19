@@ -5,7 +5,7 @@ using Telegram.Bot.Types.Enums;
 
 namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
 
-public class SendErrorInfoCommand : ErrorBaseCommand
+public sealed class SendErrorInfoCommand : ErrorBaseCommand
 {
     private readonly TelegramBotClient _telegramBotClient;
 

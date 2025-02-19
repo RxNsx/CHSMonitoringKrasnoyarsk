@@ -9,7 +9,7 @@ namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
 /// <summary>
 /// Команда авторизации
 /// </summary>
-public class SetEmailAddressCommand : BaseCommand
+public sealed class SetEmailAddressCommand : BaseCommand
 {
     private readonly TelegramBotClient _telegramBotClient;
 

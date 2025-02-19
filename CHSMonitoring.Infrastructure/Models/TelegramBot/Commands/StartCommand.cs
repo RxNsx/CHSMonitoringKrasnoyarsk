@@ -10,7 +10,7 @@ namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
 /// <summary>
 /// Стартовая команда
 /// </summary>
-public class StartCommand : BaseCommand
+public sealed class StartCommand : BaseCommand
 {
     private readonly TelegramBotClient _telegramBotClient;
 
