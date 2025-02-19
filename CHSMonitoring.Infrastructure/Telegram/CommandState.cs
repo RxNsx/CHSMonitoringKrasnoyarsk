@@ -1,4 +1,4 @@
-﻿namespace CHSMonitoring.Infrastructure.Models.TelegramBot;
+﻿namespace CHSMonitoring.Infrastructure.Telegram;
 
 /// <summary>
 /// Состояния команд для телеграм бота

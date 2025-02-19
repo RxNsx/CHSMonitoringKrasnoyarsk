@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using CHSMonitoring.Infrastructure.Models.ServiceMessageAddress;
 
-namespace CHSMonitoring.Infrastructure.Models.Parsers;
+namespace CHSMonitoring.Infrastructure.Parsers;
 
 public static class DateParser
 {

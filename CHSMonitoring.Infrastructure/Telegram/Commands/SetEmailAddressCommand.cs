@@ -1,10 +1,9 @@
-﻿using CHSMonitoring.Infrastructure.Models.TelegramBot.Abstractions;
+﻿using CHSMonitoring.Infrastructure.Abstractions.Telegram;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
-using Telegram.Bot.Types.ReplyMarkups;
 
-namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
+namespace CHSMonitoring.Infrastructure.Telegram.Commands;
 
 /// <summary>
 /// Команда авторизации

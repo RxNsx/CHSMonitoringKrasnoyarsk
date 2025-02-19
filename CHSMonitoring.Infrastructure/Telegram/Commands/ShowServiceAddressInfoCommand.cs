@@ -1,16 +1,16 @@
 ﻿using System.Text;
 using CHSMonitoring.Domain.Entities;
+using CHSMonitoring.Infrastructure.Abstractions.Telegram;
 using CHSMonitoring.Infrastructure.Common;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Models.Enums;
-using CHSMonitoring.Infrastructure.Models.TelegramBot.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
+namespace CHSMonitoring.Infrastructure.Telegram.Commands;
 
 public sealed class ShowServiceAddressInfoCommand : BaseCommand
 {

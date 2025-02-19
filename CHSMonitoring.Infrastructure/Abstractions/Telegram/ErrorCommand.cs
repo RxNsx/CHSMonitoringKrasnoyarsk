@@ -1,6 +1,6 @@
 ﻿using Telegram.Bot.Types;
 
-namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Abstractions;
+namespace CHSMonitoring.Infrastructure.Abstractions.Telegram;
 
 /// <summary>
 /// Базовая команда вывода ошибки

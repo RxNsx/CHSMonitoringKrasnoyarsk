@@ -1,14 +1,12 @@
-﻿using CHSMonitoring.Domain.Entities;
-using CHSMonitoring.Infrastructure.Common;
+﻿using CHSMonitoring.Infrastructure.Abstractions.Telegram;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Models.Enums;
-using CHSMonitoring.Infrastructure.Models.TelegramBot.Abstractions;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
+namespace CHSMonitoring.Infrastructure.Telegram.Commands;
 
 public sealed class ShowDistrictButtonCommand : BaseCommand
 {

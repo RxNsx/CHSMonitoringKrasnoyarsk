@@ -1,9 +1,9 @@
-﻿using CHSMonitoring.Infrastructure.Extensions;
+﻿using CHSMonitoring.Infrastructure.Abstractions.Telegram;
+using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
-using CHSMonitoring.Infrastructure.Models.TelegramBot;
-using CHSMonitoring.Infrastructure.Models.TelegramBot.Abstractions;
-using CHSMonitoring.Infrastructure.Models.TelegramBot.Dtos;
+using CHSMonitoring.Infrastructure.Telegram;
+using CHSMonitoring.Infrastructure.Telegram.Dtos;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 using Telegram.Bot.Types;

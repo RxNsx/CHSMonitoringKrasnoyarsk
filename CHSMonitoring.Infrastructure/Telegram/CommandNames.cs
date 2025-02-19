@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace CHSMonitoring.Infrastructure.Models.TelegramBot;
+﻿namespace CHSMonitoring.Infrastructure.Telegram;
 
 /// <summary>
 /// Названия команд

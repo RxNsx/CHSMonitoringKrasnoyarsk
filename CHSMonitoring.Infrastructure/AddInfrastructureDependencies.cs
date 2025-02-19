@@ -1,14 +1,13 @@
-﻿using CHSMonitoring.Infrastructure.Context;
+﻿using CHSMonitoring.Infrastructure.Abstractions.Telegram;
+using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
-using CHSMonitoring.Infrastructure.Models.TelegramBot;
-using CHSMonitoring.Infrastructure.Models.TelegramBot.Abstractions;
-using CHSMonitoring.Infrastructure.Models.TelegramBot.Commands;
 using CHSMonitoring.Infrastructure.Repositories;
 using CHSMonitoring.Infrastructure.Services;
 using CHSMonitoring.Infrastructure.Services.TelegramBot;
 using CHSMonitoring.Infrastructure.Telegram;
+using CHSMonitoring.Infrastructure.Telegram.Commands;
 using CHSMonitoring.Infrastructure.Workers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
