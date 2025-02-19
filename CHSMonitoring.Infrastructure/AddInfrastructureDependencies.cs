@@ -60,7 +60,7 @@ public static class AddInfrastructureDependencies
         });
 
         services.AddHostedService<ServiceMessageWorker>();
-        services.AddHostedService<GInfoWorker>();
+        // services.AddHostedService<GInfoWorker>();
         
         return services;
     }

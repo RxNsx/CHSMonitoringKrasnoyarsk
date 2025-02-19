@@ -81,10 +81,7 @@ public static class TextExtensions
             .Replace("деревня Минино", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             .Replace("элита", string.Empty, StringComparison.InvariantCultureIgnoreCase)
             //cкобки
-            .Replace("(", string.Empty, StringComparison.InvariantCultureIgnoreCase)
-            .Replace(")", string.Empty, StringComparison.InvariantCultureIgnoreCase)
-            .Replace("[", string.Empty, StringComparison.InvariantCultureIgnoreCase)
-            .Replace("]", string.Empty, StringComparison.InvariantCultureIgnoreCase)
+            .RemoveInBracketValues()
             //район
             .Replace(DistrictEnum.Okt.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)
             .Replace(DistrictEnum.Jlz.GetDescriptionValue(), string.Empty, StringComparison.InvariantCultureIgnoreCase)
@@ -180,5 +177,27 @@ public static class TextExtensions
     {
         var emailRegex = new Regex(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", RegexOptions.Compiled);
         return emailRegex.IsMatch(emailString);
+    }
+    
+    /// <summary>
+    /// Удаление значений в скобках
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    public static string RemoveInBracketValues(this string text)
+    {
+        while (text.Contains("(") && text.Contains(")"))
+        {
+            var indexOfOpenBracket = text.IndexOf("(");
+            var indexOfCloseBracket = text.IndexOf(")");
+            if (indexOfOpenBracket == -1 || indexOfCloseBracket == -1)
+            {
+                return text;
+            }
+        
+            text = text.Remove(indexOfOpenBracket, indexOfCloseBracket - indexOfOpenBracket + 1);
+        }
+
+        return text;
     }
 }
