@@ -10,8 +10,9 @@ namespace CHSMonitoring.Infrastructure.Telegram;
 /// </summary>
 public class TelegramBot
 {
-    private readonly TelegramBotSettings _telegramBotSettings;
     private readonly TelegramBotClient _telegramBotClient;
+    
+    private TelegramBotSettings _telegramBotSettings;
 
     /// <summary>
     /// Конструктор
@@ -19,8 +20,13 @@ public class TelegramBot
     public TelegramBot(IServiceScopeFactory serviceScopeFactory)
     {
         var scope = serviceScopeFactory.CreateScope();
-        _telegramBotSettings = scope.ServiceProvider.GetRequiredService<IOptionsSnapshot<TelegramBotSettings>>().Value
+        _telegramBotSettings = scope.ServiceProvider.GetRequiredService<IOptionsMonitor<TelegramBotSettings>>().CurrentValue
             ?? throw new ArgumentNullException("Telegram bot settings must be not null");
+        scope.ServiceProvider.GetRequiredService<IOptionsMonitor<TelegramBotSettings>>()
+            .OnChange(settings =>
+            {
+                _telegramBotSettings.TunnelUrl = settings.TunnelUrl;
+            });
     }
 
     /// <summary>

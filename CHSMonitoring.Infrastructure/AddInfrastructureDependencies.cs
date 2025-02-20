@@ -13,6 +13,7 @@ using CHSMonitoring.Infrastructure.Workers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace CHSMonitoring.Infrastructure;
 
@@ -60,7 +61,7 @@ public static class AddInfrastructureDependencies
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
         });
 
-        services.AddHostedService<ServiceMessageWorker>();
+        // services.AddHostedService<ServiceMessageWorker>();
         // services.AddHostedService<GInfoWorker>();
         
         return services;

@@ -20,9 +20,10 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
     private readonly TelegramBotClient _telegramBotClient;
     private readonly IServiceAddressRepository _serviceAddressRepository;
     private readonly Dictionary<Enum, string> _districtDict;
-    private readonly TelegramBotSettings _telegramBotSettings;
-    private readonly int _messageSplitterPortionSize;
-
+    
+    private int _messageSplitterPortionSize;
+    private TelegramBotSettings _telegramBotSettings;
+    
     /// <summary>
     /// Конструктор
     /// </summary>
@@ -41,8 +42,14 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
         };
         
         _serviceAddressRepository = scope.ServiceProvider.GetRequiredService<IServiceAddressRepository>();
-        _telegramBotSettings = scope.ServiceProvider.GetRequiredService<IOptionsSnapshot<TelegramBotSettings>>().Value
-            ?? throw new ArgumentNullException("Telegram bot settings must be not null");
+        _telegramBotSettings = scope.ServiceProvider.GetRequiredService<IOptionsMonitor<TelegramBotSettings>>().CurrentValue
+                               ?? throw new ArgumentNullException("Telegram bot settings must be not null");
+        scope.ServiceProvider.GetRequiredService<IOptionsMonitor<TelegramBotSettings>>()
+            .OnChange(settings =>
+            {
+                _telegramBotSettings.MessageSplitterPortionSize = settings.MessageSplitterPortionSize;
+                _messageSplitterPortionSize = settings.MessageSplitterPortionSize;
+            });
         _messageSplitterPortionSize = _telegramBotSettings.MessageSplitterPortionSize;
         _telegramBotClient = telegramBot.GetTelegramBotClient().Result;
     }
