@@ -20,14 +20,6 @@ public class ProfileConfiguration : IEntityTypeConfiguration<Profile>
 
         builder.Property(x => x.Password)
             .IsRequired(false);
-
-        builder.Property(x => x.Street)
-            .HasMaxLength(150)
-            .IsRequired(false);
-
-        builder.Property(x => x.HouseNumber)
-            .HasMaxLength(30)
-            .IsRequired(false);
         
         builder.Property(x => x.UserId)
             .IsRequired();

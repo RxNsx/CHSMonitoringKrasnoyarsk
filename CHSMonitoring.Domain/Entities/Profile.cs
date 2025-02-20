@@ -21,16 +21,6 @@ public class Profile : Entity
     public string Password { get; set; }
     
     /// <summary>
-    /// Название улицы
-    /// </summary>
-    public string Street { get; set; }
-
-    /// <summary>
-    /// Номер дома
-    /// </summary>
-    public string HouseNumber { get; set; }
-    
-    /// <summary>
     /// Название профиля
     /// </summary>
     public Guid ProfileTypeId { get; set; }
