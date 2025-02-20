@@ -18,7 +18,7 @@ public sealed class ShowDistrictButtonCommand : BaseCommand
     /// <summary>
     /// Конструктор
     /// </summary>
-    public ShowDistrictButtonCommand(Telegram.TelegramBot telegramBot)
+    public ShowDistrictButtonCommand(TelegramBot telegramBot)
     {
         _telegramBotClient = telegramBot.GetTelegramBotClient().Result;
     }

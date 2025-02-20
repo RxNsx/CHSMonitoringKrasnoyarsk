@@ -17,7 +17,7 @@ public sealed class StartCommand : BaseCommand
     /// Конструктор
     /// </summary>
     /// <param name="telegramBot"></param>
-    public StartCommand(Telegram.TelegramBot telegramBot)
+    public StartCommand(TelegramBot telegramBot)
     {
         _telegramBotClient = telegramBot.GetTelegramBotClient().Result;
     }

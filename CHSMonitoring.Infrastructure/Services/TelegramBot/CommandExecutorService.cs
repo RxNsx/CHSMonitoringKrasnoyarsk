@@ -5,7 +5,6 @@ using CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
 using CHSMonitoring.Infrastructure.Telegram;
 using CHSMonitoring.Infrastructure.Telegram.Dtos;
 using Microsoft.Extensions.DependencyInjection;
-using Npgsql;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
@@ -18,10 +17,9 @@ public class CommandExecutorService : ICommandExecutorService
 {
     private readonly IProfileRepository _profileRepository;
     private readonly IUserRepository _userRepository;
-    private readonly List<BaseCommand> _commands;
-    private readonly List<ErrorBaseCommand> _errorCommands;
+    private readonly List<BaseCommand> _baseCommands;
+    private readonly List<SendMessageCommand> _sendMessageCommands;
     private CommandState _commandState;
-    private BaseCommand _lastExecutedCommand;
     private RegisterTelegramUserDto _registerUser;
 
     /// <summary>
@@ -32,8 +30,8 @@ public class CommandExecutorService : ICommandExecutorService
         var scope = serviceScopeFactory.CreateScope();
         _userRepository = scope.ServiceProvider.GetRequiredService<IUserRepository>();
         _profileRepository = scope.ServiceProvider.GetRequiredService<IProfileRepository>();
-        _commands = serviceProvider.GetServices<BaseCommand>().ToList();
-        _errorCommands = serviceProvider.GetServices<ErrorBaseCommand>().ToList();
+        _baseCommands = serviceProvider.GetServices<BaseCommand>().ToList();
+        _sendMessageCommands = serviceProvider.GetServices<SendMessageCommand>().ToList();
         _registerUser = new RegisterTelegramUserDto();
     }
     
@@ -72,6 +70,10 @@ public class CommandExecutorService : ICommandExecutorService
         }
     }
 
+    /// <summary>
+    /// Обработка сообщений типа Message
+    /// </summary>
+    /// <param name="update"></param>
     public async Task HandleExecuteUpdateMessage(Update update)
     {
         switch (_commandState)
@@ -82,16 +84,14 @@ public class CommandExecutorService : ICommandExecutorService
                 {
                     case CommandNames.StartCommand:
                     {
-                        var isProfileExists =
-                            await _profileRepository.IsTelegramProfileAsync(update.Message.From.Id);
+                        var isProfileExists = await _profileRepository.IsTelegramProfileAsync(update.Message.From.Id);
                         if (!isProfileExists)
                         {
                             await ExecuteCommand(CommandNames.StartCommand, update).ConfigureAwait(false);
                         }
                         else
                         {
-                            await ExecuteCommand(CommandNames.ShowDistrictButtons, update)
-                                .ConfigureAwait(false);
+                            await ExecuteCommand(CommandNames.ShowDistrictButtons, update).ConfigureAwait(false);
                         }
 
                         break;
@@ -107,7 +107,7 @@ public class CommandExecutorService : ICommandExecutorService
             }
             case CommandState.AuthrorizeStart:
             {
-                await ExecuteCommand(CommandNames.SetEmailAddressCommand, update).ConfigureAwait(false);
+                await ExecuteSendMessageCommand(CommandNames.SendUserMessage, "Введите адрес электронной почты", UpdateType.Message, update).ConfigureAwait(false);
                 _registerUser.Name = update.Message.Text;
                 _commandState = CommandState.AuthorizeUserNameSet;
                 break;
@@ -117,35 +117,28 @@ public class CommandExecutorService : ICommandExecutorService
                 _registerUser.EmailAddress = update.Message.Text;
                 if (!update.Message!.Text.IsEmailValid())
                 {
-                    await ExecuteCommand(CommandNames.ResentEmailAddress, update).ConfigureAwait(false);
+                    await ExecuteSendMessageCommand(CommandNames.SendUserMessage, "Ошибка в почтовом адресе, попробуйте снова", UpdateType.Message, update).ConfigureAwait(false);
                 }
                 else
                 {
                     try
                     {
-                        var isUserEmailExists =
-                            await _userRepository.GetUserByUserEmailAddressAsync(_registerUser.EmailAddress,
-                                default);
+                        var isUserEmailExists = await _userRepository.GetUserByUserEmailAddressAsync(_registerUser.EmailAddress, default);
                         if (isUserEmailExists is not null)
                         {
-                            await ExecuteCommand(CommandNames.UserEmailAlreadyExists, update)
-                                .ConfigureAwait(false);
+                            await ExecuteSendMessageCommand(CommandNames.SendUserMessage, "Пользователь с таким адресом электронной почты уже зарегистрирован. Введите другой адрес", UpdateType.Message, update).ConfigureAwait(false);
                             _registerUser.EmailAddress = string.Empty;
                             break;
                         }
 
-                        await _userRepository
-                            .CreateTelegramUserAsync(update.Message.From.Id, _registerUser.Name,
-                                update.Message.From.Username, _registerUser.EmailAddress, default)
-                            .ConfigureAwait(false);
-                        await ExecuteCommand(CommandNames.SuccessAuthorization, update);
-                        await ExecuteCommand(CommandNames.ShowDistrictButtons, update);
+                        await _userRepository.CreateTelegramUserAsync(update.Message.From.Id, _registerUser.Name, update.Message.From.Username, _registerUser.EmailAddress, default).ConfigureAwait(false);
+                        await ExecuteSendMessageCommand(CommandNames.SendUserMessage, "Вы успешно авторизовались", UpdateType.Message, update).ConfigureAwait(false);
+                        await ExecuteCommand(CommandNames.ShowDistrictButtons, update).ConfigureAwait(false);
                         _commandState = CommandState.NotActive;
                     }
                     catch (Exception ex)
                     {
-                        await ExecuteErrorCommand(CommandNames.SendErrorCommand, ex.Message, update)
-                            .ConfigureAwait(false);
+                        await ExecuteSendMessageCommand(CommandNames.SendErrorCommand, ex.Message, UpdateType.Message, update).ConfigureAwait(false);
                     }
                 }
                 break;
@@ -153,6 +146,10 @@ public class CommandExecutorService : ICommandExecutorService
         }
     }
 
+    /// <summary>
+    /// Обработка сообщений типа Callback
+    /// </summary>
+    /// <param name="update"></param>
     public async Task HandleExecuteUpdateCallbackQuery(Update update)
     {
         switch (_commandState)
@@ -164,17 +161,14 @@ public class CommandExecutorService : ICommandExecutorService
                     case CommandNames.StartAuthorizeProcess:
                     {
                         _commandState = CommandState.AuthrorizeStart;
-                        await ExecuteCommand(CommandNames.SetUserNameCommand, update);
+                        await ExecuteSendMessageCommand(CommandNames.SendUserMessage, "Введите имя пользователя", UpdateType.CallbackQuery, update);
                         break;
                     }
-                    case var commandName when update.CallbackQuery.Data.Contains("-district"):
+                    case var command when update.CallbackQuery.Data.Contains("-district"):
                     {
-                        await ExecuteCommand(CommandNames.ShowDistrictServiceAddressDataCommand, update)
-                            .ConfigureAwait(false);
-
+                        await ExecuteCommand(CommandNames.ShowDistrictServiceAddressDataCommand, update).ConfigureAwait(false);
                         update.Message = update.CallbackQuery.Message;
-                        await ExecuteCommand(CommandNames.ShowDistrictButtons, update)
-                            .ConfigureAwait(false);
+                        await ExecuteCommand(CommandNames.ShowDistrictButtons, update).ConfigureAwait(false);
                         break;
                     }
                 }
@@ -183,15 +177,27 @@ public class CommandExecutorService : ICommandExecutorService
         }
     }
 
+    /// <summary>
+    /// Базовое выполнение команды
+    /// </summary>
+    /// <param name="commandName"></param>
+    /// <param name="update"></param>
     private async Task ExecuteCommand(string commandName, Update update)
     {
-        _lastExecutedCommand = _commands.First(x => x.Name == commandName);
-        await _lastExecutedCommand.ExecuteAsync(update);
+        var baseCommand = _baseCommands.First(x => x.Name == commandName);
+        await baseCommand.ExecuteAsync(update);
     }
 
-    private async Task ExecuteErrorCommand(string commandName, string errorMessage, Update update)
+    /// <summary>
+    /// Выполнить команду отправки сообщения
+    /// </summary>
+    /// <param name="commandName"></param>
+    /// <param name="message"></param>
+    /// <param name="updateType"></param>
+    /// <param name="update"></param>
+    private async Task ExecuteSendMessageCommand(string commandName, string message, UpdateType updateType, Update update)
     {
-        var errorCommand = _errorCommands.First(x => x.Name == commandName);
-        await errorCommand.ExecuteAsync(errorMessage, update);
+        var sendMessageCommand = _sendMessageCommands.First(x => x.Name == commandName);
+        await sendMessageCommand.ExecuteAsync(message, updateType, update);
     }
 }

@@ -46,13 +46,9 @@ public static class AddInfrastructureDependencies
         services.AddSingleton<TelegramBot>();
         services.AddSingleton<ICommandExecutorService, CommandExecutorService>();
         services.AddSingleton<BaseCommand, StartCommand>();
-        services.AddSingleton<BaseCommand, SetUserNameCommand>();
-        services.AddSingleton<BaseCommand, SetEmailAddressCommand>();
-        services.AddSingleton<BaseCommand, ResentEmailAddressCommand>();
-        services.AddSingleton<BaseCommand, SuccessAuthorizationCommand>();
-        services.AddSingleton<BaseCommand, UserEmailAlreadyExistsCommand>();
         services.AddSingleton<BaseCommand, ShowServiceAddressInfoCommand>();
         services.AddSingleton<BaseCommand, ShowDistrictButtonCommand>();
+        services.AddSingleton<SendMessageCommand, SendUserMessageCommand>();
         services.AddSingleton<ErrorBaseCommand, SendErrorInfoCommand>();
         
         services.Configure<TelegramBotSettings>(configurationManager.GetSection("TelegramBot"));
@@ -61,8 +57,8 @@ public static class AddInfrastructureDependencies
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
         });
 
-        // services.AddHostedService<ServiceMessageWorker>();
-        // services.AddHostedService<GInfoWorker>();
+        services.AddHostedService<ServiceMessageWorker>();
+        services.AddHostedService<GInfoWorker>();
         
         return services;
     }

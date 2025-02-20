@@ -63,7 +63,7 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
         var serviceAddresses = await _serviceAddressRepository.GetLatestServiceAddressAsync(default).ConfigureAwait(false);
         if (!serviceAddresses.Any())
         {
-            await _telegramBotClient.SendMessage(update.Message.Chat.Id, "В данный момент нет сообщений об отключении", ParseMode.Markdown);
+            await _telegramBotClient.SendMessage(update.CallbackQuery.Message.Chat.Id, "В данный момент нет сообщений об отключении", ParseMode.Markdown);
         }
         else
         {

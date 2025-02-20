@@ -15,7 +15,7 @@ public sealed class SendErrorInfoCommand : ErrorBaseCommand
     /// <summary>
     /// Конструктор
     /// </summary>
-    public SendErrorInfoCommand(Telegram.TelegramBot telegramBot)
+    public SendErrorInfoCommand(TelegramBot telegramBot)
     {
         _telegramBotClient = telegramBot.GetTelegramBotClient().Result;
     }

@@ -24,14 +24,19 @@ public class ServiceAddressRepository : IServiceAddressRepository
 
     public async Task<List<ServiceAddress>> GetLatestServiceAddressAsync(CancellationToken cancellationToken)
     {
-        var latestTime = await _context.ServiceAddresses
-            .MaxAsync(x => x.CreatedDate)
-            .ConfigureAwait(false);
+        if (await _context.ServiceAddresses.AnyAsync(cancellationToken).ConfigureAwait(false))
+        {
+            var latestTime = await _context.ServiceAddresses
+                .MaxAsync(x => x.CreatedDate)
+                .ConfigureAwait(false);
         
-        return await _context.ServiceAddresses
-            .Where(x => x.CreatedDate == latestTime)
-            .ToListAsync(cancellationToken)
-            .ConfigureAwait(false);
+            return await _context.ServiceAddresses
+                .Where(x => x.CreatedDate == latestTime)
+                .ToListAsync(cancellationToken)
+                .ConfigureAwait(false);
+        }
+
+        return new List<ServiceAddress>();
     }
 
     public async Task<List<ServiceAddress>> GetLatestServiceAddressByDistrictAsync(Guid districtId, CancellationToken cancellationToken)
