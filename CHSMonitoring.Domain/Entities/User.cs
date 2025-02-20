@@ -31,4 +31,14 @@ public class User : Entity
     /// Навигационное свойство для роли
     /// </summary>
     public List<Role> Roles { get; set; }
+    
+    /// <summary>
+    /// Айди подписки
+    /// </summary>
+    public Guid SubscriptionId { get; set; }
+    
+    /// <summary>
+    /// Навигационное свойство подписки
+    /// </summary>
+    public Subscription Subscription { get; set; }
 }
