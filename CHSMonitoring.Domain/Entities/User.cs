@@ -1,4 +1,6 @@
-﻿namespace CHSMonitoring.Domain.Entities;
+﻿using CHSMonitoring.Domain.Abstractions;
+
+namespace CHSMonitoring.Domain.Entities;
 
 /// <summary>
 /// Пользователь
