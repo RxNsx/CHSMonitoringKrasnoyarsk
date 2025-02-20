@@ -5,6 +5,9 @@ using Telegram.Bot.Types.Enums;
 
 namespace CHSMonitoring.Infrastructure.Telegram.Commands;
 
+/// <summary>
+/// Команда пользователя с таким адресом электронной почты уже зарегистрирована
+/// </summary>
 public sealed class UserEmailAlreadyExistsCommand : BaseCommand
 {
     private TelegramBotClient _telegramBotClient;

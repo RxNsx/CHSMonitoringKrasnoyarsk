@@ -5,6 +5,9 @@ using Telegram.Bot.Types.Enums;
 
 namespace CHSMonitoring.Infrastructure.Telegram.Commands;
 
+/// <summary>
+/// Команда успешной авторизации
+/// </summary>
 public sealed class SuccessAuthorizationCommand : BaseCommand
 {
     private readonly TelegramBotClient _telegramBotClient;

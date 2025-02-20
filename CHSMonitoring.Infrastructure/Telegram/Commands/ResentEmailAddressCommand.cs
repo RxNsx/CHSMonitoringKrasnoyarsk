@@ -5,6 +5,9 @@ using Telegram.Bot.Types.Enums;
 
 namespace CHSMonitoring.Infrastructure.Telegram.Commands;
 
+/// <summary>
+/// Команда повторного ввода почтового адреса
+/// </summary>
 public sealed class ResentEmailAddressCommand : BaseCommand
 {
     private readonly TelegramBotClient _telegramBotClient;

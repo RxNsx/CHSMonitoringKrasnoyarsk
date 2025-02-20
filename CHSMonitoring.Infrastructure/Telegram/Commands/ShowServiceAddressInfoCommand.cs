@@ -15,6 +15,9 @@ using Telegram.Bot.Types.Enums;
 
 namespace CHSMonitoring.Infrastructure.Telegram.Commands;
 
+/// <summary>
+/// Команда для отображения информации об адресах обслуживания по районам
+/// </summary>
 public sealed class ShowServiceAddressInfoCommand : BaseCommand
 {
     private readonly TelegramBotClient _telegramBotClient;
@@ -120,7 +123,6 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
             .ToList();
     }
 
-
     /// <summary>
     /// Разделяет список на части для обхода ограничения телеграм в 4096 символов
     /// </summary>
@@ -145,7 +147,6 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
             currentAddressListPrinted += _messageSplitterPortionSize;
         }
     }
-    
     
     /// <summary>
     /// Подготовить текст для отправки

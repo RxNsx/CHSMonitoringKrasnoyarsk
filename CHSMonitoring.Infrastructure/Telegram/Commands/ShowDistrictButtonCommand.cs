@@ -8,6 +8,9 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace CHSMonitoring.Infrastructure.Telegram.Commands;
 
+/// <summary>
+/// Команда отображающая клавиатуру выбора района для отображения
+/// </summary>
 public sealed class ShowDistrictButtonCommand : BaseCommand
 {
     private TelegramBotClient _telegramBotClient;
