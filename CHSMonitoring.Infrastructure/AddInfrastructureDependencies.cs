@@ -6,6 +6,7 @@ using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Repositories;
 using CHSMonitoring.Infrastructure.Services;
 using CHSMonitoring.Infrastructure.Services.TelegramBot;
+using CHSMonitoring.Infrastructure.Settings;
 using CHSMonitoring.Infrastructure.Telegram;
 using CHSMonitoring.Infrastructure.Telegram.Commands;
 using CHSMonitoring.Infrastructure.Workers;
@@ -53,12 +54,13 @@ public static class AddInfrastructureDependencies
         services.AddSingleton<BaseCommand, ShowDistrictButtonCommand>();
         services.AddSingleton<ErrorBaseCommand, SendErrorInfoCommand>();
         
+        services.Configure<TelegramBotSettings>(configurationManager.GetSection("TelegramBot"));
         services.AddDbContext<MonitoringDbContext>(options =>
         {
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
         });
 
-        // services.AddHostedService<ServiceMessageWorker>();
+        services.AddHostedService<ServiceMessageWorker>();
         // services.AddHostedService<GInfoWorker>();
         
         return services;

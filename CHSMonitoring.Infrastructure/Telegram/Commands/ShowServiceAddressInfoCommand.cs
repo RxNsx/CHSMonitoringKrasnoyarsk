@@ -6,7 +6,9 @@ using CHSMonitoring.Infrastructure.Common;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Models.Enums;
+using CHSMonitoring.Infrastructure.Settings;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -18,11 +20,13 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
     private readonly TelegramBotClient _telegramBotClient;
     private readonly IServiceAddressRepository _serviceAddressRepository;
     private readonly Dictionary<Enum, string> _districtDict;
+    private readonly TelegramBotSettings _telegramBotSettings;
+    private readonly int _messageSplitterPortionSize;
 
     /// <summary>
     /// Конструктор
     /// </summary>
-    public ShowServiceAddressInfoCommand(Telegram.TelegramBot telegramBot, IServiceScopeFactory serviceScopeFactory)
+    public ShowServiceAddressInfoCommand(TelegramBot telegramBot, IServiceScopeFactory serviceScopeFactory)
     {
         var scope = serviceScopeFactory.CreateScope();
         _districtDict = new Dictionary<Enum, string>
@@ -37,6 +41,9 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
         };
         
         _serviceAddressRepository = scope.ServiceProvider.GetRequiredService<IServiceAddressRepository>();
+        _telegramBotSettings = scope.ServiceProvider.GetRequiredService<IOptionsSnapshot<TelegramBotSettings>>().Value
+            ?? throw new ArgumentNullException("Telegram bot settings must be not null");
+        _messageSplitterPortionSize = _telegramBotSettings.MessageSplitterPortionSize;
         _telegramBotClient = telegramBot.GetTelegramBotClient().Result;
     }
     
@@ -53,32 +60,7 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
             var districtEnum = _districtDict.FirstOrDefault(x => x.Value.Equals(update.CallbackQuery.Data));
             if (districtEnum.Key is null)
             {
-                var currentAddressListPrinted1 = 0;
-                while (currentAddressListPrinted1 <= serviceAddresses.Count)
-                {
-                    List<ServiceAddress> partFiltereedServiceAddressData = new();
-                    if (serviceAddresses.Count - 30 >= 0)
-                    {
-                        partFiltereedServiceAddressData = serviceAddresses.Take(30)
-                            .Skip(currentAddressListPrinted1)
-                            .ToList();
-                    }
-                    else
-                    {
-                        partFiltereedServiceAddressData = serviceAddresses
-                            .Take(serviceAddresses.Count - currentAddressListPrinted1)
-                            .Skip(currentAddressListPrinted1)
-                            .ToList();
-                    }
-                    var filteredPayload = BuildPayloadString(partFiltereedServiceAddressData);
-                    if (string.IsNullOrEmpty(filteredPayload))
-                    {
-                        return;
-                    }
-                    
-                    await _telegramBotClient.SendMessage(update.CallbackQuery.Message.Chat.Id, filteredPayload, ParseMode.Markdown);
-                    currentAddressListPrinted1 += 30;
-                }
+                await SendSplitterServiceAddressesList(serviceAddresses, update);
                 return;
             }
 
@@ -113,21 +95,7 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
                 await _telegramBotClient.SendMessage(update.CallbackQuery.Message.Chat.Id, $"Для {districtEnum.Key.GetDescriptionValue()} не найдено отключений", ParseMode.Markdown);
                 return;
             }
-
-            var currentAddressListPrinted = 0;
-            while (currentAddressListPrinted <= filteredServiceAddressData.Count)
-            {
-                var partFiltereedServiceAddressData = filteredServiceAddressData.Take(30)
-                    .Skip(currentAddressListPrinted)
-                    .ToList();
-                var filteredPayload = BuildPayloadString(partFiltereedServiceAddressData);
-                if (string.IsNullOrEmpty(filteredPayload))
-                {
-                    return;
-                }
-                await _telegramBotClient.SendMessage(update.CallbackQuery.Message.Chat.Id, filteredPayload, ParseMode.Markdown);
-                currentAddressListPrinted += 30;
-            }
+            await SendSplitterServiceAddressesList(filteredServiceAddressData, update).ConfigureAwait(false);
         }
     }
 
@@ -139,9 +107,39 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
     {
         return targetList
             .Where(x => x.DistrictId == districtId)
+            .OrderBy(x => x.DistrictId)
+            .ThenBy(x => x.StreetId)
+            .ThenByDescending(x => x.DateTimeFromString)
             .ToList();
     }
 
+
+    /// <summary>
+    /// Разделяет список на части для обхода ограничения телеграм в 4096 символов
+    /// </summary>
+    /// <param name="serviceAddresses"></param>
+    /// <param name="update"></param>
+    /// <returns></returns>
+    private async Task SendSplitterServiceAddressesList(List<ServiceAddress> serviceAddresses, Update update)
+    {
+        var currentAddressListPrinted = 0;
+        while (currentAddressListPrinted <= serviceAddresses.Count)
+        {
+            var partFiltereedServiceAddressData = serviceAddresses
+                .Skip(currentAddressListPrinted)
+                .Take(_messageSplitterPortionSize)
+                .ToList();
+            var filteredPayload = BuildPayloadString(partFiltereedServiceAddressData);
+            if (string.IsNullOrEmpty(filteredPayload))
+            {
+                return;
+            }
+            await _telegramBotClient.SendMessage(update.CallbackQuery.Message.Chat.Id, filteredPayload, ParseMode.Markdown);
+            currentAddressListPrinted += _messageSplitterPortionSize;
+        }
+    }
+    
+    
     /// <summary>
     /// Подготовить текст для отправки
     /// </summary>
@@ -183,14 +181,14 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
         {
             var districtName = CommonData.DistrictsData.FirstOrDefault(x => x.Id == group.Key);
             sb.AppendLine().AppendLine($"🚨 {districtName.DistrictName} 🚨").AppendLine();
+            
             var groupedByServiceType = group.Value
                 .GroupBy(x => x.ServiceTypeId)
                 .ToDictionary(x => x.Key, x => x.ToList());
-
             foreach (var groupServiceTypeItem in groupedByServiceType)
             {
                 var serviceTypeName = CommonData.ServiceTypesData.FirstOrDefault(x => x.Id == groupServiceTypeItem.Key).ServiceTypeName;
-                sb.AppendLine().AppendLine(serviceTypeName).AppendLine();
+                sb.AppendLine(serviceTypeName).AppendLine();
                 
                 foreach (var serviceAddressItem in groupServiceTypeItem.Value)
                 {
