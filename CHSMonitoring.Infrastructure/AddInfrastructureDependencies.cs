@@ -37,6 +37,7 @@ public static class AddInfrastructureDependencies
         services.AddScoped<IHashPasswordService, HashPasswordService>();
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IProfileRepository, ProfileRepository>();
+        services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
         services.AddSingleton<IHttpClientService, HttpClientService>();
         services.AddSingleton<IHtmlParserService, HtmlParserService>();
@@ -48,6 +49,10 @@ public static class AddInfrastructureDependencies
         services.AddSingleton<BaseCommand, StartCommand>();
         services.AddSingleton<BaseCommand, ShowServiceAddressInfoCommand>();
         services.AddSingleton<BaseCommand, ShowDistrictButtonCommand>();
+        services.AddSingleton<BaseCommand, ShowDistrictSubscriptionButtonsCommand>();
+        services.AddSingleton<BaseCommand, StartSubscribeCommand>();
+        services.AddSingleton<BaseCommand, ShowUserTimeIntervalRefreshCommand>();
+        services.AddSingleton<BaseCommand, ShowSubscriptionDetailsCommand>();
         services.AddSingleton<SendMessageCommand, SendUserMessageCommand>();
         services.AddSingleton<ErrorBaseCommand, SendErrorInfoCommand>();
         
@@ -57,8 +62,8 @@ public static class AddInfrastructureDependencies
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
         });
 
-        services.AddHostedService<ServiceMessageWorker>();
-        services.AddHostedService<GInfoWorker>();
+        // services.AddHostedService<ServiceMessageWorker>();
+        // services.AddHostedService<GInfoWorker>();
         
         return services;
     }

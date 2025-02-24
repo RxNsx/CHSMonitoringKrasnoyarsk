@@ -25,6 +25,14 @@ public class UserRepository : IUserRepository
         _profileRepository = profileRepository;
     }
 
+    public async Task<User?> GetUserByTelegramProfileIdAsync(long profileId, CancellationToken cancellationToken)
+    {
+        return await _context.Users
+            .Include(x => x.Profiles)
+            .FirstOrDefaultAsync(x => x.Profiles.Any(t => t.ProviderId == profileId), cancellationToken)
+            .ConfigureAwait(false);
+    }
+
     public async Task<User?> GetUserByLoginNameAsync(string loginName, CancellationToken cancellationToken)
     {
         return await _context.Users

@@ -8,6 +8,14 @@ namespace CHSMonitoring.Infrastructure.Interfaces;
 public interface IUserRepository
 {
     /// <summary>
+    /// Получить пользователя по ид профиля телеграмма
+    /// </summary>
+    /// <param name="profileId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<User?> GetUserByTelegramProfileIdAsync(long profileId, CancellationToken cancellationToken);
+    
+    /// <summary>
     /// Получить пользователя по логину
     /// </summary>
     /// <param name="loginName"></param>

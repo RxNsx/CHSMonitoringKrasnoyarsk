@@ -9,6 +9,7 @@ public enum CommandState
     /// Неактивное
     /// </summary>
     NotActive,
+    
     /// <summary>
     /// Авторизация начата
     /// </summary>
@@ -17,12 +18,21 @@ public enum CommandState
     /// Авторизация имя установлено
     /// </summary>
     AuthorizeUserNameSet,
+    
     /// <summary>
-    /// В работе
+    /// Подписка началась
     /// </summary>
-    InWork,
+    SubscribeStart,
     /// <summary>
-    /// Завершенное
+    /// Изменить район в подписке
     /// </summary>
-    Finished
+    EditSubscribeChangeDistrict,
+    /// <summary>
+    /// Изменить интервал
+    /// </summary>
+    EditSubscribeChangeInterval,
+    /// <summary>
+    /// Район для отслеживания установлен
+    /// </summary>
+    SubscribeDistrictSet
 }

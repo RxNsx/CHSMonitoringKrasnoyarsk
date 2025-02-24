@@ -8,31 +8,28 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace CHSMonitoring.Infrastructure.Telegram.Commands;
 
-/// <summary>
-/// Команда отображающая клавиатуру выбора района для отображения
-/// </summary>
-public sealed class ShowDistrictButtonCommand : BaseCommand
+public class ShowDistrictSubscriptionButtonsCommand : BaseCommand
 {
     private TelegramBotClient _telegramBotClient;
 
     /// <summary>
     /// Конструктор
     /// </summary>
-    public ShowDistrictButtonCommand(TelegramBot telegramBot)
+    public ShowDistrictSubscriptionButtonsCommand(TelegramBot telegramBot)
     {
         _telegramBotClient = telegramBot.GetTelegramBotClient().Result;
     }
     
-    public override string Name => CommandNames.ShowDistrictButtonsList;
+    public override string Name => CommandNames.ShowDistrictButtonsSubscription;
+    
     public override async Task ExecuteAsync(Update update)
     {
         var inlineKeyboard = new InlineKeyboardMarkup(Enum.GetValues(typeof(DistrictEnum))
             .Cast<DistrictEnum>()
-            .Select(x => new[] { InlineKeyboardButton.WithCallbackData($"{x.GetDescriptionValue()}", $"{x.ToString().ToLower()}-district-list") })
-            .Append(new [] { InlineKeyboardButton.WithCallbackData("Все районы", "all-district-list") })
+            .Select(x => new[] { InlineKeyboardButton.WithCallbackData($"{x.GetDescriptionValue()}", $"{(int)x}-district-subscribe") })
             .ToArray());
 
-        await _telegramBotClient.SendMessage(update.CallbackQuery.Message.Chat.Id, "Выберите район чтобы узнать текущие отключения", 
+        await _telegramBotClient.SendMessage(update.CallbackQuery.Message.Chat.Id, "Выберите район для подписки на уведомления", 
                 ParseMode.Markdown, replyMarkup: inlineKeyboard)
             .ConfigureAwait(false);
     }

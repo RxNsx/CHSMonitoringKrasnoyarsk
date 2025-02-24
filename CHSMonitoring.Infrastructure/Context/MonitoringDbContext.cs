@@ -34,6 +34,8 @@ public class MonitoringDbContext : DbContext
     public virtual DbSet<ServiceType> ServiceTypes { get; set; }
     public virtual DbSet<User> Users { get; set; }
     public virtual DbSet<Street> Streets { get; set; }
+    
+    public virtual DbSet<Subscription> Subscriptions { get; set; }
 
     /// <summary>
     /// Определение построения моделей
@@ -46,6 +48,6 @@ public class MonitoringDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.EnableSensitiveDataLogging(true);
+        // optionsBuilder.EnableSensitiveDataLogging(true);
     }
 }
