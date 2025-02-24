@@ -38,12 +38,9 @@ public class SubscriptionRepository : ISubscriptionRepository
             return null;
         }
 
-        await _context.Subscriptions
-            .ExecuteUpdateAsync(x => x
-                .SetProperty(s => s.UpdateUserTime, updateSubscription.UpdateUserTime)
-                .SetProperty(s => s.DistrictId, updateSubscription.DistrictId))
-            .ConfigureAwait(false);
-        return updateSubscription;
+        var updateEntity = _context.Subscriptions.Update(updateSubscription);
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+        return updateEntity.Entity;
     }
 
     public async Task<bool> IsSubscribeExistsAsync(long userId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)

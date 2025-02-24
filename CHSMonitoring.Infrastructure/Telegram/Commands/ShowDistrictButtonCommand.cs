@@ -32,7 +32,7 @@ public sealed class ShowDistrictButtonCommand : BaseCommand
             .Append(new [] { InlineKeyboardButton.WithCallbackData("Все районы", "all-district-list") })
             .ToArray());
 
-        await _telegramBotClient.SendMessage(update.CallbackQuery.Message.Chat.Id, "Выберите район чтобы узнать текущие отключения", 
+        await _telegramBotClient.SendMessage(update.Message.Chat.Id, "Выберите район чтобы узнать текущие отключения", 
                 ParseMode.Markdown, replyMarkup: inlineKeyboard)
             .ConfigureAwait(false);
     }

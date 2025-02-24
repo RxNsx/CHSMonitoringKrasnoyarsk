@@ -67,7 +67,7 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
         }
         else
         {
-            var districtEnum = _districtDict.FirstOrDefault(x => x.Value.Equals(update.CallbackQuery.Data));
+            var districtEnum = _districtDict.FirstOrDefault(x => update.CallbackQuery.Data.Contains(x.Value));
             if (districtEnum.Key is null)
             {
                 await SendSplitterServiceAddressesList(serviceAddresses, update);
@@ -226,5 +226,24 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
         }
 
         return sb.ToString();
+    }
+    
+    
+    /// <summary>
+    /// Получить айди района из CallbackQuery вызова по кнопке
+    /// </summary>
+    /// <param name="districtString"></param>
+    /// <returns></returns>
+    private Guid GetDistrictIdByCallbackData(string districtString)
+    {
+        var districtPureString = districtString.Replace("-district-list", string.Empty);
+        var districtIntValue = int.Parse(districtPureString);
+        var districtId = Enum.GetValues(typeof(DistrictEnum))
+            .Cast<DistrictEnum>()
+            .Where(x => (int)x == districtIntValue)
+            .Select(x => x.GetGuidValue())
+            .FirstOrDefault();
+
+        return districtId;
     }
 }
