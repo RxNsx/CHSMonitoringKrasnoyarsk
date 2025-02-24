@@ -32,6 +32,10 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasMaxLength(150)
             .IsRequired(false);
 
+        builder.Property(x => x.LastUpdated)
+            .HasDefaultValue(null)
+            .IsRequired(false);
+
         builder.HasMany(x => x.Profiles)
             .WithOne(x => x.User)
             .HasForeignKey(x => x.UserId);

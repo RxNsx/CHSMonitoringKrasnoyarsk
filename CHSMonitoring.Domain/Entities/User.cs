@@ -23,6 +23,11 @@ public class User : Entity
     public string Description { get; set; }
     
     /// <summary>
+    /// Последняя дата уведомления пользователя
+    /// </summary>
+    public DateTime? LastUpdated { get; set; }
+
+    /// <summary>
     /// Навигационное свойство для профилей
     /// </summary>
     public List<Profile> Profiles { get; set; }
