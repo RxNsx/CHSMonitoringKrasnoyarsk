@@ -227,23 +227,4 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
 
         return sb.ToString();
     }
-    
-    
-    /// <summary>
-    /// Получить айди района из CallbackQuery вызова по кнопке
-    /// </summary>
-    /// <param name="districtString"></param>
-    /// <returns></returns>
-    private Guid GetDistrictIdByCallbackData(string districtString)
-    {
-        var districtPureString = districtString.Replace("-district-list", string.Empty);
-        var districtIntValue = int.Parse(districtPureString);
-        var districtId = Enum.GetValues(typeof(DistrictEnum))
-            .Cast<DistrictEnum>()
-            .Where(x => (int)x == districtIntValue)
-            .Select(x => x.GetGuidValue())
-            .FirstOrDefault();
-
-        return districtId;
-    }
 }
