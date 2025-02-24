@@ -70,4 +70,12 @@ public interface IUserRepository
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<bool> IsUserExists(string emailAddress, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Обновляет у пользователя время последней отправки уведомления
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task UpdateUserNotifyUpdateDateAsync(Guid userId, CancellationToken cancellationToken);
 }

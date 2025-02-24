@@ -19,6 +19,7 @@ public class TelegramNotrifyService : ITelegramNotifyService
     private readonly TelegramBotClient _telegramBotClient;
     private readonly IServiceAddressRepository _serviceAddressRepository;
     private readonly IProfileRepository _profileRepository;
+    private readonly IUserRepository _userRepository;
 
     /// <summary>
     /// Конструктор
@@ -29,6 +30,7 @@ public class TelegramNotrifyService : ITelegramNotifyService
         var scope = serviceScopeFactory.CreateScope();
         _serviceAddressRepository  = scope.ServiceProvider.GetRequiredService<IServiceAddressRepository>();
         _profileRepository = scope.ServiceProvider.GetRequiredService<IProfileRepository>();
+        _userRepository = scope.ServiceProvider.GetRequiredService<IUserRepository>();
     }
 
     public async Task SendNotifyMessageAsync(string message, List<User> notifyUsers, CancellationToken cancellationToken)
@@ -37,10 +39,11 @@ public class TelegramNotrifyService : ITelegramNotifyService
         {
             var serviceAddresses = await _serviceAddressRepository.GetLatestServiceAddressByDistrictAsync(user.Subscription.DistrictId, cancellationToken)
                 .ConfigureAwait(false);
-            
             var profile = await _profileRepository.GetTelegramProfileAsync(user.Id, cancellationToken).ConfigureAwait(false);
             var payload = BuildPayloadString(serviceAddresses);
             await _telegramBotClient.SendMessage(profile!.ProviderId, payload, ParseMode.Markdown);
+            await _userRepository.UpdateUserNotifyUpdateDateAsync(user.Id, cancellationToken).ConfigureAwait(false);
+            await Task.Delay(TimeSpan.FromSeconds(1));
         }
     }
     

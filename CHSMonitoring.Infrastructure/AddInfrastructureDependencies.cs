@@ -55,7 +55,7 @@ public static class AddInfrastructureDependencies
         services.AddSingleton<BaseCommand, ShowSubscriptionDetailsCommand>();
         services.AddSingleton<SendMessageCommand, SendUserMessageCommand>();
         services.AddSingleton<ErrorBaseCommand, SendErrorInfoCommand>();
-        services.AddSingleton<ITelegramNotifyService, TelegramNotrifyService>();
+        services.AddScoped<ITelegramNotifyService, TelegramNotrifyService>();
         
         services.Configure<TelegramBotSettings>(configurationManager.GetSection("TelegramBot"));
         services.AddDbContext<MonitoringDbContext>(options =>

@@ -250,6 +250,7 @@ public class CommandExecutorService : ICommandExecutorService
                     {
                         _newSubscription.UpdateUserTime = GetTimeIntervalValueByCallbackData(update.CallbackQuery.Data);
                         await _subscriptionRepository.AddSubscriptionAsync(_newSubscription, default).ConfigureAwait(false);
+                        await ExecuteCommand(CommandNames.ShowSubscriptionDetailsCommand, update).ConfigureAwait(false);
                         _commandState = CommandState.NotActive;
                         break;
                     }

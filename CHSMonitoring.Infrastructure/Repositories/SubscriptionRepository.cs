@@ -89,7 +89,7 @@ public class SubscriptionRepository : ISubscriptionRepository
         var subscriptions =  await _context.Subscriptions
             .Include(x => x.User)
                 .ThenInclude(x => x.Profiles)
-            .Where(x => x.User.LastUpdated != null)
+            .Where(x => x.User.LastUpdated != null && x.UpdateUserTime != 0)
             .Select(x => new
             {
                 Subscription = x,

@@ -114,4 +114,11 @@ public class UserRepository : IUserRepository
             .AnyAsync(x => x.EmailAddress.Equals(emailAddress))
             .ConfigureAwait(false);
     }
+
+    public async Task UpdateUserNotifyUpdateDateAsync(Guid userId , CancellationToken cancellationToken)
+    {
+        var user = await GetUserByUserIdAsync(userId, cancellationToken).ConfigureAwait(false);
+        user!.LastUpdated = DateTime.UtcNow;
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+    }
 }

@@ -12,7 +12,7 @@ public enum RefreshInterval
     /// <summary>
     /// 15 минут
     /// </summary>
-    QuarterHour = 15,
+    QuarterHour = 2,
     /// <summary>
     /// 30 минут
     /// </summary>

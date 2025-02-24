@@ -54,9 +54,12 @@ public class ShowSubscriptionDetailsCommand : BaseCommand
             .FirstOrDefault(x => x.Id == subscription.DistrictId)
             .DistrictName;
 
+        
+        
+        
         sb.Append("Ваша подписка:").AppendLine();
         sb.Append("Район: ").Append(districtName).AppendLine();
-        sb.Append("Период уведомлени: ").Append(subscription!.UpdateUserTime).Append(" минут").AppendLine();
+        sb.Append("Период уведомления: ").Append(subscription!.UpdateUserTime == 0 ? "Никогда" :$"Каждые {subscription!.UpdateUserTime}").Append(" минут").AppendLine();
 
         var inlineKeyboard = new InlineKeyboardMarkup(new[]
         {
