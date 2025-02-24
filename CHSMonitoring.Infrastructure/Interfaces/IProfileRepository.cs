@@ -16,8 +16,7 @@ public interface IProfileRepository
     /// <param name="telegramName"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<Profile> CreateTelegramProfileAsync(Guid userId, long chatId, string telegramName,
-        CancellationToken cancellationToken);
+    Task<Profile> CreateTelegramProfileAsync(Guid userId, long chatId, string telegramName, CancellationToken cancellationToken);
 
     /// <summary>
     /// Создать профиль для веба
@@ -43,4 +42,12 @@ public interface IProfileRepository
     /// <param name="chatId"></param>
     /// <returns></returns>
     Task<bool> IsTelegramProfileAsync(long chatId);
+
+    /// <summary>
+    /// Получить профиль пользователя 
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<Profile?> GetTelegramProfileAsync(Guid userId, CancellationToken cancellationToken);
 }

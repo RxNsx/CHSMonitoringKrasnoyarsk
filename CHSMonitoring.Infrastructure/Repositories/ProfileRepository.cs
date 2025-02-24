@@ -70,4 +70,12 @@ public class ProfileRepository : IProfileRepository
             .AnyAsync(x => x.Profiles.Any(t => t.ProviderId == chatId))
             .ConfigureAwait(false);
     }
+
+    public async Task<Profile?> GetTelegramProfileAsync(Guid userId, CancellationToken cancellationToken)
+    {
+        return await _context.Profiles
+            .Include(x => x.User)
+            .FirstOrDefaultAsync(x => x.UserId == userId && x.ProfileTypeId == ProfileTypeEnum.Telegram.GetGuidValue(), cancellationToken)
+            .ConfigureAwait(false);
+    }
 }

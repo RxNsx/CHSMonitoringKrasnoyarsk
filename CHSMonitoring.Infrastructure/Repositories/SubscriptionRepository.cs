@@ -13,20 +13,33 @@ namespace CHSMonitoring.Infrastructure.Repositories;
 public class SubscriptionRepository : ISubscriptionRepository
 {
     private readonly MonitoringDbContext _context;
+    private readonly IUserRepository _userRepository;
 
     /// <summary>
     /// Конструктор
     /// </summary>
     /// <param name="context"></param>
-    public SubscriptionRepository(MonitoringDbContext context)
+    /// <param name="userRepository"></param>
+    public SubscriptionRepository(MonitoringDbContext context, IUserRepository userRepository)
     {
         _context = context;
+        _userRepository = userRepository;
     }
 
     public async Task<Subscription?> AddSubscriptionAsync(Subscription subscription, CancellationToken cancellationToken)
     {
+        var user = await _userRepository.GetUserByUserIdAsync(subscription.UserId, cancellationToken).ConfigureAwait(false);
+        if (subscription.UpdateUserTime != 0)
+        {
+            user!.LastUpdated = DateTime.UtcNow;
+        }
+        
         await _context.Subscriptions.AddAsync(subscription, cancellationToken).ConfigureAwait(false);
-        await _context.SaveChangesAsync().ConfigureAwait(false);
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+
+        user.SubscriptionId = subscription.Id;
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+        
         return subscription;
     }
 
@@ -37,6 +50,9 @@ public class SubscriptionRepository : ISubscriptionRepository
         {
             return null;
         }
+        
+        var user = await _userRepository.GetUserByUserIdAsync(updateSubscription.UserId, cancellationToken).ConfigureAwait(false);
+        user!.LastUpdated = DateTime.UtcNow;
 
         var updateEntity = _context.Subscriptions.Update(updateSubscription);
         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
@@ -49,8 +65,10 @@ public class SubscriptionRepository : ISubscriptionRepository
             .AsNoTracking()
             .Include(x => x.User)
                 .ThenInclude(x => x.Subscription)
-            .AnyAsync(x => x.ProviderId == userId
-                           && x.ProfileTypeId == profileTypeEnum.GetGuidValue(), cancellationToken)
+            .AnyAsync(x => x.ProviderId == userId 
+                           && x.ProfileTypeId == profileTypeEnum.GetGuidValue()
+                           && x.User.Subscription != null
+                , cancellationToken)
             .ConfigureAwait(false);
     }
 
@@ -63,5 +81,26 @@ public class SubscriptionRepository : ISubscriptionRepository
             .Select(x => x.User.Subscription)
             .FirstOrDefaultAsync(cancellationToken)
             .ConfigureAwait(false);
+    }
+
+    public async Task<List<User>> GetNotifyUsersAsync(CancellationToken cancellationToken)
+    {
+        var currentDate = DateTime.UtcNow;
+        var subscriptions =  await _context.Subscriptions
+            .Include(x => x.User)
+                .ThenInclude(x => x.Profiles)
+            .Where(x => x.User.LastUpdated != null)
+            .Select(x => new
+            {
+                Subscription = x,
+                User = x.User
+            })
+            .ToListAsync(cancellationToken)
+            .ConfigureAwait(false);
+
+        return subscriptions
+            .Where(x => currentDate - x.User.LastUpdated >= TimeSpan.FromMinutes(x.Subscription.UpdateUserTime))
+            .Select(x => x.User)
+            .ToList();
     }
 }

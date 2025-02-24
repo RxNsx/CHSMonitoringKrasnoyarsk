@@ -40,7 +40,7 @@ public class User : Entity
     /// <summary>
     /// Айди подписки
     /// </summary>
-    public Guid SubscriptionId { get; set; }
+    public Guid? SubscriptionId { get; set; }
     
     /// <summary>
     /// Навигационное свойство подписки

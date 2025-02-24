@@ -44,4 +44,11 @@ public interface ISubscriptionRepository
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<Subscription?> GetSubscriptionAsync(long userId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Получить пользователей для уведомлений
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<List<User>> GetNotifyUsersAsync(CancellationToken cancellationToken);
 }

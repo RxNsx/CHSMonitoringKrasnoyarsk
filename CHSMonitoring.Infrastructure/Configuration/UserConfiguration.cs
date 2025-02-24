@@ -32,7 +32,12 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasMaxLength(150)
             .IsRequired(false);
 
+        builder.Property(x => x.SubscriptionId)
+            .HasDefaultValue(null)
+            .IsRequired(false);
+
         builder.Property(x => x.LastUpdated)
+            .HasConversion(x => x!.Value.ToUniversalTime(), x => DateTime.SpecifyKind(x, DateTimeKind.Utc))
             .HasDefaultValue(null)
             .IsRequired(false);
 
