@@ -93,13 +93,14 @@ public class SubscriptionRepository : ISubscriptionRepository
             .Select(x => new
             {
                 Subscription = x,
-                User = x.User
+                User = x.User,
+                Time = currentDate - x.User.LastUpdated
             })
             .ToListAsync(cancellationToken)
             .ConfigureAwait(false);
-
+        
         return subscriptions
-            .Where(x => currentDate - x.User.LastUpdated >= TimeSpan.FromMinutes(x.Subscription.UpdateUserTime))
+            .Where(x => x.Time >= TimeSpan.FromMinutes(x.Subscription.UpdateUserTime))
             .Select(x => x.User)
             .ToList();
     }

@@ -119,6 +119,7 @@ public class UserRepository : IUserRepository
     {
         var user = await GetUserByUserIdAsync(userId, cancellationToken).ConfigureAwait(false);
         user!.LastUpdated = DateTime.UtcNow;
+        _context.Update(user);
         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 }

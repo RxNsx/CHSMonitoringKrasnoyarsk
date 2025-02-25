@@ -13,8 +13,9 @@ namespace CHSMonitoring.Infrastructure.Workers;
 public class SubscribeNotifyWorker : BackgroundService
 {
     private readonly ILogger<SubscribeNotifyWorker> _logger;
-    private readonly ISubscriptionRepository _subscriptionRepository;
-    private readonly ITelegramNotifyService _telegramNotifyService;
+    private ISubscriptionRepository _subscriptionRepository;
+    private ITelegramNotifyService _telegramNotifyService;
+    private readonly IServiceScopeFactory _serviceScopeFactory;
 
     /// <summary>
     /// Конструктор
@@ -24,13 +25,15 @@ public class SubscribeNotifyWorker : BackgroundService
     public SubscribeNotifyWorker(ILogger<SubscribeNotifyWorker> logger, IServiceScopeFactory serviceScopeFactory)
     {
         _logger = logger;
-        var scope = serviceScopeFactory.CreateScope();
-        _subscriptionRepository = scope.ServiceProvider.GetRequiredService<ISubscriptionRepository>();
-        _telegramNotifyService = scope.ServiceProvider.GetRequiredService<ITelegramNotifyService>();
+        _serviceScopeFactory = serviceScopeFactory;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        var scope = _serviceScopeFactory.CreateScope();
+        _subscriptionRepository = scope.ServiceProvider.GetRequiredService<ISubscriptionRepository>();
+        _telegramNotifyService = scope.ServiceProvider.GetRequiredService<ITelegramNotifyService>();
+        
         while (!stoppingToken.IsCancellationRequested)
         {
             var notifyUsers = await _subscriptionRepository.GetNotifyUsersAsync(stoppingToken);
