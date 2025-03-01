@@ -1,10 +1,14 @@
+using CHSMonitoring.API.Middlewares;
 using CHSMonitoring.Application;
 using CHSMonitoring.Infrastructure;
+using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Services;
 using CHSMonitoring.Infrastructure.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 
@@ -16,6 +20,18 @@ builder.Services.ConfigureTelegramBotMvc();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CORSPOLICY", config =>
+    {
+        config
+            .WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 
 builder.Services
     .AddInfrastructureServices(builder.Configuration)
@@ -49,6 +65,16 @@ builder.Services.AddHttpClient<HttpClientService>(client =>
 });
 
 var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    using var scope = app.Services.CreateScope();
+    var dbContext = scope.ServiceProvider.GetRequiredService<MonitoringDbContext>();
+    if ((await dbContext.Database.GetPendingMigrationsAsync()).Any())
+    {
+        await dbContext.Database.MigrateAsync();
+    }
+}
+
 app.UseCookiePolicy(new CookiePolicyOptions()
 {
     HttpOnly = HttpOnlyPolicy.Always
@@ -56,9 +82,9 @@ app.UseCookiePolicy(new CookiePolicyOptions()
 
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseMiddleware<RequestMiddleware>();
 
-// app.UseHttpsRedirection();
-
+app.UseCors("CORSPOLICY");
 app.UseAuthentication();
 app.UseAuthorization();
 
