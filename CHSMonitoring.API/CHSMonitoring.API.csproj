@@ -4,11 +4,13 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <UserSecretsId>787d5664-2350-4b85-a8b5-325cad71be1f</UserSecretsId>
     </PropertyGroup>
     
     <PropertyGroup Label="Versions">
-        <Version>0.0.1</Version>
-        <AssemblyVersion>0.0.1</AssemblyVersion>
+        <Version>0.5.1</Version>
+        <AssemblyVersion>0.5.1</AssemblyVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,6 +26,7 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.1" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
         <PackageReference Include="SonarAnalyzer.CSharp" Version="10.6.0.109712">
           <PrivateAssets>all</PrivateAssets>
@@ -36,6 +39,12 @@
     <ItemGroup>
       <ProjectReference Include="..\CHSMonitoring.Application\CHSMonitoring.Application.csproj" />
       <ProjectReference Include="..\CHSMonitoring.Infrastructure\CHSMonitoring.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

@@ -1,3 +1,4 @@
+using System.Reflection;
 using CHSMonitoring.API.Middlewares;
 using CHSMonitoring.Application;
 using CHSMonitoring.Infrastructure;
@@ -32,6 +33,10 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Configuration
+    .AddJsonFile("appsettings.json")
+    .AddJsonFile("appsettings.Development.json", false)
+    .AddUserSecrets(Assembly.GetEntryAssembly()!);
 
 builder.Services
     .AddInfrastructureServices(builder.Configuration)

@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace CHSMonitoring.Infrastructure.Settings;
@@ -8,6 +9,23 @@ namespace CHSMonitoring.Infrastructure.Settings;
 /// </summary>
 public class AuthSettings
 {
+    private readonly IConfiguration _configuration;
+
+    public AuthSettings()
+    {
+        
+    }
+    
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="configuration"></param>
+    public AuthSettings(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
+    
+    //TODO: _configuration["JwtTokenSecurityKey"]
     /// <summary>
     /// Секретный ключ
     /// </summary>

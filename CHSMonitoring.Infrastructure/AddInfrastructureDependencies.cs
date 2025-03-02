@@ -61,11 +61,12 @@ public static class AddInfrastructureDependencies
         services.AddDbContext<MonitoringDbContext>(options =>
         {
             options.UseNpgsql(configurationManager.GetConnectionString("DefaultConnectionString"));
+            options.EnableSensitiveDataLogging(false);
         });
 
         // services.AddHostedService<ServiceMessageWorker>();
         // services.AddHostedService<GInfoWorker>();
-        services.AddHostedService<SubscribeNotifyWorker>();
+        // services.AddHostedService<SubscribeNotifyWorker>();
         
         return services;
     }

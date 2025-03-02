@@ -8,7 +8,7 @@ namespace CHSMonitoring.API.Controllers;
 /// <summary>
 /// Контроллер пользователей
 /// </summary>
-[Route("/api/[controller]s")]
+[Route("/api/[controller]")]
 [ApiController]
 public class UsersController : ControllerBase
 {

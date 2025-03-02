@@ -67,6 +67,6 @@ public class HttpClientService : IHttpClientService
         
         //Кодировка для кириллицы
         var encoding = Encoding.GetEncoding("windows-1251");
-        await File.WriteAllBytesAsync($"E:\\Учёба 5 курс\\Diplom\\Files\\chsmonitoring_testcase_{dateString}_{timeString}.html", encoding.GetBytes(htmlString)).ConfigureAwait(false);
+        // await File.WriteAllBytesAsync($"E:\\Учёба 5 курс\\Diplom\\Files\\chsmonitoring_testcase_{dateString}_{timeString}.html", encoding.GetBytes(htmlString)).ConfigureAwait(false);
     }
 }
