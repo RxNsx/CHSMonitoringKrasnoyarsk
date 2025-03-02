@@ -28,15 +28,16 @@ public class GeocodeController : ControllerBase
     {
         using HttpClient httpClient = new();
         var requestVersion = "https://geocode-maps.yandex.ru/1.x/";
-        var apiKey = _configuration["YandexApiKey"];
+        var apiKey = _configuration["YandexMapKey"];
         var city = "Красноярск";
         var searchAddress = "Крупской";
         var searchHouseNunmber = "44абв";
         var lang = "ru-RU";
         var format = "json";
+        var request = $"{requestVersion}?apikey={apiKey}&geocode={city}+{searchAddress},+{searchHouseNunmber}&lang={lang}&format={format}";
         
         var result = await httpClient
-            .GetAsync($"{requestVersion}?apikey={apiKey}&geocode={city}+{searchAddress},+{searchHouseNunmber}&lang={lang}&format={format}")
+            .GetAsync(request)
             .ConfigureAwait(false);
         if (result.StatusCode == HttpStatusCode.OK)
         {
