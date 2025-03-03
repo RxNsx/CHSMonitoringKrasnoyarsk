@@ -50,4 +50,12 @@ public interface IProfileRepository
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<Profile?> GetTelegramProfileAsync(Guid userId, CancellationToken cancellationToken);
+    
+    /// <summary>
+    /// Получить веб профиль по имени пользователя
+    /// </summary>
+    /// <param name="loginName"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<Profile?> GetWebApplicationProfileByLoginNameAsync(string loginName, CancellationToken cancellationToken);
 }
