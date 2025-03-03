@@ -1,6 +1,6 @@
 ﻿using CHSMonitoring.Application.Dtos.Login;
 using MediatR;
-using VplayRequestTransmitter.Shared;
+using Shared;
 
 namespace CHSMonitoring.Application.Commands.Login;
 

@@ -4,7 +4,7 @@ using CHSMonitoring.Domain.Enums;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using MediatR;
-using VplayRequestTransmitter.Shared;
+using Shared;
 
 namespace CHSMonitoring.Application.Commands.User.Register;
 

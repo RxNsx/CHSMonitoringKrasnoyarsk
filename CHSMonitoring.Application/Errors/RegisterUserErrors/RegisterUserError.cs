@@ -1,4 +1,4 @@
-﻿using VplayRequestTransmitter.Shared;
+﻿using Shared;
 
 namespace CHSMonitoring.Application.Errors.RegisterUserErrors;
 

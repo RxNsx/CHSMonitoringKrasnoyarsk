@@ -1,6 +1,6 @@
 ﻿using CHSMonitoring.Application.Dtos.User;
 using MediatR;
-using VplayRequestTransmitter.Shared;
+using Shared;
 
 namespace CHSMonitoring.Application.Commands.User.Register;
 
