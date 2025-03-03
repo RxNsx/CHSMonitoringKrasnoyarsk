@@ -1,4 +1,4 @@
-namespace VplayRequestTransmitter.Shared;
+namespace Shared;
 
 /// <summary>
 /// Класс ошибки

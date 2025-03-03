@@ -1,7 +1,5 @@
 #nullable enable
-using System;
-
-namespace VplayRequestTransmitter.Shared;
+namespace Shared;
 
 /// <summary>
 /// Result Pattern
