@@ -30,21 +30,23 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, Result<
 
     public async Task<Result<LoginUserDto>> Handle(LoginUserCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetUserByLoginNameAsync(request.LoginName, cancellationToken)
+        var users = await _userRepository.GetUserByLoginNameAsync(request.LoginName, cancellationToken)
             .ConfigureAwait(false);
-        if (user is null)
+        if (!users.Any())
         {
             return Result.Failure<LoginUserDto>(LoginUserError.NotFound());
         }
 
-        var userWebProfile = user.Profiles.FirstOrDefault(x => x.ProfileTypeId == ProfileTypeEnum.WebApplication.GetGuidValue());
+        var userWebProfile = users
+            .SelectMany(x => x.Profiles)
+            .FirstOrDefault(x => x.ProfileTypeId == ProfileTypeEnum.WebApplication.GetGuidValue());
         var isPasswordCorrect = _hashPasswordService.VerifyPassword(request.Password, userWebProfile!.Password);
         if (!isPasswordCorrect)
         {
             return Result.Failure<LoginUserDto>(LoginUserError.IncorrectPassword());
         }
         
-        var token = _tokenService.GenerateToken(user);
+        var token = _tokenService.GenerateToken(userWebProfile.User);
         var userDto = new LoginUserDto()
         {
             LoginName = userWebProfile.LoginName,

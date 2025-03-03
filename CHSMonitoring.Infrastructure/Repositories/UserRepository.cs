@@ -33,11 +33,13 @@ public class UserRepository : IUserRepository
             .ConfigureAwait(false);
     }
 
-    public async Task<User?> GetUserByLoginNameAsync(string loginName, CancellationToken cancellationToken)
+    public async Task<List<User>> GetUserByLoginNameAsync(string loginName, CancellationToken cancellationToken)
     {
         return await _context.Users
             .Include(x => x.Profiles)
-            .FirstOrDefaultAsync(x => x.Profiles.Any(t => t.LoginName.Equals(loginName)));
+            .Where(x => x.Profiles.Any(t => t.LoginName.Equals(loginName)))
+            .ToListAsync(cancellationToken)
+            .ConfigureAwait(false);
     }
 
     public async Task<User?> GetUserByUserIdAsync(Guid userId, CancellationToken cancellationToken)

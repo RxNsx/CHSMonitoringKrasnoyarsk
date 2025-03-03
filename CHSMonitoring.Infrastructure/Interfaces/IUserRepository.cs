@@ -14,14 +14,14 @@ public interface IUserRepository
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<User?> GetUserByTelegramProfileIdAsync(long profileId, CancellationToken cancellationToken);
-    
+
     /// <summary>
     /// Получить пользователя по логину
     /// </summary>
     /// <param name="loginName"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<User?> GetUserByLoginNameAsync(string loginName, CancellationToken cancellationToken);
+    Task<List<User>> GetUserByLoginNameAsync(string loginName, CancellationToken cancellationToken);
 
     /// <summary>
     /// Получить пользователя по ид
