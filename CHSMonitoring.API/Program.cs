@@ -27,7 +27,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("CORSPOLICY", config =>
     {
         config
-            .WithOrigins("http://localhost:5173")
+            .WithOrigins("http://localhost:3000")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -57,7 +57,7 @@ builder.Services.AddAuthentication(options =>
             ValidAudience = authSettings.Audience,
             ValidateAudience = true,
             ValidateIssuerSigningKey = true,
-            RequireExpirationTime = true,
+            RequireExpirationTime = true,   
             IssuerSigningKey = AuthSettings.GetSymmetricSecurityKey()
         };
     });

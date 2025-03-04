@@ -38,6 +38,7 @@ public static class AddInfrastructureDependencies
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IProfileRepository, ProfileRepository>();
         services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+        services.AddScoped<IDistrictRepository, DistrictRepository>();
 
         services.AddSingleton<IHttpClientService, HttpClientService>();
         services.AddSingleton<IHtmlParserService, HtmlParserService>();
