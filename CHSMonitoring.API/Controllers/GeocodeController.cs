@@ -1,7 +1,7 @@
-﻿using System.Net;
-using CHSMonitoring.Infrastructure.Models.YandexMapApi;
+﻿using CHSMonitoring.Application.Dtos.Geocode;
+using CHSMonitoring.Application.Queries.Geocode;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace CHSMonitoring.API.Controllers;
 
@@ -12,40 +12,32 @@ namespace CHSMonitoring.API.Controllers;
 [ApiController()]
 public class GeocodeController : ControllerBase
 {
-    private readonly IConfiguration _configuration;
+    private readonly IMediator _mediator;
 
     /// <summary>
     /// Конструктор
     /// </summary>
-    public GeocodeController(IConfiguration configuration)
+    public GeocodeController(IMediator mediator)
     {
-        _configuration = configuration;
+        _mediator = mediator;
     }
-    
+
+    /// <summary>
+    /// Получить список координат по районам
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     [Route("[action]")]
-    public async Task<IActionResult> GetAddressGeodata()
+    [ProducesResponseType<ServiceAddressGeoLocationDto>(200)]
+    public async Task<IActionResult> GetDistrictGeoCoordinates([FromQuery] string districtId, CancellationToken cancellationToken)
     {
-        using HttpClient httpClient = new();
-        var requestVersion = "https://geocode-maps.yandex.ru/1.x/";
-        var apiKey = _configuration["YandexMapKey"];
-        var city = "Красноярск";
-        var searchAddress = "Крупской";
-        var searchHouseNunmber = "44абв";
-        var lang = "ru-RU";
-        var format = "json";
-        var request = $"{requestVersion}?apikey={apiKey}&geocode={city}+{searchAddress},+{searchHouseNunmber}&lang={lang}&format={format}";
-        
-        var result = await httpClient
-            .GetAsync(request)
+        var result = await _mediator.Send(new GetDistrictGeoCoordinatesQuery(districtId), cancellationToken)
             .ConfigureAwait(false);
-        if (result.StatusCode == HttpStatusCode.OK)
+        if (!result.IsSuccess)
         {
-            //TODO: Получить ответ корректный для города
-            var response = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var myDeserializedClass = JsonConvert.DeserializeObject<Root>(response);
+            return BadRequest($"Ошибка при получении геоданных");
         }
         
-        return Ok(result);
+        return Ok(result.Value);
     }
 }

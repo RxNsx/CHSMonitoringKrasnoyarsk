@@ -27,6 +27,13 @@ public static class AddInfrastructureDependencies
     /// </summary>
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfigurationManager configurationManager)
     {
+        //HttpClients
+        services.AddHttpClient("yandexApi", (serviceProvider, httpClient) =>
+        {
+            httpClient.BaseAddress = new Uri("https://geocode-maps.yandex.ru/1.x/");
+        });
+        
+        //Repositories and services
         services.AddScoped<IServiceAddressRepository, ServiceAddressRepository>();
         services.AddScoped<IStreetRepository, StreetRepository>();
         services.AddScoped<IStreetNameService, StreetNameService>();
@@ -39,6 +46,7 @@ public static class AddInfrastructureDependencies
         services.AddScoped<IProfileRepository, ProfileRepository>();
         services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
         services.AddScoped<IDistrictRepository, DistrictRepository>();
+        services.AddScoped<IGeocodeService, GeocodeService>();
 
         services.AddSingleton<IHttpClientService, HttpClientService>();
         services.AddSingleton<IHtmlParserService, HtmlParserService>();
@@ -67,7 +75,7 @@ public static class AddInfrastructureDependencies
 
         // services.AddHostedService<ServiceMessageWorker>();
         // services.AddHostedService<GInfoWorker>();
-        // services.AddHostedService<SubscribeNotifyWorker>();
+        services.AddHostedService<SubscribeNotifyWorker>();
         
         return services;
     }
