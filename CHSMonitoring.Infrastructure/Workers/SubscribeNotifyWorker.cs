@@ -37,7 +37,10 @@ public class SubscribeNotifyWorker : BackgroundService
         while (!stoppingToken.IsCancellationRequested)
         {
             var notifyUsers = await _subscriptionRepository.GetNotifyUsersAsync(stoppingToken);
-            await _telegramNotifyService.SendNotifyMessageAsync("test", notifyUsers, stoppingToken).ConfigureAwait(false);
+            if (notifyUsers.Any())
+            {
+                await _telegramNotifyService.SendNotifyMessageAsync("test", notifyUsers, stoppingToken).ConfigureAwait(false);
+            }
             
             await Task.Delay(TimeSpan.FromSeconds(1));
         }
