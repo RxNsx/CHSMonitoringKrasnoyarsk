@@ -53,9 +53,6 @@ public class ShowSubscriptionDetailsCommand : BaseCommand
         var districtName = CommonData.DistrictsData
             .FirstOrDefault(x => x.Id == subscription.DistrictId)
             .DistrictName;
-
-        
-        
         
         sb.Append("Ваша подписка:").AppendLine();
         sb.Append("Район: ").Append(districtName).AppendLine();

@@ -29,7 +29,7 @@ public class GeocodeController : ControllerBase
     [HttpGet]
     [Route("[action]")]
     [ProducesResponseType<ServiceAddressGeoLocationDto>(200)]
-    public async Task<IActionResult> GetDistrictGeoCoordinates([FromQuery] string districtId, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetDistrictGeoCoordinatesAsync([FromQuery] string districtId, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new GetDistrictGeoCoordinatesQuery(districtId), cancellationToken)
             .ConfigureAwait(false);

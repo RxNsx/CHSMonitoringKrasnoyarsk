@@ -3,15 +3,12 @@ using CHSMonitoring.API.Middlewares;
 using CHSMonitoring.Application;
 using CHSMonitoring.Infrastructure;
 using CHSMonitoring.Infrastructure.Context;
-using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using CHSMonitoring.Infrastructure.Services;
 using CHSMonitoring.Infrastructure.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.CookiePolicy;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +21,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CORSPOLICY", config =>
+    options.AddPolicy("CorsPolicy", config =>
     {
         config
             .WithOrigins("http://localhost:3000")
@@ -89,7 +86,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 app.UseMiddleware<RequestMiddleware>();
 
-app.UseCors("CORSPOLICY");
+app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 

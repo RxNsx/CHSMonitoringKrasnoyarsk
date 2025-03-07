@@ -13,7 +13,6 @@ using CHSMonitoring.Infrastructure.Workers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 namespace CHSMonitoring.Infrastructure;
 
@@ -48,6 +47,7 @@ public static class AddInfrastructureDependencies
         services.AddScoped<IDistrictRepository, DistrictRepository>();
         services.AddScoped<IGeocodeService, GeocodeService>();
 
+        //Http Parser Services
         services.AddSingleton<IHttpClientService, HttpClientService>();
         services.AddSingleton<IHtmlParserService, HtmlParserService>();
         services.AddSingleton<ITdContentParserService, TdContentParserService>();
@@ -63,7 +63,6 @@ public static class AddInfrastructureDependencies
         services.AddSingleton<BaseCommand, ShowUserTimeIntervalRefreshCommand>();
         services.AddSingleton<BaseCommand, ShowSubscriptionDetailsCommand>();
         services.AddSingleton<SendMessageCommand, SendUserMessageCommand>();
-        services.AddSingleton<ErrorBaseCommand, SendErrorInfoCommand>();
         services.AddScoped<ITelegramNotifyService, TelegramNotrifyService>();
         
         services.Configure<TelegramBotSettings>(configurationManager.GetSection("TelegramBot"));
@@ -73,8 +72,8 @@ public static class AddInfrastructureDependencies
             options.EnableSensitiveDataLogging(false);
         });
 
-        // services.AddHostedService<ServiceMessageWorker>();
-        // services.AddHostedService<GInfoWorker>();
+        services.AddHostedService<ServiceMessageWorker>();
+        services.AddHostedService<GInfoWorker>();
         services.AddHostedService<SubscribeNotifyWorker>();
         
         return services;
