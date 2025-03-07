@@ -25,11 +25,6 @@ public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddre
         builder.Property(x => x.ServiceTypeId)
             .IsRequired();
         
-        builder.Property(x => x.StreetName)
-            .HasMaxLength(150)
-            .HasDefaultValue(string.Empty)
-            .IsRequired();
-        
         builder.Property(x => x.HouseNumber)
             .HasMaxLength(30)
             .IsRequired();

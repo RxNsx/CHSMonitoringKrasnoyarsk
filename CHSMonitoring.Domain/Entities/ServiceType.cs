@@ -13,11 +13,6 @@ public class ServiceType : Entity
     public string Name { get; set; }
     
     /// <summary>
-    /// Описание типа обслуживания
-    /// </summary>
-    public string Description { get; set; }
-    
-    /// <summary>
     /// Признак только для чтения
     /// </summary>
     public bool IsReadOnly { get; set; }

@@ -11,10 +11,6 @@ public class Street : Entity
     /// Название улицы
     /// </summary>
     public string Name { get; set; }
-    /// <summary>
-    /// Описание улицы
-    /// </summary>
-    public string Description { get; set; }
     
     /// <summary>
     /// Номера домов

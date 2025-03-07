@@ -31,6 +31,8 @@ public class ServiceAddressRepository : IServiceAddressRepository
                 .ConfigureAwait(false);
         
             return await _context.ServiceAddresses
+                .AsNoTracking()
+                .Include(x => x.Street)
                 .Where(x => x.CreatedDate == latestTime)
                 .ToListAsync(cancellationToken)
                 .ConfigureAwait(false);
@@ -60,7 +62,8 @@ public class ServiceAddressRepository : IServiceAddressRepository
     public async Task<List<ServiceAddress>> GetServiceAddressesAsync(List<string> streetName, CancellationToken cancellationToken)
     {
         return await _context.ServiceAddresses
-            .Where(x => streetName.Contains(x.StreetName))
+            .Include(x => x.Street)
+            .Where(x => streetName.Contains(x.Street.Name))
             .ToListAsync(cancellationToken);
     }
 
@@ -78,11 +81,12 @@ public class ServiceAddressRepository : IServiceAddressRepository
         }
         
         var lastCreatedDateServiceAddress = await _context.ServiceAddresses
-            .Where(x => x.StreetName == streetName && x.HouseNumber == houseNumber)
-            .GroupBy(x => new { x.StreetName, x.HouseNumber })
+            .Include(x => x.Street)
+            .Where(x => x.Street.Name == streetName && x.HouseNumber == houseNumber)
+            .GroupBy(x => new { x.Street.Name, x.HouseNumber })
             .Select(x => new
             {
-                x.Key.StreetName,
+                x.Key.Name,
                 x.Key.HouseNumber,
                 CreatedDate = x.Max(t => t.CreatedDate)
             })
@@ -90,10 +94,11 @@ public class ServiceAddressRepository : IServiceAddressRepository
             .ConfigureAwait(false);
         
         return await _context.ServiceAddresses
+            .Include(x => x.Street)
             .Include(x => x.District)
             .Include(x => x.ServiceType)
             .Where(x => x.CreatedDate == lastCreatedDateServiceAddress!.CreatedDate 
-                        && lastCreatedDateServiceAddress.StreetName == x.StreetName 
+                        && lastCreatedDateServiceAddress.Name == x.Street.Name 
                         && lastCreatedDateServiceAddress.HouseNumber == x.HouseNumber)
             .FirstOrDefaultAsync()
             .ConfigureAwait(false);
@@ -102,7 +107,8 @@ public class ServiceAddressRepository : IServiceAddressRepository
     public async Task<bool> IsExistServiceAddressAsync(string streetName, string houseNumber, CancellationToken cancellationToken)
     {
         return await _context.ServiceAddresses
-            .AnyAsync(x => x.StreetName == streetName && x.HouseNumber == houseNumber, cancellationToken)
+            .Include(x => x.Street)
+            .AnyAsync(x => x.Street.Name == streetName && x.HouseNumber == houseNumber, cancellationToken)
             .ConfigureAwait(false);
     }
 }

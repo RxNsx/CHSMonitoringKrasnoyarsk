@@ -64,7 +64,7 @@ public class GeocodeService : IGeocodeService
         List<(string streetName, string latitude, string longtitude, string serviceTypeName)> streetCoordinates = new();
         foreach (var serviceAddress in serviceAddresses)
         {
-            var searchAddress = $"{serviceAddress.StreetName}";
+            var searchAddress = $"{serviceAddress.Street.Name}";
             var searchHouseNunmber = $"{serviceAddress.HouseNumber}";
             var request = $"?apikey={apiKey}&geocode={city}+{searchAddress},+{searchHouseNunmber}&lang={lang}&format={format}";
                 
@@ -97,7 +97,7 @@ public class GeocodeService : IGeocodeService
                 var serviceTypeName = CommonData.ServiceTypesData
                     .FirstOrDefault(x => x.Id == serviceAddress.ServiceTypeId)
                     .ServiceTypeName;
-                var address = $"{serviceAddress.StreetName} {serviceAddress.HouseNumber}";
+                var address = $"{serviceAddress.Street.Name} {serviceAddress.HouseNumber}";
                 streetCoordinates.Add((address, latitude, longtitude, serviceTypeName));
             }
         }

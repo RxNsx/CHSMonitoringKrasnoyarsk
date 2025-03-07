@@ -256,7 +256,6 @@ public class TdContentParserService : ITdContentParserService
                 {
                     DistrictId = CommonData.DistrictsData.FirstOrDefault(x => x.DistrictName.Equals(serviceMessage.DistrictName, StringComparison.InvariantCultureIgnoreCase)).Id,
                     StreetId = CommonData.StreetsData.FirstOrDefault(x => x.StreetName.Equals(address.StreetName,StringComparison.InvariantCultureIgnoreCase)).Id,
-                    StreetName = address.StreetName,
                     ServiceTypeId = CommonData.ServiceTypesData.FirstOrDefault(x => x.ServiceTypeName.Equals(serviceMessage.Organization.SupplyTypeName, StringComparison.InvariantCultureIgnoreCase)).Id,
                     HouseNumber = address.Number,
                     Description = serviceMessage.Description,

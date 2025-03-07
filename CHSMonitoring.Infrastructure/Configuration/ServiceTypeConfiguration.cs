@@ -21,10 +21,6 @@ public class ServiceTypeConfiguration : IEntityTypeConfiguration<ServiceType>
             .HasMaxLength(100)
             .IsRequired();
 
-        builder.Property(x => x.Description)
-            .HasDefaultValue(string.Empty)
-            .HasMaxLength(150);
-
         builder.Property(x => x.IsReadOnly)
             .HasDefaultValue(true);
 

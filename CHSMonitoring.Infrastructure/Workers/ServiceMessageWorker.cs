@@ -63,7 +63,6 @@ public class ServiceMessageWorker : BackgroundService
                 var serviceAddresses = await _htmlParserService.GetServiceMessages(htmlDocument).ConfigureAwait(false);
                 await _serviceAddressRepository.AddServiceAddressesAsync(serviceAddresses, stoppingToken);
 
-                CheckMissedAddreses(serviceAddresses);
                 Console.WriteLine("Total seconds elapsed: " + stopwatch.Elapsed.Seconds);
                 stopwatch.Stop();
             }
@@ -73,25 +72,6 @@ public class ServiceMessageWorker : BackgroundService
             }
             
             await Task.Delay(TimeSpan.FromMinutes(3), stoppingToken);
-        }
-    }
-
-    private void CheckMissedAddreses(List<ServiceAddress> serviceAddresses)
-    {
-        var streetEnums = Enum.GetValues(typeof(StreetNameEnum))
-            .Cast<StreetNameEnum>()
-            .Select(x => new
-            {
-                Id = x.GetGuidValue(),
-                Name = x.GetDescriptionValue(),
-            })
-            .ToList();
-        var exceptList = serviceAddresses
-            .Where(x => !streetEnums.Any(t => t.Name.Equals(x.StreetName, StringComparison.InvariantCultureIgnoreCase)))
-            .ToList();
-        if (exceptList.Any())
-        {
-            _logger.LogCritical($"Отсутсвующие адреса: {string.Join(", ", exceptList.Select(x => x.StreetName))}");
         }
     }
 

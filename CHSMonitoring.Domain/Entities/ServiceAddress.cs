@@ -8,11 +8,6 @@ namespace CHSMonitoring.Domain.Entities;
 public class ServiceAddress : Entity
 {
     /// <summary>
-    /// Название улицы
-    /// </summary>
-    public required string StreetName { get; set; }
-    
-    /// <summary>
     /// Номер дома
     /// </summary>
     public required string HouseNumber { get; set; }
