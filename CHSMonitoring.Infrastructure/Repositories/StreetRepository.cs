@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Text;
 using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Interfaces;
@@ -25,9 +26,12 @@ public class StreetRepository : IStreetRepository
     public async Task UpdateStreetHouseNumbersAsync(Guid streetId, List<string> houseNumbers, CancellationToken cancellationToken)
     {
         var street = await GetStreetAsync(streetId, cancellationToken).ConfigureAwait(false);
+        // using var streamWriter = new StreamWriter("streetsdata.txt", append: true);
+
         if (houseNumbers.Any())
         {
             var currentHouseNumbers = street.HouseNumbers.Split(",")
+                .Where(x => !string.IsNullOrEmpty(x))
                 .Select(x => x)
                 .ToHashSet();
             foreach (var houseNumber in houseNumbers)
@@ -35,10 +39,11 @@ public class StreetRepository : IStreetRepository
                 currentHouseNumbers.Add(houseNumber.Trim());
             }
             street.HouseNumbers = string.Join(",", currentHouseNumbers.ToList());
+            // await streamWriter.WriteAsync($"{street.Name}; {street.HouseNumbers}\n");
         }
-
+        
         _context.Update(street);
-        await _context.SaveChangesAsync().ConfigureAwait(false);
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 
     public async Task<Street> GetStreetAsync(Guid streetId, CancellationToken cancellationToken)

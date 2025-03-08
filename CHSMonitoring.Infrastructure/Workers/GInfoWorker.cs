@@ -44,10 +44,6 @@ public class GInfoWorker : BackgroundService
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await Task.Delay(TimeSpan.FromSeconds(5));
-
-
-
-
         while (!stoppingToken.IsCancellationRequested)
         {
             try
@@ -58,40 +54,58 @@ public class GInfoWorker : BackgroundService
 
                 var htmlDocument = new HtmlDocument();
                 htmlDocument.LoadHtml(responseContent);
-                _logger.LogInformation($"Информация htmlDocument: {htmlDocument.Text}");
+
                 var links = htmlDocument.DocumentNode.SelectNodes("//a[@class='ulica_link']")
-                    .Select(x => new
-                    {
-                        Value = string.Concat("https://krasnoyarsk.ginfo.ru", x.Attributes["href"].Value)
-                    })
                     .ToList();
+                 if (!links.Any())
+                 {
+                     var streetLines = await File.ReadAllLinesAsync("streetsdata.txt", stoppingToken).ConfigureAwait(false);
+                     foreach (var streetLine in streetLines)
+                     {
+                         _logger.LogInformation(streetLine);
+                         var values = streetLine.Split(";").ToList();
+                         var streetName = values[0].Trim().NormalizeActualDataText();
+                         var houseNumbers = values[1].Trim().Split(",").ToList();
+                         var street = await _streetRepository.GetStreetAsync(streetName, stoppingToken).ConfigureAwait(false);
+                         await _streetRepository.UpdateStreetHouseNumbersAsync(street.Id, houseNumbers, stoppingToken).ConfigureAwait(false);
+                     }
+                 }
+                 else
+                 {
+                    var streetLinks = htmlDocument.DocumentNode.SelectNodes("//a[@class='ulica_link']")
+                        .Select(x => new
+                        {
+                            Value = string.Concat("https://krasnoyarsk.ginfo.ru", x.Attributes["href"].Value)
+                        })
+                        .ToList();
 
-                foreach (var link in links)
-                {
-                    using var linkClient = new HttpClient();
-                    var streetTitleHouseNumbers = await client.GetAsync(link.Value).ConfigureAwait(false);
-                    var houseNumbersContent =
-                        await streetTitleHouseNumbers.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    var htmlDocumentHouseNumbers = new HtmlDocument();
-                    htmlDocumentHouseNumbers.LoadHtml(houseNumbersContent);
-
-                    var htmlStreetName = htmlDocumentHouseNumbers.DocumentNode.SelectSingleNode("//title")
-                        .InnerText
-                        .NormalizeActualDataText();
-                    var streetId = _streetNameService.GetStreetNameFromHtmlDocument(htmlStreetName);
-                    var houseNumbersNodes = htmlDocumentHouseNumbers.DocumentNode.SelectNodes("//a[@class='dom_link']");
-                    if (houseNumbersNodes is not null)
+                    foreach (var streetLink in streetLinks)
                     {
-                        //Перебираем все номера домов
-                        var innerTexts = houseNumbersNodes
-                            .Select(x => x.InnerText)
-                            .ToList();
-                        await _streetRepository
-                            .UpdateStreetHouseNumbersAsync(streetId!.Value, innerTexts, stoppingToken)
-                            .ConfigureAwait(false);
-                    }
+                        using var linkClient = new HttpClient();
+                        var streetTitleHouseNumbers = await client.GetAsync(streetLink.Value).ConfigureAwait(false);
+                        var houseNumbersContent =
+                            await streetTitleHouseNumbers.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        var htmlDocumentHouseNumbers = new HtmlDocument();
+                        htmlDocumentHouseNumbers.LoadHtml(houseNumbersContent);
 
-                    await Task.Delay(TimeSpan.FromMilliseconds(500));
+                        var htmlStreetName = htmlDocumentHouseNumbers.DocumentNode.SelectSingleNode("//title")
+                            .InnerText
+                            .NormalizeActualDataText();
+                        var streetId = _streetNameService.GetStreetNameFromHtmlDocument(htmlStreetName);
+                        var houseNumbersNodes = htmlDocumentHouseNumbers.DocumentNode.SelectNodes("//a[@class='dom_link']");
+                        if (houseNumbersNodes is not null)
+                        {
+                            //Перебираем все номера домов
+                            var innerTexts = houseNumbersNodes
+                                .Select(x => x.InnerText)
+                                .ToList();
+                            await _streetRepository
+                                .UpdateStreetHouseNumbersAsync(streetId!.Value, innerTexts, stoppingToken)
+                                .ConfigureAwait(false);
+                        }
+
+                        await Task.Delay(TimeSpan.FromMilliseconds(200));
+                    }
                 }
 
                 _logger.LogInformation($"Информация со страницы {_url} обновлена");
