@@ -60,6 +60,8 @@ public class ServiceMessageWorker : BackgroundService
             
             try
             {
+                _logger.LogInformation($"Парсинг страницы {_url}");
+                
                 var htmlDocument = await _httpClientService.GetChsHtmlDocumentByUrlAsync(_url, stoppingToken)
                     .ConfigureAwait(false);
                 var serviceAddresses = await _htmlParserService.GetServiceMessages(htmlDocument).ConfigureAwait(false);
@@ -69,7 +71,7 @@ public class ServiceMessageWorker : BackgroundService
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _logger.LogCritical($"Ошибка в работе сервиса парсинга адресов с 005красноярск.рф: {ex.Message}");
             }
             
             await Task.Delay(TimeSpan.FromMinutes(_refreshIntervalMinutes), stoppingToken);

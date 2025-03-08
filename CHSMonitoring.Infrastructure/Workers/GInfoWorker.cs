@@ -47,6 +47,7 @@ public class GInfoWorker : BackgroundService
 
         try
         {
+            _logger.LogInformation($"Запрос информации с адреса: {_url}");
             using var client = new HttpClient();
             var response = await client.GetAsync(_url).ConfigureAwait(false);
             var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
