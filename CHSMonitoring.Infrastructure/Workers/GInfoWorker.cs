@@ -40,49 +40,59 @@ public class GInfoWorker : BackgroundService
             _refreshIntervalHours = int.Parse(configuration.GetSection("GInfo:Url")!.Value!);
         }
     }
-    
+
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await Task.Delay(TimeSpan.FromSeconds(5));
 
-        using var client = new HttpClient();
-        var response = await client.GetAsync(_url).ConfigureAwait(false);
-        var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-        var htmlDocument = new HtmlDocument();
-        htmlDocument.LoadHtml(responseContent);
-        var links = htmlDocument.DocumentNode.SelectNodes("//a[@class='ulica_link']")
-            .Select(x => new
-            {
-                Value = string.Concat("https://krasnoyarsk.ginfo.ru", x.Attributes["href"].Value)
-            })
-            .ToList();
-
-        foreach (var link in links)
+        try
         {
-            using var linkClient = new HttpClient();
-            var streetTitleHouseNumbers = await client.GetAsync(link.Value).ConfigureAwait(false);
-            var houseNumbersContent = await streetTitleHouseNumbers.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var htmlDocumentHouseNumbers = new HtmlDocument();
-            htmlDocumentHouseNumbers.LoadHtml(houseNumbersContent);
+            using var client = new HttpClient();
+            var response = await client.GetAsync(_url).ConfigureAwait(false);
+            var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var htmlStreetName = htmlDocumentHouseNumbers.DocumentNode.SelectSingleNode("//title")
-                .InnerText
-                .NormalizeActualDataText();
-            var streetId = _streetNameService.GetStreetNameFromHtmlDocument(htmlStreetName);
-            var houseNumbersNodes = htmlDocumentHouseNumbers.DocumentNode.SelectNodes("//a[@class='dom_link']");
-            if (houseNumbersNodes is not null)
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(responseContent);
+            var links = htmlDocument.DocumentNode.SelectNodes("//a[@class='ulica_link']")
+                .Select(x => new
+                {
+                    Value = string.Concat("https://krasnoyarsk.ginfo.ru", x.Attributes["href"].Value)
+                })
+                .ToList();
+
+            foreach (var link in links)
             {
-                //Перебираем все номера домов
-                var innerTexts = houseNumbersNodes
-                    .Select(x => x.InnerText)
-                    .ToList();
-                await _streetRepository.UpdateStreetHouseNumbersAsync(streetId!.Value, innerTexts, stoppingToken).ConfigureAwait(false);
-            }
-            await Task.Delay(TimeSpan.FromMilliseconds(500));
-        }
+                using var linkClient = new HttpClient();
+                var streetTitleHouseNumbers = await client.GetAsync(link.Value).ConfigureAwait(false);
+                var houseNumbersContent =
+                    await streetTitleHouseNumbers.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var htmlDocumentHouseNumbers = new HtmlDocument();
+                htmlDocumentHouseNumbers.LoadHtml(houseNumbersContent);
 
-        _logger.LogInformation($"Информация со страницы {_url} обновлена");
-        await Task.Delay(TimeSpan.FromHours(_refreshIntervalHours), stoppingToken);
+                var htmlStreetName = htmlDocumentHouseNumbers.DocumentNode.SelectSingleNode("//title")
+                    .InnerText
+                    .NormalizeActualDataText();
+                var streetId = _streetNameService.GetStreetNameFromHtmlDocument(htmlStreetName);
+                var houseNumbersNodes = htmlDocumentHouseNumbers.DocumentNode.SelectNodes("//a[@class='dom_link']");
+                if (houseNumbersNodes is not null)
+                {
+                    //Перебираем все номера домов
+                    var innerTexts = houseNumbersNodes
+                        .Select(x => x.InnerText)
+                        .ToList();
+                    await _streetRepository.UpdateStreetHouseNumbersAsync(streetId!.Value, innerTexts, stoppingToken)
+                        .ConfigureAwait(false);
+                }
+
+                await Task.Delay(TimeSpan.FromMilliseconds(500));
+            }
+
+            _logger.LogInformation($"Информация со страницы {_url} обновлена");
+            await Task.Delay(TimeSpan.FromHours(_refreshIntervalHours), stoppingToken);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogCritical($"При парсинге информации со страницы {_url} возникла ошибка: {ex.Message}");
+        }
     }
 }

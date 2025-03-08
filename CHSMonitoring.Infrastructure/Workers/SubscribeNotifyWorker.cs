@@ -36,10 +36,17 @@ public class SubscribeNotifyWorker : BackgroundService
         
         while (!stoppingToken.IsCancellationRequested)
         {
-            var notifyUsers = await _subscriptionRepository.GetNotifyUsersAsync(stoppingToken);
-            if (notifyUsers.Any())
+            try
             {
-                await _telegramNotifyService.SendNotifyMessageAsync("test", notifyUsers, stoppingToken).ConfigureAwait(false);
+                var notifyUsers = await _subscriptionRepository.GetNotifyUsersAsync(stoppingToken);
+                if (notifyUsers.Any())
+                {
+                    await _telegramNotifyService.SendNotifyMessageAsync("test", notifyUsers, stoppingToken).ConfigureAwait(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical($"Ошибка в работе сервиса телеграм уведомлений: {ex.Message}");
             }
             
             await Task.Delay(TimeSpan.FromSeconds(1));
