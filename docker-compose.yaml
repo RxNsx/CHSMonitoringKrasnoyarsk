@@ -1,5 +1,7 @@
 ﻿services:
   chsmonitoring.api:
+    networks:
+      - shared
     container_name: monitoring_service_container
     restart: always
     build:
@@ -13,6 +15,8 @@
       - postgres
   
   chsmonitoring.client:
+    networks:
+      - shared
     container_name: monitoring_client_container
     restart: always
     build:
@@ -25,6 +29,8 @@
       - proxy-nginx
   
   proxy-nginx:
+    networks:
+      - shared
     container_name: proxy-nginx
     image: nginx:latest
     restart: always
@@ -34,6 +40,8 @@
       - 80:80
   
   postgres:
+    networks:
+      - shared
     container_name: postgres_container
     image: postgres
     restart: always
@@ -47,6 +55,8 @@
       - pgadmin
   
   pgadmin:
+    networks:
+      - shared
     container_name: pgadmin_container
     image: dpage/pgadmin4
     restart: always
@@ -55,3 +65,6 @@
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - 5050:80
+networks:
+  shared:
+    driver: bridge
