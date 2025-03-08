@@ -52,15 +52,13 @@ public class GInfoWorker : BackgroundService
         {
             try
             {
-                _logger.LogInformation($"Запрос информации с адреса: {_url}");
                 using var client = new HttpClient();
                 var response = await client.GetAsync(_url).ConfigureAwait(false);
-                _logger.LogInformation($"Ответ с адреса: {response} завершен.");
                 var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                _logger.LogInformation($"Ответ с responseContent: {responseContent} завершен.");
 
                 var htmlDocument = new HtmlDocument();
                 htmlDocument.LoadHtml(responseContent);
+                _logger.LogInformation($"Информация htmlDocument: {htmlDocument.Text}");
                 var links = htmlDocument.DocumentNode.SelectNodes("//a[@class='ulica_link']")
                     .Select(x => new
                     {
