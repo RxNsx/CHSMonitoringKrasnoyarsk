@@ -70,12 +70,6 @@ public class GInfoWorker : BackgroundService
                 .InnerText
                 .NormalizeActualDataText();
             var streetId = _streetNameService.GetStreetNameFromHtmlDocument(htmlStreetName);
-            if (!streetId.HasValue || streetId.Value == Guid.Empty)
-            {
-                _logger.LogCritical($"Error, cannot get streetName from html street {htmlStreetName}");
-            }
-            _logger.LogInformation($"Success get streetName from html street {htmlStreetName}");
-
             var houseNumbersNodes = htmlDocumentHouseNumbers.DocumentNode.SelectNodes("//a[@class='dom_link']");
             if (houseNumbersNodes is not null)
             {
@@ -83,14 +77,12 @@ public class GInfoWorker : BackgroundService
                 var innerTexts = houseNumbersNodes
                     .Select(x => x.InnerText)
                     .ToList();
-                _logger.LogInformation($"Updating street house numbers {string.Join(",", innerTexts)}");
                 await _streetRepository.UpdateStreetHouseNumbersAsync(streetId!.Value, innerTexts, stoppingToken).ConfigureAwait(false);
             }
-            
-            _logger.LogInformation("Reading data from GInfo...");
             await Task.Delay(TimeSpan.FromMilliseconds(500));
         }
 
+        _logger.LogInformation($"Информация со страницы {_url} обновлена");
         await Task.Delay(TimeSpan.FromHours(_refreshIntervalHours), stoppingToken);
     }
 }

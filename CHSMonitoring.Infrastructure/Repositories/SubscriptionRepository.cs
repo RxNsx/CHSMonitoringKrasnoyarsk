@@ -85,6 +85,12 @@ public class SubscriptionRepository : ISubscriptionRepository
 
     public async Task<List<User>> GetNotifyUsersAsync(CancellationToken cancellationToken)
     {
+        var subscriptionsCount = await _context.Subscriptions.CountAsync().ConfigureAwait(false);
+        if (subscriptionsCount <= 0)
+        {
+            return new List<User>();
+        }
+        
         var currentDate = DateTime.UtcNow;
         var subscriptions =  await _context.Subscriptions
             .Include(x => x.User)

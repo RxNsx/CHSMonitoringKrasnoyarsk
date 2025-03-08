@@ -64,8 +64,7 @@ public class ServiceMessageWorker : BackgroundService
                     .ConfigureAwait(false);
                 var serviceAddresses = await _htmlParserService.GetServiceMessages(htmlDocument).ConfigureAwait(false);
                 await _serviceAddressRepository.AddServiceAddressesAsync(serviceAddresses, stoppingToken);
-
-                Console.WriteLine("Total seconds elapsed: " + stopwatch.Elapsed.Seconds);
+                _logger.LogInformation($"Парсинг страницы {_url} завершен за {stopwatch.ElapsedMilliseconds} мс.");
                 stopwatch.Stop();
             }
             catch (Exception ex)

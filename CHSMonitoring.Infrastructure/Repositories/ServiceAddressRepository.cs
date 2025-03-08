@@ -48,6 +48,8 @@ public class ServiceAddressRepository : IServiceAddressRepository
             .ConfigureAwait(false);
         
         return await _context.ServiceAddresses
+            .AsNoTracking()
+            .Include(x => x.Street)
             .Where(x => x.CreatedDate == latestTime && x.DistrictId == districtId)
             .ToListAsync(cancellationToken)
             .ConfigureAwait(false);
