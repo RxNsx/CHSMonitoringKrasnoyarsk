@@ -19,7 +19,7 @@ public class HttpClientService : IHttpClientService
 
     public async Task<HtmlDocument> GetChsHtmlDocumentByUrlAsync(string url, CancellationToken stoppingToken)
     {
-        var reply = await _httpClient.GetByteArrayAsync("http://93.92.65.26/aspx/GorodM.htm", stoppingToken)
+        var reply = await _httpClient.GetByteArrayAsync(url, stoppingToken)
             .ConfigureAwait(false);
 
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -32,10 +32,7 @@ public class HttpClientService : IHttpClientService
 
 
         var count = htmlDocument.DocumentNode.SelectNodes("//td")
-            .Where(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty)
-            .Count();
-
-
+            .Count(td => td.InnerText != "&nbsp;" && td.InnerText != string.Empty);
         if (count > 50)
         {
             await HtmlTestBackupsSave(result).ConfigureAwait(false);

@@ -1,6 +1,5 @@
 ﻿using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
-using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using HtmlAgilityPack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,23 +13,32 @@ public class GInfoWorker : BackgroundService
     private readonly IServiceScope _serviceScope;
     private readonly IStreetRepository _streetRepository;
     private readonly IStreetNameService _streetNameService;
-    private readonly IHttpClientService _httpClientService;
     private readonly ILogger<GInfoWorker> _logger;
-    private readonly string _url;
     
+    private readonly string _url;
+    private readonly int _refreshIntervalHours;
+
     /// <summary>
     /// Конструктор
     /// </summary>
     /// <param name="serviceScopeFactory"></param>
     /// <param name="loggerFactory"></param>
+    /// <param name="configuration"></param>
     public GInfoWorker(IServiceScopeFactory serviceScopeFactory, ILoggerFactory loggerFactory, IConfiguration configuration)
     {
         _serviceScope = serviceScopeFactory.CreateScope();
         _streetRepository = _serviceScope.ServiceProvider.GetRequiredService<IStreetRepository>();
         _streetNameService = _serviceScope.ServiceProvider.GetRequiredService<IStreetNameService>();
-        _httpClientService = _serviceScope.ServiceProvider.GetRequiredService<IHttpClientService>();
         _logger = loggerFactory.CreateLogger<GInfoWorker>();
-        _url = configuration.GetSection("GInfo:Url").Value;
+
+        if (!string.IsNullOrEmpty(configuration.GetSection("GInfo:Url").Value))
+        {
+            _url = configuration.GetSection("GInfo:Url")!.Value!;
+        }
+        if (!string.IsNullOrEmpty(configuration.GetSection("GInfo:IntervalParsingMinutes").Value))
+        {
+            _refreshIntervalHours = int.Parse(configuration.GetSection("GInfo:Url")!.Value!);
+        }
     }
     
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -80,9 +88,9 @@ public class GInfoWorker : BackgroundService
             }
             
             _logger.LogInformation("Reading data from GInfo...");
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
+            await Task.Delay(TimeSpan.FromMilliseconds(500));
         }
 
-        await Task.Delay(TimeSpan.FromHours(12), stoppingToken);
+        await Task.Delay(TimeSpan.FromHours(_refreshIntervalHours), stoppingToken);
     }
 }

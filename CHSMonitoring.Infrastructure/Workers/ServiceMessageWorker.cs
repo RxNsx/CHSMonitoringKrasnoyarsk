@@ -20,9 +20,9 @@ public class ServiceMessageWorker : BackgroundService
     private readonly ILogger<ServiceMessageWorker> _logger;
     private readonly IHttpClientService _httpClientService;
     private readonly IHtmlParserService _htmlParserService;
-    private readonly IServiceScopeFactory _serviceScopeFactory;
 
     private readonly string? _url;
+    private readonly int _refreshIntervalMinutes;
     private readonly IServiceAddressRepository _serviceAddressRepository;
 
     /// <summary>
@@ -37,14 +37,17 @@ public class ServiceMessageWorker : BackgroundService
     {
         var scope = serviceScopeFactory.CreateScope();
         _logger = loggerFactory.CreateLogger<ServiceMessageWorker>();
-        _serviceScopeFactory = serviceScopeFactory;
         _httpClientService = httpClientService;
         _htmlParserService = htmlParserService;
         _serviceAddressRepository = scope.ServiceProvider.GetRequiredService<IServiceAddressRepository>();
         
         if(!string.IsNullOrEmpty(configuration.GetSection("CHSMonitoringKrasnoyarsk:Url").Value))
         {
-            _url = "http://93.92.65.26/aspx/GorodM.htm";
+            _url = configuration.GetSection("CHSMonitoringKrasnoyarsk:Url").Value;
+        }
+        if (!string.IsNullOrEmpty(configuration.GetSection("CHSMonitoringKrasnoyarsk:IntervalParsingMinutes").Value))
+        {
+            _refreshIntervalMinutes = int.Parse(configuration.GetSection("CHSMonitoringKrasnoyarsk:IntervalParsingMinutes")!.Value!);
         }
     }
     
@@ -59,7 +62,6 @@ public class ServiceMessageWorker : BackgroundService
             {
                 var htmlDocument = await _httpClientService.GetChsHtmlDocumentByUrlAsync(_url, stoppingToken)
                     .ConfigureAwait(false);
-
                 var serviceAddresses = await _htmlParserService.GetServiceMessages(htmlDocument).ConfigureAwait(false);
                 await _serviceAddressRepository.AddServiceAddressesAsync(serviceAddresses, stoppingToken);
 
@@ -71,7 +73,7 @@ public class ServiceMessageWorker : BackgroundService
                 Console.WriteLine(ex.Message);
             }
             
-            await Task.Delay(TimeSpan.FromMinutes(3), stoppingToken);
+            await Task.Delay(TimeSpan.FromMinutes(_refreshIntervalMinutes), stoppingToken);
         }
     }
 

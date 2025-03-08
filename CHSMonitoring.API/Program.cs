@@ -21,7 +21,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsPolicy", config =>
+    options.AddPolicy("CORSPOLICY", config =>
     {
         config
             .WithOrigins("http://localhost:3000")
@@ -86,7 +86,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 app.UseMiddleware<RequestMiddleware>();
 
-app.UseCors("CorsPolicy");
+app.UseCors("CORSPOLICY");
 app.UseAuthentication();
 app.UseAuthorization();
 
