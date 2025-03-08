@@ -67,14 +67,12 @@ builder.Services.AddHttpClient<HttpClientService>(client =>
 });
 
 var app = builder.Build();
-if (app.Environment.IsDevelopment())
+
+using var scope = app.Services.CreateScope();
+var dbContext = scope.ServiceProvider.GetRequiredService<MonitoringDbContext>();
+if ((await dbContext.Database.GetPendingMigrationsAsync()).Any())
 {
-    using var scope = app.Services.CreateScope();
-    var dbContext = scope.ServiceProvider.GetRequiredService<MonitoringDbContext>();
-    if ((await dbContext.Database.GetPendingMigrationsAsync()).Any())
-    {
-        await dbContext.Database.MigrateAsync();
-    }
+    await dbContext.Database.MigrateAsync();
 }
 
 app.UseCookiePolicy(new CookiePolicyOptions()
