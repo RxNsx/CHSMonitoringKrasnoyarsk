@@ -1,4 +1,5 @@
-﻿using CHSMonitoring.Infrastructure.Extensions;
+﻿using System.Reflection;
+using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using HtmlAgilityPack;
 using Microsoft.Extensions.Configuration;
@@ -55,9 +56,10 @@ public class GInfoWorker : BackgroundService
                 htmlDocument.LoadHtml(responseContent);
 
                  var isCaptchaBlocked = htmlDocument.DocumentNode.OuterHtml.Contains("captcha");
-                 if (isCaptchaBlocked)
+                 if (!isCaptchaBlocked)
                  {
-                     var streetLines = await File.ReadAllLinesAsync("streetsdata.txt", stoppingToken).ConfigureAwait(false);
+                     var path = Path.Combine(Path.Combine(Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName, "DataPresets", "streetsdata.txt"));
+                     var streetLines = await File.ReadAllLinesAsync(path, stoppingToken).ConfigureAwait(false);
                      foreach (var streetLine in streetLines)
                      {
                          _logger.LogInformation(streetLine);
