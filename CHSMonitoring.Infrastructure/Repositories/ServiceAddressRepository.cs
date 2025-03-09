@@ -3,6 +3,7 @@ using CHSMonitoring.Domain.Entities;
 using CHSMonitoring.Infrastructure.Context;
 using CHSMonitoring.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace CHSMonitoring.Infrastructure.Repositories;
 
@@ -12,23 +13,30 @@ namespace CHSMonitoring.Infrastructure.Repositories;
 public class ServiceAddressRepository : IServiceAddressRepository
 {
     private readonly MonitoringDbContext _context;
-    
+    private readonly ILogger<ServiceAddress> _logger;
+
     /// <summary>
     /// Конструктор
     /// </summary>
     /// <param name="context"></param>
-    public ServiceAddressRepository(MonitoringDbContext context)
+    /// <param name="logger"></param>
+    public ServiceAddressRepository(MonitoringDbContext context, ILogger<ServiceAddress> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     public async Task<List<ServiceAddress>> GetLatestServiceAddressAsync(CancellationToken cancellationToken)
     {
+        var count = await _context.ServiceAddresses.CountAsync().ConfigureAwait(false);
+        _logger.LogInformation($"Total service addresses count: {count}");
+        
         if (await _context.ServiceAddresses.AnyAsync(cancellationToken).ConfigureAwait(false))
         {
             var latestTime = await _context.ServiceAddresses
                 .MaxAsync(x => x.CreatedDate)
                 .ConfigureAwait(false);
+            _logger.LogInformation($"Max Time: {latestTime}");
         
             return await _context.ServiceAddresses
                 .AsNoTracking()
@@ -38,6 +46,7 @@ public class ServiceAddressRepository : IServiceAddressRepository
                 .ConfigureAwait(false);
         }
 
+        _logger.LogInformation($"Empty");
         return new List<ServiceAddress>();
     }
 
