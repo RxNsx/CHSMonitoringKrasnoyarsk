@@ -47,4 +47,10 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="streetsdata.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
