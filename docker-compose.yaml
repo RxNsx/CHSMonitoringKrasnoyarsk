@@ -49,6 +49,8 @@
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: -pl,mju7
       POSTGRES_DB: monitoring_db_ver3
+    volumes:
+      - ./data:/var/lib/postgresql/data
     ports:
       - 5432:5432
     depends_on:
