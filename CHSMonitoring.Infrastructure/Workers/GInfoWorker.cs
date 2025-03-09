@@ -56,10 +56,10 @@ public class GInfoWorker : BackgroundService
                 htmlDocument.LoadHtml(responseContent);
 
                  var isCaptchaBlocked = htmlDocument.DocumentNode.OuterHtml.Contains("captcha");
-                 if (isCaptchaBlocked)
+                 if (!isCaptchaBlocked)
                  {
                      //Docker path
-                     var path = Path.Combine(Path.Combine("DataPresets", "streetsdata.txt"));
+                     var path = Path.Combine(Path.Combine("streetsdata.txt"));
                      var streetLines = await File.ReadAllLinesAsync(path, stoppingToken).ConfigureAwait(false);
                      Console.WriteLine(streetLines);
                      foreach (var streetLine in streetLines)
