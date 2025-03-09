@@ -36,9 +36,9 @@ public class GInfoWorker : BackgroundService
         {
             _url = configuration.GetSection("GInfo:Url")!.Value!;
         }
-        if (!string.IsNullOrEmpty(configuration.GetSection("GInfo:IntervalParsingMinutes").Value))
+        if (!string.IsNullOrEmpty(configuration.GetSection("GInfo:IntervalParsingHours").Value))
         {
-            _refreshIntervalHours = int.Parse(configuration.GetSection("GInfo:Url")!.Value!);
+            _refreshIntervalHours = int.Parse(configuration.GetSection("GInfo:IntervalParsingHours")!.Value!);
         }
     }
 
@@ -58,8 +58,10 @@ public class GInfoWorker : BackgroundService
                  var isCaptchaBlocked = htmlDocument.DocumentNode.OuterHtml.Contains("captcha");
                  if (isCaptchaBlocked)
                  {
-                     var path = Path.Combine(Path.Combine(Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName, "DataPresets", "streetsdata.txt"));
+                     //Docker path
+                     var path = Path.Combine(Path.Combine("DataPresets", "streetsdata.txt"));
                      var streetLines = await File.ReadAllLinesAsync(path, stoppingToken).ConfigureAwait(false);
+                     Console.WriteLine(streetLines);
                      foreach (var streetLine in streetLines)
                      {
                          _logger.LogInformation(streetLine);
