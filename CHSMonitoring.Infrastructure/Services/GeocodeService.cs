@@ -4,6 +4,7 @@ using CHSMonitoring.Infrastructure.Common;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Models.YandexMapApi;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace CHSMonitoring.Infrastructure.Services;
@@ -16,6 +17,7 @@ public class GeocodeService : IGeocodeService
     private readonly IServiceAddressRepository _serviceAddressRepository;
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly IConfiguration _configuration;
+    private readonly ILogger<GeocodeService> _logger;
 
     /// <summary>
     /// Конструктор
@@ -23,11 +25,13 @@ public class GeocodeService : IGeocodeService
     /// <param name="serviceAddressRepository"></param>
     /// <param name="configuration"></param>
     /// <param name="httpClientFactory"></param>
-    public GeocodeService(IServiceAddressRepository serviceAddressRepository, IConfiguration configuration, IHttpClientFactory httpClientFactory)
+    /// <param name="logger"></param>
+    public GeocodeService(IServiceAddressRepository serviceAddressRepository, IConfiguration configuration, IHttpClientFactory httpClientFactory, ILogger<GeocodeService> logger)
     {
         _serviceAddressRepository = serviceAddressRepository;
         _configuration = configuration;
         _httpClientFactory = httpClientFactory;
+        _logger = logger;
     }
 
     public async Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName)>> GetServiceAddressGeoDataAsync(string districtId, CancellationToken cancellationToken)
@@ -37,10 +41,13 @@ public class GeocodeService : IGeocodeService
         {
             serviceAddresses = await _serviceAddressRepository.GetLatestServiceAddressAsync(cancellationToken)
                 .ConfigureAwait(false);
+            
+            _logger.LogInformation($" Count in Service {serviceAddresses.Count}");
             return await GetServiceAddressGeoLocationsAsync(serviceAddresses).ConfigureAwait(false);
         }
         
         serviceAddresses = await _serviceAddressRepository.GetLatestServiceAddressByDistrictAsync(Guid.Parse(districtId), cancellationToken).ConfigureAwait(false);
+        _logger.LogInformation($" Count in Service not all {serviceAddresses.Count}");
         return await GetServiceAddressGeoLocationsAsync(serviceAddresses).ConfigureAwait(false);
     }
 
@@ -66,7 +73,8 @@ public class GeocodeService : IGeocodeService
             var searchAddress = $"{serviceAddress.Street.Name}";
             var searchHouseNunmber = $"{serviceAddress.HouseNumber}";
             var request = $"?apikey={apiKey}&geocode={city}+{searchAddress},+{searchHouseNunmber}&lang={lang}&format={format}";
-                
+            _logger.LogInformation($"Отправленный запрос");    
+            
             var result = await httpClient
                 .GetAsync(request)
                 .ConfigureAwait(false);
@@ -79,8 +87,10 @@ public class GeocodeService : IGeocodeService
                 var point = myDeserializedClass.response.GeoObjectCollection.featureMember
                     .Select(x => x.GeoObject.Point)
                     .FirstOrDefault();
+                
                 if (point is null)
                 {
+                    _logger.LogError($"Отсутствует координаты");
                     continue;
                 }
                     
@@ -92,6 +102,7 @@ public class GeocodeService : IGeocodeService
 
                 var latitude = correctPositionCoordinates[0];
                 var longtitude = correctPositionCoordinates[^1];
+                _logger.LogInformation($"Полученные координаты: {latitude}, {longtitude}");
 
                 var serviceTypeName = CommonData.ServiceTypesData
                     .FirstOrDefault(x => x.Id == serviceAddress.ServiceTypeId)
