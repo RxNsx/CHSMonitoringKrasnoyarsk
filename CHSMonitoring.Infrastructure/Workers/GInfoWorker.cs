@@ -51,15 +51,11 @@ public class GInfoWorker : BackgroundService
                 using var client = new HttpClient();
                 var response = await client.GetAsync(_url).ConfigureAwait(false);
                 var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
                 var htmlDocument = new HtmlDocument();
                 htmlDocument.LoadHtml(responseContent);
 
-                var q = htmlDocument.DocumentNode.OuterHtml;
-                _logger.LogInformation(q);
-                var links = htmlDocument.DocumentNode.SelectNodes("//a[@class='ulica_link']")
-                    .ToList();
-                 if (!links.Any())
+                 var isCaptchaBlocked = htmlDocument.DocumentNode.OuterHtml.Contains("captcha");
+                 if (isCaptchaBlocked)
                  {
                      var streetLines = await File.ReadAllLinesAsync("streetsdata.txt", stoppingToken).ConfigureAwait(false);
                      foreach (var streetLine in streetLines)
