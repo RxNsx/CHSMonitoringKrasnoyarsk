@@ -56,7 +56,7 @@ public class GInfoWorker : BackgroundService
                 htmlDocument.LoadHtml(responseContent);
 
                  var isCaptchaBlocked = htmlDocument.DocumentNode.OuterHtml.Contains("captcha");
-                 if (!isCaptchaBlocked)
+                 if (isCaptchaBlocked)
                  {
                      var path = Path.Combine(Path.Combine(Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName, "DataPresets", "streetsdata.txt"));
                      var streetLines = await File.ReadAllLinesAsync(path, stoppingToken).ConfigureAwait(false);
