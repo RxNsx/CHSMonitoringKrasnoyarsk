@@ -29,22 +29,24 @@ public class ServiceAddressRepository : IServiceAddressRepository
     public async Task<List<ServiceAddress>> GetLatestServiceAddressAsync(CancellationToken cancellationToken)
     {
         var count = await _context.ServiceAddresses.CountAsync().ConfigureAwait(false);
-        _logger.LogInformation($"Total service addresses count: {count}");
-        
-        if (await _context.ServiceAddresses.AnyAsync(cancellationToken).ConfigureAwait(false))
+        if (count > 0)
         {
             var latestTime = await _context.ServiceAddresses
                 .MaxAsync(x => x.CreatedDate)
                 .ConfigureAwait(false);
             _logger.LogInformation($"Max Time: {latestTime}");
-        
-            return await _context.ServiceAddresses
+
+            var qwe = await _context.ServiceAddresses
                 .AsNoTracking()
                 .Include(x => x.Street)
                 .Where(x => x.CreatedDate == latestTime)
                 .ToListAsync(cancellationToken)
                 .ConfigureAwait(false);
+            
+            _logger.LogInformation($"Max Timed = Count: {qwe.Count}");
+            return qwe;
         }
+
 
         _logger.LogInformation($"Empty");
         return new List<ServiceAddress>();
