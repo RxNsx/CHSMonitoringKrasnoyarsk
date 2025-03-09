@@ -60,8 +60,8 @@ public class GeocodeService : IGeocodeService
     {
         //TODO: Изменить потом для рабочего варианта
         serviceAddresses = serviceAddresses.Take(15).ToList();
-        
-        var httpClient = _httpClientFactory.CreateClient("yandexApi");
+
+        var httpClient = new HttpClient();
         var apiKey = _configuration["YandexMapKey"];
         var city = "Красноярск";
         var lang = "ru-RU";
@@ -72,7 +72,7 @@ public class GeocodeService : IGeocodeService
         {
             var searchAddress = $"{serviceAddress.Street.Name}";
             var searchHouseNunmber = $"{serviceAddress.HouseNumber}";
-            var request = $"?apikey={apiKey}&geocode={city}+{searchAddress},+{searchHouseNunmber}&lang={lang}&format={format}";
+            var request = $"https://geocode-maps.yandex.ru/1.x/?apikey={apiKey}&geocode={city}+{searchAddress},+{searchHouseNunmber}&lang={lang}&format={format}";
             _logger.LogInformation($"Отправленный запрос {request}");    
             
             var result = await httpClient

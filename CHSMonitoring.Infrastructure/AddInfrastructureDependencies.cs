@@ -27,10 +27,10 @@ public static class AddInfrastructureDependencies
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfigurationManager configurationManager)
     {
         //HttpClients
-        services.AddHttpClient("yandexApi", (serviceProvider, httpClient) =>
-        {
-            httpClient.BaseAddress = new Uri("https://geocode-maps.yandex.ru/1.x/");
-        });
+        // services.AddHttpClient("yandexApi", (serviceProvider, httpClient) =>
+        // {
+        //     httpClient.BaseAddress = new Uri("https://geocode-maps.yandex.ru/1.x/?apikey=&geocode=Красноярск+Волжская,+35&lang=ru-RU&format=json");
+        // });
         
         //Repositories and services
         services.AddScoped<IServiceAddressRepository, ServiceAddressRepository>();
