@@ -55,6 +55,8 @@ public class GInfoWorker : BackgroundService
                 var htmlDocument = new HtmlDocument();
                 htmlDocument.LoadHtml(responseContent);
 
+                var q = htmlDocument.DocumentNode.OuterHtml;
+                _logger.LogInformation(q);
                 var links = htmlDocument.DocumentNode.SelectNodes("//a[@class='ulica_link']")
                     .ToList();
                  if (!links.Any())
