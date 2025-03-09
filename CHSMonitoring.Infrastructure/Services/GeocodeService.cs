@@ -62,7 +62,7 @@ public class GeocodeService : IGeocodeService
         serviceAddresses = serviceAddresses.Take(15).ToList();
 
         var httpClient = new HttpClient();
-        var apiKey = _configuration["YandexMapKey"];
+        var apiKey = _configuration["YandexMapKey"] ?? _configuration["YandexMapsApi:Key"];
         var city = "Красноярск";
         var lang = "ru-RU";
         var format = "json";
