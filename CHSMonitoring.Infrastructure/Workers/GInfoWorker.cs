@@ -49,6 +49,7 @@ public class GInfoWorker : BackgroundService
         {
             try
             {
+                _logger.LogInformation($"Парсинг страницы {_url}");
                 using var client = new HttpClient();
                 var response = await client.GetAsync(_url).ConfigureAwait(false);
                 var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -56,7 +57,7 @@ public class GInfoWorker : BackgroundService
                 htmlDocument.LoadHtml(responseContent);
 
                  var isCaptchaBlocked = htmlDocument.DocumentNode.OuterHtml.Contains("captcha");
-                 if (isCaptchaBlocked)
+                 if (!isCaptchaBlocked)
                  {
                      //Docker path
                      var path = Path.Combine(Path.Combine("streetsdata.txt"));
@@ -64,7 +65,6 @@ public class GInfoWorker : BackgroundService
                      Console.WriteLine(streetLines);
                      foreach (var streetLine in streetLines)
                      {
-                         _logger.LogInformation(streetLine);
                          var values = streetLine.Split(";").ToList();
                          var streetName = values[0].Trim().NormalizeActualDataText();
                          var houseNumbers = values[1].Trim().Split(",").ToList();
@@ -118,8 +118,24 @@ public class GInfoWorker : BackgroundService
                 _logger.LogCritical($"При парсинге информации со страницы {_url} возникла ошибка: {ex.Message}\n{ex.StackTrace}");
             }
         }
+    }
+    
+    public override Task StartAsync(CancellationToken stoppingToken)
+    {
+        _logger.LogInformation("Сервис парсинга GInfo запущен: {time}", DateTimeOffset.Now);
+        return base.StartAsync(stoppingToken);
+    }
 
+    
+    public override Task StopAsync(CancellationToken stoppingToken)
+    {
+        _logger.LogInformation("Сервис парсинга GInfo остановлен: {time}", DateTimeOffset.Now);
+        return base.StopAsync(stoppingToken);
+    }
 
-
+    public override void Dispose()
+    {
+        _logger.LogInformation("Сервис парсинга GInfo удален из памяти: {time}", DateTimeOffset.Now);
+        base.Dispose();
     }
 }

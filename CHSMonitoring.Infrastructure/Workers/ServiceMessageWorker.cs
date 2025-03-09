@@ -55,13 +55,12 @@ public class ServiceMessageWorker : BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
+            await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
             var stopwatch = Stopwatch.StartNew();
             
             try
             {
                 _logger.LogInformation($"Парсинг страницы {_url}");
-                
                 var htmlDocument = await _httpClientService.GetChsHtmlDocumentByUrlAsync(_url, stoppingToken)
                     .ConfigureAwait(false);
                 var serviceAddresses = await _htmlParserService.GetServiceMessages(htmlDocument).ConfigureAwait(false);
@@ -78,15 +77,22 @@ public class ServiceMessageWorker : BackgroundService
         }
     }
 
+    public override Task StartAsync(CancellationToken stoppingToken)
+    {
+        _logger.LogInformation("Сервис парсинга 005красноярск.рф запущен: {time}", DateTimeOffset.Now);
+        return base.StartAsync(stoppingToken);
+    }
+
+    
     public override Task StopAsync(CancellationToken stoppingToken)
     {
-        _logger.LogInformation("Сервис парсинга остановлен: {time}", DateTimeOffset.Now);
+        _logger.LogInformation("Сервис парсинга 005красноярск.рф остановлен: {time}", DateTimeOffset.Now);
         return base.StopAsync(stoppingToken);
     }
 
     public override void Dispose()
     {
-        _logger.LogInformation("Сервис парсинга удален из памяти: {time}", DateTimeOffset.Now);
+        _logger.LogInformation("Сервис парсинга 005красноярск.рф удален из памяти: {time}", DateTimeOffset.Now);
         base.Dispose();
     }
 }

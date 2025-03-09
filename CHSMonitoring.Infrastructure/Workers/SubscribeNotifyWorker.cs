@@ -53,15 +53,21 @@ public class SubscribeNotifyWorker : BackgroundService
         }
     }
 
+    public override Task StartAsync(CancellationToken stoppingToken)
+    {
+        _logger.LogInformation("Сервис уведомлений Telegram запущен: {time}", DateTimeOffset.Now);
+        return base.StartAsync(stoppingToken);
+    }
+
     public override Task StopAsync(CancellationToken stoppingToken)
     {
-        _logger.LogInformation("Сервис парсинга остановлен: {time}", DateTimeOffset.Now);
+        _logger.LogInformation("Сервис уведомлений Telegram остановлен: {time}", DateTimeOffset.Now);
         return base.StopAsync(stoppingToken);
     }
 
     public override void Dispose()
     {
-        _logger.LogInformation("Сервис парсинга удален из памяти: {time}", DateTimeOffset.Now);
+        _logger.LogInformation("Сервис уведомлений Telegram удален из памяти: {time}", DateTimeOffset.Now);
         base.Dispose();
     }
 }
