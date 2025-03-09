@@ -73,11 +73,15 @@ public class GeocodeService : IGeocodeService
             var searchAddress = $"{serviceAddress.Street.Name}";
             var searchHouseNunmber = $"{serviceAddress.HouseNumber}";
             var request = $"?apikey={apiKey}&geocode={city}+{searchAddress},+{searchHouseNunmber}&lang={lang}&format={format}";
-            _logger.LogInformation($"Отправленный запрос");    
+            _logger.LogInformation($"Отправленный запрос {request}");    
             
             var result = await httpClient
                 .GetAsync(request)
                 .ConfigureAwait(false);
+            if (result.StatusCode != HttpStatusCode.OK)
+            {
+                _logger.LogError($"Ответ от YandexApi: {result.StatusCode}");
+            }
             if (result.StatusCode == HttpStatusCode.OK)
             {
                 var response = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
