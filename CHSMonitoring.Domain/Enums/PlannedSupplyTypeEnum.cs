@@ -19,6 +19,8 @@ public enum PlannedSupplyTypeEnum
     Emergency2,
     [Description("Подвоз")]
     Subway,
+    [Description("Переустройство")]
+    Reconstruction,
     // [Description("Городских отключений не зарегистрировано")]
     // NotRegistered
 }

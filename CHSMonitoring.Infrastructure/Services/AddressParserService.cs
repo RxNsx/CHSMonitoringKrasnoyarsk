@@ -133,17 +133,23 @@ public sealed class AddressParserService : IAddressParserService
          return addressList;
     }
 
+    /// <summary>
+    /// Получение дополнительного описания плановых работа по отключению \ оповещению
+    /// </summary>
+    /// <param name="addressesText"></param>
+    /// <returns></returns>
     public (string description, string outputText) GetPlannedDescriptionMessage(string addressesText)
     {
-        var plannedIndexOfText = CommonData.PlannedOffData
-            .DefaultIfEmpty()
+        var plannedIndexOfTextList = CommonData.PlannedOffData
             .Select(x => addressesText.IndexOf(x, StringComparison.InvariantCultureIgnoreCase))
             .Where(x => x != -1)
-            .Min();
-        if (plannedIndexOfText != 0)
+            .ToList();
+
+        if (plannedIndexOfTextList.Any())
         {
-            var additionalDescriptionValue = addressesText.Substring(plannedIndexOfText, addressesText.Length - plannedIndexOfText);
-            addressesText = addressesText.Remove(plannedIndexOfText, addressesText.Length - plannedIndexOfText).Trim();
+            var planneIndexText = plannedIndexOfTextList.Min();
+            var additionalDescriptionValue = addressesText.Substring(planneIndexText, addressesText.Length - planneIndexText);
+            addressesText = addressesText.Remove(planneIndexText, addressesText.Length - planneIndexText).Trim();
             return (description: additionalDescriptionValue, outputText: addressesText);
         }
         
