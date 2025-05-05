@@ -31,4 +31,11 @@ public interface IStreetRepository
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<Street> GetStreetAsync(string streetName, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Получить все улицы
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<List<Street>> GetAllStreetsAsync(CancellationToken cancellationToken);
 }

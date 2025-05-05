@@ -59,4 +59,16 @@ public class StreetRepository : IStreetRepository
             .FirstOrDefaultAsync(x => x.Name.Equals(streetName), cancellationToken)
             .ConfigureAwait(false);
     }
+
+    /// <summary>
+    /// Получить все улицы
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<List<Street>> GetAllStreetsAsync(CancellationToken cancellationToken)
+    {
+        return await _context.Streets
+            .ToListAsync(cancellationToken)
+            .ConfigureAwait(false);
+    }
 }
