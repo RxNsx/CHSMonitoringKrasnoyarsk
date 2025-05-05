@@ -43,7 +43,7 @@ public static class AddInfrastructureDependencies
         services.AddScoped<IHashPasswordService, HashPasswordService>();
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IProfileRepository, ProfileRepository>();
-        services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+        services.AddTransient<ISubscriptionRepository, SubscriptionRepository>();
         services.AddScoped<IDistrictRepository, DistrictRepository>();
         services.AddScoped<IGeocodeService, GeocodeService>();
 

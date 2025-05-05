@@ -37,7 +37,7 @@ public class TelegramNotrifyService : ITelegramNotifyService
     {
         foreach (var user in notifyUsers)
         {
-            var serviceAddresses = await _serviceAddressRepository.GetLatestServiceAddressByDistrictAsync(user.Subscription.DistrictId, cancellationToken)
+            var serviceAddresses = await _serviceAddressRepository.GetLatestServiceAddressByDistrictAsync(user.Profiles.FirstOrDefault(x => x.ProfileTypeId == ProfileTypeEnum.Telegram.GetGuidValue()).Subscription.DistrictId.Value, cancellationToken)
                 .ConfigureAwait(false);
             var profile = await _profileRepository.GetTelegramProfileAsync(user.Id, cancellationToken).ConfigureAwait(false);
             var payload = BuildPayloadString(serviceAddresses);

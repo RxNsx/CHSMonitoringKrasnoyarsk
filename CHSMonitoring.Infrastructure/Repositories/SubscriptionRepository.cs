@@ -14,71 +14,95 @@ public class SubscriptionRepository : ISubscriptionRepository
 {
     private readonly MonitoringDbContext _context;
     private readonly IUserRepository _userRepository;
+    private readonly IProfileRepository _profileRepository;
 
     /// <summary>
     /// Конструктор
     /// </summary>
     /// <param name="context"></param>
     /// <param name="userRepository"></param>
-    public SubscriptionRepository(MonitoringDbContext context, IUserRepository userRepository)
+    /// <param name="profileRepository"></param>
+    public SubscriptionRepository(MonitoringDbContext context, IUserRepository userRepository, IProfileRepository profileRepository)
     {
         _context = context;
         _userRepository = userRepository;
+        _profileRepository = profileRepository;
     }
 
-    public async Task<Subscription?> AddSubscriptionAsync(Subscription subscription, CancellationToken cancellationToken)
+    /// <summary>
+    /// Добавление подписки для пользователя по профилю с определенным временным обновлением
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="profileId"></param>
+    /// <param name="districtId"></param>
+    /// <param name="updateUserTime"></param>
+    /// <param name="profileTypeEnum"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<Subscription?> AddSubscriptionAsync(Guid userId, long profileId, Guid districtId, int updateUserTime, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetUserByUserIdAsync(subscription.UserId, cancellationToken).ConfigureAwait(false);
-        if (subscription.UpdateUserTime != 0)
+        var user = await _userRepository.GetUserByUserIdAsync(userId, cancellationToken).ConfigureAwait(false);
+        if (updateUserTime != 0)
         {
             user!.LastUpdated = DateTime.UtcNow;
         }
-        
+
+        var profile = await _profileRepository.GetTelegramProfileAsync(userId, cancellationToken)
+            .ConfigureAwait(false);
+        var subscription = new Subscription()
+        {
+            ProfileId = profile!.Id,
+            DistrictId = districtId,
+            UpdateUserTime = updateUserTime
+        };
         await _context.Subscriptions.AddAsync(subscription, cancellationToken).ConfigureAwait(false);
         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-
-        user.SubscriptionId = subscription.Id;
-        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-        
         return subscription;
     }
 
-    public async Task<Subscription?> UpdateSubscriptionAsync(Subscription updateSubscription, long userId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
+    public async Task UpdateSubscriptionAsync(Guid userId, long profileId, Guid districtId, int updateUserTime, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
     {
-        var subscription = await GetSubscriptionAsync(userId, profileTypeEnum, cancellationToken).ConfigureAwait(false);
+        var subscription = await GetSubscriptionAsync(profileId, profileTypeEnum, cancellationToken).ConfigureAwait(false);
         if (subscription is null)
         {
-            return null;
+            Console.WriteLine($"Error");
+            return;
         }
-        
-        var user = await _userRepository.GetUserByUserIdAsync(updateSubscription.UserId, cancellationToken).ConfigureAwait(false);
-        user!.LastUpdated = DateTime.UtcNow;
 
-        var updateEntity = _context.Subscriptions.Update(updateSubscription);
+        var user = await _userRepository.GetUserByUserIdAsync(userId, cancellationToken).ConfigureAwait(false);
+        user!.LastUpdated = DateTime.UtcNow;
         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-        return updateEntity.Entity;
+        
+        subscription.UpdateUserTime = updateUserTime;
+        subscription.DistrictId = districtId;
+        _context.Subscriptions.Update(subscription);
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task<bool> IsSubscribeExistsAsync(long userId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
+    public async Task<bool> IsSubscribeExistsAsync(long profileId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
     {
         return await _context.Profiles
             .AsNoTracking()
+            .Include(x => x.Subscription)
             .Include(x => x.User)
-                .ThenInclude(x => x.Subscription)
-            .AnyAsync(x => x.ProviderId == userId 
-                           && x.ProfileTypeId == profileTypeEnum.GetGuidValue()
-                           && x.User.Subscription != null
-                , cancellationToken)
+            .AnyAsync(x => x.ProviderId == profileId && x.ProfileTypeId == profileTypeEnum.GetGuidValue() && x.Subscription != null)
             .ConfigureAwait(false);
     }
 
-    public async Task<Subscription?> GetSubscriptionAsync(long userId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
+    /// <summary>
+    /// Получить подписку пользователя
+    /// </summary>
+    /// <param name="profileId">Ид пользователя</param>
+    /// <param name="profileTypeEnum">Тип подписки</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<Subscription?> GetSubscriptionAsync(long profileId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
     {
         return await _context.Profiles
+            .Include(x => x.Subscription)
             .Include(x => x.User)
-                .ThenInclude(x => x.Subscription)
-            .Where(x => x.ProviderId == userId && x.ProfileTypeId == profileTypeEnum.GetGuidValue())
-            .Select(x => x.User.Subscription)
+            .Where(x => x.ProviderId == profileId && x.ProfileTypeId == profileTypeEnum.GetGuidValue())
+            .Select(x => x.Subscription)
             .FirstOrDefaultAsync(cancellationToken)
             .ConfigureAwait(false);
     }
@@ -93,14 +117,14 @@ public class SubscriptionRepository : ISubscriptionRepository
         
         var currentDate = DateTime.UtcNow;
         var subscriptions =  await _context.Subscriptions
-            .Include(x => x.User)
-                .ThenInclude(x => x.Profiles)
-            .Where(x => x.User.LastUpdated != null && x.UpdateUserTime != 0)
+            .Include(x => x.Profile)
+                .ThenInclude(x => x.User)
+            .Where(x => x.Profile.User.LastUpdated != null && x.UpdateUserTime != 0)
             .Select(x => new
             {
                 Subscription = x,
-                User = x.User,
-                Time = currentDate - x.User.LastUpdated
+                User = x.Profile.User,
+                Time = currentDate - x.Profile.User.LastUpdated
             })
             .ToListAsync(cancellationToken)
             .ConfigureAwait(false);

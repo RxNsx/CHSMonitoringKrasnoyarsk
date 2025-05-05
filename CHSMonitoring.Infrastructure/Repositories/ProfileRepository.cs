@@ -73,9 +73,29 @@ public class ProfileRepository : IProfileRepository
 
     public async Task<Profile?> GetTelegramProfileAsync(Guid userId, CancellationToken cancellationToken)
     {
+        var check = await _context.Profiles
+            .Include(x => x.User)
+            .FirstOrDefaultAsync(x => x.UserId == userId && x.ProfileTypeId == ProfileTypeEnum.Telegram.GetGuidValue(), cancellationToken)
+            .ConfigureAwait(false);
+
+
+        if (check is not null)
+        {
+            Console.WriteLine(check);
+        }
+        
+        
         return await _context.Profiles
             .Include(x => x.User)
             .FirstOrDefaultAsync(x => x.UserId == userId && x.ProfileTypeId == ProfileTypeEnum.Telegram.GetGuidValue(), cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<Profile?> GetWebApplicationProfileByUserIdAsync(Guid userId, CancellationToken cancellationToken)
+    {
+        return await _context.Profiles
+            .Include(x => x.User)
+            .FirstOrDefaultAsync(x => x.User.Id.Equals(userId) && x.ProfileTypeId == ProfileTypeEnum.WebApplication.GetGuidValue(), cancellationToken)
             .ConfigureAwait(false);
     }
 

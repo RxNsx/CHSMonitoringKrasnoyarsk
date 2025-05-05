@@ -11,21 +11,25 @@ public interface ISubscriptionRepository
     /// <summary>
     /// Добавить данные подписки
     /// </summary>
-    /// <param name="subscription"></param>
+    /// <param name="userId"></param>
+    /// <param name="profileId"></param>
+    /// <param name="districtId"></param>
+    /// <param name="updateUserTime"></param>
+    /// <param name="profileTypeEnum"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<Subscription?> AddSubscriptionAsync(Subscription subscription, CancellationToken cancellationToken);
+    Task<Subscription?> AddSubscriptionAsync(Guid userId, long profileId, Guid districtId, int updateUserTime, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
 
     /// <summary>
     /// Обновить информацию подписки
     /// </summary>
-    /// <param name="updateSubecription"></param>
     /// <param name="userId"></param>
+    /// <param name="profileId"></param>
+    /// <param name="districtId"></param>
+    /// <param name="updateUserTime"></param>
     /// <param name="profileTypeEnum"></param>
     /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    Task<Subscription?> UpdateSubscriptionAsync(Subscription updateSubecription, long userId, ProfileTypeEnum profileTypeEnum,
-        CancellationToken cancellationToken);
+    Task UpdateSubscriptionAsync(Guid userId, long profileId, Guid districtId, int updateUserTime, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
     
     /// <summary>
     /// Сущесвует ли подписка у пользователя
@@ -39,11 +43,11 @@ public interface ISubscriptionRepository
     /// <summary>
     /// Получить подписку пользователя
     /// </summary>
-    /// <param name="userId"></param>
+    /// <param name="profileId"></param>
     /// <param name="profileTypeEnum"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<Subscription?> GetSubscriptionAsync(long userId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
+    Task<Subscription?> GetSubscriptionAsync(long profileId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
 
     /// <summary>
     /// Получить пользователей для уведомлений

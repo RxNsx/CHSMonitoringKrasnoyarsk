@@ -32,10 +32,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasMaxLength(150)
             .IsRequired(false);
 
-        builder.Property(x => x.SubscriptionId)
-            .HasDefaultValue(null)
-            .IsRequired(false);
-
         builder.Property(x => x.LastUpdated)
             .HasConversion(x => x!.Value.ToUniversalTime(), x => DateTime.SpecifyKind(x, DateTimeKind.Utc))
             .HasDefaultValue(null)
@@ -44,9 +40,5 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasMany(x => x.Profiles)
             .WithOne(x => x.User)
             .HasForeignKey(x => x.UserId);
-
-        builder.HasOne(x => x.Subscription)
-            .WithOne(x => x.User)
-            .HasForeignKey<Subscription>(x => x.UserId);
     }
 }

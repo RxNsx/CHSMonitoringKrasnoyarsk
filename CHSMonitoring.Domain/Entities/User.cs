@@ -31,14 +31,4 @@ public class User : Entity
     /// Навигационное свойство для профилей
     /// </summary>
     public List<Profile> Profiles { get; set; }
-    
-    /// <summary>
-    /// Айди подписки
-    /// </summary>
-    public Guid? SubscriptionId { get; set; }
-    
-    /// <summary>
-    /// Навигационное свойство подписки
-    /// </summary>
-    public Subscription Subscription { get; set; }
 }

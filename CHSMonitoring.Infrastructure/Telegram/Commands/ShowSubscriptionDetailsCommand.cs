@@ -33,22 +33,21 @@ public class ShowSubscriptionDetailsCommand : BaseCommand
     public override async Task ExecuteAsync(Update update)
     {
         var chatId = long.MinValue;
-        var userId = long.MinValue;
+        var profileId = long.MinValue;
         switch (update.Type)
         {
             case UpdateType.Message:
                 chatId = update.Message.Chat.Id;
-                userId = update.Message.From.Id;
+                profileId = update.Message.From.Id;
                 break;
             case UpdateType.CallbackQuery:
                 chatId = update.CallbackQuery.Message.Chat.Id;
-                userId = update.CallbackQuery.From.Id;
+                profileId = update.CallbackQuery.From.Id;
                 break;
         }
         
-        var subscription = await _subscriptionRepository.GetSubscriptionAsync(userId, ProfileTypeEnum.Telegram, default)
+        var subscription = await _subscriptionRepository.GetSubscriptionAsync(profileId, ProfileTypeEnum.Telegram, default)
             .ConfigureAwait(false);
-
         var sb = new StringBuilder();
         var districtName = CommonData.DistrictsData
             .FirstOrDefault(x => x.Id == subscription.DistrictId)

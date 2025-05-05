@@ -41,4 +41,9 @@ public class Profile : Entity
     /// Навигационное свойство на пользователя
     /// </summary>
     public User User { get; set; }
+    
+    /// <summary>
+    /// Навигационное свойство подписки
+    /// </summary>
+    public Subscription Subscription { get; set; }
 }

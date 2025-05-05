@@ -13,11 +13,8 @@ public class SubscriptionConfiguration : IEntityTypeConfiguration<Subscription>
         builder.Property(x => x.UpdateUserTime)
             .IsRequired();
 
-        builder.HasOne(x => x.User)
-            .WithOne(x => x.Subscription);
-        
-        builder.HasOne(x => x.User)
-            .WithOne(x => x.Subscription)
-            .HasForeignKey<Subscription>(x => x.UserId);
+        builder.Property(x => x.StreetId)
+            .HasDefaultValue(null)
+            .IsRequired(false);
     }
 }

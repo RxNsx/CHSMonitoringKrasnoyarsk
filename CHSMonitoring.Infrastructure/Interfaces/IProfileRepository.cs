@@ -44,12 +44,21 @@ public interface IProfileRepository
     Task<bool> IsTelegramProfileAsync(long chatId);
 
     /// <summary>
-    /// Получить профиль пользователя 
+    /// Получить профиль пользователя телеграм
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="profileId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<Profile?> GetTelegramProfileAsync(Guid userId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Получить профиль пользователя веб приложения
     /// </summary>
     /// <param name="userId"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<Profile?> GetTelegramProfileAsync(Guid userId, CancellationToken cancellationToken);
+    Task<Profile?> GetWebApplicationProfileByUserIdAsync(Guid userId, CancellationToken cancellationToken);
     
     /// <summary>
     /// Получить веб профиль по имени пользователя

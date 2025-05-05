@@ -5,6 +5,7 @@ using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
 using CHSMonitoring.Infrastructure.Models.Enums;
+using CHSMonitoring.Infrastructure.Models.TelegramBot;
 using CHSMonitoring.Infrastructure.Telegram;
 using CHSMonitoring.Infrastructure.Telegram.Dtos;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,8 +27,11 @@ public class CommandExecutorService : ICommandExecutorService
     
     private CommandState _commandState;
     private RegisterTelegramUserDto _registerUser;
-    private Subscription _newSubscription;
-    private Subscription _editSubscription;
+    // private Subscription _newSubscription;
+    // private Subscription _editSubscription;
+    //TODO: Проверить как работает новые классы
+    private SubscriptionItem _newSubscriptionItem;
+    private SubscriptionItem _editSubscriptionItem;
 
     /// <summary>
     /// Конструктор
@@ -123,8 +127,9 @@ public class CommandExecutorService : ICommandExecutorService
                         if (!isSubscribeExists)
                         {
                             var userByProfile = await  _userRepository.GetUserByTelegramProfileIdAsync(update.Message.From.Id, default).ConfigureAwait(false);
-                            _newSubscription = new Subscription();
-                            _newSubscription.UserId = userByProfile!.Id;
+                            _newSubscriptionItem = new SubscriptionItem();
+                            _newSubscriptionItem.ProfileId = update.Message.From.Id;
+                            _newSubscriptionItem.UserId = userByProfile!.Id;
                             await ExecuteCommand(CommandNames.StartSubscribeProcess, update).ConfigureAwait(false);
                         }
                         else
@@ -217,8 +222,9 @@ public class CommandExecutorService : ICommandExecutorService
                     case CommandNames.ChangeSubscription:
                     {
                         var userByProfile = await  _userRepository.GetUserByTelegramProfileIdAsync(update.CallbackQuery.From.Id, default).ConfigureAwait(false);
-                        _editSubscription = new Subscription();
-                        _editSubscription.UserId = userByProfile!.Id;
+                        _editSubscriptionItem = new SubscriptionItem();
+                        _editSubscriptionItem.UserId = userByProfile!.Id;
+                        _editSubscriptionItem.ProfileId = update.CallbackQuery.From.Id;
                         await ExecuteCommand(CommandNames.ShowDistrictButtonsSubscription, update).ConfigureAwait(false);
                         _commandState = CommandState.EditSubscribeChangeDistrict;
                         break;
@@ -233,7 +239,7 @@ public class CommandExecutorService : ICommandExecutorService
                     case var _
                         when update.CallbackQuery.Data.Contains("-district-subscribe"):
                     {
-                        _newSubscription.DistrictId = GetDistrictNameByCallbackData(update.CallbackQuery.Data);
+                        _newSubscriptionItem.DistrictId = GetDistrictNameByCallbackData(update.CallbackQuery.Data);
                         _commandState = CommandState.SubscribeDistrictSet;
                         await ExecuteCommand(CommandNames.ShowUserTimeIntervalRefresh, update).ConfigureAwait(false);
                         break;
@@ -248,8 +254,8 @@ public class CommandExecutorService : ICommandExecutorService
                     case var _
                         when update.CallbackQuery.Data.Contains("-refresh-interval"):
                     {
-                        _newSubscription.UpdateUserTime = GetTimeIntervalValueByCallbackData(update.CallbackQuery.Data);
-                        await _subscriptionRepository.AddSubscriptionAsync(_newSubscription, default).ConfigureAwait(false);
+                        _newSubscriptionItem.UpdateUserTime = GetTimeIntervalValueByCallbackData(update.CallbackQuery.Data);
+                        await _subscriptionRepository.AddSubscriptionAsync(_newSubscriptionItem.UserId, _newSubscriptionItem.ProfileId, _newSubscriptionItem.DistrictId, _newSubscriptionItem.UpdateUserTime, ProfileTypeEnum.Telegram, default).ConfigureAwait(false);
                         await ExecuteCommand(CommandNames.ShowSubscriptionDetailsCommand, update).ConfigureAwait(false);
                         _commandState = CommandState.NotActive;
                         break;
@@ -264,7 +270,7 @@ public class CommandExecutorService : ICommandExecutorService
                     case var _
                         when update.CallbackQuery.Data.Contains("-district-subscribe"):
                     {
-                        _editSubscription.DistrictId = GetDistrictNameByCallbackData(update.CallbackQuery.Data);
+                        _editSubscriptionItem.DistrictId = GetDistrictNameByCallbackData(update.CallbackQuery.Data);
                         await ExecuteCommand(CommandNames.ShowUserTimeIntervalRefresh, update);
                         _commandState = CommandState.EditSubscribeChangeInterval;
                         break;
@@ -280,8 +286,8 @@ public class CommandExecutorService : ICommandExecutorService
                     case var _
                         when update.CallbackQuery.Data.Contains("-refresh-interval"):
                     {
-                        _editSubscription.UpdateUserTime = GetTimeIntervalValueByCallbackData(update.CallbackQuery.Data);
-                        var updatedSubscription = await _subscriptionRepository.UpdateSubscriptionAsync(_editSubscription, update.CallbackQuery.From.Id, ProfileTypeEnum.Telegram, default).ConfigureAwait(false);
+                        _editSubscriptionItem.UpdateUserTime = GetTimeIntervalValueByCallbackData(update.CallbackQuery.Data);
+                        await _subscriptionRepository.UpdateSubscriptionAsync(_editSubscriptionItem.UserId, update.CallbackQuery.From.Id, _editSubscriptionItem.DistrictId, _editSubscriptionItem.UpdateUserTime, ProfileTypeEnum.Telegram, default).ConfigureAwait(false);
                         _commandState = CommandState.NotActive;
                         await ExecuteCommand(CommandNames.ShowSubscriptionDetailsCommand, update).ConfigureAwait(false);
                         break;
@@ -341,7 +347,7 @@ public class CommandExecutorService : ICommandExecutorService
     /// <returns></returns>
     private int GetTimeIntervalValueByCallbackData(string? intervalString)
     {
-        var pureString = intervalString.Replace("-refresh-interval", string.Empty);
+        var pureString = intervalString!.Replace("-refresh-interval", string.Empty);
         var intValue = int.Parse(pureString);
         return intValue;
     }

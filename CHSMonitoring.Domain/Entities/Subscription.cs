@@ -15,7 +15,7 @@ public class Subscription : Entity
     /// <summary>
     /// Ид района на который подписан
     /// </summary>
-    public Guid DistrictId { get; set; }
+    public Guid? DistrictId { get; set; }
     
     /// <summary>
     /// Навигационное свойства района
@@ -23,12 +23,23 @@ public class Subscription : Entity
     public District District { get; set; }
     
     /// <summary>
-    /// Ид пользователя
+    /// Ид улицы
     /// </summary>
-    public Guid UserId { get; set; }
+    public Guid? StreetId { get; set; }
     
     /// <summary>
-    /// Навигационное свойство пользователя
+    /// Навигационное свойство улицы
     /// </summary>
-    public User User { get; set; }
+    public Street Street { get; set; }
+    
+    /// <summary>
+    /// Навигационное свойство профиля
+    /// </summary>
+    public Profile Profile { get; set; }
+    
+    /// <summary>
+    /// Ид профиля
+    /// </summary>
+    public Guid ProfileId { get; set; }
+    
 }

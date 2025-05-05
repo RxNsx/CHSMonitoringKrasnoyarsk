@@ -29,5 +29,8 @@ public class ProfileConfiguration : IEntityTypeConfiguration<Profile>
 
         builder.HasOne(x => x.User)
             .WithMany(x => x.Profiles);
+
+        builder.HasOne(x => x.Subscription)
+            .WithOne(x => x.Profile);
     }
 }
