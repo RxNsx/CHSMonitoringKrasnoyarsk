@@ -19,5 +19,8 @@ public enum ServiceTypeEnum
     ColdWater,
     [EnumGuid("25969C01-7291-458B-8A20-88A2338F62C9")]
     [Description("Электроснабжение")]
-    Electricity
+    Electricity,
+    [EnumGuid("B2948B05-B798-432D-BA4A-E4EF6930092F")]
+    [Description("Газоснабжение")]
+    Gas
 }
