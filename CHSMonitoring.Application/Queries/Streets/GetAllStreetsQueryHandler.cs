@@ -4,6 +4,9 @@ using MediatR;
 
 namespace CHSMonitoring.Application.Queries.Streets;
 
+/// <summary>
+/// Обработчик команды для получения всех улиц
+/// </summary>
 public class GetAllStreetsQueryHandler : IRequestHandler<GetAllStreetsQuery, List<StreetDto>>
 {
     private readonly IStreetRepository _streetRepository;
@@ -25,6 +28,7 @@ public class GetAllStreetsQueryHandler : IRequestHandler<GetAllStreetsQuery, Lis
         return allStreets
             .Select(x => new StreetDto()
             {
+                StreetId = x.Id,
                 StreetName = x.Name
             })
             .OrderBy(x => x.StreetName)

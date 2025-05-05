@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 
 namespace CHSMonitoring.Application.Dtos.Streets;
 
@@ -8,6 +7,15 @@ namespace CHSMonitoring.Application.Dtos.Streets;
 /// </summary>
 public class StreetDto
 {
+    /// <summary>
+    /// Ид улицы
+    /// </summary>
+    [JsonPropertyName("streetId")]
+    public Guid StreetId { get; set; }
+    
+    /// <summary>
+    /// Название улицы
+    /// </summary>
     [JsonPropertyName("streetName")]
     public string StreetName { get; set; }
 }
