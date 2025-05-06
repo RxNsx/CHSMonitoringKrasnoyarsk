@@ -17,9 +17,16 @@ public class ServiceAddressGeoLocationDto
     /// Долгота
     /// </summary>
     public string Longtitude { get; set; }
-    
     /// <summary>
     /// Тип отключения
     /// </summary>
     public string ServiceTypeName { get; set; }
+    /// <summary>
+    /// Время начала отключения
+    /// </summary>
+    public string DateFrom { get; set; }
+    /// <summary>
+    /// Время окончания отключения
+    /// </summary>
+    public string DateTo { get; set; }
 }

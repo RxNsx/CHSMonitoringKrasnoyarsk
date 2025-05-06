@@ -34,7 +34,7 @@ public class GeocodeService : IGeocodeService
         _logger = logger;
     }
 
-    public async Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName)>> GetServiceAddressGeoDataByDistrictAsync(string districtId, CancellationToken cancellationToken)
+    public async Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName, string DateFrom, string DateTo)>> GetServiceAddressGeoDataByDistrictAsync(string districtId, CancellationToken cancellationToken)
     {
         List<ServiceAddress> serviceAddresses = new();
         if (districtId.Trim().Equals("all", StringComparison.InvariantCultureIgnoreCase))
@@ -51,7 +51,7 @@ public class GeocodeService : IGeocodeService
         return await GetServiceAddressGeoLocationsAsync(serviceAddresses).ConfigureAwait(false);
     }
 
-    public Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName)>> GetServiceAddressGeoDataByStreetNameAsync(string streetId, CancellationToken cancellationToken)
+    public Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName, string DateFrom, string DateTo)>> GetServiceAddressGeoDataByStreetNameAsync(string streetId, CancellationToken cancellationToken)
     {
         List<ServiceAddress> serviceAddresses = new();
         serviceAddresses = _serviceAddressRepository.GetLatestServiceAddressAsyncByStreetIdAsync(Guid.Parse(streetId), cancellationToken).Result;
@@ -63,7 +63,7 @@ public class GeocodeService : IGeocodeService
     /// </summary>
     /// <param name="serviceAddresses"></param>
     /// <returns></returns>
-    private async Task<List<(string streetName, string latitude, string longtitude, string serviceTypeName)>> GetServiceAddressGeoLocationsAsync(List<ServiceAddress> serviceAddresses)
+    private async Task<List<(string streetName, string latitude, string longtitude, string serviceTypeName, string dateFrom, string dateTo)>> GetServiceAddressGeoLocationsAsync(List<ServiceAddress> serviceAddresses)
     {
         //TODO: Изменить потом для рабочего варианта
         serviceAddresses = serviceAddresses.Take(15).ToList();
@@ -74,7 +74,7 @@ public class GeocodeService : IGeocodeService
         var lang = "ru-RU";
         var format = "json";
         
-        List<(string streetName, string latitude, string longtitude, string serviceTypeName)> streetCoordinates = new();
+        List<(string streetName, string latitude, string longtitude, string serviceTypeName, string dateFrom, string dateTo)> streetCoordinates = new();
         foreach (var serviceAddress in serviceAddresses)
         {
             var searchAddress = $"{serviceAddress.Street.Name}";
@@ -119,7 +119,7 @@ public class GeocodeService : IGeocodeService
                     .FirstOrDefault(x => x.Id == serviceAddress.ServiceTypeId)
                     .ServiceTypeName;
                 var address = $"{serviceAddress.Street.Name} {serviceAddress.HouseNumber}";
-                streetCoordinates.Add((address, latitude, longtitude, serviceTypeName));
+                streetCoordinates.Add((address, latitude, longtitude, serviceTypeName, serviceAddress.DateTimeFromString, serviceAddress.DateTimeToString));
             }
         }
         

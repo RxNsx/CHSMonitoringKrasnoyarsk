@@ -30,7 +30,9 @@ public class GetStreetGeoCoordinatesQueryHandler : IRequestHandler<GetStreetGeoC
                 Address = x.StreetName,
                 Latitude = x.Latitude,
                 Longtitude = x.LongTitude,
-                ServiceTypeName = x.ServiceTypeName
+                ServiceTypeName = x.ServiceTypeName,
+                DateFrom = x.DateFrom,
+                DateTo = x.DateTo
             })
             .OrderBy(x => x.Address)
             .ToList();
