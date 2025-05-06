@@ -37,7 +37,7 @@ public class RequestMiddleware
 
             if (context.Request.Path.HasValue)
             {
-                _logger.LogInformation($"Входящий запрос{context.Request.Path.Value}");
+                _logger.LogInformation($"Входящий запрос {context.Request.Path.Value}");
             }
             
             _logger.LogInformation($"Тело входящего запроса {body}");

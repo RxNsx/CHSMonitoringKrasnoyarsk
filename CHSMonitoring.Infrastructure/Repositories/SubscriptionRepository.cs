@@ -39,7 +39,7 @@ public class SubscriptionRepository : ISubscriptionRepository
     /// <param name="profileTypeEnum"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public async Task<Subscription?> AddSubscriptionAsync(Guid userId, long profileId, Guid districtId, int updateUserTime, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
+    public async Task<Subscription?> AddTelegramSubscriptionAsync(Guid userId, long profileId, Guid districtId, int updateUserTime, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetUserByUserIdAsync(userId, cancellationToken).ConfigureAwait(false);
         if (updateUserTime != 0)
@@ -60,12 +60,27 @@ public class SubscriptionRepository : ISubscriptionRepository
         return subscription;
     }
 
+    public async Task<Subscription> AddWebApplicationSubscriptionAsync(Guid userId, Guid? districtId, Guid? streetId, CancellationToken cancellationToken)
+    {
+        var profile = await _profileRepository.GetWebApplicationProfileByUserIdAsync(userId, cancellationToken)
+            .ConfigureAwait(false);
+        var subscription = new Subscription()
+        {
+            ProfileId = profile!.Id,
+            DistrictId = districtId,
+            StreetId = streetId
+        };
+        await _context.Subscriptions.AddAsync(subscription, cancellationToken).ConfigureAwait(false);
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+        return subscription;
+    }
+
     public async Task UpdateTelegramSubscriptionAsync(Guid userId, long profileId, Subscription updateSubscription, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
     {
         var subscription = await GetTelegramSubscriptionAsync(profileId, cancellationToken).ConfigureAwait(false);
         if (subscription is null)
         {
-            Console.WriteLine($"Error");
+            Console.WriteLine($"Error update subscription");
             return;
         }
 
@@ -81,6 +96,29 @@ public class SubscriptionRepository : ISubscriptionRepository
             .ConfigureAwait(false);
     }
 
+    public async Task UpdateWebApplicationSubscriptionAsync(Guid userId, Guid? districtId, Guid? streetId, CancellationToken cancellationToken)
+    {
+        var subscription = await GetWebApplicationSubscriptionAsync(userId, cancellationToken)
+            .ConfigureAwait(false);
+        if (subscription is null)
+        {
+            Console.WriteLine($"Error update subscription");
+            return;
+        }
+        
+        var user = await _userRepository.GetUserByUserIdAsync(userId, cancellationToken).ConfigureAwait(false);
+        user!.LastUpdated = DateTime.UtcNow;
+        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+        
+        await _context.Subscriptions
+            .Where(x => x.Id == subscription.Id)
+            .ExecuteUpdateAsync(x => x
+                .SetProperty(t => t.DistrictId, districtId)
+                .SetProperty(t => t.StreetId, streetId))
+            .ConfigureAwait(false);
+    }
+
+
     public async Task<bool> IsSubscribeExistsAsync(long profileId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
     {
         return await _context.Profiles
@@ -91,7 +129,7 @@ public class SubscriptionRepository : ISubscriptionRepository
             .ConfigureAwait(false);
     }
 
-    public async Task<Subscription?> GetWebApplicationSubscriptionasync(Guid userId, CancellationToken cancellationToken)
+    public async Task<Subscription?> GetWebApplicationSubscriptionAsync(Guid userId, CancellationToken cancellationToken)
     {
         return await _context.Profiles
             .Include(x => x.Subscription)

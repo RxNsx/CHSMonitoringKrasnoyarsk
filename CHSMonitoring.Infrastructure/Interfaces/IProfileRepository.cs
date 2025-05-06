@@ -39,9 +39,9 @@ public interface IProfileRepository
     /// <summary>
     /// Существует ли телеграм профиль
     /// </summary>
-    /// <param name="chatId"></param>
+    /// <param name="profileId"></param>
     /// <returns></returns>
-    Task<bool> IsTelegramProfileAsync(long chatId);
+    Task<bool> IsTelegramProfileAsync(long profileId);
 
     /// <summary>
     /// Получить профиль пользователя телеграм
@@ -59,6 +59,15 @@ public interface IProfileRepository
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<Profile?> GetWebApplicationProfileByUserIdAsync(Guid userId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Обновление профиля пользователя веб приложения
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="loginName"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task UpdateWebApplicationProfileByUserIdAsync(Guid userId, string loginName, CancellationToken cancellationToken);
     
     /// <summary>
     /// Получить веб профиль по имени пользователя

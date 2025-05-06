@@ -41,8 +41,12 @@ public class TelegramNotrifyService : ITelegramNotifyService
                 .ConfigureAwait(false);
             var profile = await _profileRepository.GetTelegramProfileAsync(user.Id, cancellationToken).ConfigureAwait(false);
             var payload = BuildPayloadString(serviceAddresses);
-            await _telegramBotClient.SendMessage(profile!.ProviderId, payload, ParseMode.Markdown);
-            await _userRepository.UpdateUserNotifyUpdateDateAsync(user.Id, cancellationToken).ConfigureAwait(false);
+
+            if (!string.IsNullOrEmpty(payload))
+            {
+                await _telegramBotClient.SendMessage(profile!.ProviderId, payload, ParseMode.Markdown);
+                await _userRepository.UpdateUserNotifyUpdateDateAsync(user.Id, cancellationToken).ConfigureAwait(false);
+            }
             await Task.Delay(TimeSpan.FromSeconds(1));
         }
     }

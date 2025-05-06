@@ -261,7 +261,7 @@ public class CommandExecutorService : ICommandExecutorService
                         when update.CallbackQuery.Data.Contains("-refresh-interval"):
                     {
                         _newSubscriptionItem.UpdateUserTime = GetTimeIntervalValueByCallbackData(update.CallbackQuery.Data);
-                        await _subscriptionRepository.AddSubscriptionAsync(_newSubscriptionItem.UserId, _newSubscriptionItem.ProfileId, _newSubscriptionItem.DistrictId, _newSubscriptionItem.UpdateUserTime, ProfileTypeEnum.Telegram, default).ConfigureAwait(false);
+                        await _subscriptionRepository.AddTelegramSubscriptionAsync(_newSubscriptionItem.UserId, _newSubscriptionItem.ProfileId, _newSubscriptionItem.DistrictId, _newSubscriptionItem.UpdateUserTime, ProfileTypeEnum.Telegram, default).ConfigureAwait(false);
                         await ExecuteCommand(CommandNames.ShowSubscriptionDetailsCommand, update).ConfigureAwait(false);
                         _commandState = CommandState.NotActive;
                         break;

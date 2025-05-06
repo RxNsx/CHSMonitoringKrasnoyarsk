@@ -7,11 +7,14 @@ namespace CHSMonitoring.Application.Dtos.User;
 /// </summary>
 public class GetUserDto
 {
+    [JsonPropertyName("userId")]
+    public Guid UserId { get; set; }
+
     /// <summary>
-    /// Имя пользователя
+    /// Логин пользователял
     /// </summary>
-    [JsonPropertyName("username")]
-    public string UserName { get; set; }
+    [JsonPropertyName("loginName")]
+    public string LoginName { get; set; }
     
     /// <summary>
     /// Адрес электронной почты

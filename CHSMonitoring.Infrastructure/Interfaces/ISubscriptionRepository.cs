@@ -18,7 +18,17 @@ public interface ISubscriptionRepository
     /// <param name="profileTypeEnum"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<Subscription?> AddSubscriptionAsync(Guid userId, long profileId, Guid districtId, int updateUserTime, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
+    Task<Subscription?> AddTelegramSubscriptionAsync(Guid userId, long profileId, Guid districtId, int updateUserTime, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Добавить подписку для веб приложения
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="districtId"></param>
+    /// <param name="streetId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<Subscription> AddWebApplicationSubscriptionAsync(Guid userId, Guid? districtId, Guid? streetId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Обновить информацию подписки
@@ -29,6 +39,16 @@ public interface ISubscriptionRepository
     /// <param name="profileTypeEnum"></param>
     /// <param name="cancellationToken"></param>
     Task UpdateTelegramSubscriptionAsync(Guid userId, long profileId, Subscription updateSubscription, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Обновить информацию подписки для веб приложения
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="districtId"></param>
+    /// <param name="streetId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task UpdateWebApplicationSubscriptionAsync(Guid userId, Guid? districtId, Guid? streetId, CancellationToken cancellationToken);
     
     /// <summary>
     /// Сущесвует ли подписка у пользователя
@@ -45,7 +65,7 @@ public interface ISubscriptionRepository
     /// <param name="userId"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<Subscription?> GetWebApplicationSubscriptionasync(Guid userId, CancellationToken cancellationToken);
+    Task<Subscription?> GetWebApplicationSubscriptionAsync(Guid userId, CancellationToken cancellationToken);
     
     /// <summary>
     /// Получение подписки телеграма

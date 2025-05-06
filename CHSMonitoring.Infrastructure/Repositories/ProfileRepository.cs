@@ -63,28 +63,16 @@ public class ProfileRepository : IProfileRepository
             .ConfigureAwait(false);
     }
 
-    public async Task<bool> IsTelegramProfileAsync(long chatId)
+    public async Task<bool> IsTelegramProfileAsync(long profileId)
     {
         return await _context.Users
             .Include(x => x.Profiles)
-            .AnyAsync(x => x.Profiles.Any(t => t.ProviderId == chatId))
+            .AnyAsync(x => x.Profiles.Any(t => t.ProviderId == profileId))
             .ConfigureAwait(false);
     }
 
     public async Task<Profile?> GetTelegramProfileAsync(Guid userId, CancellationToken cancellationToken)
     {
-        var check = await _context.Profiles
-            .Include(x => x.User)
-            .FirstOrDefaultAsync(x => x.UserId == userId && x.ProfileTypeId == ProfileTypeEnum.Telegram.GetGuidValue(), cancellationToken)
-            .ConfigureAwait(false);
-
-
-        if (check is not null)
-        {
-            Console.WriteLine(check);
-        }
-        
-        
         return await _context.Profiles
             .Include(x => x.User)
             .FirstOrDefaultAsync(x => x.UserId == userId && x.ProfileTypeId == ProfileTypeEnum.Telegram.GetGuidValue(), cancellationToken)
@@ -96,6 +84,15 @@ public class ProfileRepository : IProfileRepository
         return await _context.Profiles
             .Include(x => x.User)
             .FirstOrDefaultAsync(x => x.User.Id.Equals(userId) && x.ProfileTypeId == ProfileTypeEnum.WebApplication.GetGuidValue(), cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task UpdateWebApplicationProfileByUserIdAsync(Guid userId, string loginName, CancellationToken cancellationToken)
+    {
+        await _context.Profiles
+            .Where(x => x.ProfileTypeId == ProfileTypeEnum.WebApplication.GetGuidValue() && x.UserId == userId)
+            .ExecuteUpdateAsync(x =>
+                x.SetProperty(t => t.LoginName, loginName))
             .ConfigureAwait(false);
     }
 

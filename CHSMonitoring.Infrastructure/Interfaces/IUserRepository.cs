@@ -21,7 +21,7 @@ public interface IUserRepository
     /// <param name="loginName"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<List<User>> GetUserByLoginNameAsync(string loginName, CancellationToken cancellationToken);
+    Task<User?> GetUserByLoginNameAsync(string loginName, CancellationToken cancellationToken);
 
     /// <summary>
     /// Получить пользователя по ид

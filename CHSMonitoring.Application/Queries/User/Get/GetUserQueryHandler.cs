@@ -1,5 +1,6 @@
 ﻿using CHSMonitoring.Application.Dtos.User;
 using CHSMonitoring.Application.Errors.GetUserErrors;
+using CHSMonitoring.Infrastructure.Common;
 using CHSMonitoring.Infrastructure.Interfaces;
 using MediatR;
 using Shared;
@@ -34,11 +35,12 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, Result<GetUserD
         
         var userDto = new GetUserDto()
         {
-            UserName = webProfile.User.UserName,
+            UserId = webProfile.UserId,
+            LoginName = webProfile.LoginName,
             Email = webProfile.User.EmailAddress
         };
         
-        var webApplicationSubscriptionInfo = await _subscriptionRepository.GetWebApplicationSubscriptionasync(webProfile.UserId, cancellationToken)
+        var webApplicationSubscriptionInfo = await _subscriptionRepository.GetWebApplicationSubscriptionAsync(webProfile.UserId, cancellationToken)
             .ConfigureAwait(false);
         if (webApplicationSubscriptionInfo is null)
         {
@@ -46,8 +48,22 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, Result<GetUserD
             userDto.DistrictName = string.Empty;
             userDto.StreetId = string.Empty;
             userDto.StreetName = string.Empty;
+            return Result.Success(userDto);
         }
+
+        userDto.DistrictId = webApplicationSubscriptionInfo.DistrictId.HasValue
+            ? webApplicationSubscriptionInfo.DistrictId.Value.ToString()
+            : string.Empty;
+        userDto.DistrictName = CommonData.DistrictsData
+            .FirstOrDefault(x => webApplicationSubscriptionInfo.DistrictId.HasValue 
+                                && x.Id == webApplicationSubscriptionInfo.DistrictId.Value).DistrictName;
         
+        userDto.StreetId = webApplicationSubscriptionInfo.StreetId.HasValue
+            ? webApplicationSubscriptionInfo.StreetId.Value.ToString()
+            : string.Empty;
+        userDto.StreetName = CommonData.StreetsData
+            .FirstOrDefault(x => webApplicationSubscriptionInfo.StreetId.HasValue 
+                                 && x.Id == webApplicationSubscriptionInfo.StreetId.Value).StreetName;
         return Result.Success(userDto);
     }
 }

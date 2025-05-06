@@ -56,6 +56,6 @@ public class UsersController : ControllerBase
             return BadRequest(userResult.Error.Text);
         }
 
-        return Ok(userResult.Value);
+        return Ok(userResult.Value);    
     }
 }
