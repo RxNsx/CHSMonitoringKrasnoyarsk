@@ -25,11 +25,10 @@ public interface ISubscriptionRepository
     /// </summary>
     /// <param name="userId"></param>
     /// <param name="profileId"></param>
-    /// <param name="districtId"></param>
-    /// <param name="updateUserTime"></param>
+    /// <param name="updateSubscrption"></param>
     /// <param name="profileTypeEnum"></param>
     /// <param name="cancellationToken"></param>
-    Task UpdateSubscriptionAsync(Guid userId, long profileId, Guid districtId, int updateUserTime, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
+    Task UpdateSubscriptionAsync(Guid userId, long profileId, Subscription updateSubscrption, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
     
     /// <summary>
     /// Сущесвует ли подписка у пользователя

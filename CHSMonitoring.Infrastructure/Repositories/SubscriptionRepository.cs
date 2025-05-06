@@ -60,7 +60,7 @@ public class SubscriptionRepository : ISubscriptionRepository
         return subscription;
     }
 
-    public async Task UpdateSubscriptionAsync(Guid userId, long profileId, Guid districtId, int updateUserTime, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
+    public async Task UpdateSubscriptionAsync(Guid userId, long profileId, Subscription updateSubscription, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
     {
         var subscription = await GetSubscriptionAsync(profileId, profileTypeEnum, cancellationToken).ConfigureAwait(false);
         if (subscription is null)
@@ -72,11 +72,13 @@ public class SubscriptionRepository : ISubscriptionRepository
         var user = await _userRepository.GetUserByUserIdAsync(userId, cancellationToken).ConfigureAwait(false);
         user!.LastUpdated = DateTime.UtcNow;
         await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-        
-        subscription.UpdateUserTime = updateUserTime;
-        subscription.DistrictId = districtId;
-        _context.Subscriptions.Update(subscription);
-        await _context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+
+        await _context.Subscriptions
+            .Where(x => x.Id == subscription.Id)
+            .ExecuteUpdateAsync(x => x
+                .SetProperty(t => t.UpdateUserTime, updateSubscription.UpdateUserTime)
+                .SetProperty(t => t.DistrictId, updateSubscription.DistrictId))
+            .ConfigureAwait(false);
     }
 
     public async Task<bool> IsSubscribeExistsAsync(long profileId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)

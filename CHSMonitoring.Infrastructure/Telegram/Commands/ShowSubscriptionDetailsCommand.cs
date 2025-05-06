@@ -17,7 +17,8 @@ namespace CHSMonitoring.Infrastructure.Telegram.Commands;
 public class ShowSubscriptionDetailsCommand : BaseCommand
 {
     private readonly TelegramBotClient _telegramBotClient;
-    private readonly ISubscriptionRepository _subscriptionRepository;
+    private ISubscriptionRepository _subscriptionRepository;
+    private IServiceScopeFactory _serviceScopeFactory;
 
     /// <summary>
     /// Конструктор
@@ -25,13 +26,15 @@ public class ShowSubscriptionDetailsCommand : BaseCommand
     public ShowSubscriptionDetailsCommand(TelegramBot telegramBot, IServiceScopeFactory serviceScopeFactory)
     {
         _telegramBotClient = telegramBot.GetTelegramBotClient().Result;
-        var scope = serviceScopeFactory.CreateScope();
-        _subscriptionRepository = scope.ServiceProvider.GetRequiredService<ISubscriptionRepository>();
+        _serviceScopeFactory = serviceScopeFactory;
     }
     
     public override string Name => CommandNames.ShowSubscriptionDetailsCommand;
     public override async Task ExecuteAsync(Update update)
     {
+        using var scope = _serviceScopeFactory.CreateScope();
+        _subscriptionRepository = scope.ServiceProvider.GetRequiredService<ISubscriptionRepository>();
+        
         var chatId = long.MinValue;
         var profileId = long.MinValue;
         switch (update.Type)
@@ -55,7 +58,9 @@ public class ShowSubscriptionDetailsCommand : BaseCommand
         
         sb.Append("Ваша подписка:").AppendLine();
         sb.Append("Район: ").Append(districtName).AppendLine();
-        sb.Append("Период уведомления: ").Append(subscription!.UpdateUserTime == 0 ? "Никогда" :$"Каждые {subscription!.UpdateUserTime}").Append(" минут").AppendLine();
+        sb.Append("Период уведомления: ").Append(subscription!.UpdateUserTime == 0 
+            ? "Никогда" 
+            :$"Каждые {subscription!.UpdateUserTime}").Append(" минут").AppendLine();
 
         var inlineKeyboard = new InlineKeyboardMarkup(new[]
         {
