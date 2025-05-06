@@ -25,6 +25,7 @@ public class GetStreetGeoCoordinatesQueryHandler : IRequestHandler<GetStreetGeoC
     {
         var serviceAddressesGeoData = await _geocodeService.GetServiceAddressGeoDataByStreetNameAsync(request.StreetId, cancellationToken).ConfigureAwait(false);
         var serviceAddressGeoLocationList =  serviceAddressesGeoData
+            .Where(x => !x.DateFrom.Equals("отмена", StringComparison.InvariantCultureIgnoreCase) || !x.DateTo.Equals("отмена",StringComparison.InvariantCultureIgnoreCase))
             .Select(x => new ServiceAddressGeoLocationDto()
             {
                 Address = x.StreetName,

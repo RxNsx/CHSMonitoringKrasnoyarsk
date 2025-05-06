@@ -33,6 +33,7 @@ public class GetDistrictGeoCoordinatesQueryHandler : IRequestHandler<GetDistrict
         }
         
         var serviceAddressGeoLocationList =  serviceAddressesGeoData
+            .Where(x => !x.DateFrom.Equals("отмена", StringComparison.InvariantCultureIgnoreCase) || !x.DateTo.Equals("отмена",StringComparison.InvariantCultureIgnoreCase))
             .Select(x => new ServiceAddressGeoLocationDto()
             {
                 Address = x.StreetName,
