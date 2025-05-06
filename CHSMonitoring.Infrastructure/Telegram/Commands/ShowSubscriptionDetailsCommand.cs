@@ -49,7 +49,7 @@ public class ShowSubscriptionDetailsCommand : BaseCommand
                 break;
         }
         
-        var subscription = await _subscriptionRepository.GetSubscriptionAsync(profileId, ProfileTypeEnum.Telegram, default)
+        var subscription = await _subscriptionRepository.GetTelegramSubscriptionAsync(profileId, default)
             .ConfigureAwait(false);
         var sb = new StringBuilder();
         var districtName = CommonData.DistrictsData

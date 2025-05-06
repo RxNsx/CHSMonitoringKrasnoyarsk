@@ -60,9 +60,9 @@ public class SubscriptionRepository : ISubscriptionRepository
         return subscription;
     }
 
-    public async Task UpdateSubscriptionAsync(Guid userId, long profileId, Subscription updateSubscription, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
+    public async Task UpdateTelegramSubscriptionAsync(Guid userId, long profileId, Subscription updateSubscription, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
     {
-        var subscription = await GetSubscriptionAsync(profileId, profileTypeEnum, cancellationToken).ConfigureAwait(false);
+        var subscription = await GetTelegramSubscriptionAsync(profileId, cancellationToken).ConfigureAwait(false);
         if (subscription is null)
         {
             Console.WriteLine($"Error");
@@ -91,19 +91,23 @@ public class SubscriptionRepository : ISubscriptionRepository
             .ConfigureAwait(false);
     }
 
-    /// <summary>
-    /// Получить подписку пользователя
-    /// </summary>
-    /// <param name="profileId">Ид пользователя</param>
-    /// <param name="profileTypeEnum">Тип подписки</param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    public async Task<Subscription?> GetSubscriptionAsync(long profileId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken)
+    public async Task<Subscription?> GetWebApplicationSubscriptionasync(Guid userId, CancellationToken cancellationToken)
     {
         return await _context.Profiles
             .Include(x => x.Subscription)
             .Include(x => x.User)
-            .Where(x => x.ProviderId == profileId && x.ProfileTypeId == profileTypeEnum.GetGuidValue())
+            .Where(x => x.UserId == userId && x.ProfileTypeId == ProfileTypeEnum.WebApplication.GetGuidValue())
+            .Select(x => x.Subscription)
+            .FirstOrDefaultAsync(cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<Subscription?> GetTelegramSubscriptionAsync(long telegramProfileId, CancellationToken cancellationToken)
+    {
+        return await _context.Profiles
+            .Include(x => x.Subscription)
+            .Include(x => x.User)
+            .Where(x => x.ProviderId == telegramProfileId && x.ProfileTypeId == ProfileTypeEnum.Telegram.GetGuidValue())
             .Select(x => x.Subscription)
             .FirstOrDefaultAsync(cancellationToken)
             .ConfigureAwait(false);

@@ -54,60 +54,69 @@ public class UserRepository : IUserRepository
             .ConfigureAwait(false);
     }
 
-    public async Task<User> CreateWebApplicationUserAsync(string userName, string loginName, string hashPassword, string emailAddress, CancellationToken cancellationToken)
+    public async Task<User> CreateWebApplicationUserAsync(Guid userId, string userName, string loginName, string hashPassword, string emailAddress, CancellationToken cancellationToken)
     {
         User user = null;
-        
-        using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken).ConfigureAwait(false);
-
-        try
+        if (userId != Guid.Empty)
         {
-            user = new User()
-            {
-                UserName = userName,
-                EmailAddress = emailAddress
-            };
-            await _context.Users.AddAsync(user).ConfigureAwait(false);
-            await _context.SaveChangesAsync();
-            
-            await _profileRepository.CreateWebProfileAsync(user.Id, loginName, hashPassword, cancellationToken)
+            await _profileRepository.CreateWebProfileAsync(userId, loginName, hashPassword, cancellationToken)
                 .ConfigureAwait(false);
-            await transaction.CommitAsync(cancellationToken).ConfigureAwait(false);
         }
-        catch (Exception ex)
+        else
         {
-            await transaction.RollbackAsync(cancellationToken).ConfigureAwait(false);
+            using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken).ConfigureAwait(false);
+            try
+            {
+                user = new User()
+                {
+                    UserName = userName,
+                    EmailAddress = emailAddress
+                };
+                await _context.Users.AddAsync(user).ConfigureAwait(false);
+                await _context.SaveChangesAsync();
+            
+                await _profileRepository.CreateWebProfileAsync(user.Id, loginName, hashPassword, cancellationToken)
+                    .ConfigureAwait(false);
+                await transaction.CommitAsync(cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync(cancellationToken).ConfigureAwait(false);
+            }
         }
-
         return user;
     }
 
-    public async Task<User> CreateTelegramUserAsync(long chatId, string userName, string telegramName, string emailAddress, CancellationToken cancellationToken)
+    public async Task CreateTelegramUserAsync(Guid userId, long profileId, string userName, string telegramName, string emailAddress, CancellationToken cancellationToken)
     {
-        User user = null;
-        
-        using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken).ConfigureAwait(false);
-
-        try
+        if (userId != Guid.Empty)
         {
-            user = new User()
+            await _profileRepository.CreateTelegramProfileAsync(userId, profileId, telegramName, cancellationToken);
+        }
+        else
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken).ConfigureAwait(false);
+            User user;
+            try
             {
-                UserName = userName,
-                EmailAddress = emailAddress
-            };
-            await _context.Users.AddAsync(user).ConfigureAwait(false);
-            await _context.SaveChangesAsync();
+                user = new User()
+                {
+                    UserName = userName,
+                    EmailAddress = emailAddress
+                };
+                await _context.Users.AddAsync(user).ConfigureAwait(false);
+                await _context.SaveChangesAsync();
             
-            await _profileRepository.CreateTelegramProfileAsync(user.Id, chatId, telegramName, cancellationToken)
-                .ConfigureAwait(false);
-            await transaction.CommitAsync(cancellationToken).ConfigureAwait(false);
+                await _profileRepository.CreateTelegramProfileAsync(user.Id, profileId, telegramName, cancellationToken)
+                    .ConfigureAwait(false);
+                await transaction.CommitAsync(cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                await transaction.RollbackAsync(cancellationToken).ConfigureAwait(false);
+            }
         }
-        catch (Exception ex)
-        {
-            await transaction.RollbackAsync(cancellationToken).ConfigureAwait(false);
-        }
-
-        return user;
     }
 
     public async Task<bool> IsUserExists(string emailAddress, CancellationToken cancellationToken)

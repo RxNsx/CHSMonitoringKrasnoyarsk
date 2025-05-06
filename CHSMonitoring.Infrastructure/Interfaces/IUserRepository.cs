@@ -42,26 +42,25 @@ public interface IUserRepository
     /// <summary>
     /// Добавить пользователя 
     /// </summary>
-    /// <param name="emailAddress"></param>
-    /// <param name="cancellationToken"></param>
+    /// <param name="userId"></param>
     /// <param name="userName"></param>
     /// <param name="loginName"></param>
     /// <param name="hashPassword"></param>
+    /// <param name="emailAddress"></param>
+    /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<User> CreateWebApplicationUserAsync(string userName, string loginName, string hashPassword, string emailAddress, CancellationToken cancellationToken);
-
+    Task<User> CreateWebApplicationUserAsync(Guid userId, string userName, string loginName, string hashPassword, string emailAddress, CancellationToken cancellationToken);
 
     /// <summary>
     /// Создать телеграм профиль пользователя
     /// </summary>
-    /// <param name="chatId"></param>
+    /// <param name="userId"></param>
+    /// <param name="profileId"></param>
     /// <param name="userName"></param>
     /// <param name="telegramName"></param>
     /// <param name="emailAddress"></param>
     /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    Task<User> CreateTelegramUserAsync(long chatId, string userName, string telegramName, string emailAddress,
-        CancellationToken cancellationToken);
+    Task CreateTelegramUserAsync(Guid userId, long profileId, string userName, string telegramName, string emailAddress, CancellationToken cancellationToken);
 
     /// <summary>
     /// Проверка существует ли указанный пользователь с таким логином

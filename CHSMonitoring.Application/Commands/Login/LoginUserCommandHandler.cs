@@ -1,7 +1,5 @@
 ﻿using CHSMonitoring.Application.Dtos.Login;
 using CHSMonitoring.Application.Errors.LoginUserErrors;
-using CHSMonitoring.Domain.Enums;
-using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
 using MediatR;
 using Shared;

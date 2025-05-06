@@ -161,14 +161,14 @@ public class CommandExecutorService : ICommandExecutorService
                     try
                     {
                         var isUserEmailExists = await _userRepository.GetUserByUserEmailAddressAsync(_registerUser.EmailAddress, default);
+                        var userId = Guid.Empty;
                         if (isUserEmailExists is not null)
                         {
-                            await ExecuteSendMessageCommand(CommandNames.SendUserMessage, "Пользователь с таким адресом электронной почты уже зарегистрирован. Введите другой адрес", UpdateType.Message, update).ConfigureAwait(false);
-                            _registerUser.EmailAddress = string.Empty;
-                            break;
+                            var user = await _userRepository.GetUserByUserEmailAddressAsync(_registerUser.EmailAddress, default);
+                            userId = user!.Id;
                         }
 
-                        await _userRepository.CreateTelegramUserAsync(update.Message.From.Id, _registerUser.Name, update.Message.From.Username, _registerUser.EmailAddress, default).ConfigureAwait(false);
+                        await _userRepository.CreateTelegramUserAsync(userId, update.Message.From.Id, _registerUser.Name, update.Message.From.Username, _registerUser.EmailAddress, default).ConfigureAwait(false);
                         await ExecuteSendMessageCommand(CommandNames.SendUserMessage, "Вы успешно авторизовались", UpdateType.Message, update).ConfigureAwait(false);
                         await ExecuteCommand(CommandNames.ShowDistrictButtonsList, update).ConfigureAwait(false);
                         _commandState = CommandState.NotActive;
@@ -295,7 +295,7 @@ public class CommandExecutorService : ICommandExecutorService
                     {
                         _editSubscriptionItem.UpdateUserTime = GetTimeIntervalValueByCallbackData(update.CallbackQuery.Data);
                         _editSubscription.UpdateUserTime = GetTimeIntervalValueByCallbackData(update.CallbackQuery.Data);
-                        await _subscriptionRepository.UpdateSubscriptionAsync(_editSubscriptionItem.UserId, update.CallbackQuery.From.Id, _editSubscription, ProfileTypeEnum.Telegram, default).ConfigureAwait(false);
+                        await _subscriptionRepository.UpdateTelegramSubscriptionAsync(_editSubscriptionItem.UserId, update.CallbackQuery.From.Id, _editSubscription, ProfileTypeEnum.Telegram, default).ConfigureAwait(false);
                         _commandState = CommandState.NotActive;
                         await ExecuteCommand(CommandNames.ShowSubscriptionDetailsCommand, update).ConfigureAwait(false);
                         break;

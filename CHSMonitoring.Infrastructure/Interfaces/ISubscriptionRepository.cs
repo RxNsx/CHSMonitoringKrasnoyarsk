@@ -25,10 +25,10 @@ public interface ISubscriptionRepository
     /// </summary>
     /// <param name="userId"></param>
     /// <param name="profileId"></param>
-    /// <param name="updateSubscrption"></param>
+    /// <param name="updateSubscription"></param>
     /// <param name="profileTypeEnum"></param>
     /// <param name="cancellationToken"></param>
-    Task UpdateSubscriptionAsync(Guid userId, long profileId, Subscription updateSubscrption, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
+    Task UpdateTelegramSubscriptionAsync(Guid userId, long profileId, Subscription updateSubscription, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
     
     /// <summary>
     /// Сущесвует ли подписка у пользователя
@@ -40,13 +40,20 @@ public interface ISubscriptionRepository
     Task<bool> IsSubscribeExistsAsync(long userId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Получить подписку пользователя
+    /// Получение подписки со стороны веб-приложения
     /// </summary>
-    /// <param name="profileId"></param>
-    /// <param name="profileTypeEnum"></param>
+    /// <param name="userId"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<Subscription?> GetSubscriptionAsync(long profileId, ProfileTypeEnum profileTypeEnum, CancellationToken cancellationToken);
+    Task<Subscription?> GetWebApplicationSubscriptionasync(Guid userId, CancellationToken cancellationToken);
+    
+    /// <summary>
+    /// Получение подписки телеграма
+    /// </summary>
+    /// <param name="telegramProfileId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<Subscription?> GetTelegramSubscriptionAsync(long telegramProfileId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Получить пользователей для уведомлений
