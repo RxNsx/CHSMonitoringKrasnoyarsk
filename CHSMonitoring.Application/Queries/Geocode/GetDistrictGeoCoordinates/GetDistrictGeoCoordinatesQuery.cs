@@ -2,7 +2,7 @@
 using MediatR;
 using Shared;
 
-namespace CHSMonitoring.Application.Queries.Geocode;
+namespace CHSMonitoring.Application.Queries.Geocode.GetDistrictGeoCoordinates;
 
 public record GetDistrictGeoCoordinatesQuery(string DistrictId) : IRequest<Result<List<ServiceAddressGeoLocationDto>>>
 {

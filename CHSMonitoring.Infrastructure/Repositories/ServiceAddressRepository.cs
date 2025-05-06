@@ -36,19 +36,43 @@ public class ServiceAddressRepository : IServiceAddressRepository
                 .ConfigureAwait(false);
             _logger.LogInformation($"Max Time: {latestTime}");
 
-            var qwe = await _context.ServiceAddresses
+            var latestServiceAddreses = await _context.ServiceAddresses
                 .AsNoTracking()
                 .Include(x => x.Street)
                 .Where(x => x.CreatedDate == latestTime)
                 .ToListAsync(cancellationToken)
                 .ConfigureAwait(false);
             
-            _logger.LogInformation($"Max Timed = Count: {qwe.Count}");
-            return qwe;
+            _logger.LogInformation($"Max Timed = Count: {latestServiceAddreses.Count}");
+            return latestServiceAddreses;
         }
 
+        _logger.LogInformation($"latestServiceAddreses Empty");
+        return new List<ServiceAddress>();
+    }
 
-        _logger.LogInformation($"Empty");
+    public async Task<List<ServiceAddress>> GetLatestServiceAddressAsyncByStreetIdAsync(Guid streetId, CancellationToken cancellationToken)
+    {
+        var count = await _context.ServiceAddresses.CountAsync().ConfigureAwait(false);
+        if (count > 0)
+        {
+            var latestTime = await _context.ServiceAddresses
+                .MaxAsync(x => x.CreatedDate)
+                .ConfigureAwait(false);
+            _logger.LogInformation($"Max Time: {latestTime}");
+
+            var latestServiceAddreses = await _context.ServiceAddresses
+                .AsNoTracking()
+                .Include(x => x.Street)
+                .Where(x => x.CreatedDate == latestTime && x.StreetId == streetId)
+                .ToListAsync(cancellationToken)
+                .ConfigureAwait(false);
+            
+            _logger.LogInformation($"Max Timed = Count: {latestServiceAddreses.Count}");
+            return latestServiceAddreses;
+        }
+        
+        _logger.LogInformation($"latestServiceAddreses Empty");
         return new List<ServiceAddress>();
     }
 

@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Shared;
 
-namespace CHSMonitoring.Application.Queries.Geocode;
+namespace CHSMonitoring.Application.Queries.Geocode.GetDistrictGeoCoordinates;
 
 public class GetDistrictGeoCoordinatesQueryHandler : IRequestHandler<GetDistrictGeoCoordinatesQuery, Result<List<ServiceAddressGeoLocationDto>>>
 {
@@ -24,9 +24,13 @@ public class GetDistrictGeoCoordinatesQueryHandler : IRequestHandler<GetDistrict
 
     public async Task<Result<List<ServiceAddressGeoLocationDto>>> Handle(GetDistrictGeoCoordinatesQuery request, CancellationToken cancellationToken)
     {
-        var serviceAddressesGeoData =  await _geocodeService.GetServiceAddressGeoDataAsync(request.DistrictId, cancellationToken)
+        var serviceAddressesGeoData =  await _geocodeService.GetServiceAddressGeoDataByDistrictAsync(request.DistrictId, cancellationToken)
             .ConfigureAwait(false);
         _logger.LogInformation($"Count serviceAddresses: {serviceAddressesGeoData.Count}");
+        if (!serviceAddressesGeoData.Any())
+        {
+            return Result.Success(new List<ServiceAddressGeoLocationDto>() {});
+        }
         
         var serviceAddressGeoLocationList =  serviceAddressesGeoData
             .Select(x => new ServiceAddressGeoLocationDto()
@@ -36,6 +40,7 @@ public class GetDistrictGeoCoordinatesQueryHandler : IRequestHandler<GetDistrict
                 Longtitude = x.LongTitude,
                 ServiceTypeName = x.ServiceTypeName
             })
+            .OrderBy(x => x.Address)
             .ToList();
         return Result.Success(serviceAddressGeoLocationList);
     }

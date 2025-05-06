@@ -34,7 +34,7 @@ public class GeocodeService : IGeocodeService
         _logger = logger;
     }
 
-    public async Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName)>> GetServiceAddressGeoDataAsync(string districtId, CancellationToken cancellationToken)
+    public async Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName)>> GetServiceAddressGeoDataByDistrictAsync(string districtId, CancellationToken cancellationToken)
     {
         List<ServiceAddress> serviceAddresses = new();
         if (districtId.Trim().Equals("all", StringComparison.InvariantCultureIgnoreCase))
@@ -49,6 +49,13 @@ public class GeocodeService : IGeocodeService
         serviceAddresses = await _serviceAddressRepository.GetLatestServiceAddressByDistrictAsync(Guid.Parse(districtId), cancellationToken).ConfigureAwait(false);
         _logger.LogInformation($" Count in Service not all {serviceAddresses.Count}");
         return await GetServiceAddressGeoLocationsAsync(serviceAddresses).ConfigureAwait(false);
+    }
+
+    public Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName)>> GetServiceAddressGeoDataByStreetNameAsync(string streetId, CancellationToken cancellationToken)
+    {
+        List<ServiceAddress> serviceAddresses = new();
+        serviceAddresses = _serviceAddressRepository.GetLatestServiceAddressAsyncByStreetIdAsync(Guid.Parse(streetId), cancellationToken).Result;
+        return GetServiceAddressGeoLocationsAsync(serviceAddresses);
     }
 
     /// <summary>

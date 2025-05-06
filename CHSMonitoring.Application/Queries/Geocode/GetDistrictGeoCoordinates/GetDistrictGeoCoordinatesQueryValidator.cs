@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace CHSMonitoring.Application.Queries.Geocode;
+namespace CHSMonitoring.Application.Queries.Geocode.GetDistrictGeoCoordinates;
 
 public class GetDistrictGeoCoordinatesQueryValidator : AbstractValidator<GetDistrictGeoCoordinatesQuery>
 {

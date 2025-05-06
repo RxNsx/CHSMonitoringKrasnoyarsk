@@ -11,5 +11,14 @@ public interface IGeocodeService
     /// <param name="districtId"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName)>> GetServiceAddressGeoDataAsync(string districtId, CancellationToken cancellationToken);
+    Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName)>> GetServiceAddressGeoDataByDistrictAsync(string districtId, CancellationToken cancellationToken);
+    
+    
+    /// <summary>
+    /// Получение геолокаций по названию улицы
+    /// </summary>
+    /// <param name="streetId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<List<(string StreetName, string Latitude, string LongTitude, string ServiceTypeName)>> GetServiceAddressGeoDataByStreetNameAsync(string streetId, CancellationToken cancellationToken);
 }

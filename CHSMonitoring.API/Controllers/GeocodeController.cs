@@ -1,5 +1,7 @@
 ﻿using CHSMonitoring.Application.Dtos.Geocode;
 using CHSMonitoring.Application.Queries.Geocode;
+using CHSMonitoring.Application.Queries.Geocode.GetDistrictGeoCoordinates;
+using CHSMonitoring.Application.Queries.Geocode.GetStreetGeoCoordinates;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,6 +40,25 @@ public class GeocodeController : ControllerBase
             return BadRequest($"Ошибка при получении геоданных");
         }
         
+        return Ok(result.Value);
+    }
+
+    /// <summary>
+    /// Получить список координат по улицам
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("[action]")]
+    [ProducesResponseType<ServiceAddressGeoLocationDto>(200)]
+    public async Task<IActionResult> GetStreetGeoCoordinatesAsync([FromQuery] string streetId, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new GetStreetGeoCoordinatesQuery(streetId), cancellationToken)
+            .ConfigureAwait(false);
+        if (!result.IsSuccess)
+        {
+            return BadRequest($"Ошибка при получении геоданных");
+        }
+
         return Ok(result.Value);
     }
 }
