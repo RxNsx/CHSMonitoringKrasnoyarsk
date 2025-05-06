@@ -30,12 +30,16 @@ public class SubscribeNotifyWorker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var scope = _serviceScopeFactory.CreateScope();
-        _subscriptionRepository = scope.ServiceProvider.GetRequiredService<ISubscriptionRepository>();
-        _telegramNotifyService = scope.ServiceProvider.GetRequiredService<ITelegramNotifyService>();
-        
+        var isInitial = true;
         while (!stoppingToken.IsCancellationRequested)
         {
+            var scope = _serviceScopeFactory.CreateScope();
+            if (isInitial)
+            {
+                _telegramNotifyService = scope.ServiceProvider.GetRequiredService<ITelegramNotifyService>();
+                isInitial = false;
+            }
+            _subscriptionRepository = scope.ServiceProvider.GetRequiredService<ISubscriptionRepository>();
             try
             {
                 var notifyUsers = await _subscriptionRepository.GetNotifyUsersAsync(stoppingToken);

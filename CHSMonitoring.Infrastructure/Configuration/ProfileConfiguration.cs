@@ -28,7 +28,8 @@ public class ProfileConfiguration : IEntityTypeConfiguration<Profile>
             .IsRequired();
 
         builder.HasOne(x => x.User)
-            .WithMany(x => x.Profiles);
+            .WithMany(x => x.Profiles)
+            .HasForeignKey(x => x.UserId);
 
         builder.HasOne(x => x.Subscription)
             .WithOne(x => x.Profile);

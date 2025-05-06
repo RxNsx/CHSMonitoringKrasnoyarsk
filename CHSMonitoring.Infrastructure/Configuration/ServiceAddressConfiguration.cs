@@ -58,14 +58,17 @@ public class ServiceAddressConfiguration : IEntityTypeConfiguration<ServiceAddre
 
         builder.HasOne(x => x.District)
             .WithMany(x => x.ServiceAddresses)
+            .HasForeignKey(x => x.DistrictId)
             .IsRequired(false);
 
         builder.HasOne(x => x.Street)
             .WithMany(x => x.ServiceAddresses)
+            .HasForeignKey(x => x.StreetId)
             .IsRequired(false);
 
         builder.HasOne(x => x.ServiceType)
             .WithMany(x => x.ServiceAddresses)
+            .HasForeignKey(x => x.ServiceTypeId)
             .IsRequired(false);
     }
 }
