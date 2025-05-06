@@ -196,7 +196,7 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
             foreach (var groupServiceTypeItem in groupedByServiceType)
             {
                 var serviceTypeName = CommonData.ServiceTypesData.FirstOrDefault(x => x.Id == groupServiceTypeItem.Key).ServiceTypeName;
-                sb.AppendLine(serviceTypeName).AppendLine();
+                sb.AppendLine().AppendLine(serviceTypeName).AppendLine();
                 
                 foreach (var serviceAddressItem in groupServiceTypeItem.Value)
                 {
@@ -215,6 +215,9 @@ public sealed class ShowServiceAddressInfoCommand : BaseCommand
                             serviceType = "💧";
                             break;
                         case ServiceTypeEnum.HotWater:
+                            serviceType = "🔥";
+                            break;
+                        case ServiceTypeEnum.Gas:
                             serviceType = "💨";
                             break;
                     }

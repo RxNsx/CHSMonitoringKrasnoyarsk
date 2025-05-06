@@ -95,7 +95,7 @@ public class TelegramNotrifyService : ITelegramNotifyService
             foreach (var groupServiceTypeItem in groupedByServiceType)
             {
                 var serviceTypeName = CommonData.ServiceTypesData.FirstOrDefault(x => x.Id == groupServiceTypeItem.Key).ServiceTypeName;
-                sb.AppendLine(serviceTypeName).AppendLine();
+                sb.AppendLine().AppendLine(serviceTypeName).AppendLine();
                 
                 foreach (var serviceAddressItem in groupServiceTypeItem.Value)
                 {
@@ -114,6 +114,9 @@ public class TelegramNotrifyService : ITelegramNotifyService
                             serviceType = "💧";
                             break;
                         case ServiceTypeEnum.HotWater:
+                            serviceType = "🔥";
+                            break;
+                        case ServiceTypeEnum.Gas:
                             serviceType = "💨";
                             break;
                     }
