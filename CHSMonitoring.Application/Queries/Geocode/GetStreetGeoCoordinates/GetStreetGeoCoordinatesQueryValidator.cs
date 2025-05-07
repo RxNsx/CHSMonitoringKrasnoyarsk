@@ -1,6 +1,8 @@
-﻿namespace CHSMonitoring.Application.Queries.Geocode.GetStreetGeoCoordinates;
+﻿using FluentValidation;
 
-public class GetStreetGeoCoordinatesQueryValidator
+namespace CHSMonitoring.Application.Queries.Geocode.GetStreetGeoCoordinates;
+
+public class GetStreetGeoCoordinatesQueryValidator : AbstractValidator<GetStreetGeoCoordinatesQuery>
 {
     
 }

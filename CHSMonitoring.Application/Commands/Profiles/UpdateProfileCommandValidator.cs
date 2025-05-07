@@ -1,6 +1,8 @@
-﻿namespace CHSMonitoring.Application.Commands.Profiles;
+﻿using FluentValidation;
 
-public class UpdateProfileCommandValidator
+namespace CHSMonitoring.Application.Commands.Profiles;
+
+public class UpdateProfileCommandValidator : AbstractValidator<UpdateProfileCommand>
 {
     
 }
