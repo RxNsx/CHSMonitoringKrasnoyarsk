@@ -41,12 +41,10 @@ public class HttpClientService : IHttpClientService
         return htmlDocument;
     }
 
-    public async Task<HtmlDocument> GetGInfoHtmlDocumentByUrlAsync(string url, CancellationToken stoppingToken)
+    public async Task<HtmlDocument> GetGInfoHtmlDocumentByUrlAsync(HttpClient httpClient, string url, CancellationToken stoppingToken)
     {
-        using var client = new HttpClient();
-        var response = await client.GetAsync(url).ConfigureAwait(false);
+        var response = await httpClient.GetAsync(url).ConfigureAwait(false);
         var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
         var htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(responseContent);
         return htmlDocument;

@@ -63,7 +63,7 @@ public static class AddInfrastructureDependencies
         services.AddSingleton<BaseCommand, ShowUserTimeIntervalRefreshCommand>();
         services.AddSingleton<BaseCommand, ShowSubscriptionDetailsCommand>();
         services.AddSingleton<SendMessageCommand, SendUserMessageCommand>();
-        services.AddScoped<ITelegramNotifyService, TelegramNotrifyService>();
+        services.AddScoped<ITelegramNotifyService, TelegramNotifyService>();
         
         services.Configure<TelegramBotSettings>(configurationManager.GetSection("TelegramBot"));
         services.AddDbContext<MonitoringDbContext>(options =>

@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using CHSMonitoring.Infrastructure.Extensions;
 using CHSMonitoring.Infrastructure.Interfaces;
+using CHSMonitoring.Infrastructure.Interfaces.Workers;
 using HtmlAgilityPack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,7 @@ public class GInfoWorker : BackgroundService
     private readonly IServiceScope _serviceScope;
     private readonly IStreetRepository _streetRepository;
     private readonly IStreetNameService _streetNameService;
+    private readonly IHttpClientService _httpClientService;
     private readonly ILogger<GInfoWorker> _logger;
     
     private readonly string _url;
@@ -25,11 +27,13 @@ public class GInfoWorker : BackgroundService
     /// <param name="serviceScopeFactory"></param>
     /// <param name="loggerFactory"></param>
     /// <param name="configuration"></param>
-    public GInfoWorker(IServiceScopeFactory serviceScopeFactory, ILoggerFactory loggerFactory, IConfiguration configuration)
+    /// <param name="httpClientService"></param>
+    public GInfoWorker(IServiceScopeFactory serviceScopeFactory, ILoggerFactory loggerFactory, IConfiguration configuration, IHttpClientService httpClientService)
     {
         _serviceScope = serviceScopeFactory.CreateScope();
         _streetRepository = _serviceScope.ServiceProvider.GetRequiredService<IStreetRepository>();
         _streetNameService = _serviceScope.ServiceProvider.GetRequiredService<IStreetNameService>();
+        _httpClientService = httpClientService;
         _logger = loggerFactory.CreateLogger<GInfoWorker>();
 
         if (!string.IsNullOrEmpty(configuration.GetSection("GInfo:Url").Value))
@@ -51,10 +55,8 @@ public class GInfoWorker : BackgroundService
             {
                 _logger.LogInformation($"Парсинг страницы {_url}");
                 using var client = new HttpClient();
-                var response = await client.GetAsync(_url).ConfigureAwait(false);
-                var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var htmlDocument = new HtmlDocument();
-                htmlDocument.LoadHtml(responseContent);
+                var htmlDocument = await _httpClientService.GetGInfoHtmlDocumentByUrlAsync(client, _url, stoppingToken)
+                    .ConfigureAwait(false);
 
                  var isCaptchaBlocked = htmlDocument.DocumentNode.OuterHtml.Contains("captcha");
                  if (isCaptchaBlocked)

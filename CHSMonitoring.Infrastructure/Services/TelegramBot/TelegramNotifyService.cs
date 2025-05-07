@@ -14,7 +14,7 @@ namespace CHSMonitoring.Infrastructure.Services.TelegramBot;
 /// <summary>
 /// Сервис уведомлений
 /// </summary>
-public class TelegramNotrifyService : ITelegramNotifyService
+public class TelegramNotifyService : ITelegramNotifyService
 {
     private readonly TelegramBotClient _telegramBotClient;
     private readonly IServiceAddressRepository _serviceAddressRepository;
@@ -24,7 +24,7 @@ public class TelegramNotrifyService : ITelegramNotifyService
     /// <summary>
     /// Конструктор
     /// </summary>
-    public TelegramNotrifyService(Telegram.TelegramBot telegramBot, IServiceScopeFactory serviceScopeFactory)
+    public TelegramNotifyService(Telegram.TelegramBot telegramBot, IServiceScopeFactory serviceScopeFactory)
     {
         _telegramBotClient = telegramBot.GetTelegramBotClient().Result;
         var scope = serviceScopeFactory.CreateScope();

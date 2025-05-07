@@ -18,8 +18,9 @@ public interface IHttpClientService
     /// <summary>
     /// Получить html документа по url с сайта ginfo
     /// </summary>
+    /// <param name="httpClient"></param>
     /// <param name="url"></param>
     /// <param name="stoppingToken"></param>
     /// <returns></returns>
-    Task<HtmlDocument> GetGInfoHtmlDocumentByUrlAsync(string url, CancellationToken stoppingToken);
+    Task<HtmlDocument> GetGInfoHtmlDocumentByUrlAsync(HttpClient httpClient, string url, CancellationToken stoppingToken);
 }

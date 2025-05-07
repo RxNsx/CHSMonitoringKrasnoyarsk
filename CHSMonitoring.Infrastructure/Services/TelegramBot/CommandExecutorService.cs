@@ -7,7 +7,6 @@ using CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
 using CHSMonitoring.Infrastructure.Models.Enums;
 using CHSMonitoring.Infrastructure.Models.TelegramBot;
 using CHSMonitoring.Infrastructure.Telegram;
-using CHSMonitoring.Infrastructure.Telegram.Dtos;
 using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;

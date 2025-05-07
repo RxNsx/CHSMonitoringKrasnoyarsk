@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CHSMonitoring.Infrastructure.Telegram.Dtos;
+namespace CHSMonitoring.Infrastructure.Models.TelegramBot;
 
 /// <summary>
 /// Модель для регистрации нового пользователя Telegram
