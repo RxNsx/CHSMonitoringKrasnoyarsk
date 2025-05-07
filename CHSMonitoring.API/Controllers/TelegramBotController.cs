@@ -1,12 +1,7 @@
-﻿using System.Text.Json.Nodes;
-using CHSMonitoring.Infrastructure.Interfaces.TelegramBot;
-using CHSMonitoring.Infrastructure.Telegram;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using CHSMonitoring.Application.Commands.TelegramBot;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Telegram.Bot;
 using Telegram.Bot.Types;
-using Telegram.Bot.Types.Enums;
 
 namespace CHSMonitoring.API.Controllers;
 
@@ -17,22 +12,27 @@ namespace CHSMonitoring.API.Controllers;
 [ApiController]
 public class TelegramBotController : ControllerBase
 {
-    private readonly ICommandExecutorService _commandExecutorService;
+    private readonly IMediator _mediator;
 
     /// <summary>
     /// Конструктор
     /// </summary>
-    /// <param name="commandExecutorService"></param>
-    public TelegramBotController(ICommandExecutorService commandExecutorService)
+    /// <param name="mediator"></param>
+    public TelegramBotController(IMediator mediator)
     {
-        _commandExecutorService = commandExecutorService;
+        _mediator = mediator;
     }
 
+    /// <summary>
+    /// Получение обновления со стороны Telegram - сервера
+    /// </summary>
+    /// <param name="update"></param>
+    /// <returns></returns>
     [HttpPost]
     [Route("[action]")]
     public async Task<IActionResult> UpdateAsync([FromBody] Update update)
     {
-        await _commandExecutorService.Execute(update).ConfigureAwait(false);
+        await _mediator.Send(new TelegramBotCommand(update)).ConfigureAwait(false);
         return Ok();
     }
 }
