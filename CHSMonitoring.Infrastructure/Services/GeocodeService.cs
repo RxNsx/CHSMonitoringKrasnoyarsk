@@ -65,6 +65,12 @@ public class GeocodeService : IGeocodeService
     /// <returns></returns>
     private async Task<List<(string streetName, string latitude, string longtitude, string serviceTypeName, string dateFrom, string dateTo)>> GetServiceAddressGeoLocationsAsync(List<ServiceAddress> serviceAddresses)
     {
+        if (!serviceAddresses.Any())
+        {
+            _logger.LogInformation($"Empty serviceAddresses");
+            return [];
+        }
+        
         //TODO: Изменить потом для рабочего варианта
         serviceAddresses = serviceAddresses.Take(15).ToList();
 
