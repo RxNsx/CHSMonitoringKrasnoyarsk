@@ -81,6 +81,12 @@ public class TdContentParserService : ITdContentParserService
             var districtKey = supplyTypeIndexes.FirstOrDefault(x => x.Value.Contains(tableDescriptionItem[0].Index)).Key;
             var serviceAddressMessageBuilder = new ServiceMessageBuilder();
 
+            //TODO: Fix
+            if(tableDescriptionItem.Count % 3 != 0)
+            {
+                continue;
+            }
+            
             for (var i = 0; i < tableDescriptionItem.Count; i = i + 3)
             {
                 var organizationText = tableDescriptionItem[i].InnerText.NormalizeText();

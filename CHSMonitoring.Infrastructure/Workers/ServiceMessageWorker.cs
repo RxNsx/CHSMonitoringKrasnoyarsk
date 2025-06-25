@@ -73,7 +73,7 @@ public class ServiceMessageWorker : BackgroundService
                 _logger.LogCritical($"Ошибка в работе сервиса парсинга адресов с 005красноярск.рф: {ex.Message}");
             }
             
-            await Task.Delay(TimeSpan.FromMinutes(_refreshIntervalMinutes), stoppingToken);
+            await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
         }
     }
 
